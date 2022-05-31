@@ -10,6 +10,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Integrante 2** - [Nicolas Manuel Nieva](https://github.com/NicolaZK)
 * **Integrante 3** - [Walter Mario Aguirre](https://github.com/walteraguirre)
 * **Integrante 4** - [Claudio Alberto Giménez](https://github.com/claudiogimenez26)
+* **Integrante 5** - [Manuel Rivera Villatte](https://github.com/ManusaRivi)
 
 Corrector: **{Corrector}**
 
