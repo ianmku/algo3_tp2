@@ -12,7 +12,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Integrante 4** - [Claudio Alberto Giménez](https://github.com/claudiogimenez26)
 * **Integrante 5** - [Manuel Rivera Villatte](https://github.com/ManusaRivi)
 
-Corrector: **{Corrector}**
+Corrector: **{Santiago Valdez , Agustin Rodriguez}**
 
 ## Aplicación
 
