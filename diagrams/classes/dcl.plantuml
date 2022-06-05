@@ -11,7 +11,7 @@ Abstract class Vehiculo {
 }
 
 class Mapa {
-        +estoyEnLLegada(posicion : Posicion)
+        +estoyEnLLegada(posicion: Posicion)
         +puedoMover(direccion)
 }
 
