@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class MotoTest {
     @Test
     public void motoRecienCreadaTieneCeroMovimientos() {
-        Vehiculo moto = new Moto();
-        assertEquals(0, moto.getMovimientos());
+        Vehiculo moto = new Vehiculo(TipoVehiculo.MOTO);
+        assertEquals(0, moto.movimientos());
     }
 
     }

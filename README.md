@@ -4,7 +4,7 @@
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
 
-## Grupo {N}
+## Grupo {4}
 
 * **Integrante 1** - [Ian Mika Ursino](https://github.com/ianmku)
 * **Integrante 2** - [Nicolas Manuel Nieva](https://github.com/NicolaZK)
