@@ -1,4 +1,4 @@
 package edu.fiuba.algo3.modelo;
 
-public class Piquete implements Obstaculo{
+public class Piquete extends Obstaculo {
 }

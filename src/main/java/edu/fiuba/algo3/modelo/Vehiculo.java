@@ -1,42 +1,18 @@
 package edu.fiuba.algo3.modelo;
 
 public class Vehiculo {
-    int movimientos;
-    int pozosAtravesados;
-    protected TipoVehiculo tipo;
+    protected int cantidadDeMovimientos;
+    protected Posicion pos;
 
-    public Vehiculo(TipoVehiculo unTipo) {
-        tipo = unTipo;
+    public void mover() {
+
     }
 
-    public TipoVehiculo getTipo() {
-        return tipo;
+    public void atravesarPozo() {
+
     }
 
-    public int getMovimientos() { return movimientos; }
-
-    public int getPozosAtravesados() { return pozosAtravesados }
-
-    public void aumentarMovimientos(int cantidad) {
-        movimientos += cantidad;
-    }
-
-    public void aumentarPozosAtravesados(int cantidad) {
-        pozosAtravesados += cantidad;
+    public int getMovimientos(){
+        return cantidadDeMovimientos;
     }
 }
-
-public class Moto implements Vehiculo {
-
-}
-
-public class Auto implements Vehiculo {
-
-}
-
-public class CpC implements Vehiculo {
-
-
-}
-
-

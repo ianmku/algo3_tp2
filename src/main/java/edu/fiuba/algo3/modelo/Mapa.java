@@ -13,7 +13,7 @@ public class Mapa {
         ht = new Hashtable<Posicion, Calle>();
     }
 
-    public Mapa (TamanioMapa tamanio) {
+    /*public Mapa (TamanioMapa tamanio) {
         switch (tamanio) {
             case CHICO:
                 ancho = 7;
@@ -50,5 +50,5 @@ public class Mapa {
             }
         }
 
-    }
+    }*/
 }
