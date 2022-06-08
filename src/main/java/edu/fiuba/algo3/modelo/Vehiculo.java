@@ -1,9 +1,18 @@
 package edu.fiuba.algo3.modelo;
 
-public abstract class Vehiculo {
-    protected int movimientos;
+public class Vehiculo {
+    protected int cantidadDeMovimientos;
+    protected Posicion pos;
 
-    public int getMovimientos() {
-        return movimientos;
+    public void mover() {
+
+    }
+
+    public void atravesarPozo() {
+
+    }
+
+    public int getMovimientos(){
+        return cantidadDeMovimientos;
     }
 }

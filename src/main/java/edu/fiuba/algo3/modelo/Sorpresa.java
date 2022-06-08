@@ -1,4 +1,4 @@
 package edu.fiuba.algo3.modelo;
 
-public interface TipoObstaculo {
+public class Sorpresa {
 }
