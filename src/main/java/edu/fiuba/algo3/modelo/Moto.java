@@ -15,5 +15,7 @@ public class Moto extends Vehiculo {
         this.cantidadDeMovimientos += 3;
     }
 
-
+    public void atravesarPiquete(){
+        this.cantidadDeMovimientos += 2;
+    }
 }

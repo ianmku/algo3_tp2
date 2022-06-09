@@ -4,11 +4,15 @@ public class Vehiculo {
     protected int cantidadDeMovimientos;
     protected Posicion pos;
 
-    public void mover() {
+    public void mover(Direccion dir) {
 
     }
 
     public void atravesarPozo() {
+
+    }
+
+    public void atravesarPiquete(){
 
     }
 
