@@ -18,8 +18,4 @@ public class Moto extends Vehiculo {
     public void atravesarPiquete(){
         this.cantidadDeMovimientos += 2;
     }
-
-    public void atravesarControlPolicial(){
-        this.cantidadDeMovimientos += 3;
-    }
 }

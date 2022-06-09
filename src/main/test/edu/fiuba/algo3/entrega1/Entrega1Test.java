@@ -4,11 +4,17 @@ import edu.fiuba.algo3.modelo.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+<<<<<<< HEAD
 import static org.mockito.Mockito.*;
 
 public class Entrega1Test {
 
 
+=======
+
+public class Entrega1Test {
+
+>>>>>>> origin/desarrollo
     @Test
     public void motoEncuentraUnPozoEsPenalizadaTresMovimientos() {
         /* Arrange */
@@ -63,8 +69,11 @@ public class Entrega1Test {
         assertEquals(movimientosEsperados, cpc.getMovimientos());
 
     }
+<<<<<<< HEAD
 
     //caso de uso 4
+=======
+>>>>>>> origin/desarrollo
     @Test
     public void motoEncuentraUnPiqueteEsPenalizadaTresMovimientos(){
         /* Arrange */
@@ -83,5 +92,31 @@ public class Entrega1Test {
 
     }
 
+<<<<<<< HEAD
+=======
+    @Test
+    public void cuatroPorCuatroEncuentraTresPozosEsPenalizado(){
+        /* Arrange */
+        Cpc cpc = new Cpc(new Posicion(1,1));
+        int movimientosEsperados = 5;
+
+        Pozo pozo1 = new Pozo(new Posicion(1,2));
+        Pozo pozo2 = new Pozo(new Posicion(1,3));
+        Pozo pozo3 = new Pozo(new Posicion(1,4));
+
+        /* Act */
+        cpc.mover(new Derecha());
+        pozo1.penalizarMovimiento(cpc);
+
+        cpc.mover(new Derecha());
+        pozo2.penalizarMovimiento(cpc);
+
+        cpc.mover(new Derecha());
+        pozo3.penalizarMovimiento(cpc);
+
+        /* Assert */
+        assertEquals(movimientosEsperados, cpc.getMovimientos());
+    }
+>>>>>>> origin/desarrollo
 
 }

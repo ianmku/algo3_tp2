@@ -16,10 +16,6 @@ public class Vehiculo {
 
     }
 
-    public void atravesarControlPolicial(){
-
-    }
-
     public int getMovimientos(){
         return cantidadDeMovimientos;
     }
