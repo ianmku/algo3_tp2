@@ -15,15 +15,26 @@ public class Entrega1Test {
 
         Pozo pozo = new Pozo(new Posicion(2,1));
 
-
-
         /* Act */
         moto.mover(new Derecha());
         pozo.penalizarMovimiento(moto);
 
         /* Assert */
         assertEquals(movimientosEsperados, moto.getMovimientos());
-
     }
+    @Test
+    public void unAutoAtraviezaLaCiudadYSeEncuebntraConUnpozoSePenalizaConTresMovimientos(){
+        /* Arrange */
+        Auto auto = new Auto(new Posicion( 1,1 ));
+        int movimientosEsperados = 4;
 
+        Pozo pozo = new Pozo(new Posicion(2,1));
+
+        /* Act */
+        auto.mover(new Derecha());
+        pozo.penalizarMovimiento(auto);
+        /* Assert */
+
+        assertEquals(movimientosEsperados, auto.getMovimientos());
+    }
 }

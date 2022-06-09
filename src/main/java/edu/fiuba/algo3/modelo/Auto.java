@@ -5,8 +5,9 @@ public class Auto extends Vehiculo {
         this.pos = pos;
         this.cantidadDeMovimientos = 0;
     }
-    public void mover(){
-
+    public void mover(Direccion dir){
+        this.pos = dir.calcularPosicionSiguiente(this.pos);
+        this.cantidadDeMovimientos++;
     }
     public void atravesarPozo(){
         this.cantidadDeMovimientos += 3;
