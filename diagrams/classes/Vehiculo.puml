@@ -1,0 +1,27 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package Modelo {
+
+    class Vehiculo
+    interface Tipo
+
+    Tipo <-- Vehiculo
+
+    class Moto
+    class Auto
+    class 4x4
+
+    Tipo <|-- Moto
+    Tipo <|-- Auto
+    Tipo <|-- 4x4
+
+    class Posicion {
+    + posicionX
+    + posicionY
+    }
+    Posicion <-- Vehiculo
+
+}
+
+@enduml
