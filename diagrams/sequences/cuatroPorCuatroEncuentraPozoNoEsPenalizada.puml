@@ -7,7 +7,7 @@ usuario -> "cpc:Vehiculo" : mover(mapa : Mapa , derecha : Direccion)
 "cpc:Vehiculo" -> "derecha : Direccion" :calcularPosicionSiguiente(posicion : Posicion)
 return posicion
 "cpc:Vehiculo" -> "mapa : Mapa" : atravesarObstaculo("cpc:Vehiculo")
-"mapa : Mapa" -> "moto:Vehiculo" : getPosicion()
+"mapa : Mapa" -> "cpc:Vehiculo" : getPosicion()
 return "posicion"
 "mapa : Mapa" -> "mapa : Mapa" : get( posicion : Posicion)
 return pozo : Obstaculo
