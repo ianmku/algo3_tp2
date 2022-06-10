@@ -5,15 +5,29 @@ import java.util.Hashtable;
 
 public class Mapa {
 
-    int ancho;
-    int largo;
-    Hashtable<Posicion, Calle> ht;
+    //    int ancho;
+//    int largo;
+    public Hashtable<Posicion, Calle> calles;
 
     {
-        ht = new Hashtable<Posicion, Calle>();
+        calles = new Hashtable<Posicion, Calle>();
     }
 
-    public Mapa (TamanioMapa tamanio) {
+//    public void guardarObstaculo(Posicion posicion, Obstaculo obstaculo) {
+//        calles.put(posicion, obstaculo);
+//    }
+
+    public void guardarCalle(Posicion posicion, Calle calle) {
+        calles.put(posicion, calle);
+    }
+
+    public void atravesarObstaculo(Vehiculo vehiculo) {
+        Calle calle = calles.get(vehiculo.getPosicion());
+        if(calle == null) return;
+        calle.atravesarCalle(vehiculo);
+    }
+
+    /*public Mapa (TamanioMapa tamanio) {
         switch (tamanio) {
             case CHICO:
                 ancho = 7;
@@ -50,5 +64,5 @@ public class Mapa {
             }
         }
 
-    }
+    }*/
 }
