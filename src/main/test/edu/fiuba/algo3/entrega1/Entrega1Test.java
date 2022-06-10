@@ -10,16 +10,15 @@ public class Entrega1Test {
     @Test
     public void motoEncuentraUnPozoEsPenalizadaTresMovimientos() {
         /* Arrange */
+        Mapa mapa = new Mapa();
         Moto moto = new Moto(new Posicion(1,1));
         int movimientosEsperados = 4;
 
-        Pozo pozo = new Pozo(new Posicion(2,1));
-
-
+        Pozo pozo = new Pozo();
+        mapa.guardarObstaculo(new Posicion(2,1), pozo);
 
         /* Act */
-        moto.mover(new Derecha());
-        pozo.penalizarMovimiento(moto);
+        moto.mover(mapa, new Derecha());
 
         /* Assert */
         assertEquals(movimientosEsperados, moto.getMovimientos());
@@ -29,15 +28,14 @@ public class Entrega1Test {
     @Test
     public void autoEncuentraPozoEsPenalizadoTresMovimientos() {
         /* Arrange */
+        Mapa mapa = new Mapa();
         Auto auto = new Auto(new Posicion(1,1));
         int movimientosEsperados = 4;
-
-        Pozo pozo = new Pozo(new Posicion(2,1));
+        Pozo pozo = new Pozo();
+        mapa.guardarObstaculo(new Posicion(2,1), pozo);
 
         /* Act */
-        auto.mover(new Derecha());
-
-        pozo.penalizarMovimiento(auto);
+        auto.mover(mapa, new Derecha());
 
         /* Assert */
         assertEquals(movimientosEsperados, auto.getMovimientos());
@@ -47,32 +45,31 @@ public class Entrega1Test {
     public void cuatroPorCuatroEncuentraPozoNoEsPenalizada() {
 
         /* Arrange */
+        Mapa mapa = new Mapa();
         Cpc cpc = new Cpc(new Posicion(1,1));
         int movimientosEsperados = 1;
 
-        Pozo pozo = new Pozo(new Posicion(1,2));
+        Pozo pozo = new Pozo();
+        mapa.guardarObstaculo(new Posicion(2,1), pozo);
 
         /* Act */
-        cpc.mover(new Derecha());
-
-        pozo.penalizarMovimiento(cpc);
+        cpc.mover(mapa, new Derecha());
 
         /* Assert */
         assertEquals(movimientosEsperados, cpc.getMovimientos());
 
     }
     @Test
-    public void motoEncuentraUnPiqueteEsPenalizadaTresMovimientos(){
+    public void motoEncuentraUnPiqueteEsPenalizadaDosMovimientos(){
         /* Arrange */
+        Mapa mapa = new Mapa();
         Moto moto = new Moto(new Posicion(1,1));
         int movimientosEsperados = 3;
-
-        Piquete piquete = new Piquete(new Posicion(1,2));
+        Piquete piquete = new Piquete();
+        mapa.guardarObstaculo(new Posicion(2,1), piquete);
 
         /* Act */
-        moto.mover(new Derecha());
-
-        piquete.penalizarMovimiento(moto);
+        moto.mover(mapa, new Derecha());
 
         /* Assert */
         assertEquals(movimientosEsperados, moto.getMovimientos());
@@ -82,25 +79,44 @@ public class Entrega1Test {
     @Test
     public void cuatroPorCuatroEncuentraTresPozosEsPenalizado(){
         /* Arrange */
+        Mapa mapa = new Mapa();
         Cpc cpc = new Cpc(new Posicion(1,1));
         int movimientosEsperados = 5;
 
-        Pozo pozo1 = new Pozo(new Posicion(1,2));
-        Pozo pozo2 = new Pozo(new Posicion(1,3));
-        Pozo pozo3 = new Pozo(new Posicion(1,4));
+        Pozo pozo1 = new Pozo();
+        Pozo pozo2 = new Pozo();
+        Pozo pozo3 = new Pozo();
+
+        mapa.guardarObstaculo(new Posicion(2,1), pozo1);
+        mapa.guardarObstaculo(new Posicion(4,1), pozo2);
+        mapa.guardarObstaculo(new Posicion(6,1), pozo3);
 
         /* Act */
-        cpc.mover(new Derecha());
-        pozo1.penalizarMovimiento(cpc);
+        cpc.mover(mapa, new Derecha());
 
-        cpc.mover(new Derecha());
-        pozo2.penalizarMovimiento(cpc);
+        cpc.mover(mapa, new Derecha());
 
-        cpc.mover(new Derecha());
-        pozo3.penalizarMovimiento(cpc);
+        cpc.mover(mapa, new Derecha());
 
         /* Assert */
         assertEquals(movimientosEsperados, cpc.getMovimientos());
+    }
+
+    @Test
+    public void autoNoAtraviesaPiquete() {
+        /* Arrange */
+        Mapa mapa = new Mapa();
+        Posicion inicio = new Posicion(1, 1);
+        Auto auto = new Auto(inicio);
+
+        Piquete piquete = new Piquete();
+        mapa.guardarObstaculo(new Posicion(2, 1), piquete);
+
+        /* Act */
+        auto.mover(mapa, new Derecha());
+
+        /* Assert */
+        assertEquals(auto.getPosicion(), inicio);
     }
 
 }

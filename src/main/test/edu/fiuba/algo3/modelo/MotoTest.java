@@ -18,11 +18,12 @@ public class MotoTest {
     @Test
     public void TestMotoMoverModificaSuPosicion() {
         /* Arrange */
+        Mapa mapa = new Mapa();
         Moto moto = new Moto(new Posicion(0,0));
-        Posicion destino = new Posicion(1, 0);
+        Posicion destino = new Posicion(2, 0);
 
         /* Act */
-        moto.mover(new Derecha());
+        moto.mover(mapa, new Derecha());
 
         /* Assert */
         assertEquals(moto.pos, destino);

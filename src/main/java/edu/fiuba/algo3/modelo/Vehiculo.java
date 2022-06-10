@@ -1,22 +1,27 @@
 package edu.fiuba.algo3.modelo;
 
-public class Vehiculo {
+public abstract class Vehiculo {
     protected int cantidadDeMovimientos;
     protected Posicion pos;
 
-    public void mover(Direccion dir) {
-
+    public void mover(Mapa mapa, Direccion dir) {
+        this.pos = dir.calcularPosicionSiguiente(this.pos);
+        mapa.atravesarObstaculo(this);
+        this.pos = dir.calcularPosicionSiguiente(this.pos);
+        this.cantidadDeMovimientos++;
     }
 
-    public void atravesarPozo() {
+    public abstract void atravesarPozo();
 
-    }
+    public abstract void atravesarPiquete();
 
-    public void atravesarPiquete(){
-
-    }
+    public abstract void atravesarControlPolicial();
 
     public int getMovimientos(){
         return cantidadDeMovimientos;
+    }
+
+    public Posicion getPosicion() {
+        return pos;
     }
 }

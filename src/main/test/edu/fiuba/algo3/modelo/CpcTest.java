@@ -17,11 +17,12 @@ public class CpcTest {
     @Test
     public void TestCpcMoverModificaSuPosicion() {
         /* Arrange */
+        Mapa mapa = new Mapa();
         Cpc cuatroPorCuatro = new Cpc(new Posicion(0,0));
-        Posicion destino = new Posicion(1, 0);
+        Posicion destino = new Posicion(2, 0);
 
         /* Act */
-        cuatroPorCuatro.mover(new Derecha());
+        cuatroPorCuatro.mover(mapa, new Derecha());
 
         /* Assert */
         assertEquals(cuatroPorCuatro.pos, destino);

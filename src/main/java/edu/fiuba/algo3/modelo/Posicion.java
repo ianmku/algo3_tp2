@@ -11,10 +11,6 @@ public class Posicion {
         this.posicionY = coordenadaY;
     }
 
-    /*public obtenerPosicion() {
-        return (posicionX, posicionY);
-    }*/
-
     public int getPosicionX(){
         return this.posicionX;
     }

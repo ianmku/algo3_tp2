@@ -18,11 +18,12 @@ public class AutoTest {
     @Test
     public void TestAutoMoverModificaSuPosicion() {
         /* Arrange */
+        Mapa mapa = new Mapa();
         Auto auto = new Auto(new Posicion(0,0));
-        Posicion destino = new Posicion(1, 0);
+        Posicion destino = new Posicion(2, 0);
 
         /* Act */
-        auto.mover(new Derecha());
+        auto.mover(mapa, new Derecha());
 
         /* Assert */
         assertEquals(auto.pos, destino);
@@ -51,4 +52,5 @@ public class AutoTest {
         /* Assert */
         assertEquals(auto.getMovimientos(), 0);
     }
+
 }
