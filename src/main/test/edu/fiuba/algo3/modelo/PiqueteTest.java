@@ -9,7 +9,7 @@ public class PiqueteTest {
     @Test
     public void TestPenalizarMovimientoAMoto() {
         /* Arrange */
-        Piquete piquete = new Piquete(new Posicion(0,0));
+        Piquete piquete = new Piquete();
         Moto moto = new Moto(new Posicion(0,0));
 
         /* Act */
@@ -22,7 +22,7 @@ public class PiqueteTest {
     @Test
     public void TestPenalizarMovimientoAAuto() {
         /* Arrange */
-        Piquete piquete = new Piquete(new Posicion(0,0));
+        Piquete piquete = new Piquete();
         Auto auto = new Auto(new Posicion(0,0));
 
         /* Act */
@@ -35,7 +35,7 @@ public class PiqueteTest {
     @Test
     public void TestPenalizarMovimientoACpc() {
         /* Arrange */
-        Piquete piquete = new Piquete(new Posicion(0,0));
+        Piquete piquete = new Piquete();
         Cpc cuatroPorCuatro = new Cpc(new Posicion(0,0));
 
         /* Act */

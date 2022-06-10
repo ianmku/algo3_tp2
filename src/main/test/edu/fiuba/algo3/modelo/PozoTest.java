@@ -9,7 +9,7 @@ public class PozoTest {
     @Test
     public void TestPenalizarMovmientoAMoto() {
         /* Arrange */
-        Pozo pozo = new Pozo(new Posicion(0, 0));
+        Pozo pozo = new Pozo();
         Moto moto = new Moto(new Posicion(0, 0));
 
         /* Act */
@@ -23,7 +23,7 @@ public class PozoTest {
     @Test
     public void TestPenalizarMovmientoAAuto() {
         /* Arange */
-        Pozo pozo = new Pozo(new Posicion(0, 0));
+        Pozo pozo = new Pozo();
         Auto auto = new Auto(new Posicion(0, 0));
 
         /* Act */
@@ -36,7 +36,7 @@ public class PozoTest {
     @Test
     public void TestPenalizarMovmientoACpcQueNoEncontroPozos() {
         /* Arange */
-        Pozo pozo = new Pozo(new Posicion(0, 0));
+        Pozo pozo = new Pozo();
         Cpc cuatroPorCuatro = new Cpc(new Posicion(0, 0));
 
         /* Act */
@@ -49,7 +49,7 @@ public class PozoTest {
     @Test
     public void testPenalizarMovimientoTresVecesACpc() {
         /* Arange */
-        Pozo pozo = new Pozo(new Posicion(0, 0));
+        Pozo pozo = new Pozo();
         Cpc cuatroPorCuatro = new Cpc(new Posicion(0, 0));
 
         /* Act */

@@ -1,0 +1,20 @@
+@startuml
+title "motoEncuentraUnPozoEsPenalizadaTresMovimientos"
+
+actor usuario
+usuario -> "mapa : Mapa" : guaradarObstaculo(posicio : Posicion, pozo : Obstaculo)
+usuario -> "moto:Vehiculo" : mover(mapa : Mapa , derecha : Direccion)
+"moto:Vehiculo" -> "derecha : Direccion" :calcularPosicionSiguiente(posicion : Posicion)
+return
+usuario -> "mapa : Mapa" : atravesarObstaculo("moto:Vehiculo")
+"mapa : Mapa" -> "moto:Vehiculo" : getPosicion()
+return "posicion"
+"mapa : Mapa" -> "mapa : Mapa" : get( posicion : Posicion)
+return pozo : Obstaculo
+"mapa : Mapa" -> "pozo : Obstaculo" : penalizarMovimiento( moto: Vehiculo)
+"pozo : Obstaculo" -> "moto:Vehiculo" : atravesarPozo()
+"moto:Vehiculo" -> "derecha : Direccion" : calcularPosicionSiguiente ()
+return posicion
+usuario -> "derecha : Direccion" : getMovimientos(posicion : Posicion)
+return "movimientos"
+@enduml
