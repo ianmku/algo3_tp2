@@ -9,7 +9,7 @@ public class AutoTest {
     @Test
     public void TestAutoRecienCreadoTieneCeroMovimientos() {
         /* Arrange */
-        Auto auto = new Auto(new Posicion(0,0));
+        Auto auto = new Auto(new Mapa());
 
         /* Act and Assert */
         assertEquals(auto.getMovimientos(), 0);
@@ -19,20 +19,20 @@ public class AutoTest {
     public void TestAutoMoverModificaSuPosicion() {
         /* Arrange */
         Mapa mapa = new Mapa();
-        Auto auto = new Auto(new Posicion(0,0));
-        Posicion destino = new Posicion(2, 0);
+        Auto auto = new Auto(mapa);
+        Posicion destino = new Posicion(3, 1);
 
         /* Act */
-        auto.mover(mapa, new Derecha());
+        auto.mover(new Derecha());
 
         /* Assert */
-        assertEquals(auto.pos, destino);
+        assertEquals(auto.getPosicion(), destino);
     }
 
     @Test
     public void TestAutoAtravesarPozoAumentaSusMovimientos() {
         /* Arrange */
-        Auto auto = new Auto(new Posicion(0,0));
+        Auto auto = new Auto(new Mapa());
 
         /* Act */
         auto.atravesarPozo();
@@ -42,9 +42,9 @@ public class AutoTest {
     }
 
     @Test
-    public void TestAutoAtravesarPiqueteNoAumentaSusMovimientos() {
+    public void TestAutoAtravesarPiqueteNoAumentaUnMovimientos() {
         /* Arrange */
-        Auto auto = new Auto(new Posicion(0, 0));
+        Auto auto = new Auto(new Mapa());
 
         /* Act */
         auto.atravesarPiquete();

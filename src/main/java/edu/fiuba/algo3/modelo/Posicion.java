@@ -11,6 +11,22 @@ public class Posicion {
         this.posicionY = coordenadaY;
     }
 
+    public void sumarX(){
+        this.posicionX++;
+    }
+
+    public void restarX(){
+        this.posicionX--;
+    }
+
+    public void sumarY() {
+        this.posicionY++;
+    }
+
+    public void restarY() {
+        this.posicionY--;
+    }
+
     public int getPosicionX(){
         return this.posicionX;
     }
@@ -31,4 +47,7 @@ public class Posicion {
     public int hashCode() {
         return Objects.hash(posicionX, posicionY);
     }
+
+
+
 }

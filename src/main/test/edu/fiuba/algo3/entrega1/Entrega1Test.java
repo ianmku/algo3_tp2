@@ -4,29 +4,20 @@ import edu.fiuba.algo3.modelo.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-<<<<<<< HEAD
-import static org.mockito.Mockito.*;
-
 public class Entrega1Test {
 
-
-=======
-
-public class Entrega1Test {
-
->>>>>>> origin/desarrollo
     @Test
     public void motoEncuentraUnPozoEsPenalizadaTresMovimientos() {
         /* Arrange */
         Mapa mapa = new Mapa();
-        Moto moto = new Moto(new Posicion(1,1));
+        Moto moto = new Moto(mapa);
         int movimientosEsperados = 4;
 
         Pozo pozo = new Pozo();
         mapa.guardarObstaculo(new Posicion(2,1), pozo);
 
         /* Act */
-        moto.mover(mapa, new Derecha());
+        moto.mover(new Derecha());
 
         /* Assert */
         assertEquals(movimientosEsperados, moto.getMovimientos());
@@ -37,13 +28,13 @@ public class Entrega1Test {
     public void autoEncuentraPozoEsPenalizadoTresMovimientos() {
         /* Arrange */
         Mapa mapa = new Mapa();
-        Auto auto = new Auto(new Posicion(1,1));
+        Auto auto = new Auto(mapa);
         int movimientosEsperados = 4;
         Pozo pozo = new Pozo();
         mapa.guardarObstaculo(new Posicion(2,1), pozo);
 
         /* Act */
-        auto.mover(mapa, new Derecha());
+        auto.mover(new Derecha());
 
         /* Assert */
         assertEquals(movimientosEsperados, auto.getMovimientos());
@@ -54,48 +45,42 @@ public class Entrega1Test {
 
         /* Arrange */
         Mapa mapa = new Mapa();
-        Cpc cpc = new Cpc(new Posicion(1,1));
+        Cpc cpc = new Cpc(mapa);
         int movimientosEsperados = 1;
 
         Pozo pozo = new Pozo();
         mapa.guardarObstaculo(new Posicion(2,1), pozo);
 
         /* Act */
-        cpc.mover(mapa, new Derecha());
+        cpc.mover(new Derecha());
 
         /* Assert */
         assertEquals(movimientosEsperados, cpc.getMovimientos());
 
     }
-<<<<<<< HEAD
 
-    //caso de uso 4
-=======
->>>>>>> origin/desarrollo
     @Test
     public void motoEncuentraUnPiqueteEsPenalizadaDosMovimientos(){
         /* Arrange */
         Mapa mapa = new Mapa();
-        Moto moto = new Moto(new Posicion(1,1));
+        Moto moto = new Moto(mapa);
         int movimientosEsperados = 3;
         Piquete piquete = new Piquete();
         mapa.guardarObstaculo(new Posicion(2,1), piquete);
 
         /* Act */
-        moto.mover(mapa, new Derecha());
+        moto.mover(new Derecha());
 
         /* Assert */
         assertEquals(movimientosEsperados, moto.getMovimientos());
 
     }
 
-<<<<<<< HEAD
-=======
     @Test
     public void cuatroPorCuatroEncuentraTresPozosEsPenalizado(){
         /* Arrange */
         Mapa mapa = new Mapa();
-        Cpc cpc = new Cpc(new Posicion(1,1));
+        Cpc cpc = new Cpc(mapa);
         int movimientosEsperados = 5;
 
         Pozo pozo1 = new Pozo();
@@ -107,29 +92,29 @@ public class Entrega1Test {
         mapa.guardarObstaculo(new Posicion(6,1), pozo3);
 
         /* Act */
-        cpc.mover(mapa, new Derecha());
+        cpc.mover(new Derecha());
 
-        cpc.mover(mapa, new Derecha());
+        cpc.mover(new Derecha());
 
-        cpc.mover(mapa, new Derecha());
+        cpc.mover(new Derecha());
 
         /* Assert */
         assertEquals(movimientosEsperados, cpc.getMovimientos());
     }
->>>>>>> origin/desarrollo
+
 
     @Test
     public void autoNoAtraviesaPiquete() {
         /* Arrange */
         Mapa mapa = new Mapa();
         Posicion inicio = new Posicion(1, 1);
-        Auto auto = new Auto(inicio);
+        Auto auto = new Auto(mapa);
 
         Piquete piquete = new Piquete();
         mapa.guardarObstaculo(new Posicion(2, 1), piquete);
 
         /* Act */
-        auto.mover(mapa, new Derecha());
+        auto.mover(new Derecha());
 
         /* Assert */
         assertEquals(auto.getPosicion(), inicio);

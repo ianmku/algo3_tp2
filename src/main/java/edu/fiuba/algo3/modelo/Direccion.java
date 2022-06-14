@@ -5,4 +5,7 @@ public class Direccion {
     public Posicion calcularPosicionSiguiente(Posicion pos) {
         return null;
     }
+    public Direccion opuesto(){
+        return null;
+    }
 }

@@ -7,10 +7,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class PozoTest {
 
     @Test
-    public void TestPenalizarMovmientoAMoto() {
+    public void TestPenalizarMovimientoAMoto() {
         /* Arrange */
         Pozo pozo = new Pozo();
-        Moto moto = new Moto(new Posicion(0, 0));
+        Moto moto = new Moto(new Mapa());
 
         /* Act */
         pozo.penalizarMovimiento(moto);
@@ -24,7 +24,7 @@ public class PozoTest {
     public void TestPenalizarMovmientoAAuto() {
         /* Arange */
         Pozo pozo = new Pozo();
-        Auto auto = new Auto(new Posicion(0, 0));
+        Auto auto = new Auto(new Mapa());
 
         /* Act */
         pozo.penalizarMovimiento(auto);
@@ -37,7 +37,7 @@ public class PozoTest {
     public void TestPenalizarMovmientoACpcQueNoEncontroPozos() {
         /* Arange */
         Pozo pozo = new Pozo();
-        Cpc cuatroPorCuatro = new Cpc(new Posicion(0, 0));
+        Cpc cuatroPorCuatro = new Cpc(new Mapa());
 
         /* Act */
         pozo.penalizarMovimiento(cuatroPorCuatro);
@@ -50,7 +50,7 @@ public class PozoTest {
     public void testPenalizarMovimientoTresVecesACpc() {
         /* Arange */
         Pozo pozo = new Pozo();
-        Cpc cuatroPorCuatro = new Cpc(new Posicion(0, 0));
+        Cpc cuatroPorCuatro = new Cpc(new Mapa());
 
         /* Act */
         pozo.penalizarMovimiento(cuatroPorCuatro);

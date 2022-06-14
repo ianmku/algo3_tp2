@@ -7,20 +7,32 @@ public class Mapa {
 
 //    int ancho;
 //    int largo;
-    public Hashtable<Posicion, Obstaculo> calles;
+    private Posicion posicionDelVehiculo;
+    private Hashtable<Posicion, Obstaculo> calles;
 
     {
         calles = new Hashtable<Posicion, Obstaculo>();
+        posicionDelVehiculo = new Posicion(1,1);
     }
 
     public void guardarObstaculo(Posicion posicion, Obstaculo obstaculo) {
         calles.put(posicion, obstaculo);
     }
 
+    public void cambiarPosicionVehiculo(Vehiculo vehiculo, Direccion direccion){
+        this.posicionDelVehiculo = direccion.calcularPosicionSiguiente(this.posicionDelVehiculo);
+        atravesarObstaculo(vehiculo);
+        this.posicionDelVehiculo = direccion.calcularPosicionSiguiente(this.posicionDelVehiculo);
+    }
+
     public void atravesarObstaculo(Vehiculo vehiculo) {
-        Obstaculo obs = calles.get(vehiculo.getPosicion());
+        Obstaculo obs = calles.get(this.posicionDelVehiculo);
         if(obs == null) return;
         obs.penalizarMovimiento(vehiculo);
+    }
+
+    public Posicion getPosicionDelVehiculo(){
+        return this.posicionDelVehiculo;
     }
 
     /*public Mapa (TamanioMapa tamanio) {

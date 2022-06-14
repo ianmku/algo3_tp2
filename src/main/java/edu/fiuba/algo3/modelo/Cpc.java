@@ -4,19 +4,21 @@ import java.util.Random;
 
 public class Cpc extends Vehiculo {
 
-    Posicion ultimaPosicion;
     private int cantidadDePozosAtravesados;
-    public Cpc(Posicion pos){
-        this.pos = pos;
+    public Cpc(Mapa mapa){
+        this.mapa = mapa;
         this.cantidadDeMovimientos = 0;
+        this.direccion = new Derecha();
     }
 
-    @Override
-    public void mover(Mapa mapa, Direccion dir) {
-        ultimaPosicion = this.pos;
+    public void mover(Direccion dir) {
+       /* ultimaPosicion = this.pos;
         this.pos = dir.calcularPosicionSiguiente(this.pos);
         mapa.atravesarObstaculo(this);
         if(pos != ultimaPosicion) this.pos = dir.calcularPosicionSiguiente(this.pos);
+        this.cantidadDeMovimientos++;*/
+        this.direccion = dir;
+        this.mapa.cambiarPosicionVehiculo(this, dir);
         this.cantidadDeMovimientos++;
     }
 
@@ -28,7 +30,7 @@ public class Cpc extends Vehiculo {
     }
 
     public void atravesarPiquete() {
-        pos = ultimaPosicion;
+        this.mapa.cambiarPosicionVehiculo(this, this.direccion.opuesto());
     }
 
     public void atravesarControlPolicial() {

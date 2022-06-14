@@ -8,7 +8,7 @@ public class CpcTest {
     @Test
     public void TestCpcRecienCreadaTieneCeroMovimientos() {
         /* Arrange */
-        Cpc cuatroPorCuatro = new Cpc(new Posicion(0,0));
+        Cpc cuatroPorCuatro = new Cpc(new Mapa());
 
         /* Act and Assert */
         assertEquals(cuatroPorCuatro.getMovimientos(), 0);
@@ -18,20 +18,20 @@ public class CpcTest {
     public void TestCpcMoverModificaSuPosicion() {
         /* Arrange */
         Mapa mapa = new Mapa();
-        Cpc cuatroPorCuatro = new Cpc(new Posicion(0,0));
-        Posicion destino = new Posicion(2, 0);
+        Cpc cuatroPorCuatro = new Cpc(mapa);
+        Posicion destino = new Posicion(3, 1);
 
         /* Act */
-        cuatroPorCuatro.mover(mapa, new Derecha());
+        cuatroPorCuatro.mover(new Derecha());
 
         /* Assert */
-        assertEquals(cuatroPorCuatro.pos, destino);
+        assertEquals(cuatroPorCuatro.getPosicion(), destino);
     }
 
     @Test
     public void TestCpcAtravesarUnPozoNoAumentaSusMovimientos() {
         /* Arrange */
-        Cpc cuatroPorCuatro = new Cpc(new Posicion(0,0));
+        Cpc cuatroPorCuatro = new Cpc(new Mapa());
 
         /* Act */
         cuatroPorCuatro.atravesarPozo();
@@ -43,7 +43,7 @@ public class CpcTest {
     @Test
     public void TestCpcAtravesarTresPozosAumentaSusMovimientos() {
         /* Arrange */
-        Cpc cuatroPorCuatro = new Cpc(new Posicion(0,0));
+        Cpc cuatroPorCuatro = new Cpc(new Mapa());
 
         /* Act */
         cuatroPorCuatro.atravesarPozo();
@@ -57,7 +57,7 @@ public class CpcTest {
     @Test
     public void TestCpcAtravesarPiqueteNoAumentaSusMovimientos() {
         /* Arrange */
-        Cpc cuatroPorCuatro = new Cpc(new Posicion(0, 0));
+        Cpc cuatroPorCuatro = new Cpc(new Mapa());
 
         /* Act */
         cuatroPorCuatro.atravesarPiquete();
