@@ -4,9 +4,8 @@ import java.util.Random;
 
 public class Moto extends Vehiculo {
 
-    public Moto(Posicion pos){
-        this.pos = pos;
-        this.cantidadDeMovimientos = 0;
+    public Moto(Mapa mapa){
+        super(mapa);
     }
 
     public void atravesarPozo(){

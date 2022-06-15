@@ -4,26 +4,16 @@ import java.util.Random;
 
 public class Auto extends Vehiculo {
 
-    Posicion ultimaPosicion;
-    public Auto(Posicion pos){
-        this.pos = pos;
-        this.cantidadDeMovimientos = 0;
+    public Auto(Mapa mapa){
+        super(mapa);
     }
 
-    @Override
-    public void mover(Mapa mapa, Direccion dir) {
-        ultimaPosicion = this.pos;
-        this.pos = dir.calcularPosicionSiguiente(this.pos);
-        mapa.atravesarObstaculo(this);
-        if(pos != ultimaPosicion) this.pos = dir.calcularPosicionSiguiente(this.pos);
-        this.cantidadDeMovimientos++;
-    }
     public void atravesarPozo(){
         this.cantidadDeMovimientos += 3;
     }
 
     public void atravesarPiquete() {
-        pos = ultimaPosicion;
+        this.mapa.moverVehiculo(this, this.direccion.opuesto());
     }
 
     public void atravesarControlPolicial() {

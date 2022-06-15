@@ -8,7 +8,12 @@ public class Calle {
         obstaculo = unObstaculo;
     }
 
+    public void guardarSorpresa(Sorpresa unaSorpresa) {
+        sorpresa = unaSorpresa;
+    }
+
     public void atravesarCalle(Vehiculo vehiculo) {
-        obstaculo.penalizarMovimiento(vehiculo);
+        if(obstaculo != null) obstaculo.penalizarMovimiento(vehiculo);
+        if(sorpresa != null) sorpresa.sorprenderVehiculo(vehiculo);
     }
 }

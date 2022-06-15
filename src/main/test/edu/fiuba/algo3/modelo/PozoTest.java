@@ -7,10 +7,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class PozoTest {
 
     @Test
-    public void TestPenalizarMovmientoAMoto() {
+    public void TestPenalizarMovimientoAMoto() {
         /* Arrange */
         Pozo pozo = new Pozo();
-        Moto moto = new Moto(new Posicion(0, 0));
+        Moto moto = new Moto(new Mapa());
 
         /* Act */
         pozo.penalizarMovimiento(moto);
@@ -24,7 +24,7 @@ public class PozoTest {
     public void TestPenalizarMovmientoAAuto() {
         /* Arange */
         Pozo pozo = new Pozo();
-        Auto auto = new Auto(new Posicion(0, 0));
+        Auto auto = new Auto(new Mapa());
 
         /* Act */
         pozo.penalizarMovimiento(auto);
@@ -37,27 +37,27 @@ public class PozoTest {
     public void TestPenalizarMovmientoACpcQueNoEncontroPozos() {
         /* Arange */
         Pozo pozo = new Pozo();
-        Cpc cuatroPorCuatro = new Cpc(new Posicion(0, 0));
+        Camioneta camioneta = new Camioneta(new Mapa());
 
         /* Act */
-        pozo.penalizarMovimiento(cuatroPorCuatro);
+        pozo.penalizarMovimiento(camioneta);
 
         /* Assert */
-        assertEquals(cuatroPorCuatro.getMovimientos(), 0);
+        assertEquals(camioneta.getMovimientos(), 0);
     }
 
     @Test
-    public void testPenalizarMovimientoTresVecesACpc() {
+    public void testPenalizarMovimientoTresVecesACamioneta() {
         /* Arange */
         Pozo pozo = new Pozo();
-        Cpc cuatroPorCuatro = new Cpc(new Posicion(0, 0));
+        Camioneta camioneta = new Camioneta(new Mapa());
 
         /* Act */
-        pozo.penalizarMovimiento(cuatroPorCuatro);
-        pozo.penalizarMovimiento(cuatroPorCuatro);
-        pozo.penalizarMovimiento(cuatroPorCuatro);
+        pozo.penalizarMovimiento(camioneta);
+        pozo.penalizarMovimiento(camioneta);
+        pozo.penalizarMovimiento(camioneta);
 
         /* Assert */
-        assertEquals(cuatroPorCuatro.getMovimientos(), 2);
+        assertEquals(camioneta.getMovimientos(), 2);
     }
 }

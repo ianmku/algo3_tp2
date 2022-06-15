@@ -1,8 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
-public class Direccion {
+public abstract class Direccion {
 
-    public Posicion calcularPosicionSiguiente(Posicion pos) {
-        return null;
-    }
+    public abstract Posicion calcularPosicionSiguiente(Posicion pos);
+    public abstract Direccion opuesto();
 }

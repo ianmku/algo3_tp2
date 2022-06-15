@@ -4,7 +4,6 @@ import edu.fiuba.algo3.modelo.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 public class Entrega1Test {
 
     @Test
@@ -12,7 +11,7 @@ public class Entrega1Test {
         /* Arrange */
         Mapa mapa = new Mapa();
         Calle calle = new Calle();
-        Moto moto = new Moto(new Posicion(1,1));
+        Moto moto = new Moto(mapa);
         int movimientosEsperados = 4;
 
         Pozo pozo = new Pozo();
@@ -20,7 +19,7 @@ public class Entrega1Test {
         mapa.guardarCalle(new Posicion(2,1), calle);
 
         /* Act */
-        moto.mover(mapa, new Derecha());
+        mapa.moverVehiculo(moto, new Derecha());
 
         /* Assert */
         assertEquals(movimientosEsperados, moto.getMovimientos());
@@ -32,7 +31,7 @@ public class Entrega1Test {
         /* Arrange */
         Mapa mapa = new Mapa();
         Calle calle = new Calle();
-        Auto auto = new Auto(new Posicion(1,1));
+        Auto auto = new Auto(mapa);
         int movimientosEsperados = 4;
 
         Pozo pozo = new Pozo();
@@ -40,7 +39,7 @@ public class Entrega1Test {
         mapa.guardarCalle(new Posicion(2,1), calle);
 
         /* Act */
-        auto.mover(mapa, new Derecha());
+        mapa.moverVehiculo(auto, new Derecha());
 
         /* Assert */
         assertEquals(movimientosEsperados, auto.getMovimientos());
@@ -52,7 +51,7 @@ public class Entrega1Test {
         /* Arrange */
         Mapa mapa = new Mapa();
         Calle calle = new Calle();
-        Cpc cpc = new Cpc(new Posicion(1,1));
+        Camioneta camioneta = new Camioneta(mapa);
         int movimientosEsperados = 1;
 
         Pozo pozo = new Pozo();
@@ -60,18 +59,19 @@ public class Entrega1Test {
         mapa.guardarCalle(new Posicion(2,1), calle);
 
         /* Act */
-        cpc.mover(mapa, new Derecha());
+        mapa.moverVehiculo(camioneta, new Derecha());
 
         /* Assert */
-        assertEquals(movimientosEsperados, cpc.getMovimientos());
+        assertEquals(movimientosEsperados, camioneta.getMovimientos());
 
     }
+
     @Test
     public void motoEncuentraUnPiqueteEsPenalizadaDosMovimientos(){
         /* Arrange */
         Mapa mapa = new Mapa();
         Calle calle = new Calle();
-        Moto moto = new Moto(new Posicion(1,1));
+        Moto moto = new Moto(mapa);
         int movimientosEsperados = 3;
 
         Piquete piquete = new Piquete();
@@ -79,7 +79,7 @@ public class Entrega1Test {
         mapa.guardarCalle(new Posicion(2,1), calle);
 
         /* Act */
-        moto.mover(mapa, new Derecha());
+        mapa.moverVehiculo(moto, new Derecha());
 
         /* Assert */
         assertEquals(movimientosEsperados, moto.getMovimientos());
@@ -93,7 +93,7 @@ public class Entrega1Test {
         Calle calle1 = new Calle();
         Calle calle2 = new Calle();
         Calle calle3 = new Calle();
-        Cpc cpc = new Cpc(new Posicion(1,1));
+        Camioneta camioneta = new Camioneta(mapa);
         int movimientosEsperados = 5;
 
         Pozo pozo1 = new Pozo();
@@ -108,33 +108,35 @@ public class Entrega1Test {
         mapa.guardarCalle(new Posicion(6,1), calle3);
 
         /* Act */
-        cpc.mover(mapa, new Derecha());
+        mapa.moverVehiculo(camioneta, new Derecha());
 
-        cpc.mover(mapa, new Derecha());
+        mapa.moverVehiculo(camioneta, new Derecha());
 
-        cpc.mover(mapa, new Derecha());
+        mapa.moverVehiculo(camioneta, new Derecha());
 
         /* Assert */
-        assertEquals(movimientosEsperados, cpc.getMovimientos());
+        assertEquals(movimientosEsperados, camioneta.getMovimientos());
     }
+
 
     @Test
     public void autoNoAtraviesaPiquete() {
         /* Arrange */
         Mapa mapa = new Mapa();
         Calle calle = new Calle();
+        Auto auto = new Auto(mapa);
         Posicion inicio = new Posicion(1, 1);
-        Auto auto = new Auto(inicio);
 
         Piquete piquete = new Piquete();
         calle.guardarObstaculo(piquete);
-        mapa.guardarCalle(new Posicion(2, 1), calle);
+
+        mapa.guardarCalle(new Posicion(2,1), calle);
 
         /* Act */
-        auto.mover(mapa, new Derecha());
+        mapa.moverVehiculo(auto, new Derecha());
 
         /* Assert */
-        assertEquals(auto.getPosicion(), inicio);
+        assertEquals(mapa.getPosicionDelVehiculo(), inicio);
     }
 
 }

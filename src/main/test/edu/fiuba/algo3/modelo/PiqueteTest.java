@@ -10,7 +10,7 @@ public class PiqueteTest {
     public void TestPenalizarMovimientoAMoto() {
         /* Arrange */
         Piquete piquete = new Piquete();
-        Moto moto = new Moto(new Posicion(0,0));
+        Moto moto = new Moto(new Mapa());
 
         /* Act */
         piquete.penalizarMovimiento(moto);
@@ -23,7 +23,7 @@ public class PiqueteTest {
     public void TestPenalizarMovimientoAAuto() {
         /* Arrange */
         Piquete piquete = new Piquete();
-        Auto auto = new Auto(new Posicion(0,0));
+        Auto auto = new Auto(new Mapa());
 
         /* Act */
         piquete.penalizarMovimiento(auto);
@@ -33,15 +33,15 @@ public class PiqueteTest {
     }
 
     @Test
-    public void TestPenalizarMovimientoACpc() {
+    public void TestPenalizarMovimientoACamioneta() {
         /* Arrange */
         Piquete piquete = new Piquete();
-        Cpc cuatroPorCuatro = new Cpc(new Posicion(0,0));
+        Camioneta camioneta = new Camioneta(new Mapa());
 
         /* Act */
-        piquete.penalizarMovimiento(cuatroPorCuatro);
+        piquete.penalizarMovimiento(camioneta);
 
         /* Assert */
-        assertEquals(cuatroPorCuatro.getMovimientos(), 0);
+        assertEquals(camioneta.getMovimientos(), 0);
     }
 }

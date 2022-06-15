@@ -2,23 +2,13 @@ package edu.fiuba.algo3.modelo;
 
 import java.util.Random;
 
-public class Cpc extends Vehiculo {
+public class Camioneta extends Vehiculo {
 
-    Posicion ultimaPosicion;
     private int cantidadDePozosAtravesados;
-    public Cpc(Posicion pos){
-        this.pos = pos;
-        this.cantidadDeMovimientos = 0;
+    public Camioneta(Mapa mapa){
+        super(mapa);
     }
 
-    @Override
-    public void mover(Mapa mapa, Direccion dir) {
-        ultimaPosicion = this.pos;
-        this.pos = dir.calcularPosicionSiguiente(this.pos);
-        mapa.atravesarObstaculo(this);
-        if(pos != ultimaPosicion) this.pos = dir.calcularPosicionSiguiente(this.pos);
-        this.cantidadDeMovimientos++;
-    }
 
     public void atravesarPozo(){
         this.cantidadDePozosAtravesados++;
@@ -28,7 +18,7 @@ public class Cpc extends Vehiculo {
     }
 
     public void atravesarPiquete() {
-        pos = ultimaPosicion;
+        this.mapa.moverVehiculo(this, this.direccion.opuesto());
     }
 
     public void atravesarControlPolicial() {

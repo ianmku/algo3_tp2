@@ -2,6 +2,11 @@ package edu.fiuba.algo3.modelo;
 
 public class Arriba extends Direccion{
     public Posicion calcularPosicionSiguiente(Posicion pos){
-        return new Posicion(pos.getPosicionX(), pos.getPosicionY()+1);
+        pos.sumarY();
+        return pos;
+    }
+
+    public Direccion opuesto(){
+        return new Abajo();
     }
 }
