@@ -15,7 +15,7 @@ public class Cpc extends Vehiculo {
     public void mover(Mapa mapa, Direccion dir) {
         ultimaPosicion = this.pos;
         this.pos = dir.calcularPosicionSiguiente(this.pos);
-        mapa.atravesarObstaculo(this);
+       // mapa.atravesarObstaculo(this);
         if(pos != ultimaPosicion) this.pos = dir.calcularPosicionSiguiente(this.pos);
         this.cantidadDeMovimientos++;
     }

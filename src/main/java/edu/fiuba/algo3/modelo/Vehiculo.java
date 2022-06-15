@@ -4,9 +4,10 @@ public abstract class Vehiculo {
     protected int cantidadDeMovimientos;
     protected Posicion pos;
 
+
     public void mover(Mapa mapa, Direccion dir) {
         this.pos = dir.calcularPosicionSiguiente(this.pos);
-        mapa.atravesarObstaculo(this);
+       // mapa.atravesarObstaculo(this);
         this.pos = dir.calcularPosicionSiguiente(this.pos);
         this.cantidadDeMovimientos++;
     }

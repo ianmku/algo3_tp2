@@ -10,6 +10,7 @@ public class Auto extends Vehiculo {
         this.cantidadDeMovimientos = 0;
     }
 
+    /*
     @Override
     public void mover(Mapa mapa, Direccion dir) {
         ultimaPosicion = this.pos;
@@ -17,7 +18,7 @@ public class Auto extends Vehiculo {
         mapa.atravesarObstaculo(this);
         if(pos != ultimaPosicion) this.pos = dir.calcularPosicionSiguiente(this.pos);
         this.cantidadDeMovimientos++;
-    }
+    }*/
     public void atravesarPozo(){
         this.cantidadDeMovimientos += 3;
     }

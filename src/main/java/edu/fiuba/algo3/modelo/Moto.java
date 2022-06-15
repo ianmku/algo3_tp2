@@ -9,6 +9,10 @@ public class Moto extends Vehiculo {
         this.cantidadDeMovimientos = 0;
     }
 
+    public Moto(){
+
+    }
+
     public void atravesarPozo(){
         this.cantidadDeMovimientos += 3;
     }

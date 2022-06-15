@@ -11,14 +11,21 @@ public class Entrega1Test {
     public void motoEncuentraUnPozoEsPenalizadaTresMovimientos() {
         /* Arrange */
         Mapa mapa = new Mapa();
+        /*
         Moto moto = new Moto(new Posicion(1,1));
+        */
         int movimientosEsperados = 4;
 
         Pozo pozo = new Pozo();
         mapa.guardarObstaculo(new Posicion(2,1), pozo);
 
+        Moto moto = new Moto(new Posicion(1,1));
+
+        mapa.guardarVehiculo(moto.getPosicion(), moto);
+
         /* Act */
-        moto.mover(mapa, new Derecha());
+        //moto.mover(mapa, new Derecha());
+        mapa.mover(moto,new Derecha());
 
         /* Assert */
         assertEquals(movimientosEsperados, moto.getMovimientos());

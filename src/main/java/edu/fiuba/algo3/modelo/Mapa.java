@@ -10,19 +10,43 @@ public class Mapa {
     public Hashtable<Posicion, Obstaculo> calles;
 
     {
-        calles = new Hashtable<Posicion, Obstaculo>();
+        calles = new Hashtable<Posicion, Obstaculo >();
+    }
+
+    public Hashtable<Posicion, Vehiculo> callesVehiculo;
+
+    {
+        callesVehiculo = new Hashtable<Posicion, Vehiculo>();
     }
 
     public void guardarObstaculo(Posicion posicion, Obstaculo obstaculo) {
         calles.put(posicion, obstaculo);
     }
 
-    public void atravesarObstaculo(Vehiculo vehiculo) {
-        Obstaculo obs = calles.get(vehiculo.getPosicion());
+    public void atravesarObstaculo(Posicion posicion,Moto moto) {
+        //Obstaculo obs = calles.get(vehiculo.getPosicion());
+        Obstaculo obs = calles.get(posicion);
         if(obs == null) return;
-        obs.penalizarMovimiento(vehiculo);
+        obs.penalizarMovimiento(moto);
     }
 
+    public void guardarVehiculo(Posicion posicion, Moto moto) {
+        callesVehiculo.put(posicion, moto);
+    }
+
+    public void mover(Moto moto, Derecha derecha) {
+        Posicion nuevaPosicion = derecha.calcularPosicionSiguiente(moto.getPosicion());
+        callesVehiculo.put(nuevaPosicion, moto) ;
+        this.atravesarObstaculo(nuevaPosicion,moto);
+        moto.cantidadDeMovimientos++;
+
+    }
+
+    /*
+    public boolean verCalle(Posicion nuevaPosicion){
+        return calles.get(nuevaPosicion) == nuevaPosicion;
+    }
+*/
     /*public Mapa (TamanioMapa tamanio) {
         switch (tamanio) {
             case CHICO:
