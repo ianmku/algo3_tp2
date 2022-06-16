@@ -10,7 +10,7 @@ public class PiqueteTest {
     public void TestPenalizarMovimientoAMoto() {
         /* Arrange */
         Piquete piquete = new Piquete();
-        Moto moto = new Moto(new Mapa());
+        Vehiculo moto = new Vehiculo(new Mapa(), new Moto());
 
         /* Act */
         piquete.interactuarConVehiculo(moto);
@@ -23,7 +23,7 @@ public class PiqueteTest {
     public void TestPenalizarMovimientoAAuto() {
         /* Arrange */
         Piquete piquete = new Piquete();
-        Auto auto = new Auto(new Mapa());
+        Vehiculo auto = new Vehiculo(new Mapa(), new Moto());
 
         /* Act */
         piquete.interactuarConVehiculo(auto);
@@ -36,7 +36,7 @@ public class PiqueteTest {
     public void TestPenalizarMovimientoACamioneta() {
         /* Arrange */
         Piquete piquete = new Piquete();
-        Camioneta camioneta = new Camioneta(new Mapa());
+        Vehiculo camioneta = new Vehiculo(new Mapa(), new Camioneta());
 
         /* Act */
         piquete.interactuarConVehiculo(camioneta);

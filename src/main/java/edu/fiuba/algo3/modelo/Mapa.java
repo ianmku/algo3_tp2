@@ -8,6 +8,7 @@ public class Mapa {
     int ancho;
     int largo;
     private Posicion posicionDelVehiculo;
+    private Posicion ultimaPosicion;
     private Hashtable<Posicion, Calle> calles;
 
     {

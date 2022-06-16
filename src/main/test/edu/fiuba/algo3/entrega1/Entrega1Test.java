@@ -11,7 +11,7 @@ public class Entrega1Test {
         /* Arrange */
         Mapa mapa = new Mapa();
         Calle calle = new Calle();
-        Moto moto = new Moto(mapa);
+        Vehiculo moto = new Vehiculo(mapa, new Moto());
         int movimientosEsperados = 4;
 
         Pozo pozo = new Pozo();
@@ -31,7 +31,7 @@ public class Entrega1Test {
         /* Arrange */
         Mapa mapa = new Mapa();
         Calle calle = new Calle();
-        Auto auto = new Auto(mapa);
+        Vehiculo auto = new Vehiculo(mapa, new Auto());
         int movimientosEsperados = 4;
 
         Pozo pozo = new Pozo();
@@ -51,7 +51,7 @@ public class Entrega1Test {
         /* Arrange */
         Mapa mapa = new Mapa();
         Calle calle = new Calle();
-        Camioneta camioneta = new Camioneta(mapa);
+        Vehiculo camioneta = new Vehiculo(mapa, new Camioneta());
         int movimientosEsperados = 1;
 
         Pozo pozo = new Pozo();
@@ -71,7 +71,7 @@ public class Entrega1Test {
         /* Arrange */
         Mapa mapa = new Mapa();
         Calle calle = new Calle();
-        Moto moto = new Moto(mapa);
+        Vehiculo moto = new Vehiculo(mapa, new Moto());
         int movimientosEsperados = 3;
 
         Piquete piquete = new Piquete();
@@ -90,7 +90,7 @@ public class Entrega1Test {
         /* Arrange */
         Mapa mapa = new Mapa();
         Calle calle = new Calle();
-        Auto auto = new Auto(mapa);
+        Vehiculo auto = new Vehiculo(mapa, new Moto());
         Posicion inicio = new Posicion(1, 1);
 
         Piquete piquete = new Piquete();
@@ -111,7 +111,7 @@ public class Entrega1Test {
         Calle calle1 = new Calle();
         Calle calle2 = new Calle();
         Calle calle3 = new Calle();
-        Camioneta camioneta = new Camioneta(mapa);
+        Vehiculo camioneta = new Vehiculo(mapa, new Camioneta());
         int movimientosEsperados = 5;
 
         Pozo pozo1 = new Pozo();

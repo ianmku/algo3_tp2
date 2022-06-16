@@ -13,7 +13,7 @@ public class Entrega2Test {
         Mapa mapa = new Mapa();
         Calle calle1 = new Calle();
         Calle calle2 = new Calle();
-        Moto moto = new Moto(mapa);
+        Vehiculo moto = new Vehiculo(new Mapa(), new Moto());
         int movimientosEsperados = (int) (2 * 0.8);
 
         SorpresaFavorable sorpresa = new SorpresaFavorable();
@@ -35,7 +35,7 @@ public class Entrega2Test {
         Mapa mapa = new Mapa();
         Calle calle1 = new Calle();
         Calle calle2 = new Calle();
-        Auto auto = new Auto(mapa);
+        Vehiculo auto = new Vehiculo(new Mapa(), new Auto());
         int movimientosEsperados = (int) (2 * 1.25);
 
         SorpresaDesfavorable sorpresa = new SorpresaDesfavorable();

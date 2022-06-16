@@ -8,7 +8,7 @@ public class CamionetaTest {
     @Test
     public void TestCamionetaRecienCreadaTieneCeroMovimientos() {
         /* Arrange */
-        Camioneta camioneta = new Camioneta(new Mapa());
+        Vehiculo camioneta = new Vehiculo(new Mapa(), new Camioneta());
 
         /* Act and Assert */
         assertEquals(camioneta.getMovimientos(), 0);
@@ -18,7 +18,7 @@ public class CamionetaTest {
     public void TestCamionetaMoverModificaSuPosicion() {
         /* Arrange */
         Mapa mapa = new Mapa();
-        Camioneta camioneta = new Camioneta(mapa);
+        Vehiculo camioneta = new Vehiculo(new Mapa(), new Camioneta());
         Posicion destino = new Posicion(3, 1);
 
         /* Act */
@@ -31,7 +31,7 @@ public class CamionetaTest {
     @Test
     public void TestCamionetaAtravesarUnPozoNoAumentaSusMovimientos() {
         /* Arrange */
-        Camioneta camioneta = new Camioneta(new Mapa());
+        Vehiculo camioneta = new Vehiculo(new Mapa(), new Camioneta());
 
         /* Act */
         camioneta.atravesarPozo();
@@ -43,7 +43,7 @@ public class CamionetaTest {
     @Test
     public void TestCamionetaAtravesarTresPozosAumentaSusMovimientos() {
         /* Arrange */
-        Camioneta camioneta = new Camioneta(new Mapa());
+        Vehiculo camioneta = new Vehiculo(new Mapa(), new Camioneta());
 
         /* Act */
         camioneta.atravesarPozo();
@@ -57,7 +57,7 @@ public class CamionetaTest {
     @Test
     public void TestCamionetaAtravesarPiqueteNoAumentaSusMovimientos() {
         /* Arrange */
-        Camioneta camioneta = new Camioneta(new Mapa());
+        Vehiculo camioneta = new Vehiculo(new Mapa(), new Camioneta());
 
         /* Act */
         camioneta.atravesarPiquete();

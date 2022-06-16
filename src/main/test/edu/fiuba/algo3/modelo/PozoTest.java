@@ -10,7 +10,7 @@ public class PozoTest {
     public void TestPenalizarMovimientoAMoto() {
         /* Arrange */
         Pozo pozo = new Pozo();
-        Moto moto = new Moto(new Mapa());
+        Vehiculo moto = new Vehiculo(new Mapa(), new Moto());
 
         /* Act */
         pozo.interactuarConVehiculo(moto);
@@ -24,7 +24,7 @@ public class PozoTest {
     public void TestPenalizarMovmientoAAuto() {
         /* Arange */
         Pozo pozo = new Pozo();
-        Auto auto = new Auto(new Mapa());
+        Vehiculo auto = new Vehiculo(new Mapa(), new Auto());
 
         /* Act */
         pozo.interactuarConVehiculo(auto);
@@ -37,7 +37,7 @@ public class PozoTest {
     public void TestPenalizarMovmientoACpcQueNoEncontroPozos() {
         /* Arange */
         Pozo pozo = new Pozo();
-        Camioneta camioneta = new Camioneta(new Mapa());
+        Vehiculo camioneta = new Vehiculo(new Mapa(), new Camioneta());
 
         /* Act */
         pozo.interactuarConVehiculo(camioneta);
@@ -50,7 +50,7 @@ public class PozoTest {
     public void testPenalizarMovimientoTresVecesACamioneta() {
         /* Arange */
         Pozo pozo = new Pozo();
-        Camioneta camioneta = new Camioneta(new Mapa());
+        Vehiculo camioneta = new Vehiculo(new Mapa(), new Camioneta());
 
         /* Act */
         pozo.interactuarConVehiculo(camioneta);

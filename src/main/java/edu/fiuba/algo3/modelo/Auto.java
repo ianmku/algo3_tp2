@@ -2,24 +2,27 @@ package edu.fiuba.algo3.modelo;
 
 import java.util.Random;
 
-public class Auto extends Vehiculo {
+public class Auto implements Tipo {
+    Vehiculo vehiculo;
 
-    public Auto(Mapa mapa){
-        super(mapa);
+    public int atravesarPozo(){
+        return 3;
     }
 
-    public void atravesarPozo(){
-        this.cantidadDeMovimientos += 3;
+    public int atravesarPiquete(Mapa mapa, Direccion direccion) {
+        mapa.moverVehiculo(vehiculo, direccion.opuesto());
+        return 0;
     }
 
-    public void atravesarPiquete() {
-        this.mapa.moverVehiculo(this, this.direccion.opuesto());
-    }
-
-    public void atravesarControlPolicial() {
+    public int atravesarControlPolicial() {
         Random rand = new Random();
         float random = rand.nextFloat();
-        if(random <= 0.5) this.cantidadDeMovimientos += 3;
+        if(random <= 0.5) return 3;
+        return 0;
+    }
+
+    public void atravesarCambioDeVehiculo() {
+
     }
 
 }
