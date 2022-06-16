@@ -20,7 +20,7 @@ public class Vehiculo {
     }
 
     public void atravesarPiquete(){
-        this.aumentarMovimientos(tipo.atravesarPiquete(mapa, direccion));
+        this.aumentarMovimientos(tipo.atravesarPiquete(mapa, direccion, this));
     }
 
     public void atravesarControlPolicial() {
@@ -42,7 +42,7 @@ public class Vehiculo {
     }
 
     public void atravesarSorpresaCambioDeVehiculo(){
-
+        this.tipo = tipo.atravesarCambioVehiculo();
     }
 
     public int getMovimientos(){
@@ -51,5 +51,16 @@ public class Vehiculo {
 
     public Posicion getPosicion(){
         return this.mapa.getPosicionDelVehiculo();
+    }
+
+    public Tipo getTipo(){
+        return this.tipo;
+    }
+
+    public boolean es(Tipo tipoEsperado) {
+        if(this.tipo.getClass() == tipoEsperado.getClass()){
+            return true;
+        }
+        return false;
     }
 }

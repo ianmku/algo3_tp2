@@ -28,7 +28,9 @@ public class Mapa {
     public void moverVehiculo(Vehiculo vehiculo, Direccion direccion){
         posicionDelVehiculo = direccion.calcularPosicionSiguiente(posicionDelVehiculo);
         Calle calle = calles.get(posicionDelVehiculo);
-        calle.atravesarCalle(vehiculo);
+        if(calle != null){
+            calle.atravesarCalle(vehiculo);
+        }
         posicionDelVehiculo = direccion.calcularPosicionSiguiente(posicionDelVehiculo);
         vehiculo.aumentarMovimientos(1);
     }

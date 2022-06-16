@@ -4,8 +4,12 @@ import java.util.Random;
 
 public class Camioneta implements Tipo {
 
-    private Vehiculo vehiculo;
-    private int cantidadDePozosAtravesados;
+    //private Vehiculo vehiculo;
+    int cantidadDePozosAtravesados;
+
+    public Camioneta(){
+        this.cantidadDePozosAtravesados = 0;
+    }
 
     public int atravesarPozo(){
         this.cantidadDePozosAtravesados++;
@@ -15,7 +19,7 @@ public class Camioneta implements Tipo {
         return 0;
     }
 
-    public int atravesarPiquete(Mapa mapa, Direccion direccion) {
+    public int atravesarPiquete(Mapa mapa, Direccion direccion, Vehiculo vehiculo) {
         mapa.moverVehiculo(vehiculo, direccion.opuesto());
         return 0;
     }
@@ -26,4 +30,10 @@ public class Camioneta implements Tipo {
         if(random <= 0.3) return 3;
         return 0;
     }
+
+    public Tipo atravesarCambioVehiculo() {
+        return new Moto();
+    }
+
+
 }

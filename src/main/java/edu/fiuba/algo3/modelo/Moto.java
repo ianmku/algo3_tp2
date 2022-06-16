@@ -10,7 +10,7 @@ public class Moto implements Tipo {
         return 3;
     }
 
-    public int atravesarPiquete(Mapa mapa, Direccion direccion){
+    public int atravesarPiquete(Mapa mapa, Direccion direccion, Vehiculo vehiculo){
         return 2;
     }
 
@@ -20,4 +20,9 @@ public class Moto implements Tipo {
         if(random <= 0.8) return 3;
         return 0;
     }
+
+    public Tipo atravesarCambioVehiculo() {
+        return new Auto();
+    }
+
 }

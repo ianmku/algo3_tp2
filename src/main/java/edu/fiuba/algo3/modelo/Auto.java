@@ -3,13 +3,13 @@ package edu.fiuba.algo3.modelo;
 import java.util.Random;
 
 public class Auto implements Tipo {
-    Vehiculo vehiculo;
+   // Vehiculo vehiculo;
 
     public int atravesarPozo(){
         return 3;
     }
 
-    public int atravesarPiquete(Mapa mapa, Direccion direccion) {
+    public int atravesarPiquete(Mapa mapa, Direccion direccion, Vehiculo vehiculo) {
         mapa.moverVehiculo(vehiculo, direccion.opuesto());
         return 0;
     }
@@ -21,8 +21,8 @@ public class Auto implements Tipo {
         return 0;
     }
 
-    public void atravesarCambioDeVehiculo() {
-
+    public Tipo atravesarCambioVehiculo() {
+        return new Camioneta();
     }
 
 }

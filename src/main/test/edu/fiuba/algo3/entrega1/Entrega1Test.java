@@ -90,7 +90,7 @@ public class Entrega1Test {
         /* Arrange */
         Mapa mapa = new Mapa();
         Calle calle = new Calle();
-        Vehiculo auto = new Vehiculo(mapa, new Moto());
+        Vehiculo auto = new Vehiculo(mapa, new Auto());
         Posicion inicio = new Posicion(1, 1);
 
         Piquete piquete = new Piquete();
@@ -135,8 +135,6 @@ public class Entrega1Test {
         /* Assert */
         assertEquals(movimientosEsperados, camioneta.getMovimientos());
     }
-
-
 
 
 }
