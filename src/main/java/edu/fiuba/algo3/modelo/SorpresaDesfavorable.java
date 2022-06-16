@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 public class SorpresaDesfavorable extends Sorpresa{
-    public void sorprenderVehiculo(Vehiculo vehiculo) {
+    public void interactuarConVehiculo(Vehiculo vehiculo) {
         vehiculo.atravesarSorpresaDesfavorable();
     }
 }

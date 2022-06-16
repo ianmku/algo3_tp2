@@ -1,19 +1,42 @@
 package edu.fiuba.algo3.modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Calle {
-    Obstaculo obstaculo;
-    Sorpresa sorpresa;
+
+    boolean tieneObstaculo = false;
+    boolean tieneSorpresa = false;
+
+    private List<Interactuable> interactuables;
+//    Obstaculo obstaculo;
+//    Sorpresa sorpresa;
+
+    public Calle() {
+        interactuables = new ArrayList<>();
+    }
+
+    public void guardarInteractuable(Interactuable unInteractuable) {
+        interactuables.add(unInteractuable);
+    }
 
     public void guardarObstaculo(Obstaculo unObstaculo) {
-        obstaculo = unObstaculo;
+        if(!tieneObstaculo){
+            interactuables.add(unObstaculo);
+            tieneObstaculo = true;
+        }
     }
 
     public void guardarSorpresa(Sorpresa unaSorpresa) {
-        sorpresa = unaSorpresa;
+        if(!tieneObstaculo){
+            interactuables.add(unaSorpresa);
+            tieneSorpresa = true;
+        }
     }
 
     public void atravesarCalle(Vehiculo vehiculo) {
-        if(obstaculo != null) obstaculo.penalizarMovimiento(vehiculo);
-        if(sorpresa != null) sorpresa.sorprenderVehiculo(vehiculo);
+        for(Interactuable i: interactuables){
+            i.interactuarConVehiculo(vehiculo);
+        }
     }
 }

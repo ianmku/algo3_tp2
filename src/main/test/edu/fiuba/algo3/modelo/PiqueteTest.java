@@ -13,7 +13,7 @@ public class PiqueteTest {
         Moto moto = new Moto(new Mapa());
 
         /* Act */
-        piquete.penalizarMovimiento(moto);
+        piquete.interactuarConVehiculo(moto);
 
         /* Assert */
         assertEquals(moto.getMovimientos(), 2);
@@ -26,7 +26,7 @@ public class PiqueteTest {
         Auto auto = new Auto(new Mapa());
 
         /* Act */
-        piquete.penalizarMovimiento(auto);
+        piquete.interactuarConVehiculo(auto);
 
         /* Assert */
         assertEquals(auto.getMovimientos(), 0);
@@ -39,7 +39,7 @@ public class PiqueteTest {
         Camioneta camioneta = new Camioneta(new Mapa());
 
         /* Act */
-        piquete.penalizarMovimiento(camioneta);
+        piquete.interactuarConVehiculo(camioneta);
 
         /* Assert */
         assertEquals(camioneta.getMovimientos(), 0);

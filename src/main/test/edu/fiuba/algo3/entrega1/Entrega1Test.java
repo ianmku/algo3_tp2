@@ -85,6 +85,24 @@ public class Entrega1Test {
         assertEquals(movimientosEsperados, moto.getMovimientos());
 
     }
+    @Test
+    public void autoNoAtraviesaPiquete() {
+        /* Arrange */
+        Mapa mapa = new Mapa();
+        Calle calle = new Calle();
+        Auto auto = new Auto(mapa);
+        Posicion inicio = new Posicion(1, 1);
+
+        Piquete piquete = new Piquete();
+        calle.guardarObstaculo(piquete);
+        mapa.guardarCalle(new Posicion(2,1), calle);
+
+        /* Act */
+        mapa.moverVehiculo(auto, new Derecha());
+
+        /* Assert */
+        assertEquals(mapa.getPosicionDelVehiculo(), inicio);
+    }
 
     @Test
     public void cuatroPorCuatroEncuentraTresPozosEsPenalizado(){
@@ -119,24 +137,6 @@ public class Entrega1Test {
     }
 
 
-    @Test
-    public void autoNoAtraviesaPiquete() {
-        /* Arrange */
-        Mapa mapa = new Mapa();
-        Calle calle = new Calle();
-        Auto auto = new Auto(mapa);
-        Posicion inicio = new Posicion(1, 1);
 
-        Piquete piquete = new Piquete();
-        calle.guardarObstaculo(piquete);
-
-        mapa.guardarCalle(new Posicion(2,1), calle);
-
-        /* Act */
-        mapa.moverVehiculo(auto, new Derecha());
-
-        /* Assert */
-        assertEquals(mapa.getPosicionDelVehiculo(), inicio);
-    }
 
 }

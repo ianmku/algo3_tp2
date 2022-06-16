@@ -15,15 +15,6 @@ public class Mapa {
         posicionDelVehiculo = new Posicion(1,1);
     }
 
-//    public void guardarObstaculo(Posicion posicion, Obstaculo obstaculo) {
-//        if(calles.containsKey(posicion)){
-//            calle = calles.get(posicion);
-//        }else{
-//            calle = Calle new();
-//        }
-//        calle.guardarObstaculo(obstaculo);
-//    }
-
     public void guardarCalle(Posicion posicion, Calle calle) {
         calles.put(posicion, calle);
     }
@@ -68,10 +59,11 @@ public class Mapa {
 //                largo = 15;
 //                break;
 //        }
-//        int controlesPoliciales = 12;
-//        int piquetes = 12;
-//        int pozos = 15;
-//        int sorpresas = 18;
+        int controlesPoliciales = 12;
+        int piquetes = 12;
+        int pozos = 15;
+        int sorpresas = 18;
+
 //        for (int i=0; i<2*ancho-1; i++) {
 //            if(i % 2 == 0){
 //                for (int j=0; j<2*largo-1; j++) {

@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Pozo extends Obstaculo {
 
-    public void penalizarMovimiento(Vehiculo vehiculo){
+    public void interactuarConVehiculo(Vehiculo vehiculo){
         vehiculo.atravesarPozo();
     }
 }

@@ -13,7 +13,7 @@ public class PozoTest {
         Moto moto = new Moto(new Mapa());
 
         /* Act */
-        pozo.penalizarMovimiento(moto);
+        pozo.interactuarConVehiculo(moto);
 
         /* Assert */
         assertEquals(moto.getMovimientos(), 3);
@@ -27,7 +27,7 @@ public class PozoTest {
         Auto auto = new Auto(new Mapa());
 
         /* Act */
-        pozo.penalizarMovimiento(auto);
+        pozo.interactuarConVehiculo(auto);
 
         /* Assert */
         assertEquals(auto.getMovimientos(), 3);
@@ -40,7 +40,7 @@ public class PozoTest {
         Camioneta camioneta = new Camioneta(new Mapa());
 
         /* Act */
-        pozo.penalizarMovimiento(camioneta);
+        pozo.interactuarConVehiculo(camioneta);
 
         /* Assert */
         assertEquals(camioneta.getMovimientos(), 0);
@@ -53,9 +53,9 @@ public class PozoTest {
         Camioneta camioneta = new Camioneta(new Mapa());
 
         /* Act */
-        pozo.penalizarMovimiento(camioneta);
-        pozo.penalizarMovimiento(camioneta);
-        pozo.penalizarMovimiento(camioneta);
+        pozo.interactuarConVehiculo(camioneta);
+        pozo.interactuarConVehiculo(camioneta);
+        pozo.interactuarConVehiculo(camioneta);
 
         /* Assert */
         assertEquals(camioneta.getMovimientos(), 2);
