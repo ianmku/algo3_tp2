@@ -4,15 +4,16 @@
   <OriginalElement />
   <nodes>
     <node x="941.3437500000009" y="-225.4999999999994">edu.fiuba.algo3.modelo.Juego.Juego</node>
+    <node x="159.93229166666765" y="22.33072916666822">edu.fiuba.algo3.modelo.Vehiculos.Tipo</node>
+    <node x="1206.8502604166663" y="249.06087239583434">edu.fiuba.algo3.modelo.Interactuables.Obstaculo</node>
+    <node x="174.93229166666765" y="-194.86197916666606">edu.fiuba.algo3.modelo.Vehiculos.Moto</node>
+    <node x="549.5533854166677" y="-225.4999999999994">edu.fiuba.algo3.modelo.Vehiculos.Vehiculo</node>
     <node x="159.93229166666765" y="216.5234375000025">edu.fiuba.algo3.modelo.Vehiculos.Camioneta</node>
     <node x="879.3190104166672" y="293.50000000000057">edu.fiuba.algo3.modelo.Escenario.Calle</node>
-    <node x="1200.0846354166667" y="449.06087239583434">edu.fiuba.algo3.modelo.Interactuables.Sorpresa</node>
-    <node x="159.93229166666765" y="22.33072916666822">edu.fiuba.algo3.modelo.Vehiculos.Tipo</node>
+    <node x="1242.4023437500002" y="439.2952473958344">edu.fiuba.algo3.modelo.Interactuables.Sorpresa</node>
     <node x="1200.0846354166667" y="340.06087239583434">edu.fiuba.algo3.modelo.Interactuables.Interactuable</node>
     <node x="955.8437500000009" y="14.000000000000597">edu.fiuba.algo3.modelo.Juego.Jugador</node>
     <node x="-193.06770833333235" y="50.97656250000071">edu.fiuba.algo3.modelo.Vehiculos.Auto</node>
-    <node x="174.93229166666765" y="-194.86197916666606">edu.fiuba.algo3.modelo.Vehiculos.Moto</node>
-    <node x="549.5533854166677" y="-225.4999999999994">edu.fiuba.algo3.modelo.Vehiculos.Vehiculo</node>
     <node x="555.5533854166677" y="293.50000000000057">edu.fiuba.algo3.modelo.Escenario.Mapa</node>
   </nodes>
   <notes />
@@ -30,6 +31,12 @@
       <point x="-15.0" y="225.5" />
       <point x="-15.0" y="-148.5" />
     </edge>
+    <edge source="edu.fiuba.algo3.modelo.Interactuables.Obstaculo" target="edu.fiuba.algo3.modelo.Interactuables.Interactuable" relationship="REALIZATION">
+      <point x="-6.765624999999545" y="23.868815104165435" />
+      <point x="1327.0846354166667" y="322.7161458333331" />
+      <point x="1330.6575520833344" y="322.7161458333331" />
+      <point x="3.572916666667652" y="-24.813476562501307" />
+    </edge>
     <edge source="edu.fiuba.algo3.modelo.Juego.Jugador" target="edu.fiuba.algo3.modelo.Vehiculos.Vehiculo" relationship="TO_ONE">
       <point x="-116.5" y="0.0" />
       <point x="688.0533854166677" y="96.5000000000006" />
@@ -37,7 +44,9 @@
     </edge>
     <edge source="edu.fiuba.algo3.modelo.Interactuables.Sorpresa" target="edu.fiuba.algo3.modelo.Interactuables.Interactuable" relationship="REALIZATION">
       <point x="0.0" y="-38.0" />
-      <point x="0.0" y="27.0" />
+      <point x="1369.4023437500002" y="421.56087239583434" />
+      <point x="1368.0924479166677" y="421.56087239583434" />
+      <point x="41.00781250000091" y="15.876627604165321" />
     </edge>
     <edge source="edu.fiuba.algo3.modelo.Juego.Juego" target="edu.fiuba.algo3.modelo.Juego.Jugador" relationship="TO_MANY">
       <point x="0.0" y="94.0" />
@@ -72,7 +81,7 @@
       <point x="0.0" y="-93.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Compact" zoom="0.7680000000000016" showDependencies="true" x="1412.0377604166674" y="361.12760416666634" />
+  <settings layout="Hierarchic Compact" zoom="0.393216000000001" showDependencies="true" x="507.69816080729595" y="213.30997721354078" />
   <SelectedNodes />
   <Categories>
     <Category>Fields</Category>
