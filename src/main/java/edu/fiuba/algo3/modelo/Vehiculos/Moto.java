@@ -7,8 +7,6 @@ import java.util.Random;
 
 public class Moto implements Tipo {
 
-    Vehiculo vehiculo;
-
     public int atravesarPozo(){
         return 3;
     }

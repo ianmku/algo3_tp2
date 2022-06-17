@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="941.3437500000009" y="-225.4999999999994">edu.fiuba.algo3.modelo.Juego.Juego</node>
+    <node x="159.93229166666765" y="216.5234375000025">edu.fiuba.algo3.modelo.Vehiculos.Camioneta</node>
+    <node x="879.3190104166672" y="293.50000000000057">edu.fiuba.algo3.modelo.Escenario.Calle</node>
+    <node x="1200.0846354166667" y="449.06087239583434">edu.fiuba.algo3.modelo.Interactuables.Sorpresa</node>
+    <node x="159.93229166666765" y="22.33072916666822">edu.fiuba.algo3.modelo.Vehiculos.Tipo</node>
+    <node x="1200.0846354166667" y="340.06087239583434">edu.fiuba.algo3.modelo.Interactuables.Interactuable</node>
+    <node x="955.8437500000009" y="14.000000000000597">edu.fiuba.algo3.modelo.Juego.Jugador</node>
+    <node x="-193.06770833333235" y="50.97656250000071">edu.fiuba.algo3.modelo.Vehiculos.Auto</node>
+    <node x="174.93229166666765" y="-194.86197916666606">edu.fiuba.algo3.modelo.Vehiculos.Moto</node>
+    <node x="549.5533854166677" y="-225.4999999999994">edu.fiuba.algo3.modelo.Vehiculos.Vehiculo</node>
+    <node x="555.5533854166677" y="293.50000000000057">edu.fiuba.algo3.modelo.Escenario.Mapa</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="edu.fiuba.algo3.modelo.Escenario.Calle" target="edu.fiuba.algo3.modelo.Interactuables.Interactuable" relationship="TO_MANY">
+      <point x="119.27083333333394" y="-29.04947916666754" />
+      <point x="1129.5898437500011" y="377.4166666666675" />
+      <point x="1275.4231770833342" y="377.4166666666675" />
+      <point x="1275.4231770833342" y="342.8046875000009" />
+      <point x="1279.589843750001" y="342.8046875000009" />
+      <point x="1279.589843750001" y="373.0400390624998" />
+      <point x="-111.28906249999909" y="5.979166666665435" />
+    </edge>
+    <edge source="edu.fiuba.algo3.modelo.Vehiculos.Vehiculo" target="edu.fiuba.algo3.modelo.Escenario.Mapa" relationship="TO_ONE">
+      <point x="-15.0" y="225.5" />
+      <point x="-15.0" y="-148.5" />
+    </edge>
+    <edge source="edu.fiuba.algo3.modelo.Juego.Jugador" target="edu.fiuba.algo3.modelo.Vehiculos.Vehiculo" relationship="TO_ONE">
+      <point x="-116.5" y="0.0" />
+      <point x="688.0533854166677" y="96.5000000000006" />
+      <point x="0.0" y="-225.5" />
+    </edge>
+    <edge source="edu.fiuba.algo3.modelo.Interactuables.Sorpresa" target="edu.fiuba.algo3.modelo.Interactuables.Interactuable" relationship="REALIZATION">
+      <point x="0.0" y="-38.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="edu.fiuba.algo3.modelo.Juego.Juego" target="edu.fiuba.algo3.modelo.Juego.Jugador" relationship="TO_MANY">
+      <point x="0.0" y="94.0" />
+      <point x="0.0" y="-82.5" />
+    </edge>
+    <edge source="edu.fiuba.algo3.modelo.Vehiculos.Vehiculo" target="edu.fiuba.algo3.modelo.Vehiculos.Tipo" relationship="TO_ONE">
+      <point x="0.0" y="225.5" />
+      <point x="688.0533854166677" y="82.33072916666822" />
+      <point x="149.5" y="0.0" />
+    </edge>
+    <edge source="edu.fiuba.algo3.modelo.Vehiculos.Auto" target="edu.fiuba.algo3.modelo.Vehiculos.Tipo" relationship="REALIZATION">
+      <point x="-149.5" y="0.0" />
+      <point x="-63.776041666665606" y="110.97656250000071" />
+      <point x="-63.776041666665606" y="101.22916666666671" />
+      <point x="-131.2500000000001" y="18.898437499998494" />
+    </edge>
+    <edge source="edu.fiuba.algo3.modelo.Vehiculos.Moto" target="edu.fiuba.algo3.modelo.Vehiculos.Tipo" relationship="REALIZATION">
+      <point x="-149.5" y="0.0" />
+      <point x="309.43229166666765" y="-123.36197916666606" />
+      <point x="0.0" y="-60.0" />
+    </edge>
+    <edge source="edu.fiuba.algo3.modelo.Vehiculos.Camioneta" target="edu.fiuba.algo3.modelo.Vehiculos.Tipo" relationship="REALIZATION">
+      <point x="0.0" y="-71.5" />
+      <point x="309.43229166666765" y="226.6848958333349" />
+      <point x="0.0" y="60.0" />
+    </edge>
+    <edge source="edu.fiuba.algo3.modelo.Escenario.Mapa" target="edu.fiuba.algo3.modelo.Escenario.Calle" relationship="TO_MANY">
+      <point x="126.51041666666652" y="-61.158854166666" />
+      <point x="910.3971354166673" y="380.84114583333456" />
+      <point x="910.3971354166673" y="387.00000000000057" />
+      <point x="1010.3190104166672" y="387.00000000000057" />
+      <point x="0.0" y="-93.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.7680000000000016" showDependencies="true" x="1412.0377604166674" y="361.12760416666634" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

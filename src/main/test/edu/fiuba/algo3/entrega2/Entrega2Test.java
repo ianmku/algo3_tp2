@@ -102,4 +102,5 @@ public class Entrega2Test {
         /* Assert */
         assertTrue(vehiculo.es(tipoEsperado));
     }
+
 }
