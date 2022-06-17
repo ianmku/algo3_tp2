@@ -1,6 +1,13 @@
 package edu.fiuba.algo3.entrega2;
 
-import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.Direcciones.Derecha;
+import edu.fiuba.algo3.modelo.Escenario.Calle;
+import edu.fiuba.algo3.modelo.Escenario.Mapa;
+import edu.fiuba.algo3.modelo.Escenario.Posicion;
+import edu.fiuba.algo3.modelo.Interactuables.SorpresaCambioVehiculo;
+import edu.fiuba.algo3.modelo.Interactuables.SorpresaDesfavorable;
+import edu.fiuba.algo3.modelo.Interactuables.SorpresaFavorable;
+import edu.fiuba.algo3.modelo.Vehiculos.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

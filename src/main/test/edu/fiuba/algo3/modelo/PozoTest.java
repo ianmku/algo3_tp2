@@ -1,5 +1,11 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Escenario.Mapa;
+import edu.fiuba.algo3.modelo.Interactuables.Pozo;
+import edu.fiuba.algo3.modelo.Vehiculos.Auto;
+import edu.fiuba.algo3.modelo.Vehiculos.Camioneta;
+import edu.fiuba.algo3.modelo.Vehiculos.Moto;
+import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
