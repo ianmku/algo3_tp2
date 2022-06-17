@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.Direcciones.Derecha;
 import edu.fiuba.algo3.modelo.Escenario.Calle;
 import edu.fiuba.algo3.modelo.Escenario.Mapa;
 import edu.fiuba.algo3.modelo.Escenario.Posicion;
+import edu.fiuba.algo3.modelo.Interactuables.Piquete;
 import edu.fiuba.algo3.modelo.Interactuables.SorpresaCambioVehiculo;
 import edu.fiuba.algo3.modelo.Interactuables.SorpresaDesfavorable;
 import edu.fiuba.algo3.modelo.Interactuables.SorpresaFavorable;
@@ -19,15 +20,13 @@ public class Entrega2Test {
     public void vehiculoEncuentraSorpresaFavorable() {
         /* Arrange */
         Mapa mapa = new Mapa();
-        Calle calle1 = new Calle();
-        Calle calle2 = new Calle();
+        Calle calle = new Calle();
         Vehiculo moto = new Vehiculo(new Mapa(), new Moto());
         int movimientosEsperados = (int) (2 * 0.8);
 
         SorpresaFavorable sorpresa = new SorpresaFavorable();
-        calle2.guardarSorpresa(sorpresa);
-        mapa.guardarCalle(new Posicion(2,1), calle1);
-        mapa.guardarCalle(new Posicion(4,1), calle2);
+        calle.guardarSorpresa(sorpresa);
+        mapa.guardarCalle(new Posicion(4,1), calle);
 
         /* Act */
         mapa.moverVehiculo(moto, new Derecha());
@@ -41,15 +40,13 @@ public class Entrega2Test {
     public void vehiculoEncuentraSorpresaDesfavorable() {
         /* Arrange */
         Mapa mapa = new Mapa();
-        Calle calle1 = new Calle();
-        Calle calle2 = new Calle();
+        Calle calle = new Calle();
         Vehiculo auto = new Vehiculo(new Mapa(), new Auto());
         int movimientosEsperados = (int) (2 * 1.25);
 
         SorpresaDesfavorable sorpresa = new SorpresaDesfavorable();
-        calle2.guardarSorpresa(sorpresa);
-        mapa.guardarCalle(new Posicion(2,1), calle1);
-        mapa.guardarCalle(new Posicion(4,1), calle2);
+        calle.guardarSorpresa(sorpresa);
+        mapa.guardarCalle(new Posicion(4,1), calle);
 
         /* Act */
         mapa.moverVehiculo(auto, new Derecha());
@@ -62,15 +59,13 @@ public class Entrega2Test {
     @Test
     public void vehiculoEncuentraSorpresaCambioDeVehiculo() {
         Mapa mapa = new Mapa();
-        Calle calle1 = new Calle();
-        Calle calle2 = new Calle();
+        Calle calle = new Calle();
         Vehiculo vehiculo = new Vehiculo(new Mapa(), new Auto());
         Tipo tipoEsperado = new Camioneta();
 
         SorpresaCambioVehiculo sorpresa = new SorpresaCambioVehiculo();
-        calle2.guardarSorpresa(sorpresa);
-        mapa.guardarCalle(new Posicion(2,1), calle1);
-        mapa.guardarCalle(new Posicion(4,1), calle2);
+        calle.guardarSorpresa(sorpresa);
+        mapa.guardarCalle(new Posicion(4,1), calle);
 
         /* Act */
         mapa.moverVehiculo(vehiculo, new Derecha());
@@ -82,6 +77,7 @@ public class Entrega2Test {
 
     @Test
     public void motoEncuentraSorpresaCambioDeVehiculo() {
+        /* Arrange */
         Mapa mapa = new Mapa();
         Calle calle1 = new Calle();
         Calle calle2 = new Calle();
@@ -101,6 +97,30 @@ public class Entrega2Test {
 
         /* Assert */
         assertTrue(vehiculo.es(tipoEsperado));
+    }
+
+    @Test
+    public void camionetaCambiaAMotoYAtraviesaPiquete() {
+        /* Arrange */
+        Mapa mapa = new Mapa();
+        Calle calle1 = new Calle();
+        Calle calle2 = new Calle();
+        Vehiculo vehiculo = new Vehiculo(mapa, new Camioneta());
+        Posicion posicionEsperada = new Posicion(5, 1);
+
+        SorpresaCambioVehiculo sorpresa = new SorpresaCambioVehiculo();
+        Piquete piquete = new Piquete();
+        calle1.guardarSorpresa(sorpresa);
+        calle2.guardarObstaculo(piquete);
+        mapa.guardarCalle(new Posicion(2,1), calle1);
+        mapa.guardarCalle(new Posicion(4,1), calle2);
+
+        /* Act */
+        mapa.moverVehiculo(vehiculo, new Derecha());
+        mapa.moverVehiculo(vehiculo, new Derecha());
+
+        /* Assert */
+        assertEquals(vehiculo.getPosicion(), posicionEsperada);
     }
 
 }
