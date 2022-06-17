@@ -6,7 +6,6 @@ import edu.fiuba.algo3.modelo.Escenario.Mapa;
 import java.util.Random;
 
 public class Auto implements Tipo {
-   // Vehiculo vehiculo;
 
     public int atravesarPozo(){
         return 3;

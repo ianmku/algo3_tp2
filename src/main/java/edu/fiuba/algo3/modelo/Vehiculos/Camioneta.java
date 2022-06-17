@@ -6,9 +6,7 @@ import edu.fiuba.algo3.modelo.Escenario.Mapa;
 import java.util.Random;
 
 public class Camioneta implements Tipo {
-
-    //private Vehiculo vehiculo;
-    int cantidadDePozosAtravesados;
+    private int cantidadDePozosAtravesados;
 
     public Camioneta(){
         this.cantidadDePozosAtravesados = 0;

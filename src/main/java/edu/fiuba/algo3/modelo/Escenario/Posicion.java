@@ -3,8 +3,8 @@ package edu.fiuba.algo3.modelo.Escenario;
 import java.util.Objects;
 
 public class Posicion {
-    int posicionX;
-    int posicionY;
+    private int posicionX;
+    private int posicionY;
 
     public Posicion (int coordenadaX, int coordenadaY) {
         this.posicionX = coordenadaX;

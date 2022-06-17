@@ -9,21 +9,15 @@ import java.util.Hashtable;
 
 public class Mapa {
 
-    int ancho;
-    int largo;
+    private int ancho;
+    private int largo;
     private Posicion posicionDelVehiculo;
-    private Posicion ultimaPosicion;
     private Posicion Llegada;
     private Hashtable<Posicion, Calle> calles;
 
 
     public void guardarCalle(Posicion posicion, Calle calle) {
         calles.put(posicion, calle);
-    }
-
-    public void guardarSorpresa(Posicion posicion, Sorpresa sorpresa) {
-        Calle calle = calles.get(posicion);
-        calle.guardarSorpresa(sorpresa);
     }
 
     public boolean vehiculoEstaEnLlegada(){

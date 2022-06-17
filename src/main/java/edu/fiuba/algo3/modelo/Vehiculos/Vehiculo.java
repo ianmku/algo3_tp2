@@ -6,10 +6,9 @@ import edu.fiuba.algo3.modelo.Escenario.Mapa;
 import edu.fiuba.algo3.modelo.Escenario.Posicion;
 
 public class Vehiculo {
-    protected int cantidadDeMovimientos;
-    protected Mapa mapa;
-    protected Direccion direccion;
-
+    private int cantidadDeMovimientos;
+    private Mapa mapa;
+    private Direccion direccion;
     private Tipo tipo;
 
     public Vehiculo(Mapa mapa, Tipo tipo) {
