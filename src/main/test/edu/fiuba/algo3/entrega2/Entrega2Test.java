@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.Direcciones.Derecha;
 import edu.fiuba.algo3.modelo.Escenario.Calle;
 import edu.fiuba.algo3.modelo.Escenario.Mapa;
 import edu.fiuba.algo3.modelo.Escenario.Posicion;
+import edu.fiuba.algo3.modelo.Interactuables.Piquete;
 import edu.fiuba.algo3.modelo.Interactuables.SorpresaCambioVehiculo;
 import edu.fiuba.algo3.modelo.Interactuables.SorpresaDesfavorable;
 import edu.fiuba.algo3.modelo.Interactuables.SorpresaFavorable;
@@ -108,13 +109,17 @@ public class Entrega2Test {
     public void camionetaCambiaAMotoYAtraviesaPiquete() {
         /* Arrange */
         Mapa mapa = new Mapa();
-        Calle calle = new Calle();
+        Calle calle1 = new Calle();
+        Calle calle2 = new Calle();
         Vehiculo vehiculo = new Vehiculo(mapa, new Camioneta());
         Posicion posicionEsperada = new Posicion(5, 1);
 
         SorpresaCambioVehiculo sorpresa = new SorpresaCambioVehiculo();
-        calle.guardarSorpresa(sorpresa);
-        mapa.guardarCalle(new Posicion(3, 1), calle);
+        Piquete piquete = new Piquete();
+        calle1.guardarSorpresa(sorpresa);
+        calle2.guardarObstaculo(piquete);
+        mapa.guardarCalle(new Posicion(2, 1), calle1);
+        mapa.guardarCalle(new Posicion(4, 1), calle2);
 
         /* Act */
         mapa.moverVehiculo(vehiculo, new Derecha());
