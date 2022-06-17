@@ -48,6 +48,10 @@ public class Posicion {
         return Objects.hash(posicionX, posicionY);
     }
 
+    public void imprimirPosicion(){
+        System.out.println(this.posicionX + "," + this.posicionY);
+    }
+
 
 
 }

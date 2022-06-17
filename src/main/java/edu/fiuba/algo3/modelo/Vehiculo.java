@@ -6,6 +6,7 @@ public class Vehiculo {
     protected int cantidadDeMovimientos;
     protected Mapa mapa;
     protected Direccion direccion;
+
     private Tipo tipo;
 
     public Vehiculo(Mapa mapa, Tipo tipo) {
@@ -17,6 +18,10 @@ public class Vehiculo {
 
     public boolean estaEnLlegada(){
         return (this.mapa.vehiculoEstaEnLlegada());
+    }
+
+    public int obtenerCantidadMovimientos(){
+        return this.cantidadDeMovimientos;
     }
 
     public void atravesarPozo(){
@@ -35,7 +40,10 @@ public class Vehiculo {
         this.cantidadDeMovimientos += cantidad;
     }
 
-
+    public void mover(Direccion unaDireccion){
+        this.direccion = unaDireccion;
+        this.mapa.moverVehiculo(this, this.direccion);
+    }
 
     public void atravesarSorpresaFavorable() {
         this.cantidadDeMovimientos = (int) (this.cantidadDeMovimientos * 0.8);
@@ -66,5 +74,9 @@ public class Vehiculo {
             return true;
         }
         return false;
+    }
+
+    public void imprimirPosicion(){
+        this.mapa.imprimirPosicion();
     }
 }
