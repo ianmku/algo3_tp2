@@ -21,7 +21,7 @@ public class Entrega2Test {
         Mapa mapa = new Mapa();
         Calle calle1 = new Calle();
         Calle calle2 = new Calle();
-        Vehiculo moto = new Vehiculo(new Mapa(), new Moto());
+        Vehiculo moto = new Vehiculo(mapa, new Moto());
         int movimientosEsperados = (int) (2 * 0.8);
 
         SorpresaFavorable sorpresa = new SorpresaFavorable();
@@ -43,7 +43,7 @@ public class Entrega2Test {
         Mapa mapa = new Mapa();
         Calle calle1 = new Calle();
         Calle calle2 = new Calle();
-        Vehiculo auto = new Vehiculo(new Mapa(), new Auto());
+        Vehiculo auto = new Vehiculo(mapa, new Auto());
         int movimientosEsperados = (int) (2 * 1.25);
 
         SorpresaDesfavorable sorpresa = new SorpresaDesfavorable();
@@ -64,7 +64,7 @@ public class Entrega2Test {
         Mapa mapa = new Mapa();
         Calle calle1 = new Calle();
         Calle calle2 = new Calle();
-        Vehiculo vehiculo = new Vehiculo(new Mapa(), new Auto());
+        Vehiculo vehiculo = new Vehiculo(mapa, new Auto());
         Tipo tipoEsperado = new Camioneta();
 
         SorpresaCambioVehiculo sorpresa = new SorpresaCambioVehiculo();
@@ -82,10 +82,11 @@ public class Entrega2Test {
 
     @Test
     public void motoEncuentraSorpresaCambioDeVehiculo() {
+        /* Arrange */
         Mapa mapa = new Mapa();
         Calle calle1 = new Calle();
         Calle calle2 = new Calle();
-        Vehiculo vehiculo = new Vehiculo(new Mapa(), new Auto());
+        Vehiculo vehiculo = new Vehiculo(mapa, new Auto());
         Tipo tipoEsperado = new Moto();
 
         SorpresaCambioVehiculo sorpresa1 = new SorpresaCambioVehiculo();
@@ -101,5 +102,25 @@ public class Entrega2Test {
 
         /* Assert */
         assertTrue(vehiculo.es(tipoEsperado));
+    }
+
+    @Test
+    public void camionetaCambiaAMotoYAtraviesaPiquete() {
+        /* Arrange */
+        Mapa mapa = new Mapa();
+        Calle calle = new Calle();
+        Vehiculo vehiculo = new Vehiculo(mapa, new Camioneta());
+        Posicion posicionEsperada = new Posicion(5, 1);
+
+        SorpresaCambioVehiculo sorpresa = new SorpresaCambioVehiculo();
+        calle.guardarSorpresa(sorpresa);
+        mapa.guardarCalle(new Posicion(3, 1), calle);
+
+        /* Act */
+        mapa.moverVehiculo(vehiculo, new Derecha());
+        mapa.moverVehiculo(vehiculo, new Derecha());
+
+        /* Assert */
+        assertEquals(vehiculo.getPosicion(), posicionEsperada);
     }
 }
