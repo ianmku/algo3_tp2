@@ -9,6 +9,7 @@ public class Mapa {
     int largo;
     private Posicion posicionDelVehiculo;
     private Posicion ultimaPosicion;
+    private Posicion Llegada;
     private Hashtable<Posicion, Calle> calles;
 
     {
@@ -25,12 +26,14 @@ public class Mapa {
         calle.guardarSorpresa(sorpresa);
     }
 
+    public boolean vehiculoEstaEnLlegada(){
+        return (this.posicionDelVehiculo.equals(this.Llegada));
+    }
+
     public void moverVehiculo(Vehiculo vehiculo, Direccion direccion){
         posicionDelVehiculo = direccion.calcularPosicionSiguiente(posicionDelVehiculo);
         Calle calle = calles.get(posicionDelVehiculo);
-        if(calle != null){
-            calle.atravesarCalle(vehiculo);
-        }
+        calle.atravesarCalle(vehiculo);
         posicionDelVehiculo = direccion.calcularPosicionSiguiente(posicionDelVehiculo);
         vehiculo.aumentarMovimientos(1);
     }
@@ -43,6 +46,15 @@ public class Mapa {
 
     public Posicion getPosicionDelVehiculo(){
         return this.posicionDelVehiculo;
+    }
+
+    public Mapa(){
+        this.ancho = 10;
+        this.largo = 10;
+        this.posicionDelVehiculo = new Posicion(1,5);
+        this.Llegada = new Posicion(10,5);
+
+
     }
 
 //    public Mapa () {
@@ -62,10 +74,10 @@ public class Mapa {
 //                largo = 15;
 //                break;
 //        }
-        int controlesPoliciales = 12;
-        int piquetes = 12;
-        int pozos = 15;
-        int sorpresas = 18;
+        //int controlesPoliciales = 12;
+        //int piquetes = 12;
+        //int pozos = 15;
+        //int sorpresas = 18;
 
 //        for (int i=0; i<2*ancho-1; i++) {
 //            if(i % 2 == 0){

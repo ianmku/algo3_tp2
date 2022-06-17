@@ -15,6 +15,10 @@ public class Vehiculo {
         this.direccion = new Derecha();
     }
 
+    public boolean estaEnLlegada(){
+        return (this.mapa.vehiculoEstaEnLlegada());
+    }
+
     public void atravesarPozo(){
         this.aumentarMovimientos(tipo.atravesarPozo());
     }
