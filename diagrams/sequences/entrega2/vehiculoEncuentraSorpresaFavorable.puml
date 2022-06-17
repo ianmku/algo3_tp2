@@ -1,0 +1,16 @@
+@startuml
+title vehiculoEncuentraSorpresaFavorable.
+
+":testCase" -> ":mapa" : moverVehiculo(moto : Vehiculo, direccion : Derecha )
+":mapa" -> ":direccion" : calcularPosicionSiguiente(posicionDelVehiculo)
+return posicionDelVehiculo
+":mapa" -> ":calles" : get(posicionDelVehiculo)
+return calle
+alt calle != null
+":mapa" -> ":calle" : atravesarCalle(vehiuculo : Vehiculo)
+":sorpresaFavorable" -> "vehiculo : Vehiculo" : interactuarConVehiculo(vehiuculo : Vehiculo)
+end
+":mapa" -> ":direccion" : calcularPosicionSiguiente(posicionDelVehiculo)
+return posicionDelVehiculo
+":mapa" -> ":vehiculo" : aumentarMovimientos(1)
+@enduml
