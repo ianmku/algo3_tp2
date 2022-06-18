@@ -1,5 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Escenario.Mapa;
+import edu.fiuba.algo3.modelo.Interactuables.Piquete;
+import edu.fiuba.algo3.modelo.Vehiculos.Camioneta;
+import edu.fiuba.algo3.modelo.Vehiculos.Moto;
+import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -10,10 +15,10 @@ public class PiqueteTest {
     public void TestPenalizarMovimientoAMoto() {
         /* Arrange */
         Piquete piquete = new Piquete();
-        Moto moto = new Moto(new Posicion(0,0));
+        Vehiculo moto = new Vehiculo(new Mapa(), new Moto());
 
         /* Act */
-        piquete.penalizarMovimiento(moto);
+        piquete.interactuarConVehiculo(moto);
 
         /* Assert */
         assertEquals(moto.getMovimientos(), 2);
@@ -23,25 +28,25 @@ public class PiqueteTest {
     public void TestPenalizarMovimientoAAuto() {
         /* Arrange */
         Piquete piquete = new Piquete();
-        Auto auto = new Auto(new Posicion(0,0));
+        Vehiculo auto = new Vehiculo(new Mapa(), new Moto());
 
         /* Act */
-        piquete.penalizarMovimiento(auto);
+        piquete.interactuarConVehiculo(auto);
 
         /* Assert */
         assertEquals(auto.getMovimientos(), 0);
     }
 
     @Test
-    public void TestPenalizarMovimientoACpc() {
+    public void TestPenalizarMovimientoACamioneta() {
         /* Arrange */
         Piquete piquete = new Piquete();
-        Cpc cuatroPorCuatro = new Cpc(new Posicion(0,0));
+        Vehiculo camioneta = new Vehiculo(new Mapa(), new Camioneta());
 
         /* Act */
-        piquete.penalizarMovimiento(cuatroPorCuatro);
+        piquete.interactuarConVehiculo(camioneta);
 
         /* Assert */
-        assertEquals(cuatroPorCuatro.getMovimientos(), 0);
+        assertEquals(camioneta.getMovimientos(), 0);
     }
 }

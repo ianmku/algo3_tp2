@@ -1,5 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Direcciones.Derecha;
+import edu.fiuba.algo3.modelo.Escenario.Mapa;
+import edu.fiuba.algo3.modelo.Escenario.Posicion;
+import edu.fiuba.algo3.modelo.Vehiculos.Moto;
+import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -9,7 +14,7 @@ public class MotoTest {
     @Test
     public void TestMotoRecienCreadaTieneCeroMovimientos() {
         /* Arrange */
-        Moto moto = new Moto(new Posicion(0,0));
+        Vehiculo moto = new Vehiculo(new Mapa(), new Moto());
 
         /* Act and Assert */
         assertEquals(moto.getMovimientos(), 0);
@@ -19,20 +24,20 @@ public class MotoTest {
     public void TestMotoMoverModificaSuPosicion() {
         /* Arrange */
         Mapa mapa = new Mapa();
-        Moto moto = new Moto(new Posicion(0,0));
-        Posicion destino = new Posicion(2, 0);
+        Vehiculo moto = new Vehiculo(new Mapa(), new Moto());
+        Posicion destino = new Posicion(3, 1);
 
         /* Act */
-        moto.mover(mapa, new Derecha());
+        mapa.moverVehiculo(moto, new Derecha());
 
         /* Assert */
-        assertEquals(moto.pos, destino);
+        assertEquals(moto.getPosicion(), destino);
     }
 
     @Test
     public void TestMotoAtravesarPozoAumentaSusMovimientos() {
         /* Arrange */
-        Moto moto = new Moto(new Posicion(0,0));
+        Vehiculo moto = new Vehiculo(new Mapa(), new Moto());
 
         /* Act */
         moto.atravesarPozo();
@@ -44,7 +49,7 @@ public class MotoTest {
     @Test
     public void TestMotoAtravesarPiqueteAumentaSusMovimientos() {
         /* Arrange */
-        Moto moto = new Moto(new Posicion(0, 0));
+        Vehiculo moto = new Vehiculo(new Mapa(), new Moto());
 
         /* Act */
         moto.atravesarPiquete();
