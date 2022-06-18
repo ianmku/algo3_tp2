@@ -41,7 +41,7 @@ public class Mapa {
     public Mapa(){
         this.ancho = 10;
         this.largo = 10;
-        calles = new Hashtable<Posicion, Calle>();
+        calles = new Hashtable<>();
         this.posicionDelVehiculo = new Posicion(1,1);
         this.Llegada = new Posicion(9,5);
 
