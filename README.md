@@ -7,10 +7,9 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 ## Grupo {4}
 
 * **Integrante 1** - [Ian Mika Ursino](https://github.com/ianmku)
-* **Integrante 2** - [Nicolas Manuel Nieva](https://github.com/NicolaZK)
-* **Integrante 3** - [Walter Mario Aguirre](https://github.com/walteraguirre)
-* **Integrante 4** - [Claudio Alberto Giménez](https://github.com/claudiogimenez26)
-* **Integrante 5** - [Manuel Rivera Villatte](https://github.com/ManusaRivi)
+* **Integrante 2** - [Walter Mario Aguirre](https://github.com/walteraguirre)
+* **Integrante 3** - [Claudio Alberto Giménez](https://github.com/claudiogimenez26)
+* **Integrante 4** - [Manuel Rivera Villatte](https://github.com/ManusaRivi)
 
 Corrector: **{Santiago Valdez , Agustin Rodriguez}**
 
