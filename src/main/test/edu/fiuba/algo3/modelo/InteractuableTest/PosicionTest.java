@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.InteractuableTest;
 
 import edu.fiuba.algo3.modelo.Escenario.Posicion;
 import org.junit.jupiter.api.Test;

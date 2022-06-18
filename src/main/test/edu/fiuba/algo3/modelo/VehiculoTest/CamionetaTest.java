@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.VehiculoTest;
 
 import edu.fiuba.algo3.modelo.Direcciones.Derecha;
 import edu.fiuba.algo3.modelo.Escenario.Mapa;

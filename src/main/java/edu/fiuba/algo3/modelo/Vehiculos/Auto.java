@@ -13,7 +13,7 @@ public class Auto implements Tipo {
 
     public int atravesarPiquete(Mapa mapa, Direccion direccion, Vehiculo vehiculo) {
         mapa.moverVehiculo(vehiculo, direccion.opuesto());
-        return 0;
+        return -1;
     }
 
     public int atravesarControlPolicial() {
