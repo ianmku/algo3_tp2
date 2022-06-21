@@ -1,10 +1,10 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.Escenario;
 
 import java.util.Objects;
 
 public class Posicion {
-    int posicionX;
-    int posicionY;
+    private int posicionX;
+    private int posicionY;
 
     public Posicion (int coordenadaX, int coordenadaY) {
         this.posicionX = coordenadaX;
@@ -27,14 +27,6 @@ public class Posicion {
         this.posicionY--;
     }
 
-    public int getPosicionX(){
-        return this.posicionX;
-    }
-
-    public int getPosicionY(){
-        return this.posicionY;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -46,6 +38,10 @@ public class Posicion {
     @Override
     public int hashCode() {
         return Objects.hash(posicionX, posicionY);
+    }
+
+    public void imprimirPosicion(){
+        System.out.println(this.posicionX + "," + this.posicionY);
     }
 
 
