@@ -1,8 +1,5 @@
 package edu.fiuba.algo3.entrega1;
 
-<<<<<<< HEAD
-import edu.fiuba.algo3.modelo.*;
-=======
 import edu.fiuba.algo3.modelo.Direcciones.Derecha;
 import edu.fiuba.algo3.modelo.Escenario.Calle;
 import edu.fiuba.algo3.modelo.Escenario.Mapa;
@@ -13,7 +10,6 @@ import edu.fiuba.algo3.modelo.Vehiculos.Auto;
 import edu.fiuba.algo3.modelo.Vehiculos.Camioneta;
 import edu.fiuba.algo3.modelo.Vehiculos.Moto;
 import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
->>>>>>> manuel
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
