@@ -29,10 +29,10 @@ public class Mapa {
     private int alto;
 
     private Posicion posicionDelVehiculo;
+
+    private final int COORDENADA_X_VEHICULO = 2;
     private Posicion Llegada;
     private Hashtable<Posicion, Calle> calles;
-
-    private LimiteMapa limite;
 
 
     public void guardarCalle(Posicion posicion, Calle calle) {
@@ -110,8 +110,7 @@ public class Mapa {
                 colocarInteractuable(SORPRESAS_GRANDE, new SorpresaCambioVehiculo());
                 break;
         }
-        this.limite = new LimiteMapa();
-        this.posicionDelVehiculo = new Posicion(2,(this.alto - 1) / 2);
+        this.posicionDelVehiculo = new Posicion(COORDENADA_X_VEHICULO,(this.alto - 1) / 2);
         this.Llegada = new Posicion(ancho - 1,this.alto / 2);
     }
 
