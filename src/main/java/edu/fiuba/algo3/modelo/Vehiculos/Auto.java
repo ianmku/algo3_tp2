@@ -8,6 +8,8 @@ import java.util.Random;
 
 public class Auto implements Tipo {
 
+    private final float CHANCE_CONTROL_POLICIAL = 0.5F;
+
     public int atravesarPozo(){
         return 3;
     }
@@ -19,7 +21,7 @@ public class Auto implements Tipo {
 
     public int atravesarControlPolicial() {
         Aleatorio random = new Aleatorio();
-        if(random.atravesarControlPolicial(0.5F)) return 3;
+        if(random.atravesarControlPolicial(CHANCE_CONTROL_POLICIAL)) return 3;
         return 0;
     }
 

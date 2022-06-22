@@ -24,7 +24,7 @@ public class Entrega1Test {
         int movimientosEsperados = 4;
 
         Pozo pozo = new Pozo();
-        calle.guardarObstaculo(pozo);
+        calle.guardarInteractuable(pozo);
         mapa.guardarCalle(new Posicion(2,1), calle);
 
         /* Act */
@@ -44,7 +44,7 @@ public class Entrega1Test {
         int movimientosEsperados = 4;
 
         Pozo pozo = new Pozo();
-        calle.guardarObstaculo(pozo);
+        calle.guardarInteractuable(pozo);
         mapa.guardarCalle(new Posicion(2,1), calle);
 
         /* Act */
@@ -64,7 +64,7 @@ public class Entrega1Test {
         int movimientosEsperados = 1;
 
         Pozo pozo = new Pozo();
-        calle.guardarObstaculo(pozo);
+        calle.guardarInteractuable(pozo);
         mapa.guardarCalle(new Posicion(2,1), calle);
 
         /* Act */
@@ -84,7 +84,7 @@ public class Entrega1Test {
         int movimientosEsperados = 3;
 
         Piquete piquete = new Piquete();
-        calle.guardarObstaculo(piquete);
+        calle.guardarInteractuable(piquete);
         mapa.guardarCalle(new Posicion(2,1), calle);
 
         /* Act */
@@ -103,7 +103,7 @@ public class Entrega1Test {
         Posicion inicio = new Posicion(1, 1);
 
         Piquete piquete = new Piquete();
-        calle.guardarObstaculo(piquete);
+        calle.guardarInteractuable(piquete);
         mapa.guardarCalle(new Posicion(2,1), calle);
 
         /* Act */
@@ -124,11 +124,11 @@ public class Entrega1Test {
         int movimientosEsperados = 5;
 
         Pozo pozo1 = new Pozo();
-        calle1.guardarObstaculo(pozo1);
+        calle1.guardarInteractuable(pozo1);
         Pozo pozo2 = new Pozo();
-        calle2.guardarObstaculo(pozo2);
+        calle2.guardarInteractuable(pozo2);
         Pozo pozo3 = new Pozo();
-        calle3.guardarObstaculo(pozo3);
+        calle3.guardarInteractuable(pozo3);
 
         mapa.guardarCalle(new Posicion(2,1), calle1);
         mapa.guardarCalle(new Posicion(4,1), calle2);

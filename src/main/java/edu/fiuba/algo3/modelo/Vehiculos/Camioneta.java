@@ -7,6 +7,8 @@ import edu.fiuba.algo3.modelo.Escenario.Mapa;
 import java.util.Random;
 
 public class Camioneta implements Tipo {
+
+    private final float CHANCE_CONTROL_POLICIAL = 0.3F;
     private int cantidadDePozosAtravesados;
 
     public Camioneta(){
@@ -28,7 +30,7 @@ public class Camioneta implements Tipo {
 
     public int atravesarControlPolicial() {
         Aleatorio random = new Aleatorio();
-        if(random.atravesarControlPolicial(0.3F)) return 3;
+        if(random.atravesarControlPolicial(CHANCE_CONTROL_POLICIAL)) return 3;
         return 0;
     }
 

@@ -23,6 +23,7 @@ public class Aleatorio {
         }else{
             coordenadaY *= 2;
         }
+        return coordenadaY;
     }
 
     public Posicion crearPosicionAleatoria(int ancho, int alto) {

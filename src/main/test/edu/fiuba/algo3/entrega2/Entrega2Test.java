@@ -25,7 +25,7 @@ public class Entrega2Test {
         int movimientosEsperados = (int) (10 * 0.8);
 
         SorpresaFavorable sorpresa = new SorpresaFavorable();
-        calle.guardarSorpresa(sorpresa);
+        calle.guardarInteractuable(sorpresa);
         mapa.guardarCalle(new Posicion(4,1), calle);
 
         /* Act */
@@ -53,7 +53,7 @@ public class Entrega2Test {
         int movimientosEsperados = (int) (2 * 1.25);
 
         SorpresaDesfavorable sorpresa = new SorpresaDesfavorable();
-        calle.guardarSorpresa(sorpresa);
+        calle.guardarInteractuable(sorpresa);
         mapa.guardarCalle(new Posicion(4,1), calle);
 
         /* Act */
@@ -72,7 +72,7 @@ public class Entrega2Test {
         Tipo tipoEsperado = new Camioneta();
 
         SorpresaCambioVehiculo sorpresa = new SorpresaCambioVehiculo();
-        calle.guardarSorpresa(sorpresa);
+        calle.guardarInteractuable(sorpresa);
         mapa.guardarCalle(new Posicion(4,1), calle);
 
         /* Act */
@@ -94,8 +94,8 @@ public class Entrega2Test {
 
         SorpresaCambioVehiculo sorpresa1 = new SorpresaCambioVehiculo();
         SorpresaCambioVehiculo sorpresa2 = new SorpresaCambioVehiculo();
-        calle1.guardarSorpresa(sorpresa1);
-        calle2.guardarSorpresa(sorpresa2);
+        calle1.guardarInteractuable(sorpresa1);
+        calle2.guardarInteractuable(sorpresa2);
         mapa.guardarCalle(new Posicion(2,1), calle1);
         mapa.guardarCalle(new Posicion(4,1), calle2);
 
@@ -118,8 +118,8 @@ public class Entrega2Test {
 
         SorpresaCambioVehiculo sorpresa = new SorpresaCambioVehiculo();
         Piquete piquete = new Piquete();
-        calle1.guardarSorpresa(sorpresa);
-        calle2.guardarObstaculo(piquete);
+        calle1.guardarInteractuable(sorpresa);
+        calle2.guardarInteractuable(piquete);
         mapa.guardarCalle(new Posicion(2,1), calle1);
         mapa.guardarCalle(new Posicion(4,1), calle2);
 

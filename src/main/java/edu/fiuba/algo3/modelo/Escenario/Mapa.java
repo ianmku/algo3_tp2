@@ -28,15 +28,18 @@ public class Mapa {
     }
 
     public void moverVehiculo(Vehiculo vehiculo, Direccion direccion){
-        Posicion proximaPosicion = direccion.calcularPosicionSiguiente(posicionDelVehiculo);
-        if(!limite.verificarLimite(proximaPosicion)){
+        Posicion proximaPosicion1 = direccion.calcularPosicionSiguiente(posicionDelVehiculo);
+        Posicion proximaPosicion2 = direccion.calcularPosicionSiguiente(proximaPosicion1);
+        // proximaPosicion1.imprimirPosicion();
+        if(!proximaPosicion1.estaEnLimites(this.ancho, this.alto)){
             return;
         }
         Calle calle = calles.get(posicionDelVehiculo);
         if(calle != null){
             calle.atravesarCalle(vehiculo);
         }
-        posicionDelVehiculo = direccion.calcularPosicionSiguiente(proximaPosicion);
+        posicionDelVehiculo = proximaPosicion2;
+        // posicionDelVehiculo = direccion.calcularPosicionSiguiente(proximaPosicion);
         vehiculo.aumentarMovimientos(1);
     }
 
@@ -66,12 +69,12 @@ public class Mapa {
         this.alto = 10;
         this.limite = new LimiteMapa();
         calles = new Hashtable<>();
-        colocarInteractuable(12, new Pozo());
-        colocarInteractuable(10, new Piquete());
-        colocarInteractuable(9, new ControlPolicial());
-        colocarInteractuable(6, new SorpresaFavorable());
-        colocarInteractuable(4, new SorpresaDesfavorable());
-        colocarInteractuable(5, new SorpresaCambioVehiculo());
+//        colocarInteractuable(12, new Pozo());
+//        colocarInteractuable(10, new Piquete());
+//        colocarInteractuable(9, new ControlPolicial());
+//        colocarInteractuable(6, new SorpresaFavorable());
+//        colocarInteractuable(4, new SorpresaDesfavorable());
+//        colocarInteractuable(5, new SorpresaCambioVehiculo());
         this.posicionDelVehiculo = new Posicion(1,5);
         this.Llegada = new Posicion(9,5);
 
