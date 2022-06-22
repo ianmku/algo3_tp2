@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import static edu.fiuba.algo3.modelo.Escenario.TamanioMapa.MEDIANO;
+
 public class Juego {
 
     private List<Jugador> jugadores;
@@ -115,7 +117,7 @@ public class Juego {
     }
     public Jugador pedirInformacionDelUsuario(){
 
-        Mapa unMapa = new Mapa();
+        Mapa unMapa = new Mapa(MEDIANO);
         System.out.println("Inserte su nombre: ");
         Scanner scanner = new Scanner(System.in);
         String nombreDelJugador = scanner.nextLine();
