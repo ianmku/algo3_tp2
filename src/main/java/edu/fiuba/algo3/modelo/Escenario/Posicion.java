@@ -27,6 +27,12 @@ public class Posicion {
         this.posicionY--;
     }
 
+    public boolean estaEnLimites(int ancho, int alto) {
+        if(this.posicionX < 0 || this.posicionX > ancho) return false;
+        if(this.posicionY < 0 || this.posicionY > alto) return false;
+        return true;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -41,7 +47,7 @@ public class Posicion {
     }
 
     public void imprimirPosicion(){
-        System.out.println(this.posicionX + "," + this.posicionY);
+        System.out.println("x: " + this.posicionX + " | y: " + this.posicionY);
     }
 
 

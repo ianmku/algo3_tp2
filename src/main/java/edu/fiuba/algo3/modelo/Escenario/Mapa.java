@@ -1,8 +1,9 @@
 package edu.fiuba.algo3.modelo.Escenario;
 
 
+import edu.fiuba.algo3.modelo.Aleatorio;
 import edu.fiuba.algo3.modelo.Direcciones.Direccion;
-import edu.fiuba.algo3.modelo.Interactuables.Sorpresa;
+import edu.fiuba.algo3.modelo.Interactuables.*;
 import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
 
 import java.util.Hashtable;
@@ -10,10 +11,12 @@ import java.util.Hashtable;
 public class Mapa {
 
     private int ancho;
-    private int largo;
+    private int alto;
     private Posicion posicionDelVehiculo;
     private Posicion Llegada;
     private Hashtable<Posicion, Calle> calles;
+
+    private LimiteMapa limite;
 
 
     public void guardarCalle(Posicion posicion, Calle calle) {
@@ -25,12 +28,18 @@ public class Mapa {
     }
 
     public void moverVehiculo(Vehiculo vehiculo, Direccion direccion){
-        posicionDelVehiculo = direccion.calcularPosicionSiguiente(posicionDelVehiculo);
+        Posicion proximaPosicion1 = direccion.calcularPosicionSiguiente(posicionDelVehiculo);
+        Posicion proximaPosicion2 = direccion.calcularPosicionSiguiente(proximaPosicion1);
+        // proximaPosicion1.imprimirPosicion();
+        if(!proximaPosicion1.estaEnLimites(this.ancho, this.alto)){
+            return;
+        }
         Calle calle = calles.get(posicionDelVehiculo);
         if(calle != null){
             calle.atravesarCalle(vehiculo);
         }
-        posicionDelVehiculo = direccion.calcularPosicionSiguiente(posicionDelVehiculo);
+        posicionDelVehiculo = proximaPosicion2;
+        // posicionDelVehiculo = direccion.calcularPosicionSiguiente(proximaPosicion);
         vehiculo.aumentarMovimientos(1);
     }
 
@@ -38,11 +47,35 @@ public class Mapa {
         return this.posicionDelVehiculo;
     }
 
+    public void colocarInteractuable(int cantidad, Interactuable interactuable) {
+        Aleatorio random = new Aleatorio();
+        for(int i=0; i<cantidad; i++){
+            Posicion posicion = random.crearPosicionAleatoria(ancho, alto);
+            Calle calle = calles.get(posicion);
+            if(calle == null){
+                calle = new Calle();
+                calles.put(posicion, calle);
+            }
+            calle.guardarInteractuable(interactuable);
+        }
+    }
+
+    public void definirLimites(int ancho, int alto) {
+
+    }
+
     public Mapa(){
         this.ancho = 10;
-        this.largo = 10;
+        this.alto = 10;
+        this.limite = new LimiteMapa();
         calles = new Hashtable<>();
-        this.posicionDelVehiculo = new Posicion(1,1);
+//        colocarInteractuable(12, new Pozo());
+//        colocarInteractuable(10, new Piquete());
+//        colocarInteractuable(9, new ControlPolicial());
+//        colocarInteractuable(6, new SorpresaFavorable());
+//        colocarInteractuable(4, new SorpresaDesfavorable());
+//        colocarInteractuable(5, new SorpresaCambioVehiculo());
+        this.posicionDelVehiculo = new Posicion(1,5);
         this.Llegada = new Posicion(9,5);
 
     }
