@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.entrega2;
 
-import edu.fiuba.algo3.modelo.Direcciones.Derecha;
+import edu.fiuba.algo3.modelo.Direcciones.*;
 import edu.fiuba.algo3.modelo.Escenario.Calle;
 import edu.fiuba.algo3.modelo.Escenario.Mapa;
 import edu.fiuba.algo3.modelo.Escenario.Posicion;
@@ -22,7 +22,7 @@ public class Entrega2Test {
         Mapa mapa = new Mapa();
         Calle calle = new Calle();
         Vehiculo moto = new Vehiculo(new Mapa(), new Moto());
-        int movimientosEsperados = (int) (2 * 0.8);
+        int movimientosEsperados = (int) (10 * 0.8);
 
         SorpresaFavorable sorpresa = new SorpresaFavorable();
         calle.guardarSorpresa(sorpresa);
@@ -30,6 +30,14 @@ public class Entrega2Test {
 
         /* Act */
         mapa.moverVehiculo(moto, new Derecha());
+        mapa.moverVehiculo(moto, new Derecha());
+        mapa.moverVehiculo(moto, new Arriba());
+        mapa.moverVehiculo(moto, new Abajo());
+        mapa.moverVehiculo(moto, new Izquierda());
+        mapa.moverVehiculo(moto, new Abajo());
+        mapa.moverVehiculo(moto, new Izquierda());
+        mapa.moverVehiculo(moto, new Arriba());
+        mapa.moverVehiculo(moto, new Arriba());
         mapa.moverVehiculo(moto, new Derecha());
 
         /* Assert */

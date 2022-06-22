@@ -10,27 +10,14 @@ import java.util.List;
 
 public class Calle {
 
-    private boolean tieneObstaculo = false;
-    private boolean tieneSorpresa = false;
-
     private List<Interactuable> interactuables;
 
     public Calle() {
         interactuables = new ArrayList<>();
     }
 
-    public void guardarObstaculo(Obstaculo unObstaculo) {
-        if(!tieneObstaculo){
-            interactuables.add(unObstaculo);
-            tieneObstaculo = true;
-        }
-    }
-
-    public void guardarSorpresa(Sorpresa unaSorpresa) {
-        if(!tieneObstaculo){
-            interactuables.add(unaSorpresa);
-            tieneSorpresa = true;
-        }
+    public void guardarInteractuable(Interactuable interactuable) {
+        interactuables.add(interactuable);
     }
 
     public void atravesarCalle(Vehiculo vehiculo) {
