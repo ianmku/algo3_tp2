@@ -44,18 +44,18 @@ public class Mapa {
     }
 
     public void moverVehiculo(Vehiculo vehiculo, Direccion direccion){
-        Posicion proximaPosicion1 = direccion.calcularPosicionSiguiente(posicionDelVehiculo);
-        Posicion proximaPosicion2 = direccion.calcularPosicionSiguiente(proximaPosicion1);
-        // proximaPosicion1.imprimirPosicion();
-        if(!proximaPosicion1.estaEnLimites(this.ancho, this.alto)){
+        imprimirPosicion();
+        posicionDelVehiculo = direccion.calcularPosicionSiguiente(posicionDelVehiculo);
+        posicionDelVehiculo = direccion.calcularPosicionSiguiente(posicionDelVehiculo);
+        if(!posicionDelVehiculo.estaEnLimites(this.ancho, this.alto)){
+            posicionDelVehiculo = direccion.opuesto().calcularPosicionSiguiente(posicionDelVehiculo);
+            posicionDelVehiculo = direccion.opuesto().calcularPosicionSiguiente(posicionDelVehiculo);
             return;
         }
         Calle calle = calles.get(posicionDelVehiculo);
         if(calle != null){
             calle.atravesarCalle(vehiculo);
         }
-        posicionDelVehiculo = proximaPosicion2;
-        // posicionDelVehiculo = direccion.calcularPosicionSiguiente(proximaPosicion);
         vehiculo.aumentarMovimientos(1);
     }
 
@@ -111,9 +111,8 @@ public class Mapa {
                 break;
         }
         this.limite = new LimiteMapa();
-        this.posicionDelVehiculo = new Posicion(1,5);
-        this.Llegada = new Posicion(9,5);
-
+        this.posicionDelVehiculo = new Posicion(2,(this.alto - 1) / 2);
+        this.Llegada = new Posicion(ancho - 1,this.alto / 2);
     }
 
     public void imprimirPosicion(){
