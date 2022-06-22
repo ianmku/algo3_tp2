@@ -14,7 +14,8 @@ public class MotoTest {
     @Test
     public void TestMotoRecienCreadaTieneCeroMovimientos() {
         /* Arrange */
-        Vehiculo moto = new Vehiculo(new Mapa(), new Moto());
+
+        Moto moto = new Moto(new Mapa());
 
         /* Act and Assert */
         assertEquals(moto.getMovimientos(), 0);
@@ -24,11 +25,11 @@ public class MotoTest {
     public void TestMotoMoverModificaSuPosicion() {
         /* Arrange */
         Mapa mapa = new Mapa();
-        Vehiculo moto = new Vehiculo(new Mapa(), new Moto());
+        Moto moto = new Moto(new Mapa());
         Posicion destino = new Posicion(3, 1);
 
         /* Act */
-        mapa.moverVehiculo(moto, new Derecha());
+        moto.mover(new Derecha());
 
         /* Assert */
         assertEquals(moto.getPosicion(), destino);
@@ -37,7 +38,8 @@ public class MotoTest {
     @Test
     public void TestMotoAtravesarPozoAumentaSusMovimientos() {
         /* Arrange */
-        Vehiculo moto = new Vehiculo(new Mapa(), new Moto());
+
+        Moto moto = new Moto(new Mapa());
 
         /* Act */
         moto.atravesarPozo();
@@ -49,7 +51,8 @@ public class MotoTest {
     @Test
     public void TestMotoAtravesarPiqueteAumentaSusMovimientos() {
         /* Arrange */
-        Vehiculo moto = new Vehiculo(new Mapa(), new Moto());
+
+        Moto moto = new Moto(new Mapa());
 
         /* Act */
         moto.atravesarPiquete();

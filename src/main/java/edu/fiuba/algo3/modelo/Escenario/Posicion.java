@@ -27,6 +27,22 @@ public class Posicion {
         this.posicionY--;
     }
 
+    public int getPosicionX(){
+        return this.posicionX;
+    }
+
+    public void restarX(){
+        this.posicionX--;
+    }
+
+    public void sumarY() {
+        this.posicionY++;
+    }
+
+    public void restarY() {
+        this.posicionY--;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -39,11 +55,5 @@ public class Posicion {
     public int hashCode() {
         return Objects.hash(posicionX, posicionY);
     }
-
-    public void imprimirPosicion(){
-        System.out.println(this.posicionX + "," + this.posicionY);
-    }
-
-
 
 }
