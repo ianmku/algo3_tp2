@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import static edu.fiuba.algo3.modelo.Escenario.TamanioMapa.MEDIANO;
+
 public class Juego {
 
     private List<Jugador> jugadores;
@@ -31,11 +33,14 @@ public class Juego {
             String opcionElegida = scanner.nextLine();
 
             switch(opcionElegida){
+                case "j":
                 case "J":
                     iniciarPartida();
                     break;
+                case "r":
                 case "R":
                     break;
+                case "e":
                 case "E":
                     salir = true;
                     break;
@@ -69,15 +74,19 @@ public class Juego {
         Direccion direccion = new Izquierda();
 
         switch(opcionElegida){
+            case "w":
             case "W":
                 direccion =  new Arriba();
                 break;
+            case "a":
             case "A":
                 direccion =  new Izquierda();
                 break;
+            case "s":
             case "S":
                 direccion =  new Abajo();
                 break;
+            case "d":
             case "D":
                 direccion =  new Derecha();
                 break;
@@ -94,10 +103,13 @@ public class Juego {
         Vehiculo vehiculo = new Vehiculo(unMapa, new Auto());
 
         switch(opcionElegida){
+            case "a":
             case "A":
                 vehiculo = new Vehiculo(unMapa, new Auto());
+            case "m":
             case "M":
                 vehiculo = new Vehiculo(unMapa, new Moto());
+            case "c":
             case "C":
                 vehiculo = new Vehiculo(unMapa, new Camioneta());
         }
@@ -105,7 +117,7 @@ public class Juego {
     }
     public Jugador pedirInformacionDelUsuario(){
 
-        Mapa unMapa = new Mapa();
+        Mapa unMapa = new Mapa(MEDIANO);
         System.out.println("Inserte su nombre: ");
         Scanner scanner = new Scanner(System.in);
         String nombreDelJugador = scanner.nextLine();
