@@ -8,16 +8,19 @@ import static java.lang.Math.abs;
 
 public class Aleatorio {
 
-    Random rand = new Random();
+    Random rand;
+
+    public Aleatorio(){
+        this.rand = new Random();
+    }
 
     public boolean atravesarControlPolicial(float chance) {
-        Random rand = new Random();
-        float random = rand.nextFloat();
+        float random = this.rand.nextFloat();
         return (random <= chance);
     }
 
     public int generarCoordenadaY(int coordenadaX, int alto) {
-        int coordenadaY = rand.nextInt(alto/2);
+        int coordenadaY = this.rand.nextInt(alto/2);
         if(coordenadaX % 2 == 0) {
             coordenadaY = abs((coordenadaY * 2) - 1);
         }else{
@@ -27,7 +30,7 @@ public class Aleatorio {
     }
 
     public Posicion crearPosicionAleatoria(int ancho, int alto) {
-        int coordenadaX = rand.nextInt(ancho);
+        int coordenadaX = this.rand.nextInt(ancho);
         int coordenadaY = generarCoordenadaY(coordenadaX, alto);
         return new Posicion(coordenadaX, coordenadaY);
     }

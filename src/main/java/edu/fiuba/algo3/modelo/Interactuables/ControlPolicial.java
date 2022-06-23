@@ -12,6 +12,6 @@ public class ControlPolicial extends Obstaculo {
     }
 
     public void interactuarConVehiculo(Vehiculo vehiculo){
-        vehiculo.atravesarControlPolicial();
+        vehiculo.atravesarControlPolicial(aleatorio);
     }
 }
