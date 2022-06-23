@@ -1,8 +1,10 @@
 package edu.fiuba.algo3.modelo.VehiculoTest;
 
+import edu.fiuba.algo3.modelo.Aleatorio;
 import edu.fiuba.algo3.modelo.Direcciones.Derecha;
 import edu.fiuba.algo3.modelo.Escenario.Mapa;
 import edu.fiuba.algo3.modelo.Escenario.Posicion;
+import edu.fiuba.algo3.modelo.Escenario.TamanioMapa;
 import edu.fiuba.algo3.modelo.Vehiculos.Auto;
 import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
 import org.junit.jupiter.api.Test;
@@ -14,7 +16,7 @@ public class AutoTest {
     @Test
     public void TestAutoRecienCreadoTieneCeroMovimientos() {
         /* Arrange */
-        Vehiculo auto = new Vehiculo(new Mapa(), new Auto());
+        Vehiculo auto = new Vehiculo(new Mapa(TamanioMapa.CHICO, new Aleatorio()), new Auto());
 
         /* Act and Assert */
         assertEquals(auto.getMovimientos(), 0);
@@ -23,8 +25,8 @@ public class AutoTest {
     @Test
     public void TestAutoMoverModificaSuPosicion() {
         /* Arrange */
-        Mapa mapa = new Mapa();
-        Vehiculo auto = new Vehiculo(new Mapa(), new Auto());
+        Mapa mapa = new Mapa(TamanioMapa.CHICO, new Aleatorio());
+        Vehiculo auto = new Vehiculo(mapa, new Auto());
         Posicion destino = new Posicion(3, 1);
 
         /* Act */
@@ -37,7 +39,7 @@ public class AutoTest {
     @Test
     public void TestAutoAtravesarPozoAumentaSusMovimientos() {
         /* Arrange */
-        Vehiculo auto = new Vehiculo(new Mapa(), new Auto());
+        Vehiculo auto = new Vehiculo(new Mapa(TamanioMapa.CHICO, new Aleatorio()), new Auto());
 
         /* Act */
         auto.atravesarPozo();
@@ -49,7 +51,7 @@ public class AutoTest {
     @Test
     public void TestAutoAtravesarPiqueteNoAumentaUnMovimientos() {
         /* Arrange */
-        Vehiculo auto = new Vehiculo(new Mapa(), new Auto());
+        Vehiculo auto = new Vehiculo(new Mapa(TamanioMapa.CHICO, new Aleatorio()), new Auto());
 
         /* Act */
         auto.atravesarPiquete();

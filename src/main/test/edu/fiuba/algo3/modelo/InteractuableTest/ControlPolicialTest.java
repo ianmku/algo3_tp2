@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.InteractuableTest;
 
+import edu.fiuba.algo3.modelo.Aleatorio;
 import edu.fiuba.algo3.modelo.Escenario.Mapa;
 import edu.fiuba.algo3.modelo.Escenario.TamanioMapa;
 import edu.fiuba.algo3.modelo.Interactuables.ControlPolicial;
@@ -9,22 +10,20 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doAnswer;
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.*;
 
 public class ControlPolicialTest {
 
     @Test
     public void mockVehiculoAtraviesaControlPolicialEsPenalizado() {
         /* Arrange */
-        ControlPolicial controlPolicial = mock(ControlPolicial.class);
-        Vehiculo vehiculo = new Vehiculo(new Mapa(TamanioMapa.CHICO), new Auto());
+        Aleatorio aleatorio = mock(Aleatorio.class);
+        when(aleatorio.atravesarControlPolicial(any(float.class))).thenReturn(true);
+
+        ControlPolicial controlPolicial = new ControlPolicial(aleatorio);
+        Vehiculo vehiculo = new Vehiculo(new Mapa(TamanioMapa.CHICO, new Aleatorio()), new Auto());
 
         /* Act */
-        doAnswer(invocation -> {
-            vehiculo.aumentarMovimientos(3);
-            return null;
-        }).when(controlPolicial).interactuarConVehiculo(any(Vehiculo.class));
         controlPolicial.interactuarConVehiculo(vehiculo);
 
         /* Assert */

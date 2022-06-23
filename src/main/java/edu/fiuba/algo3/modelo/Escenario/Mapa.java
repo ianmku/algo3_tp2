@@ -28,6 +28,8 @@ public class Mapa {
     private int ancho;
     private int alto;
 
+    private int multiplicadorPuntaje;
+
     private Posicion posicionDelVehiculo;
 
     private final int COORDENADA_X_VEHICULO = 2;
@@ -63,10 +65,9 @@ public class Mapa {
         return this.posicionDelVehiculo;
     }
 
-    public void colocarInteractuable(int cantidad, Interactuable interactuable) {
-        Aleatorio random = new Aleatorio();
+    public void colocarInteractuable(int cantidad, Interactuable interactuable, Aleatorio aleatorio) {
         for(int i=0; i<cantidad; i++){
-            Posicion posicion = random.crearPosicionAleatoria(ancho, alto);
+            Posicion posicion = aleatorio.crearPosicionAleatoria(ancho, alto);
             Calle calle = calles.get(posicion);
             if(calle == null){
                 calle = new Calle();
@@ -76,38 +77,41 @@ public class Mapa {
         }
     }
 
-    public Mapa(TamanioMapa tamanio){
+    public Mapa(TamanioMapa tamanio, Aleatorio aleatorio){
         calles = new Hashtable<>();
         switch(tamanio){
             case CHICO:
                 this.ancho = ANCHO_CHICO;
                 this.alto = ALTO_CHICO;
-                colocarInteractuable(OBSTACULOS_CHICO, new Pozo());
-                colocarInteractuable(OBSTACULOS_CHICO, new Piquete());
-                colocarInteractuable(OBSTACULOS_CHICO, new ControlPolicial());
-                colocarInteractuable(SORPRESAS_CHICO, new SorpresaFavorable());
-                colocarInteractuable(SORPRESAS_CHICO, new SorpresaDesfavorable());
-                colocarInteractuable(SORPRESAS_CHICO, new SorpresaCambioVehiculo());
+                this.multiplicadorPuntaje = 1;
+                colocarInteractuable(OBSTACULOS_CHICO, new Pozo(), aleatorio);
+                colocarInteractuable(OBSTACULOS_CHICO, new Piquete(), aleatorio);
+                colocarInteractuable(OBSTACULOS_CHICO, new ControlPolicial(aleatorio), aleatorio);
+                colocarInteractuable(SORPRESAS_CHICO, new SorpresaFavorable(), aleatorio);
+                colocarInteractuable(SORPRESAS_CHICO, new SorpresaDesfavorable(), aleatorio);
+                colocarInteractuable(SORPRESAS_CHICO, new SorpresaCambioVehiculo(), aleatorio);
                 break;
             case MEDIANO:
                 this.ancho = ANCHO_MEDIANO;
                 this.alto = ALTO_MEDIANO;
-                colocarInteractuable(OBSTACULOS_MEDIANO, new Pozo());
-                colocarInteractuable(OBSTACULOS_MEDIANO, new Piquete());
-                colocarInteractuable(OBSTACULOS_MEDIANO, new ControlPolicial());
-                colocarInteractuable(SORPRESAS_MEDIANO, new SorpresaFavorable());
-                colocarInteractuable(SORPRESAS_MEDIANO, new SorpresaDesfavorable());
-                colocarInteractuable(SORPRESAS_MEDIANO, new SorpresaCambioVehiculo());
+                this.multiplicadorPuntaje = 2;
+                colocarInteractuable(OBSTACULOS_MEDIANO, new Pozo(), aleatorio);
+                colocarInteractuable(OBSTACULOS_MEDIANO, new Piquete(), aleatorio);
+                colocarInteractuable(OBSTACULOS_MEDIANO, new ControlPolicial(aleatorio), aleatorio);
+                colocarInteractuable(SORPRESAS_MEDIANO, new SorpresaFavorable(), aleatorio);
+                colocarInteractuable(SORPRESAS_MEDIANO, new SorpresaDesfavorable(), aleatorio);
+                colocarInteractuable(SORPRESAS_MEDIANO, new SorpresaCambioVehiculo(), aleatorio);
                 break;
             case GRANDE:
                 this.ancho = ANCHO_GRANDE;
                 this.alto = ALTO_GRANDE;
-                colocarInteractuable(OBSTACULOS_GRANDE, new Pozo());
-                colocarInteractuable(OBSTACULOS_GRANDE, new Piquete());
-                colocarInteractuable(OBSTACULOS_GRANDE, new ControlPolicial());
-                colocarInteractuable(SORPRESAS_GRANDE, new SorpresaFavorable());
-                colocarInteractuable(SORPRESAS_GRANDE, new SorpresaDesfavorable());
-                colocarInteractuable(SORPRESAS_GRANDE, new SorpresaCambioVehiculo());
+                this.multiplicadorPuntaje = 3;
+                colocarInteractuable(OBSTACULOS_GRANDE, new Pozo(), aleatorio);
+                colocarInteractuable(OBSTACULOS_GRANDE, new Piquete(), aleatorio);
+                colocarInteractuable(OBSTACULOS_GRANDE, new ControlPolicial(aleatorio), aleatorio);
+                colocarInteractuable(SORPRESAS_GRANDE, new SorpresaFavorable(), aleatorio);
+                colocarInteractuable(SORPRESAS_GRANDE, new SorpresaDesfavorable(), aleatorio);
+                colocarInteractuable(SORPRESAS_GRANDE, new SorpresaCambioVehiculo(), aleatorio);
                 break;
         }
         this.posicionDelVehiculo = new Posicion(COORDENADA_X_VEHICULO,(this.alto - 1) / 2);
@@ -116,6 +120,10 @@ public class Mapa {
 
     public void imprimirPosicion(){
         this.posicionDelVehiculo.imprimirPosicion();
+    }
+
+    public int calcularPuntaje(int cantidadDeMovimientos) {
+        return cantidadDeMovimientos * this.multiplicadorPuntaje;
     }
 
 

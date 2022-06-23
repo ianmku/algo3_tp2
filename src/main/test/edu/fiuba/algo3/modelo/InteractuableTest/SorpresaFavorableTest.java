@@ -1,7 +1,9 @@
 package edu.fiuba.algo3.modelo.InteractuableTest;
 
+import edu.fiuba.algo3.modelo.Aleatorio;
 import edu.fiuba.algo3.modelo.Direcciones.Derecha;
 import edu.fiuba.algo3.modelo.Escenario.Mapa;
+import edu.fiuba.algo3.modelo.Escenario.TamanioMapa;
 import edu.fiuba.algo3.modelo.Interactuables.SorpresaFavorable;
 import edu.fiuba.algo3.modelo.Vehiculos.Moto;
 import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
@@ -14,7 +16,7 @@ public class SorpresaFavorableTest {
     @Test
     public void unVehiculoEncuentraSorpresaFavorable() {
         /* Arrange */
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(TamanioMapa.CHICO, new Aleatorio());
         Vehiculo vehiculo = new Vehiculo(mapa, new Moto());
         int movimientosEsperados = (int) (2 * 0.8);
         SorpresaFavorable sorpresa = new SorpresaFavorable();
