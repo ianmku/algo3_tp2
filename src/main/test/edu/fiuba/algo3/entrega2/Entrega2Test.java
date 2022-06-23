@@ -55,17 +55,29 @@ public class Entrega2Test {
     @Test
     public void vehiculoEncuentraSorpresaDesfavorable() {
         /* Arrange */
-        Mapa mapa = new Mapa(TamanioMapa.CHICO, new Aleatorio());
+
+        Aleatorio aleatorio = mock(Aleatorio.class);
+        when(aleatorio.crearPosicionAleatoria(anyInt(), anyInt())).thenReturn(new Posicion(0,0));
+
+        Mapa mapa = new Mapa(TamanioMapa.MEDIANO, aleatorio);
         Calle calle = new Calle();
         Vehiculo auto = new Vehiculo(mapa, new Auto());
-        int movimientosEsperados = (int) (2 * 1.25);
+        int movimientosEsperados = (int) (10 * 1.25);
 
         SorpresaDesfavorable sorpresa = new SorpresaDesfavorable();
         calle.guardarInteractuable(sorpresa);
-        mapa.guardarCalle(new Posicion(4,1), calle);
+        mapa.guardarCalle(new Posicion(3,7), calle);
 
         /* Act */
         mapa.moverVehiculo(auto, new Derecha());
+        mapa.moverVehiculo(auto, new Derecha());
+        mapa.moverVehiculo(auto, new Arriba());
+        mapa.moverVehiculo(auto, new Abajo());
+        mapa.moverVehiculo(auto, new Izquierda());
+        mapa.moverVehiculo(auto, new Abajo());
+        mapa.moverVehiculo(auto, new Izquierda());
+        mapa.moverVehiculo(auto, new Arriba());
+        mapa.moverVehiculo(auto, new Arriba());
         mapa.moverVehiculo(auto, new Derecha());
 
         /* Assert */
@@ -74,14 +86,18 @@ public class Entrega2Test {
 
     @Test
     public void vehiculoEncuentraSorpresaCambioDeVehiculo() {
-        Mapa mapa = new Mapa(TamanioMapa.CHICO, new Aleatorio());
+
+        Aleatorio aleatorio = mock(Aleatorio.class);
+        when(aleatorio.crearPosicionAleatoria(anyInt(), anyInt())).thenReturn(new Posicion(0,0));
+
+        Mapa mapa = new Mapa(TamanioMapa.CHICO, aleatorio);
         Calle calle = new Calle();
         Vehiculo vehiculo = new Vehiculo(mapa, new Auto());
         Tipo tipoEsperado = new Camioneta();
 
         SorpresaCambioVehiculo sorpresa = new SorpresaCambioVehiculo();
         calle.guardarInteractuable(sorpresa);
-        mapa.guardarCalle(new Posicion(4,1), calle);
+        mapa.guardarCalle(new Posicion(3,3), calle);
 
         /* Act */
         mapa.moverVehiculo(vehiculo, new Derecha());
@@ -94,7 +110,10 @@ public class Entrega2Test {
     @Test
     public void motoEncuentraSorpresaCambioDeVehiculo() {
         /* Arrange */
-        Mapa mapa = new Mapa(TamanioMapa.CHICO, new Aleatorio());
+        Aleatorio aleatorio = mock(Aleatorio.class);
+        when(aleatorio.crearPosicionAleatoria(anyInt(), anyInt())).thenReturn(new Posicion(0,0));
+
+        Mapa mapa = new Mapa(TamanioMapa.CHICO, aleatorio);
         Calle calle1 = new Calle();
         Calle calle2 = new Calle();
         Vehiculo vehiculo = new Vehiculo(mapa, new Auto());
@@ -104,8 +123,8 @@ public class Entrega2Test {
         SorpresaCambioVehiculo sorpresa2 = new SorpresaCambioVehiculo();
         calle1.guardarInteractuable(sorpresa1);
         calle2.guardarInteractuable(sorpresa2);
-        mapa.guardarCalle(new Posicion(2,1), calle1);
-        mapa.guardarCalle(new Posicion(4,1), calle2);
+        mapa.guardarCalle(new Posicion(3,3), calle1);
+        mapa.guardarCalle(new Posicion(5,3), calle2);
 
         /* Act */
         mapa.moverVehiculo(vehiculo, new Derecha());
@@ -118,18 +137,21 @@ public class Entrega2Test {
     @Test
     public void camionetaCambiaAMotoYAtraviesaPiquete() {
         /* Arrange */
-        Mapa mapa = new Mapa(TamanioMapa.CHICO, new Aleatorio());
+        Aleatorio aleatorio = mock(Aleatorio.class);
+        when(aleatorio.crearPosicionAleatoria(anyInt(), anyInt())).thenReturn(new Posicion(0,0));
+
+        Mapa mapa = new Mapa(TamanioMapa.CHICO, aleatorio);
         Calle calle1 = new Calle();
         Calle calle2 = new Calle();
         Vehiculo vehiculo = new Vehiculo(mapa, new Camioneta());
-        Posicion posicionEsperada = new Posicion(5, 1);
+        Posicion posicionEsperada = new Posicion(6, 3);
 
         SorpresaCambioVehiculo sorpresa = new SorpresaCambioVehiculo();
         Piquete piquete = new Piquete();
         calle1.guardarInteractuable(sorpresa);
         calle2.guardarInteractuable(piquete);
-        mapa.guardarCalle(new Posicion(2,1), calle1);
-        mapa.guardarCalle(new Posicion(4,1), calle2);
+        mapa.guardarCalle(new Posicion(3,3), calle1);
+        mapa.guardarCalle(new Posicion(5,3), calle2);
 
         /* Act */
         mapa.moverVehiculo(vehiculo, new Derecha());
