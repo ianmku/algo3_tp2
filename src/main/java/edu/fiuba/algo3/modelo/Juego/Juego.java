@@ -1,7 +1,9 @@
 package edu.fiuba.algo3.modelo.Juego;
 
+import edu.fiuba.algo3.modelo.Aleatorio;
 import edu.fiuba.algo3.modelo.Direcciones.*;
 import edu.fiuba.algo3.modelo.Escenario.Mapa;
+import edu.fiuba.algo3.modelo.Interactuables.Interactuable;
 import edu.fiuba.algo3.modelo.Vehiculos.Auto;
 import edu.fiuba.algo3.modelo.Vehiculos.Camioneta;
 import edu.fiuba.algo3.modelo.Vehiculos.Moto;
@@ -11,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static edu.fiuba.algo3.modelo.Escenario.TamanioMapa.MEDIANO;
+import static edu.fiuba.algo3.modelo.Escenario.TamanioMapa.*;
 
 public class Juego {
 
@@ -39,6 +41,7 @@ public class Juego {
                     break;
                 case "r":
                 case "R":
+                    mostrarRanking();
                     break;
                 case "e":
                 case "E":
@@ -64,6 +67,12 @@ public class Juego {
     public void terminarPartida(Jugador unJugador){
         this.jugadores.add(unJugador);
         System.out.println("Cantidad de movimientos: " + unJugador.obtenerCantidadMovimientos());
+    }
+
+    public void mostrarRanking() {
+        for(Jugador j: jugadores){
+            j.mostrarRanking();
+        }
     }
 
     public Direccion pedirDireccion(){
@@ -117,7 +126,7 @@ public class Juego {
     }
     public Jugador pedirInformacionDelUsuario(){
 
-        Mapa unMapa = new Mapa(MEDIANO);
+        Mapa unMapa = new Mapa(CHICO, new Aleatorio());
         System.out.println("Inserte su nombre: ");
         Scanner scanner = new Scanner(System.in);
         String nombreDelJugador = scanner.nextLine();

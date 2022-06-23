@@ -1,8 +1,10 @@
 package edu.fiuba.algo3.modelo.VehiculoTest;
 
+import edu.fiuba.algo3.modelo.Aleatorio;
 import edu.fiuba.algo3.modelo.Direcciones.Derecha;
 import edu.fiuba.algo3.modelo.Escenario.Mapa;
 import edu.fiuba.algo3.modelo.Escenario.Posicion;
+import edu.fiuba.algo3.modelo.Escenario.TamanioMapa;
 import edu.fiuba.algo3.modelo.Vehiculos.Camioneta;
 import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
 import org.junit.jupiter.api.Test;
@@ -13,7 +15,7 @@ public class CamionetaTest {
     @Test
     public void TestCamionetaRecienCreadaTieneCeroMovimientos() {
         /* Arrange */
-        Vehiculo camioneta = new Vehiculo(new Mapa(), new Camioneta());
+        Vehiculo camioneta = new Vehiculo(new Mapa(TamanioMapa.CHICO, new Aleatorio()), new Camioneta());
 
         /* Act and Assert */
         assertEquals(camioneta.getMovimientos(), 0);
@@ -22,8 +24,8 @@ public class CamionetaTest {
     @Test
     public void TestCamionetaMoverModificaSuPosicion() {
         /* Arrange */
-        Mapa mapa = new Mapa();
-        Vehiculo camioneta = new Vehiculo(new Mapa(), new Camioneta());
+        Mapa mapa = new Mapa(TamanioMapa.CHICO, new Aleatorio());
+        Vehiculo camioneta = new Vehiculo(mapa, new Camioneta());
         Posicion destino = new Posicion(3, 1);
 
         /* Act */
@@ -36,7 +38,7 @@ public class CamionetaTest {
     @Test
     public void TestCamionetaAtravesarUnPozoNoAumentaSusMovimientos() {
         /* Arrange */
-        Vehiculo camioneta = new Vehiculo(new Mapa(), new Camioneta());
+        Vehiculo camioneta = new Vehiculo(new Mapa(TamanioMapa.CHICO, new Aleatorio()), new Camioneta());
 
         /* Act */
         camioneta.atravesarPozo();
@@ -48,7 +50,7 @@ public class CamionetaTest {
     @Test
     public void TestCamionetaAtravesarTresPozosAumentaSusMovimientos() {
         /* Arrange */
-        Vehiculo camioneta = new Vehiculo(new Mapa(), new Camioneta());
+        Vehiculo camioneta = new Vehiculo(new Mapa(TamanioMapa.CHICO, new Aleatorio()), new Camioneta());
 
         /* Act */
         camioneta.atravesarPozo();
@@ -62,7 +64,7 @@ public class CamionetaTest {
     @Test
     public void TestCamionetaAtravesarPiqueteNoAumentaSusMovimientos() {
         /* Arrange */
-        Vehiculo camioneta = new Vehiculo(new Mapa(), new Camioneta());
+        Vehiculo camioneta = new Vehiculo(new Mapa(TamanioMapa.CHICO, new Aleatorio()), new Camioneta());
 
         /* Act */
         camioneta.atravesarPiquete();

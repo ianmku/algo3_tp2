@@ -1,9 +1,11 @@
 package edu.fiuba.algo3.entrega2;
 
+import edu.fiuba.algo3.modelo.Aleatorio;
 import edu.fiuba.algo3.modelo.Direcciones.*;
 import edu.fiuba.algo3.modelo.Escenario.Calle;
 import edu.fiuba.algo3.modelo.Escenario.Mapa;
 import edu.fiuba.algo3.modelo.Escenario.Posicion;
+import edu.fiuba.algo3.modelo.Escenario.TamanioMapa;
 import edu.fiuba.algo3.modelo.Interactuables.Piquete;
 import edu.fiuba.algo3.modelo.Interactuables.SorpresaCambioVehiculo;
 import edu.fiuba.algo3.modelo.Interactuables.SorpresaDesfavorable;
@@ -19,9 +21,9 @@ public class Entrega2Test {
     @Test
     public void vehiculoEncuentraSorpresaFavorable() {
         /* Arrange */
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(TamanioMapa.MEDIANO, new Aleatorio());
         Calle calle = new Calle();
-        Vehiculo moto = new Vehiculo(new Mapa(), new Moto());
+        Vehiculo moto = new Vehiculo(mapa, new Moto());
         int movimientosEsperados = (int) (10 * 0.8);
 
         SorpresaFavorable sorpresa = new SorpresaFavorable();
@@ -47,9 +49,9 @@ public class Entrega2Test {
     @Test
     public void vehiculoEncuentraSorpresaDesfavorable() {
         /* Arrange */
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(TamanioMapa.CHICO, new Aleatorio());
         Calle calle = new Calle();
-        Vehiculo auto = new Vehiculo(new Mapa(), new Auto());
+        Vehiculo auto = new Vehiculo(mapa, new Auto());
         int movimientosEsperados = (int) (2 * 1.25);
 
         SorpresaDesfavorable sorpresa = new SorpresaDesfavorable();
@@ -66,9 +68,9 @@ public class Entrega2Test {
 
     @Test
     public void vehiculoEncuentraSorpresaCambioDeVehiculo() {
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(TamanioMapa.CHICO, new Aleatorio());
         Calle calle = new Calle();
-        Vehiculo vehiculo = new Vehiculo(new Mapa(), new Auto());
+        Vehiculo vehiculo = new Vehiculo(mapa, new Auto());
         Tipo tipoEsperado = new Camioneta();
 
         SorpresaCambioVehiculo sorpresa = new SorpresaCambioVehiculo();
@@ -86,10 +88,10 @@ public class Entrega2Test {
     @Test
     public void motoEncuentraSorpresaCambioDeVehiculo() {
         /* Arrange */
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(TamanioMapa.CHICO, new Aleatorio());
         Calle calle1 = new Calle();
         Calle calle2 = new Calle();
-        Vehiculo vehiculo = new Vehiculo(new Mapa(), new Auto());
+        Vehiculo vehiculo = new Vehiculo(mapa, new Auto());
         Tipo tipoEsperado = new Moto();
 
         SorpresaCambioVehiculo sorpresa1 = new SorpresaCambioVehiculo();
@@ -110,7 +112,7 @@ public class Entrega2Test {
     @Test
     public void camionetaCambiaAMotoYAtraviesaPiquete() {
         /* Arrange */
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(TamanioMapa.CHICO, new Aleatorio());
         Calle calle1 = new Calle();
         Calle calle2 = new Calle();
         Vehiculo vehiculo = new Vehiculo(mapa, new Camioneta());

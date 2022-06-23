@@ -1,9 +1,11 @@
 package edu.fiuba.algo3.entrega1;
 
+import edu.fiuba.algo3.modelo.Aleatorio;
 import edu.fiuba.algo3.modelo.Direcciones.Derecha;
 import edu.fiuba.algo3.modelo.Escenario.Calle;
 import edu.fiuba.algo3.modelo.Escenario.Mapa;
 import edu.fiuba.algo3.modelo.Escenario.Posicion;
+import edu.fiuba.algo3.modelo.Escenario.TamanioMapa;
 import edu.fiuba.algo3.modelo.Interactuables.Piquete;
 import edu.fiuba.algo3.modelo.Interactuables.Pozo;
 import edu.fiuba.algo3.modelo.Vehiculos.Auto;
@@ -13,19 +15,25 @@ import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 public class Entrega1Test {
 
     @Test
     public void motoEncuentraUnPozoEsPenalizadaTresMovimientos() {
         /* Arrange */
-        Mapa mapa = new Mapa();
+        Aleatorio aleatorio = mock(Aleatorio.class);
+        when(aleatorio.crearPosicionAleatoria(7,7)).thenReturn(new Posicion(0, 0));
+        Mapa mapa = new Mapa(TamanioMapa.CHICO, aleatorio);
         Calle calle = new Calle();
         Vehiculo moto = new Vehiculo(mapa, new Moto());
         int movimientosEsperados = 4;
 
         Pozo pozo = new Pozo();
         calle.guardarInteractuable(pozo);
-        mapa.guardarCalle(new Posicion(2,1), calle);
+        mapa.guardarCalle(new Posicion(3,3), calle);
 
         /* Act */
         mapa.moverVehiculo(moto, new Derecha());
@@ -38,7 +46,7 @@ public class Entrega1Test {
     @Test
     public void autoEncuentraPozoEsPenalizadoTresMovimientos() {
         /* Arrange */
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(TamanioMapa.CHICO, new Aleatorio());
         Calle calle = new Calle();
         Vehiculo auto = new Vehiculo(mapa, new Auto());
         int movimientosEsperados = 4;
@@ -58,7 +66,7 @@ public class Entrega1Test {
     public void cuatroPorCuatroEncuentraPozoNoEsPenalizada() {
 
         /* Arrange */
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(TamanioMapa.CHICO, new Aleatorio());
         Calle calle = new Calle();
         Vehiculo camioneta = new Vehiculo(mapa, new Camioneta());
         int movimientosEsperados = 1;
@@ -78,7 +86,7 @@ public class Entrega1Test {
     @Test
     public void motoEncuentraUnPiqueteEsPenalizadaDosMovimientos(){
         /* Arrange */
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(TamanioMapa.CHICO, new Aleatorio());
         Calle calle = new Calle();
         Vehiculo moto = new Vehiculo(mapa, new Moto());
         int movimientosEsperados = 3;
@@ -97,7 +105,7 @@ public class Entrega1Test {
     @Test
     public void autoNoAtraviesaPiquete() {
         /* Arrange */
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(TamanioMapa.CHICO, new Aleatorio());
         Calle calle = new Calle();
         Vehiculo auto = new Vehiculo(mapa, new Auto());
         Posicion inicio = new Posicion(1, 1);
@@ -116,7 +124,7 @@ public class Entrega1Test {
     @Test
     public void cuatroPorCuatroEncuentraTresPozosEsPenalizado(){
         /* Arrange */
-        Mapa mapa = new Mapa();
+        Mapa mapa = new Mapa(TamanioMapa.CHICO, new Aleatorio());
         Calle calle1 = new Calle();
         Calle calle2 = new Calle();
         Calle calle3 = new Calle();

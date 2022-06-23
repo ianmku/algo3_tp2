@@ -67,8 +67,8 @@ public class Vehiculo {
         return this.mapa.getPosicionDelVehiculo();
     }
 
-    public Tipo getTipo(){
-        return this.tipo;
+    public int calcularPuntaje() {
+        return this.mapa.calcularPuntaje(this.cantidadDeMovimientos);
     }
 
     public boolean es(Tipo tipoEsperado) {

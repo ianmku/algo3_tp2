@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.modelo.InteractuableTest;
 
+import edu.fiuba.algo3.modelo.Aleatorio;
 import edu.fiuba.algo3.modelo.Escenario.Mapa;
+import edu.fiuba.algo3.modelo.Escenario.TamanioMapa;
 import edu.fiuba.algo3.modelo.Interactuables.Pozo;
 import edu.fiuba.algo3.modelo.Vehiculos.Auto;
 import edu.fiuba.algo3.modelo.Vehiculos.Camioneta;
@@ -16,7 +18,7 @@ public class PozoTest {
     public void TestPenalizarMovimientoAMoto() {
         /* Arrange */
         Pozo pozo = new Pozo();
-        Vehiculo moto = new Vehiculo(new Mapa(), new Moto());
+        Vehiculo moto = new Vehiculo(new Mapa(TamanioMapa.CHICO, new Aleatorio()), new Moto());
 
         /* Act */
         pozo.interactuarConVehiculo(moto);
@@ -30,7 +32,7 @@ public class PozoTest {
     public void TestPenalizarMovmientoAAuto() {
         /* Arange */
         Pozo pozo = new Pozo();
-        Vehiculo auto = new Vehiculo(new Mapa(), new Auto());
+        Vehiculo auto = new Vehiculo(new Mapa(TamanioMapa.CHICO, new Aleatorio()), new Auto());
 
         /* Act */
         pozo.interactuarConVehiculo(auto);
@@ -43,7 +45,7 @@ public class PozoTest {
     public void TestPenalizarMovmientoACpcQueNoEncontroPozos() {
         /* Arange */
         Pozo pozo = new Pozo();
-        Vehiculo camioneta = new Vehiculo(new Mapa(), new Camioneta());
+        Vehiculo camioneta = new Vehiculo(new Mapa(TamanioMapa.CHICO, new Aleatorio()), new Camioneta());
 
         /* Act */
         pozo.interactuarConVehiculo(camioneta);
@@ -56,7 +58,7 @@ public class PozoTest {
     public void testPenalizarMovimientoTresVecesACamioneta() {
         /* Arange */
         Pozo pozo = new Pozo();
-        Vehiculo camioneta = new Vehiculo(new Mapa(), new Camioneta());
+        Vehiculo camioneta = new Vehiculo(new Mapa(TamanioMapa.CHICO, new Aleatorio()), new Camioneta());
 
         /* Act */
         pozo.interactuarConVehiculo(camioneta);
