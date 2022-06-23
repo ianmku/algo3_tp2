@@ -47,17 +47,21 @@ public class Mapa {
 
     public void moverVehiculo(Vehiculo vehiculo, Direccion direccion){
         imprimirPosicion();
-        posicionDelVehiculo = direccion.calcularPosicionSiguiente(posicionDelVehiculo);
-        posicionDelVehiculo = direccion.calcularPosicionSiguiente(posicionDelVehiculo);
-        if(!posicionDelVehiculo.estaEnLimites(this.ancho, this.alto)){
-            posicionDelVehiculo = direccion.opuesto().calcularPosicionSiguiente(posicionDelVehiculo);
-            posicionDelVehiculo = direccion.opuesto().calcularPosicionSiguiente(posicionDelVehiculo);
+
+        direccion.calcularPosicionSiguiente(posicionDelVehiculo);
+        Calle calle = calles.get(posicionDelVehiculo);
+        if(!posicionDelVehiculo.estaEnLimites(this.ancho, this.alto)) {
+            direccion.opuesto().calcularPosicionSiguiente(posicionDelVehiculo);
             return;
         }
-        Calle calle = calles.get(posicionDelVehiculo);
+        imprimirPosicion();
         if(calle != null){
             calle.atravesarCalle(vehiculo);
         }
+
+        direccion.calcularPosicionSiguiente(posicionDelVehiculo);
+        imprimirPosicion();
+
         vehiculo.aumentarMovimientos(1);
     }
 

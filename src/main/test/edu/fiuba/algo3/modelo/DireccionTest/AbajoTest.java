@@ -13,14 +13,14 @@ public class AbajoTest {
 
         /* Arrange */
         Abajo abajo = new Abajo();
-        Posicion posInicial = new Posicion(1, 1);
+        Posicion posicion = new Posicion(1, 1);
         Posicion posEsperada = new Posicion(1, 0);
 
         /* Act */
-        Posicion posFinal = abajo.calcularPosicionSiguiente(posInicial);
+        abajo.calcularPosicionSiguiente(posicion);
 
         /* Assert */
-        assertEquals(posFinal, posEsperada);
+        assertEquals(posicion, posEsperada);
 
     }
 
@@ -29,13 +29,13 @@ public class AbajoTest {
 
         /* Arrange */
         Abajo abajo = new Abajo();
-        Posicion posInicial = new Posicion(1, 1);
+        Posicion posicion = new Posicion(1, 1);
         Posicion posEsperada = new Posicion(1, 2);
 
         /* Act */
-        Posicion posFinal = abajo.opuesto().calcularPosicionSiguiente(posInicial);
+        abajo.opuesto().calcularPosicionSiguiente(posicion);
 
         /* Assert */
-        assertEquals(posFinal, posEsperada);
+        assertEquals(posicion, posEsperada);
     }
 }

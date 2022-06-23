@@ -13,14 +13,14 @@ public class ArribaTest {
 
         /* Arrange */
         Arriba arriba = new Arriba();
-        Posicion posInicial = new Posicion(1, 1);
+        Posicion posicion = new Posicion(1, 1);
         Posicion posEsperada = new Posicion(1, 2);
 
         /* Act */
-        Posicion posFinal = arriba.calcularPosicionSiguiente(posInicial);
+        arriba.calcularPosicionSiguiente(posicion);
 
         /* Assert */
-        assertEquals(posFinal, posEsperada);
+        assertEquals(posicion, posEsperada);
     }
 
     @Test
@@ -28,13 +28,13 @@ public class ArribaTest {
 
         /* Arrange */
         Arriba arriba = new Arriba();
-        Posicion posInicial = new Posicion(1, 1);
+        Posicion posicion = new Posicion(1, 1);
         Posicion posEsperada = new Posicion(1, 0);
 
         /* Act */
-        Posicion posFinal = arriba.opuesto().calcularPosicionSiguiente(posInicial);
+        arriba.opuesto().calcularPosicionSiguiente(posicion);
 
         /* Assert */
-        assertEquals(posFinal, posEsperada);
+        assertEquals(posicion, posEsperada);
     }
 }

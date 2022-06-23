@@ -13,14 +13,14 @@ public class DerechaTest {
 
         /* Arrange */
         Derecha derecha = new Derecha();
-        Posicion posInicial = new Posicion(1, 1);
+        Posicion posicion = new Posicion(1, 1);
         Posicion posEsperada = new Posicion(2, 1);
 
         /* Act */
-        Posicion posFinal = derecha.calcularPosicionSiguiente(posInicial);
+        derecha.calcularPosicionSiguiente(posicion);
 
         /* Assert */
-        assertEquals(posFinal, posEsperada);
+        assertEquals(posicion, posEsperada);
 
     }
 
@@ -29,13 +29,13 @@ public class DerechaTest {
 
         /* Arrange */
         Derecha derecha = new Derecha();
-        Posicion posInicial = new Posicion(1, 1);
+        Posicion posicion = new Posicion(1, 1);
         Posicion posEsperada = new Posicion(0, 1);
 
         /* Act */
-        Posicion posFinal = derecha.opuesto().calcularPosicionSiguiente(posInicial);
+        derecha.opuesto().calcularPosicionSiguiente(posicion);
 
         /* Assert */
-        assertEquals(posFinal, posEsperada);
+        assertEquals(posicion, posEsperada);
     }
 }

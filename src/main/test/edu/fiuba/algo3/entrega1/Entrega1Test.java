@@ -25,7 +25,7 @@ public class Entrega1Test {
     public void motoEncuentraUnPozoEsPenalizadaTresMovimientos() {
         /* Arrange */
         Aleatorio aleatorio = mock(Aleatorio.class);
-        when(aleatorio.crearPosicionAleatoria(7,7)).thenReturn(new Posicion(0, 0));
+        when(aleatorio.crearPosicionAleatoria(any(int.class),any(int.class))).thenReturn(new Posicion(0, 0));
         Mapa mapa = new Mapa(TamanioMapa.CHICO, aleatorio);
         Calle calle = new Calle();
         Vehiculo moto = new Vehiculo(mapa, new Moto());
@@ -46,14 +46,16 @@ public class Entrega1Test {
     @Test
     public void autoEncuentraPozoEsPenalizadoTresMovimientos() {
         /* Arrange */
-        Mapa mapa = new Mapa(TamanioMapa.CHICO, new Aleatorio());
+        Aleatorio aleatorio = mock(Aleatorio.class);
+        when(aleatorio.crearPosicionAleatoria(any(int.class),any(int.class))).thenReturn(new Posicion(0, 0));
+        Mapa mapa = new Mapa(TamanioMapa.CHICO, aleatorio);
         Calle calle = new Calle();
         Vehiculo auto = new Vehiculo(mapa, new Auto());
         int movimientosEsperados = 4;
 
         Pozo pozo = new Pozo();
         calle.guardarInteractuable(pozo);
-        mapa.guardarCalle(new Posicion(2,1), calle);
+        mapa.guardarCalle(new Posicion(3,3), calle);
 
         /* Act */
         mapa.moverVehiculo(auto, new Derecha());
@@ -66,6 +68,8 @@ public class Entrega1Test {
     public void cuatroPorCuatroEncuentraPozoNoEsPenalizada() {
 
         /* Arrange */
+        Aleatorio aleatorio = mock(Aleatorio.class);
+        when(aleatorio.crearPosicionAleatoria(any(int.class),any(int.class))).thenReturn(new Posicion(0, 0));
         Mapa mapa = new Mapa(TamanioMapa.CHICO, new Aleatorio());
         Calle calle = new Calle();
         Vehiculo camioneta = new Vehiculo(mapa, new Camioneta());
@@ -73,7 +77,7 @@ public class Entrega1Test {
 
         Pozo pozo = new Pozo();
         calle.guardarInteractuable(pozo);
-        mapa.guardarCalle(new Posicion(2,1), calle);
+        mapa.guardarCalle(new Posicion(3,3), calle);
 
         /* Act */
         mapa.moverVehiculo(camioneta, new Derecha());
@@ -86,6 +90,8 @@ public class Entrega1Test {
     @Test
     public void motoEncuentraUnPiqueteEsPenalizadaDosMovimientos(){
         /* Arrange */
+        Aleatorio aleatorio = mock(Aleatorio.class);
+        when(aleatorio.crearPosicionAleatoria(any(int.class),any(int.class))).thenReturn(new Posicion(0, 0));
         Mapa mapa = new Mapa(TamanioMapa.CHICO, new Aleatorio());
         Calle calle = new Calle();
         Vehiculo moto = new Vehiculo(mapa, new Moto());
@@ -93,7 +99,7 @@ public class Entrega1Test {
 
         Piquete piquete = new Piquete();
         calle.guardarInteractuable(piquete);
-        mapa.guardarCalle(new Posicion(2,1), calle);
+        mapa.guardarCalle(new Posicion(3,3), calle);
 
         /* Act */
         mapa.moverVehiculo(moto, new Derecha());
@@ -105,14 +111,16 @@ public class Entrega1Test {
     @Test
     public void autoNoAtraviesaPiquete() {
         /* Arrange */
+        Aleatorio aleatorio = mock(Aleatorio.class);
+        when(aleatorio.crearPosicionAleatoria(any(int.class),any(int.class))).thenReturn(new Posicion(0, 0));
         Mapa mapa = new Mapa(TamanioMapa.CHICO, new Aleatorio());
         Calle calle = new Calle();
         Vehiculo auto = new Vehiculo(mapa, new Auto());
-        Posicion inicio = new Posicion(1, 1);
+        Posicion inicio = new Posicion(2, 3);
 
         Piquete piquete = new Piquete();
         calle.guardarInteractuable(piquete);
-        mapa.guardarCalle(new Posicion(2,1), calle);
+        mapa.guardarCalle(new Posicion(3,3), calle);
 
         /* Act */
         mapa.moverVehiculo(auto, new Derecha());
@@ -124,7 +132,10 @@ public class Entrega1Test {
     @Test
     public void cuatroPorCuatroEncuentraTresPozosEsPenalizado(){
         /* Arrange */
-        Mapa mapa = new Mapa(TamanioMapa.CHICO, new Aleatorio());
+        Aleatorio aleatorio = mock(Aleatorio.class);
+        when(aleatorio.crearPosicionAleatoria(any(int.class),any(int.class))).thenReturn(new Posicion(0, 0));
+
+        Mapa mapa = new Mapa(TamanioMapa.MEDIANO, aleatorio);
         Calle calle1 = new Calle();
         Calle calle2 = new Calle();
         Calle calle3 = new Calle();
@@ -138,9 +149,9 @@ public class Entrega1Test {
         Pozo pozo3 = new Pozo();
         calle3.guardarInteractuable(pozo3);
 
-        mapa.guardarCalle(new Posicion(2,1), calle1);
-        mapa.guardarCalle(new Posicion(4,1), calle2);
-        mapa.guardarCalle(new Posicion(6,1), calle3);
+        mapa.guardarCalle(new Posicion(3,5), calle1);
+        mapa.guardarCalle(new Posicion(5,5), calle2);
+        mapa.guardarCalle(new Posicion(7,5), calle3);
 
         /* Act */
         mapa.moverVehiculo(camioneta, new Derecha());
