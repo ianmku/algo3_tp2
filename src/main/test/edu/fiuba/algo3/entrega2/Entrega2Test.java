@@ -15,20 +15,26 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class Entrega2Test {
 
     @Test
     public void vehiculoEncuentraSorpresaFavorable() {
         /* Arrange */
-        Mapa mapa = new Mapa(TamanioMapa.MEDIANO, new Aleatorio());
+        Aleatorio aleatorio = mock(Aleatorio.class);
+        when(aleatorio.crearPosicionAleatoria(anyInt(), anyInt())).thenReturn(new Posicion(0,0));
+
+        Mapa mapa = new Mapa(TamanioMapa.MEDIANO, aleatorio);
         Calle calle = new Calle();
         Vehiculo moto = new Vehiculo(mapa, new Moto());
         int movimientosEsperados = (int) (10 * 0.8);
 
         SorpresaFavorable sorpresa = new SorpresaFavorable();
         calle.guardarInteractuable(sorpresa);
-        mapa.guardarCalle(new Posicion(4,1), calle);
+        mapa.guardarCalle(new Posicion(3,7), calle);
 
         /* Act */
         mapa.moverVehiculo(moto, new Derecha());
