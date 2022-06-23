@@ -10,6 +10,9 @@ import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class CamionetaTest {
     @Test
@@ -24,9 +27,12 @@ public class CamionetaTest {
     @Test
     public void TestCamionetaMoverModificaSuPosicion() {
         /* Arrange */
-        Mapa mapa = new Mapa(TamanioMapa.CHICO, new Aleatorio());
+        Aleatorio aleatorio = mock(Aleatorio.class);
+        when(aleatorio.crearPosicionAleatoria(anyInt(), anyInt())).thenReturn(new Posicion(0,0));
+
+        Mapa mapa = new Mapa(TamanioMapa.CHICO, aleatorio);
         Vehiculo camioneta = new Vehiculo(mapa, new Camioneta());
-        Posicion destino = new Posicion(3, 1);
+        Posicion destino = new Posicion(4, 3);
 
         /* Act */
         mapa.moverVehiculo(camioneta, new Derecha());
