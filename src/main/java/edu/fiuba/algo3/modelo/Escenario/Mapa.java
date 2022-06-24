@@ -55,6 +55,8 @@ public class Mapa {
             return;
         }
         imprimirPosicion();
+
+        vehiculo.aumentarMovimientos(1);
         if(calle != null){
             calle.atravesarCalle(vehiculo);
         }
@@ -62,7 +64,6 @@ public class Mapa {
         direccion.calcularPosicionSiguiente(posicionDelVehiculo);
         imprimirPosicion();
 
-        vehiculo.aumentarMovimientos(1);
     }
 
     public Posicion getPosicionDelVehiculo(){

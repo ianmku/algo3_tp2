@@ -113,7 +113,7 @@ public class Entrega1Test {
         /* Arrange */
         Aleatorio aleatorio = mock(Aleatorio.class);
         when(aleatorio.crearPosicionAleatoria(any(int.class),any(int.class))).thenReturn(new Posicion(0, 0));
-        Mapa mapa = new Mapa(TamanioMapa.CHICO, new Aleatorio());
+        Mapa mapa = new Mapa(TamanioMapa.CHICO, aleatorio);
         Calle calle = new Calle();
         Vehiculo auto = new Vehiculo(mapa, new Auto());
         Posicion inicio = new Posicion(2, 3);
