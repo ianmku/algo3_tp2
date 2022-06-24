@@ -51,14 +51,17 @@ public class Juego {
         }
     }
 
+    public void moverVehiculo(Direccion direccion, Jugador jugador){
+        jugador.moverVehiculo(direccion);
+    }
+
     public void iniciarPartida(){
 
         Jugador unJugador = pedirInformacionDelUsuario();
 
         while(!unJugador.ganoPartida()){
-            Direccion direccion = this.pedirDireccion();
-            unJugador.moverVehiculo(direccion);
-            unJugador.mostrarPosicion();
+           Direccion direccion = this.pedirDireccion();
+           moverVehiculo(direccion, unJugador);
         }
 
         this.terminarPartida(unJugador);

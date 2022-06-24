@@ -18,7 +18,7 @@ public class ControlPolicialTest {
     public void mockVehiculoAtraviesaControlPolicialEsPenalizado() {
         /* Arrange */
         Aleatorio aleatorio = mock(Aleatorio.class);
-        when(aleatorio.atravesarControlPolicial(any(float.class))).thenReturn(true);
+        when(aleatorio.atravesarControlPolicial(anyFloat())).thenReturn(true);
 
         ControlPolicial controlPolicial = new ControlPolicial(aleatorio);
         Vehiculo vehiculo = new Vehiculo(new Mapa(TamanioMapa.CHICO, new Aleatorio()), new Auto());

@@ -19,9 +19,8 @@ public class Auto implements Tipo {
         return -1;
     }
 
-    public int atravesarControlPolicial() {
-        Aleatorio random = new Aleatorio();
-        if(random.atravesarControlPolicial(CHANCE_CONTROL_POLICIAL)) return 3;
+    public int atravesarControlPolicial(Aleatorio aleatorio) {
+        if(aleatorio.atravesarControlPolicial(CHANCE_CONTROL_POLICIAL)) return 3;
         return 0;
     }
 

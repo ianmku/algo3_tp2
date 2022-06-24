@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.Vehiculos;
 
+import edu.fiuba.algo3.modelo.Aleatorio;
 import edu.fiuba.algo3.modelo.Direcciones.Derecha;
 import edu.fiuba.algo3.modelo.Direcciones.Direccion;
 import edu.fiuba.algo3.modelo.Escenario.Mapa;
@@ -34,8 +35,8 @@ public class Vehiculo {
         this.aumentarMovimientos(tipo.atravesarPiquete(mapa, direccion, this));
     }
 
-    public void atravesarControlPolicial() {
-        this.aumentarMovimientos(tipo.atravesarControlPolicial());
+    public void atravesarControlPolicial(Aleatorio aleatorio) {
+        this.aumentarMovimientos(tipo.atravesarControlPolicial(aleatorio));
     }
 
     public void aumentarMovimientos(int cantidad){
