@@ -19,6 +19,16 @@ public class Aleatorio {
         return (random <= chance);
     }
 
+    public Posicion generarPosicionDeLlegada(int ancho, int alto){
+        int coordenadaX = ancho-1;
+        int coordenadaY = rand.nextInt(alto);
+        while(coordenadaY % 2 == 0){
+            coordenadaY = rand.nextInt(alto);
+        }
+
+        return new Posicion(coordenadaX, coordenadaY);
+    }
+
     public int generarCoordenadaY(int coordenadaX, int alto) {
         int coordenadaY = this.rand.nextInt(alto/2);
         if(coordenadaX % 2 == 0) {

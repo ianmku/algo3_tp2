@@ -12,6 +12,10 @@ public class Vehiculo {
     private Direccion direccion;
     private Tipo tipo;
 
+    private final float MULTIPLICADOR_SORPRESA_FAVORABLE = 0.8F;
+
+    private final float MULTIPLICADOR_SORPRESA_DESFAVORABLE = 1.25F;
+
     public Vehiculo(Mapa mapa, Tipo tipo) {
         this.mapa = mapa;
         this.tipo = tipo;
@@ -49,11 +53,11 @@ public class Vehiculo {
     }
 
     public void atravesarSorpresaFavorable() {
-        this.cantidadDeMovimientos = (int) (this.cantidadDeMovimientos * 0.8);
+        this.cantidadDeMovimientos = (int) (this.cantidadDeMovimientos * MULTIPLICADOR_SORPRESA_FAVORABLE);
     }
 
     public void atravesarSorpresaDesfavorable() {
-        this.cantidadDeMovimientos = (int) (this.cantidadDeMovimientos * 1.25);
+        this.cantidadDeMovimientos = (int) (this.cantidadDeMovimientos * MULTIPLICADOR_SORPRESA_DESFAVORABLE);
     }
 
     public void atravesarSorpresaCambioDeVehiculo(){

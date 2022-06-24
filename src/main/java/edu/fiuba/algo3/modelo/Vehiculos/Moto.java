@@ -10,17 +10,23 @@ public class Moto implements Tipo {
 
     private final float CHANCE_CONTROL_POLICIAL = 0.8F;
 
+    private final int PENALIZACION_POZO = 3;
+    private final int PENALIZACION_PIQUETE = 2;
+    private final int PENALIZACION_CONTROL_POLICIAL = 3;
+
+    private final int NO_SE_PENALIZA = 0;
+
     public int atravesarPozo(){
-        return 3;
+        return PENALIZACION_POZO;
     }
 
     public int atravesarPiquete(Mapa mapa, Direccion direccion, Vehiculo vehiculo){
-        return 2;
+        return PENALIZACION_PIQUETE;
     }
 
     public int atravesarControlPolicial(Aleatorio aleatorio) {
-        if(aleatorio.atravesarControlPolicial(CHANCE_CONTROL_POLICIAL)) return 3;
-        return 0;
+        if(aleatorio.atravesarControlPolicial(CHANCE_CONTROL_POLICIAL)) return PENALIZACION_CONTROL_POLICIAL;
+        return NO_SE_PENALIZA;
     }
 
     public Tipo atravesarCambioVehiculo() {

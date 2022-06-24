@@ -8,10 +8,7 @@ import edu.fiuba.algo3.modelo.Escenario.Calle;
 import edu.fiuba.algo3.modelo.Escenario.Mapa;
 import edu.fiuba.algo3.modelo.Escenario.Posicion;
 import edu.fiuba.algo3.modelo.Escenario.TamanioMapa;
-import edu.fiuba.algo3.modelo.Interactuables.ControlPolicial;
-import edu.fiuba.algo3.modelo.Interactuables.Pozo;
-import edu.fiuba.algo3.modelo.Interactuables.SorpresaCambioVehiculo;
-import edu.fiuba.algo3.modelo.Interactuables.SorpresaDesfavorable;
+import edu.fiuba.algo3.modelo.Interactuables.*;
 import edu.fiuba.algo3.modelo.Juego.Jugador;
 import edu.fiuba.algo3.modelo.Vehiculos.Moto;
 import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
@@ -19,7 +16,9 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -31,12 +30,15 @@ public class Entrega3Test {
 
         when(aleatorio.atravesarControlPolicial(any(float.class))).thenReturn(true);
 
-        int movimientosEsperados = (int)((4 + 3 + 3) * 1.25);
+        when(aleatorio.generarPosicionDeLlegada(anyInt(), anyInt())).thenReturn(new Posicion(6,3));
+
+        int movimientosEsperados = (int)((4 + 3 + 3 + 2) * 1.25);
         Posicion posicionFinal = new Posicion(6,3);
 
         Mapa mapa = new Mapa(TamanioMapa.CHICO, aleatorio);
         Calle calle1 = new Calle();
         calle1.guardarInteractuable(new ControlPolicial(aleatorio));
+        calle1.guardarInteractuable(new Piquete());
         mapa.guardarCalle(new Posicion(3,3), calle1);
 
         Calle calle2 = new Calle();
@@ -62,5 +64,6 @@ public class Entrega3Test {
 
         assertEquals(movimientosEsperados, unJugador.obtenerCantidadMovimientos());
         assertEquals(posicionFinal, vehiculo.getPosicion());
+        assertTrue(mapa.vehiculoEstaEnLlegada());
     }
 }

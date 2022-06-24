@@ -55,6 +55,8 @@ public class Mapa {
             return;
         }
         imprimirPosicion();
+
+        vehiculo.aumentarMovimientos(1);
         if(calle != null){
             calle.atravesarCalle(vehiculo);
         }
@@ -62,7 +64,6 @@ public class Mapa {
         direccion.calcularPosicionSiguiente(posicionDelVehiculo);
         imprimirPosicion();
 
-        vehiculo.aumentarMovimientos(1);
     }
 
     public Posicion getPosicionDelVehiculo(){
@@ -119,7 +120,7 @@ public class Mapa {
                 break;
         }
         this.posicionDelVehiculo = new Posicion(COORDENADA_X_VEHICULO,(this.alto - 1) / 2);
-        this.Llegada = new Posicion(ancho - 1,this.alto / 2);
+        this.Llegada = aleatorio.generarPosicionDeLlegada(this.ancho, this.alto);
     }
 
     public void imprimirPosicion(){

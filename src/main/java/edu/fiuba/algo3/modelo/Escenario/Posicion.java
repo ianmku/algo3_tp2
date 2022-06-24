@@ -6,6 +6,9 @@ public class Posicion {
     private int posicionX;
     private int posicionY;
 
+    private final int LIMITE_DERECHO = 0;
+    private final int LIMITE_SUPERIOR = 0;
+
     public Posicion (int coordenadaX, int coordenadaY) {
         this.posicionX = coordenadaX;
         this.posicionY = coordenadaY;
@@ -28,8 +31,8 @@ public class Posicion {
     }
 
     public boolean estaEnLimites(int ancho, int alto) {
-        if(this.posicionX < 0 || this.posicionX > ancho) return false;
-        if(this.posicionY < 0 || this.posicionY > alto) return false;
+        if(this.posicionX < LIMITE_DERECHO || this.posicionX > ancho) return false;
+        if(this.posicionY < LIMITE_SUPERIOR || this.posicionY > alto) return false;
         return true;
     }
 
