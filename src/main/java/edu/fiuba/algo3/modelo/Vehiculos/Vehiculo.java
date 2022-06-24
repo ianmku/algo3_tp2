@@ -83,7 +83,4 @@ public class Vehiculo {
         return false;
     }
 
-    public void imprimirPosicion(){
-        this.mapa.imprimirPosicion();
-    }
 }

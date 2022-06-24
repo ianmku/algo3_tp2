@@ -46,7 +46,6 @@ public class Mapa {
     }
 
     public void moverVehiculo(Vehiculo vehiculo, Direccion direccion){
-        imprimirPosicion();
 
         direccion.calcularPosicionSiguiente(posicionDelVehiculo);
         Calle calle = calles.get(posicionDelVehiculo);
@@ -54,7 +53,6 @@ public class Mapa {
             direccion.opuesto().calcularPosicionSiguiente(posicionDelVehiculo);
             return;
         }
-        imprimirPosicion();
 
         vehiculo.aumentarMovimientos(1);
         if(calle != null){
@@ -62,7 +60,6 @@ public class Mapa {
         }
 
         direccion.calcularPosicionSiguiente(posicionDelVehiculo);
-        imprimirPosicion();
 
     }
 
@@ -123,13 +120,8 @@ public class Mapa {
         this.Llegada = aleatorio.generarPosicionDeLlegada(this.ancho, this.alto);
     }
 
-    public void imprimirPosicion(){
-        this.posicionDelVehiculo.imprimirPosicion();
-    }
-
     public int calcularPuntaje(int cantidadDeMovimientos) {
         return cantidadDeMovimientos * this.multiplicadorPuntaje;
     }
-
-
+    
 }
