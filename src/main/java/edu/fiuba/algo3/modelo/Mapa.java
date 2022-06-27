@@ -28,7 +28,7 @@ public class Mapa {
     public void atravesarObstaculo(Vehiculo vehiculo) {
         Obstaculo obs = calles.get(this.posicionDelVehiculo);
         if(obs == null) return;
-        obs.penalizarMovimiento(vehiculo);
+        obs.penalizarMovimiento(vehiculo);got
     }
 
     public Posicion getPosicionDelVehiculo(){
