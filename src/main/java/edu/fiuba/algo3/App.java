@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.Escenario.TamanioMapa;
 import edu.fiuba.algo3.modelo.Juego.Juego;
 import edu.fiuba.algo3.Vista.MapaVista;
 import javafx.application.Application;
+import javafx.geometry.HPos;
 import javafx.scene.paint.Color;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -56,16 +57,19 @@ public class App extends Application {
             RowConstraints row = new RowConstraints(40);
             layout.getRowConstraints().add(row);
         }
-
-        //Pane canvas = new Pane();
         Circle circle = new Circle(10);
+        Circle circle1 = new Circle(10);
+        layout.setHalignment(circle, HPos.CENTER);
+        layout.setHalignment(circle1, HPos.CENTER);
+
+
+
+
         layout.add(circle,5,5);
-        //layout.setConstraints(circle,2,1);
-        //layout.getChildren().addAll(circle);
-
-        //canvas.getChildren().add(circle);
+        layout.add(circle1,9,5);
 
 
+        layout.setAlignment(Pos.CENTER);
         layout.setStyle("-fx-background-color: white; -fx-grid-lines-visible: true");
 
         Scene scene = new Scene(layout, 1920, 1080);
