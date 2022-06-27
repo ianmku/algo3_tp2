@@ -27,7 +27,6 @@ public class Juego extends Observable {
 
     public void menu(){
 
-
         boolean salir = false;
 
         while(!salir){

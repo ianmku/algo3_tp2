@@ -1,8 +1,6 @@
 package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.GPSChallengeControlador;
-import edu.fiuba.algo3.controladores.InicioVista;
-import edu.fiuba.algo3.modelo.Juego.Juego;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 

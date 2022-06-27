@@ -20,28 +20,17 @@ public class App extends Application {
 
         GPSChallengeControlador gpscontrolador = new GPSChallengeControlador();
 
-        // StackPane layout = new StackPane();
         GPSChallengeVista gpschallengeVista = new GPSChallengeVista(gpscontrolador);
 
-        Juego juego = Juego.getInstance();
+        var juego = Juego.getInstance();
 
         juego.addObserver(gpschallengeVista);
 
-        Scene scene = new Scene(gpschallengeVista, 640, 520);
-        // Scene scene1 = new Scene(layout);
-
-//        Button button = new Button();
-//        button.setText("Boton nazi");
-
-        // layout.getChildren().add(button);
-
-        // Juego juego = new Juego();
+        var scene = new Scene(gpschallengeVista, 640, 520);
 
         stage.setScene(scene);
         stage.setTitle(gpschallengeVista.obtenerTitulo());
         stage.show();
-//        Juego unJuego = new Juego();
-//        unJuego.menu();
     }
 
     public static void main(String[] args) {
