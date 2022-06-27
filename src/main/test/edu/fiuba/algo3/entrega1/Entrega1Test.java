@@ -1,23 +1,42 @@
 package edu.fiuba.algo3.entrega1;
 
-import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.Aleatorio;
+import edu.fiuba.algo3.modelo.Direcciones.Derecha;
+import edu.fiuba.algo3.modelo.Escenario.Calle;
+import edu.fiuba.algo3.modelo.Escenario.Mapa;
+import edu.fiuba.algo3.modelo.Escenario.Posicion;
+import edu.fiuba.algo3.modelo.Escenario.TamanioMapa;
+import edu.fiuba.algo3.modelo.Interactuables.Piquete;
+import edu.fiuba.algo3.modelo.Interactuables.Pozo;
+import edu.fiuba.algo3.modelo.Vehiculos.Auto;
+import edu.fiuba.algo3.modelo.Vehiculos.Camioneta;
+import edu.fiuba.algo3.modelo.Vehiculos.Moto;
+import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 public class Entrega1Test {
 
     @Test
     public void motoEncuentraUnPozoEsPenalizadaTresMovimientos() {
         /* Arrange */
-        Mapa mapa = new Mapa();
-        Moto moto = new Moto(mapa);
+        Aleatorio aleatorio = mock(Aleatorio.class);
+        when(aleatorio.crearPosicionAleatoria(any(int.class),any(int.class))).thenReturn(new Posicion(0, 0));
+        Mapa mapa = new Mapa(TamanioMapa.CHICO, aleatorio);
+        Calle calle = new Calle();
+        Vehiculo moto = new Vehiculo(mapa, new Moto());
         int movimientosEsperados = 4;
 
         Pozo pozo = new Pozo();
-        mapa.guardarObstaculo(new Posicion(2,1), pozo);
+        calle.guardarInteractuable(pozo);
+        mapa.guardarCalle(new Posicion(3,3), calle);
 
         /* Act */
-        moto.mover(new Derecha());
+        mapa.moverVehiculo(moto, new Derecha());
 
         /* Assert */
         assertEquals(movimientosEsperados, moto.getMovimientos());
@@ -27,14 +46,19 @@ public class Entrega1Test {
     @Test
     public void autoEncuentraPozoEsPenalizadoTresMovimientos() {
         /* Arrange */
-        Mapa mapa = new Mapa();
-        Auto auto = new Auto(mapa);
+        Aleatorio aleatorio = mock(Aleatorio.class);
+        when(aleatorio.crearPosicionAleatoria(any(int.class),any(int.class))).thenReturn(new Posicion(0, 0));
+        Mapa mapa = new Mapa(TamanioMapa.CHICO, aleatorio);
+        Calle calle = new Calle();
+        Vehiculo auto = new Vehiculo(mapa, new Auto());
         int movimientosEsperados = 4;
+
         Pozo pozo = new Pozo();
-        mapa.guardarObstaculo(new Posicion(2,1), pozo);
+        calle.guardarInteractuable(pozo);
+        mapa.guardarCalle(new Posicion(3,3), calle);
 
         /* Act */
-        auto.mover(new Derecha());
+        mapa.moverVehiculo(auto, new Derecha());
 
         /* Assert */
         assertEquals(movimientosEsperados, auto.getMovimientos());
@@ -44,80 +68,101 @@ public class Entrega1Test {
     public void cuatroPorCuatroEncuentraPozoNoEsPenalizada() {
 
         /* Arrange */
-        Mapa mapa = new Mapa();
-        Cpc cpc = new Cpc(mapa);
+        Aleatorio aleatorio = mock(Aleatorio.class);
+        when(aleatorio.crearPosicionAleatoria(any(int.class),any(int.class))).thenReturn(new Posicion(0, 0));
+        Mapa mapa = new Mapa(TamanioMapa.CHICO, new Aleatorio());
+        Calle calle = new Calle();
+        Vehiculo camioneta = new Vehiculo(mapa, new Camioneta());
         int movimientosEsperados = 1;
 
         Pozo pozo = new Pozo();
-        mapa.guardarObstaculo(new Posicion(2,1), pozo);
+        calle.guardarInteractuable(pozo);
+        mapa.guardarCalle(new Posicion(3,3), calle);
 
         /* Act */
-        cpc.mover(new Derecha());
+        mapa.moverVehiculo(camioneta, new Derecha());
 
         /* Assert */
-        assertEquals(movimientosEsperados, cpc.getMovimientos());
+        assertEquals(movimientosEsperados, camioneta.getMovimientos());
 
     }
 
     @Test
     public void motoEncuentraUnPiqueteEsPenalizadaDosMovimientos(){
         /* Arrange */
-        Mapa mapa = new Mapa();
-        Moto moto = new Moto(mapa);
+        Aleatorio aleatorio = mock(Aleatorio.class);
+        when(aleatorio.crearPosicionAleatoria(any(int.class),any(int.class))).thenReturn(new Posicion(0, 0));
+        Mapa mapa = new Mapa(TamanioMapa.CHICO, new Aleatorio());
+        Calle calle = new Calle();
+        Vehiculo moto = new Vehiculo(mapa, new Moto());
         int movimientosEsperados = 3;
+
         Piquete piquete = new Piquete();
-        mapa.guardarObstaculo(new Posicion(2,1), piquete);
+        calle.guardarInteractuable(piquete);
+        mapa.guardarCalle(new Posicion(3,3), calle);
 
         /* Act */
-        moto.mover(new Derecha());
+        mapa.moverVehiculo(moto, new Derecha());
 
         /* Assert */
         assertEquals(movimientosEsperados, moto.getMovimientos());
 
     }
+    @Test
+    public void autoNoAtraviesaPiquete() {
+        /* Arrange */
+        Aleatorio aleatorio = mock(Aleatorio.class);
+        when(aleatorio.crearPosicionAleatoria(any(int.class),any(int.class))).thenReturn(new Posicion(0, 0));
+        Mapa mapa = new Mapa(TamanioMapa.CHICO, aleatorio);
+        Calle calle = new Calle();
+        Vehiculo auto = new Vehiculo(mapa, new Auto());
+        Posicion inicio = new Posicion(2, 3);
+
+        Piquete piquete = new Piquete();
+        calle.guardarInteractuable(piquete);
+        mapa.guardarCalle(new Posicion(3,3), calle);
+
+        /* Act */
+        mapa.moverVehiculo(auto, new Derecha());
+
+        /* Assert */
+        assertEquals(mapa.getPosicionDelVehiculo(), inicio);
+    }
 
     @Test
     public void cuatroPorCuatroEncuentraTresPozosEsPenalizado(){
         /* Arrange */
-        Mapa mapa = new Mapa();
-        Cpc cpc = new Cpc(mapa);
+        Aleatorio aleatorio = mock(Aleatorio.class);
+        when(aleatorio.crearPosicionAleatoria(any(int.class),any(int.class))).thenReturn(new Posicion(0, 0));
+
+        Mapa mapa = new Mapa(TamanioMapa.MEDIANO, aleatorio);
+        Calle calle1 = new Calle();
+        Calle calle2 = new Calle();
+        Calle calle3 = new Calle();
+        Vehiculo camioneta = new Vehiculo(mapa, new Camioneta());
         int movimientosEsperados = 5;
 
         Pozo pozo1 = new Pozo();
+        calle1.guardarInteractuable(pozo1);
         Pozo pozo2 = new Pozo();
+        calle2.guardarInteractuable(pozo2);
         Pozo pozo3 = new Pozo();
+        calle3.guardarInteractuable(pozo3);
 
-        mapa.guardarObstaculo(new Posicion(2,1), pozo1);
-        mapa.guardarObstaculo(new Posicion(4,1), pozo2);
-        mapa.guardarObstaculo(new Posicion(6,1), pozo3);
-
-        /* Act */
-        cpc.mover(new Derecha());
-
-        cpc.mover(new Derecha());
-
-        cpc.mover(new Derecha());
-
-        /* Assert */
-        assertEquals(movimientosEsperados, cpc.getMovimientos());
-    }
-
-
-    @Test
-    public void autoNoAtraviesaPiquete() {
-        /* Arrange */
-        Mapa mapa = new Mapa();
-        Posicion inicio = new Posicion(1, 1);
-        Auto auto = new Auto(mapa);
-
-        Piquete piquete = new Piquete();
-        mapa.guardarObstaculo(new Posicion(2, 1), piquete);
+        mapa.guardarCalle(new Posicion(3,5), calle1);
+        mapa.guardarCalle(new Posicion(5,5), calle2);
+        mapa.guardarCalle(new Posicion(7,5), calle3);
 
         /* Act */
-        auto.mover(new Derecha());
+        mapa.moverVehiculo(camioneta, new Derecha());
+
+        mapa.moverVehiculo(camioneta, new Derecha());
+
+        mapa.moverVehiculo(camioneta, new Derecha());
 
         /* Assert */
-        assertEquals(auto.getPosicion(), inicio);
+        assertEquals(movimientosEsperados, camioneta.getMovimientos());
     }
+
 
 }
