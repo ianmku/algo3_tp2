@@ -1,14 +1,13 @@
 package edu.fiuba.algo3;
 
+import edu.fiuba.algo3.controladores.GPSChallengeControlador;
 import edu.fiuba.algo3.modelo.Juego.Juego;
+import edu.fiuba.algo3.vistas.GPSChallengeVista;
 import javafx.application.Application;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -18,40 +17,20 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) {
-        Juego juego = new Juego();
-        StackPane layout = new StackPane();
-        Scene scene = new Scene(layout);
 
-        VBox vBox = new VBox();
+        GPSChallengeControlador gpscontrolador = new GPSChallengeControlador();
 
-        Button botonInicio = new Button("Iniciar juego");
-        botonInicio.setOnMouseClicked((event) -> mostrarMenu(vBox, juego));
-        botonInicio.setMinWidth(150);
-        HBox hBox = new HBox(botonInicio);
-        hBox.setAlignment(Pos.BASELINE_CENTER);
+        GPSChallengeVista gpschallengeVista = new GPSChallengeVista(gpscontrolador);
 
-        vBox.getChildren().add(hBox);
+        var juego = Juego.getInstance();
 
-        layout.getChildren().add(vBox);
+        juego.addObserver(gpschallengeVista);
+
+        var scene = new Scene(gpschallengeVista, 640, 520);
 
         stage.setScene(scene);
-        stage.setTitle("GPS Challenge");
+        stage.setTitle(gpschallengeVista.obtenerTitulo());
         stage.show();
-    }
-
-    public void mostrarMenu(VBox vBox, Juego juego){
-        vBox.getChildren().clear();
-
-        Button botonJugar = new Button("Jugar");
-        botonJugar.setOnMouseClicked((event) -> juego.iniciarPartida());
-
-        Button botonRanking = new Button("Ver Ranking");
-        botonRanking.setOnMouseClicked((event) -> juego.mostrarRanking());
-
-        HBox hBox = new HBox(botonJugar, botonRanking);
-        hBox.setAlignment(Pos.BASELINE_CENTER);
-
-        vBox.getChildren().add(hBox);
     }
 
     public static void main(String[] args) {

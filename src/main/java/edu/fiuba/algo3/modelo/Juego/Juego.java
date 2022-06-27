@@ -11,12 +11,14 @@ import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 import java.util.Scanner;
 
 import static edu.fiuba.algo3.modelo.Escenario.TamanioMapa.*;
 
-public class Juego {
+public class Juego extends Observable {
 
+    private static Juego instance;
     private List<Jugador> jugadores;
 
     public Juego(){
@@ -24,7 +26,6 @@ public class Juego {
     }
 
     public void menu(){
-
 
         boolean salir = false;
 
@@ -49,6 +50,11 @@ public class Juego {
                     break;
             }
         }
+    }
+
+    public static Juego getInstance() {
+        if (instance == null) instance = new Juego();
+        return instance;
     }
 
     public void moverVehiculo(Direccion direccion, Jugador jugador){
