@@ -123,5 +123,13 @@ public class Mapa {
     public int calcularPuntaje(int cantidadDeMovimientos) {
         return cantidadDeMovimientos * this.multiplicadorPuntaje;
     }
+
+    public int getAncho(){
+        return this.ancho;
+    }
+
+    public int getAlto(){
+        return this.alto;
+    }
     
 }
