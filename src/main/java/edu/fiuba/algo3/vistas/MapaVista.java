@@ -15,7 +15,7 @@ import javafx.scene.layout.StackPane;
 
 public class MapaVista extends StackPane {
     public MapaVista(Juego juego, MapaControlador mapaControlador){
-        Image image = new Image("https://thumbs.dreamstime.com/z/ejemplo-del-vector-del-juego-de-herramientas-del-mapa-de-la-ciudad-37184410.jpg");
+        Image image = new Image("https://github.com/ianmku/algo3_tp2/blob/manuel/src/main/java/edu/fiuba/algo3/mapa_grande.png?raw=true");
 
         Button btn2 = new Button("Arriba");
         btn2.setCursor(Cursor.HAND);
@@ -62,7 +62,7 @@ public class MapaVista extends StackPane {
 
         this.setAlignment(botones, Pos.BOTTOM_RIGHT);
 
-        this.setMargin(botones, new Insets(0,0,20,0));
+        this.setMargin(botones, new Insets(0,0,20,10));
 
         this.setPrefWidth(640);
         this.setMaxHeight(520);
