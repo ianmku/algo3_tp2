@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.MapaControlador;
 import edu.fiuba.algo3.modelo.Juego.Juego;
+import javafx.animation.TranslateTransition;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -12,6 +13,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
 public class MapaVista extends StackPane {
     public MapaVista(Juego juego, MapaControlador mapaControlador){
@@ -51,12 +54,35 @@ public class MapaVista extends StackPane {
 
         ImageView img1 = new ImageView(image);
 
+        Image image1 = new Image("C:/Mario/pngegg.png");
+
+        ImageView img = new ImageView(image1);
+
+        img.setFitHeight(100);
+        img.setFitWidth(100);
+
+        //circle.setRadius(20);
+
+
+        TranslateTransition tt = new TranslateTransition();
+
+        tt.setNode(img);
+        tt.setDuration(Duration.seconds(4));
+
+        tt.setToX(150);
+        tt.setToY(0);
+        tt.setAutoReverse(false);
+
+        tt.play();
+
         //StackPane sp = new StackPane();
 
        // sp.setMaxWidth(640);
        // sp.setMaxHeight(520);
 
-        this.getChildren().addAll(img1,botones);
+        this.getChildren().addAll(img1,botones, img);
+
+        this.setAlignment(img, Pos.CENTER_LEFT);
 
         this.setAlignment(img1, Pos.CENTER);
 
