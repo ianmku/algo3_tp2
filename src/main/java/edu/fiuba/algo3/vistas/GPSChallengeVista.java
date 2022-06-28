@@ -1,6 +1,9 @@
 package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.GPSChallengeControlador;
+import edu.fiuba.algo3.controladores.MapaControlador;
+import edu.fiuba.algo3.controladores.RankingControlador;
+import edu.fiuba.algo3.modelo.Juego.Juego;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
@@ -21,8 +24,8 @@ public class GPSChallengeVista extends StackPane implements Observer {
     }
 
     private void mostrar(Pane vista) {
-        vista.getChildren().clear();
-        vista.getChildren().add(vista);
+        this.getChildren().clear();
+        this.getChildren().add(vista);
     }
 
     public String obtenerTitulo() {
@@ -31,6 +34,23 @@ public class GPSChallengeVista extends StackPane implements Observer {
 
     @Override
     public void update(Observable juego, Object arg) {
+        var gpsChallenge = (Juego) juego;
 
+        var estado = gpsChallenge.obtenerEstado();
+
+        switch(estado){
+            case "MENU":
+                iniciar();
+                break;
+            case "INICIAR_LOBBY":
+                mostrar(new CrearJugadorVista());
+                break;
+            case "MOSTRAR_RANKING":
+                mostrar(new RankingVista(gpsChallenge, new RankingControlador()));
+                break;
+
+            case "INICIAR_PARTIDA" :
+                mostrar(new MapaVista(gpsChallenge, new MapaControlador()));
+        }
     }
 }

@@ -118,6 +118,7 @@ public class Mapa {
         }
         this.posicionDelVehiculo = new Posicion(COORDENADA_X_VEHICULO,(this.alto - 1) / 2);
         this.Llegada = aleatorio.generarPosicionDeLlegada(this.ancho, this.alto);
+        this.Llegada.imprimirPosicion();
     }
 
     public int calcularPuntaje(int cantidadDeMovimientos) {
