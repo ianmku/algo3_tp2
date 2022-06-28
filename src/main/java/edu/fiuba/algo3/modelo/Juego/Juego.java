@@ -80,11 +80,11 @@ public class Juego extends Observable {
 
         this.estado = "INICIAR_PARTIDA";
 
-        while(!this.jugadorActual.ganoPartida()){
+        /*while(!this.jugadorActual.ganoPartida()){
             Direccion direccion = this.pedirDireccion();
             moverVehiculo(direccion, this.jugadorActual);
-        }
-        this.terminarPartida();
+        }*/
+        //this.terminarPartida();
         setChanged();
     }
 
