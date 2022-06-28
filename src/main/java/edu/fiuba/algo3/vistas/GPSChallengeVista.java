@@ -37,6 +37,9 @@ public class GPSChallengeVista extends StackPane implements Observer {
         var estado = gpsChallenge.obtenerEstado();
 
         switch(estado){
+            case "INICIAR_PARTIDA":
+                mostrar(new CrearJugadorVista());
+                break;
             case "MOSTRAR_RANKING":
                 mostrar(new RankingVista(gpsChallenge));
                 break;

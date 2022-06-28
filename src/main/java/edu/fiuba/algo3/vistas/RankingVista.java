@@ -14,16 +14,17 @@ public class RankingVista extends BorderPane {
 
         Label titulo = new Label("RANKINGS");
         titulo.setFont(Font.font("Arial", 30));
+        titulo.setStyle("-fx-font-weight: bold;");
         vBox.getChildren().add(titulo);
 
         juego.obtenerJugadores().forEach((jugador) -> {
             String puntaje = jugador.obtenerPuntaje();
             Label labelPuntaje = new Label(puntaje);
             labelPuntaje.setStyle("-fx-text-fill: black;" +
-                    "-fx-font-size: 30;" +
-                    "-fx-font-weight: bold;"
+                    "-fx-font-size: 30;"
+
             );
-            // labelPuntaje.setWrapText(true);
+            labelPuntaje.setWrapText(true);
 
             HBox hBox = new HBox();
             hBox.getChildren().add(labelPuntaje);
@@ -33,5 +34,7 @@ public class RankingVista extends BorderPane {
             vBox.setAlignment(Pos.CENTER);
             vBox.setSpacing(20);
         });
+
+        this.setTop(vBox);
     }
 }

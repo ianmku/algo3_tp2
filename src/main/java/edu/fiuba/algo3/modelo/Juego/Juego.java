@@ -26,6 +26,7 @@ public class Juego extends Observable {
     public Juego(){
         this.jugadores = new ArrayList<>();
         this.estado = "MENU";
+
     }
 
     public void menu(){
@@ -66,14 +67,20 @@ public class Juego extends Observable {
 
     public void iniciarPartida(){
 
-        Jugador unJugador = pedirInformacionDelUsuario();
+        this.estado = "INICIAR_PARTIDA";
+        setChanged();
+//        Jugador unJugador = pedirInformacionDelUsuario();
+//
+//        while(!unJugador.ganoPartida()){
+//           Direccion direccion = this.pedirDireccion();
+//           moverVehiculo(direccion, unJugador);
+//        }
+//
+//        this.terminarPartida(unJugador);
+    }
 
-        while(!unJugador.ganoPartida()){
-           Direccion direccion = this.pedirDireccion();
-           moverVehiculo(direccion, unJugador);
-        }
+    public void crearJugador(String nombre) {
 
-        this.terminarPartida(unJugador);
     }
 
     public void terminarPartida(Jugador unJugador){
