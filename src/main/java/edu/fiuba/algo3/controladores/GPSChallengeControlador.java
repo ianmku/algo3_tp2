@@ -6,9 +6,11 @@ public class GPSChallengeControlador {
 
     public void iniciarPartida() {
         Juego.getInstance().iniciarPartida();
+        Juego.getInstance().notifyObservers();
     }
 
     public void mostrarRanking() {
         Juego.getInstance().mostrarRanking();
+        Juego.getInstance().notifyObservers();
     }
 }

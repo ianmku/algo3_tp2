@@ -18,9 +18,9 @@ public class App extends Application {
     @Override
     public void start(Stage stage) {
 
-        GPSChallengeControlador gpscontrolador = new GPSChallengeControlador();
+        var gpscontrolador = new GPSChallengeControlador();
 
-        GPSChallengeVista gpschallengeVista = new GPSChallengeVista(gpscontrolador);
+        var gpschallengeVista = new GPSChallengeVista(gpscontrolador);
 
         var juego = Juego.getInstance();
 

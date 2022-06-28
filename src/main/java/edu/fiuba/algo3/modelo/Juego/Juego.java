@@ -21,8 +21,11 @@ public class Juego extends Observable {
     private static Juego instance;
     private List<Jugador> jugadores;
 
+    private String estado;
+
     public Juego(){
         this.jugadores = new ArrayList<>();
+        this.estado = "MENU";
     }
 
     public void menu(){
@@ -79,9 +82,19 @@ public class Juego extends Observable {
     }
 
     public void mostrarRanking() {
-        for(Jugador j: jugadores){
-            j.mostrarRanking();
-        }
+        this.estado = "MOSTRAR_RANKING";
+        setChanged();
+//        for(Jugador j: jugadores){
+//            j.mostrarRanking();
+//        }
+    }
+
+    public String obtenerEstado() {
+        return this.estado;
+    }
+
+    public List<Jugador> obtenerJugadores() {
+        return this.jugadores;
     }
 
     public Direccion pedirDireccion(){
