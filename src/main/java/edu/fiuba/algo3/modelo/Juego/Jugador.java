@@ -29,8 +29,13 @@ public class Jugador {
         return this.vehiculo.obtenerCantidadMovimientos();
     }
 
-    public void mostrarRanking() {
+    public String obtenerPuntajeString() {
         int puntaje = this.vehiculo.calcularPuntaje();
-        System.out.println(nombre + ": " + puntaje);
+        String resultado = nombre + ": " + puntaje;
+        return resultado;
+    }
+
+    public int obtenerPuntajeInt() {
+        return this.vehiculo.calcularPuntaje();
     }
 }

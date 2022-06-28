@@ -4,78 +4,103 @@ import edu.fiuba.algo3.modelo.Aleatorio;
 import edu.fiuba.algo3.modelo.Direcciones.*;
 import edu.fiuba.algo3.modelo.Escenario.Mapa;
 import edu.fiuba.algo3.modelo.Interactuables.Interactuable;
-import edu.fiuba.algo3.modelo.Vehiculos.Auto;
-import edu.fiuba.algo3.modelo.Vehiculos.Camioneta;
-import edu.fiuba.algo3.modelo.Vehiculos.Moto;
-import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
+import edu.fiuba.algo3.modelo.Vehiculos.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 import java.util.Scanner;
 
 import static edu.fiuba.algo3.modelo.Escenario.TamanioMapa.*;
 
-public class Juego {
+public class Juego extends Observable {
 
+    private static Juego instance;
     private List<Jugador> jugadores;
+    private Jugador jugadorActual;
+    private String estado;
 
     public Juego(){
         this.jugadores = new ArrayList<>();
+        this.estado = "MENU";
+
     }
+    public void iniciarMenu() {
+        this.estado = "MENU";
+        setChanged();
+    }
+    public void iniciarLobby(){
+        this.estado = "INICIAR_LOBBY";
+        setChanged();
+    }
+    public void crearJugador(String nombre, Tipo tipo, Mapa mapa) {
+        this.jugadorActual = new Jugador(nombre, new Vehiculo(mapa, tipo));
 
-    public void menu(){
+        this.estado = "INICIAR_PARTIDA";
 
-
-        boolean salir = false;
-
-        while(!salir){
-
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("J (Jugar), R (Ranking) ");
-            String opcionElegida = scanner.nextLine();
-
-            switch(opcionElegida){
-                case "j":
-                case "J":
-                    iniciarPartida();
-                    break;
-                case "r":
-                case "R":
-                    mostrarRanking();
-                    break;
-                case "e":
-                case "E":
-                    salir = true;
-                    break;
-            }
+        while(!this.jugadorActual.ganoPartida()){
+            Direccion direccion = this.pedirDireccion();
+            moverVehiculo(direccion, this.jugadorActual);
         }
+        this.terminarPartida();
+        setChanged();
+    }
+    public void mostrarRanking() {
+        this.estado = "MOSTRAR_RANKING";
+        setChanged();
+    }
+    public void terminarPartida(){
+        this.jugadores.add(this.jugadorActual);
+        System.out.println("Cantidad de movimientos: " + this.jugadorActual.obtenerCantidadMovimientos());
+        this.estado = "PARTIDA_TERMINADA";
+        setChanged();
     }
 
+//    public void menu(){
+//
+//        boolean salir = false;
+//
+//        while(!salir){
+//
+//            Scanner scanner = new Scanner(System.in);
+//            System.out.println("J (Jugar), R (Ranking) ");
+//            String opcionElegida = scanner.nextLine();
+//
+//            switch(opcionElegida){
+//                case "j":
+//                case "J":
+//                    iniciarLobby();
+//                    break;
+//                case "r":
+//                case "R":
+//                    mostrarRanking();
+//                    break;
+//                case "e":
+//                case "E":
+//                    salir = true;
+//                    break;
+//            }
+//        }
+//    }
+
+    public static Juego getInstance() {
+        if (instance == null) instance = new Juego();
+        return instance;
+    }
     public void moverVehiculo(Direccion direccion, Jugador jugador){
         jugador.moverVehiculo(direccion);
     }
 
-    public void iniciarPartida(){
-
-        Jugador unJugador = pedirInformacionDelUsuario();
-
-        while(!unJugador.ganoPartida()){
-           Direccion direccion = this.pedirDireccion();
-           moverVehiculo(direccion, unJugador);
-        }
-
-        this.terminarPartida(unJugador);
+    public String obtenerEstado() {
+        return this.estado;
     }
 
-    public void terminarPartida(Jugador unJugador){
-        this.jugadores.add(unJugador);
-        System.out.println("Cantidad de movimientos: " + unJugador.obtenerCantidadMovimientos());
+    public List<Jugador> obtenerJugadores() {
+        return this.jugadores;
     }
 
-    public void mostrarRanking() {
-        for(Jugador j: jugadores){
-            j.mostrarRanking();
-        }
+    public Jugador getJugadorActual() {
+        return jugadorActual;
     }
 
     public Direccion pedirDireccion(){
@@ -106,38 +131,38 @@ public class Juego {
         return direccion;
     }
 
-    public Vehiculo obtenerVehiculoElegido(Mapa unMapa){
-
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Elige un vehiculo: (A, M, C) ");
-        String opcionElegida = scanner.nextLine();
-        Vehiculo vehiculo = new Vehiculo(unMapa, new Auto());
-
-        switch(opcionElegida){
-            case "a":
-            case "A":
-                vehiculo = new Vehiculo(unMapa, new Auto());
-            case "m":
-            case "M":
-                vehiculo = new Vehiculo(unMapa, new Moto());
-            case "c":
-            case "C":
-                vehiculo = new Vehiculo(unMapa, new Camioneta());
-        }
-        return vehiculo;
-    }
-    public Jugador pedirInformacionDelUsuario(){
-
-        Mapa unMapa = new Mapa(CHICO, new Aleatorio());
-        System.out.println("Inserte su nombre: ");
-        Scanner scanner = new Scanner(System.in);
-        String nombreDelJugador = scanner.nextLine();
-
-        Vehiculo vehiculoDelJugador = obtenerVehiculoElegido(unMapa);
-
-        Jugador unJugador = new Jugador(nombreDelJugador, vehiculoDelJugador);
-
-        return unJugador;
-    }
+//    public Vehiculo obtenerVehiculoElegido(Mapa unMapa){
+//
+//        Scanner scanner = new Scanner(System.in);
+//
+//        System.out.println("Elige un vehiculo: (A, M, C) ");
+//        String opcionElegida = scanner.nextLine();
+//        Vehiculo vehiculo = new Vehiculo(unMapa, new Auto());
+//
+//        switch(opcionElegida){
+//            case "a":
+//            case "A":
+//                vehiculo = new Vehiculo(unMapa, new Auto());
+//            case "m":
+//            case "M":
+//                vehiculo = new Vehiculo(unMapa, new Moto());
+//            case "c":
+//            case "C":
+//                vehiculo = new Vehiculo(unMapa, new Camioneta());
+//        }
+//        return vehiculo;
+//    }
+//    public Jugador pedirInformacionDelUsuario(){
+//
+//        Mapa unMapa = new Mapa(CHICO, new Aleatorio());
+//        System.out.println("Inserte su nombre: ");
+//        Scanner scanner = new Scanner(System.in);
+//        String nombreDelJugador = scanner.nextLine();
+//
+//        Vehiculo vehiculoDelJugador = obtenerVehiculoElegido(unMapa);
+//
+//        Jugador unJugador = new Jugador(nombreDelJugador, vehiculoDelJugador);
+//
+//        return unJugador;
+//    }
 }
