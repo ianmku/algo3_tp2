@@ -77,7 +77,7 @@ public class CrearJugadorVista extends BorderPane {
                         case "Moto":
                             this.vehiculo = new Moto();
                             break;
-                        case "Camioenta":
+                        case "Camioneta":
                             this.vehiculo = new Camioneta();
                             break;
                     }
