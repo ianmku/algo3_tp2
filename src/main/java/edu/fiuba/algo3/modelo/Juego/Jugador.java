@@ -29,9 +29,13 @@ public class Jugador {
         return this.vehiculo.obtenerCantidadMovimientos();
     }
 
-    public String obtenerPuntaje() {
+    public String obtenerPuntajeString() {
         int puntaje = this.vehiculo.calcularPuntaje();
         String resultado = nombre + ": " + puntaje;
         return resultado;
+    }
+
+    public int obtenerPuntajeInt() {
+        return this.vehiculo.calcularPuntaje();
     }
 }

@@ -24,7 +24,7 @@ public class RankingVista extends BorderPane {
         vBox.getChildren().add(titulo);
 
         juego.obtenerJugadores().forEach((jugador) -> {
-            String puntaje = jugador.obtenerPuntaje();
+            String puntaje = jugador.obtenerPuntajeString();
             Label labelPuntaje = new Label(puntaje);
             labelPuntaje.setStyle("-fx-text-fill: black;" +
                     "-fx-font-size: 30;"
