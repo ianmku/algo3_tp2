@@ -64,6 +64,8 @@ public class MapaVista extends StackPane {
 
         this.setMargin(botones, new Insets(0,0,20,10));
 
+        GridPane vehiculo = new GridPane();
+
         this.setPrefWidth(640);
         this.setMaxHeight(520);
         /*sp.setMaxSize(640,520);
