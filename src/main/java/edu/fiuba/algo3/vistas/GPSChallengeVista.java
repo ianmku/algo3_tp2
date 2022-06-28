@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.GPSChallengeControlador;
+import edu.fiuba.algo3.controladores.RankingControlador;
 import edu.fiuba.algo3.modelo.Juego.Juego;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -37,11 +38,14 @@ public class GPSChallengeVista extends StackPane implements Observer {
         var estado = gpsChallenge.obtenerEstado();
 
         switch(estado){
-            case "INICIAR_PARTIDA":
+            case "MENU":
+                iniciar();
+                break;
+            case "INICIAR_LOBBY":
                 mostrar(new CrearJugadorVista());
                 break;
             case "MOSTRAR_RANKING":
-                mostrar(new RankingVista(gpsChallenge));
+                mostrar(new RankingVista(gpsChallenge, new RankingControlador()));
                 break;
         }
     }

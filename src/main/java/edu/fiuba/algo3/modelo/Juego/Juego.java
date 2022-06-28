@@ -4,10 +4,7 @@ import edu.fiuba.algo3.modelo.Aleatorio;
 import edu.fiuba.algo3.modelo.Direcciones.*;
 import edu.fiuba.algo3.modelo.Escenario.Mapa;
 import edu.fiuba.algo3.modelo.Interactuables.Interactuable;
-import edu.fiuba.algo3.modelo.Vehiculos.Auto;
-import edu.fiuba.algo3.modelo.Vehiculos.Camioneta;
-import edu.fiuba.algo3.modelo.Vehiculos.Moto;
-import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
+import edu.fiuba.algo3.modelo.Vehiculos.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +17,7 @@ public class Juego extends Observable {
 
     private static Juego instance;
     private List<Jugador> jugadores;
-
+    private Jugador jugadorActual;
     private String estado;
 
     public Juego(){
@@ -29,6 +26,10 @@ public class Juego extends Observable {
 
     }
 
+    public void iniciarMenu() {
+        this.estado = "MENU";
+        setChanged();
+    }
     public void menu(){
 
         boolean salir = false;
@@ -42,7 +43,7 @@ public class Juego extends Observable {
             switch(opcionElegida){
                 case "j":
                 case "J":
-                    iniciarPartida();
+                    iniciarLobby();
                     break;
                 case "r":
                 case "R":
@@ -65,27 +66,33 @@ public class Juego extends Observable {
         jugador.moverVehiculo(direccion);
     }
 
-    public void iniciarPartida(){
+    public void iniciarLobby(){
 
-        this.estado = "INICIAR_PARTIDA";
+        this.estado = "INICIAR_LOBBY";
         setChanged();
 //        Jugador unJugador = pedirInformacionDelUsuario();
 //
-//        while(!unJugador.ganoPartida()){
-//           Direccion direccion = this.pedirDireccion();
-//           moverVehiculo(direccion, unJugador);
-//        }
-//
-//        this.terminarPartida(unJugador);
-    }
-
-    public void crearJugador(String nombre) {
 
     }
 
-    public void terminarPartida(Jugador unJugador){
-        this.jugadores.add(unJugador);
-        System.out.println("Cantidad de movimientos: " + unJugador.obtenerCantidadMovimientos());
+    public void crearJugador(String nombre, Tipo tipo, Mapa mapa) {
+        this.jugadorActual = new Jugador(nombre, new Vehiculo(mapa, tipo));
+
+        this.estado = "INICIAR_PARTIDA";
+
+        while(!this.jugadorActual.ganoPartida()){
+            Direccion direccion = this.pedirDireccion();
+            moverVehiculo(direccion, this.jugadorActual);
+        }
+        this.terminarPartida();
+        setChanged();
+    }
+
+    public void terminarPartida(){
+        this.jugadores.add(this.jugadorActual);
+        System.out.println("Cantidad de movimientos: " + this.jugadorActual.obtenerCantidadMovimientos());
+        this.estado = "MENU";
+        setChanged();
     }
 
     public void mostrarRanking() {

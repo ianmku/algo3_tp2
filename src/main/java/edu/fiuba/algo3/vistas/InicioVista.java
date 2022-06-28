@@ -24,7 +24,7 @@ public class InicioVista extends BorderPane {
 
     private HBox agregarBotonDeInicio() {
         Button botonInicio = new Button("Iniciar Juego");
-        botonInicio.setOnMouseClicked((event) -> this.controlador.iniciarPartida());
+        botonInicio.setOnMouseClicked((event) -> this.controlador.iniciarLobby());
         botonInicio.setMinWidth(150);
         botonInicio.setStyle("-fx-background-radius: 90;");
         HBox hBox = new HBox(botonInicio);
