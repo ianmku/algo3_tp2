@@ -17,6 +17,7 @@ public class RankingVista extends BorderPane {
     public RankingVista(Juego juego, RankingControlador controlador) {
         this.controlador = controlador;
         VBox vBox = new VBox();
+        vBox.setSpacing(5);
 
         Label titulo = new Label("RANKINGS");
         titulo.setFont(Font.font("Arial", 30));
@@ -46,7 +47,7 @@ public class RankingVista extends BorderPane {
         btnSalir.setMinWidth(120);
         btnSalir.setStyle("-fx-background-radius: 90;");
         HBox salir = new HBox(btnSalir);
-        salir.setAlignment(Pos.BASELINE_CENTER);
+        salir.setAlignment(Pos.CENTER);
         vBox.getChildren().add(salir);
 
         this.setTop(vBox);
