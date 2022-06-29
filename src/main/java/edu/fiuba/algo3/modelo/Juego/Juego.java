@@ -46,6 +46,7 @@ public class Juego extends Observable {
         this.jugadorActual = new Jugador(nombre, new Vehiculo(mapa, tipo));
 
         this.estado = "INICIAR_PARTIDA";
+        setChanged();
 
         setChanged();
 
