@@ -10,4 +10,9 @@ public class CrearJugadorControlador {
         Juego.getInstance().crearJugador(nombre, tipo, mapa);
         Juego.getInstance().notifyObservers();
     }
+
+    public void volverAlMenu() {
+        Juego.getInstance().iniciarMenu();
+        Juego.getInstance().notifyObservers();
+    }
 }

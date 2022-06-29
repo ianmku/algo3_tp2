@@ -72,6 +72,10 @@ public class Vehiculo {
         return this.mapa.getPosicionDelVehiculo();
     }
 
+    public Mapa obtenerMapa(){
+        return this.mapa;
+    }
+
     public int calcularPuntaje() {
         return this.mapa.calcularPuntaje(this.cantidadDeMovimientos);
     }

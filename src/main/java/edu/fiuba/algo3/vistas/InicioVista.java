@@ -19,26 +19,29 @@ public class InicioVista extends StackPane {
     public InicioVista(GPSChallengeControlador controlador) {
         this.controlador = controlador;
 
-        Image image = new Image("https://github.com/ianmku/algo3_tp2/blob/manuel/src/main/java/edu/fiuba/algo3/menu_principal.png?raw=true");
+        Image fondoDePantalla = new Image("https://github.com/ianmku/algo3_tp2/blob/manuel/resources/images/Picsart_22-06-28_23-47-58-019.png?raw=true");
 
-        ImageView img = new ImageView(image);
 
-        Label titulo = new Label("GPS CHALLENGE");
-        titulo.setFont(Font.font("Arial", 40));
-        titulo.setStyle("-fx-font-weight: bold;" + "-fx-text-fill: white;");
-        DropShadow shadow = new DropShadow();
-        titulo.setEffect(shadow);
-        titulo.setAlignment(Pos.TOP_CENTER);
+        ImageView fondoView = new ImageView(fondoDePantalla);
+        fondoView.setFitHeight(520);
+        fondoView.setFitWidth(640);
+
+        //Label titulo = new Label("GPS CHALLENGE");
+        //titulo.setFont(Font.font("Arial", 40));
+        //titulo.setStyle("-fx-font-weight: bold;" + "-fx-text-fill: white;");
+        //DropShadow shadow = new DropShadow();
+        //titulo.setEffect(shadow);
+        //titulo.setAlignment(Pos.TOP_CENTER);
 
         VBox vBox = new VBox();
         vBox.setSpacing(5);
-        vBox.getChildren().add(titulo);
+        //vBox.getChildren().add(titulo);
         vBox.getChildren().add(agregarBotonDeInicio());
         vBox.getChildren().add(agregarBotonDeRanking());
         vBox.setPadding(new Insets(0, 0, 0, 0));
         vBox.setAlignment(Pos.CENTER);
 
-        this.getChildren().addAll(img,vBox);
+        this.getChildren().addAll(fondoView,vBox);
 
         this.setAlignment(vBox, Pos.BOTTOM_CENTER);
     }

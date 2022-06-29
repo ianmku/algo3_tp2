@@ -25,4 +25,8 @@ public class Calle {
             i.interactuarConVehiculo(vehiculo);
         }
     }
+
+    public List<Interactuable> getInteractuables(){
+        return this.interactuables;
+    }
 }
