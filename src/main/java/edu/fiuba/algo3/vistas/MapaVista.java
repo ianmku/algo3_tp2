@@ -90,7 +90,7 @@ public class MapaVista extends StackPane {
                 }
                 else{
                     var rectangulo = new Rectangle();
-                    rectangulo.setFill(Color.WHITE);
+                    rectangulo.setFill(Color.GREY);
                     //rectangulo.setStroke(Color.RED);
                     rectangulo.setHeight(100);
                     rectangulo.setWidth(100);
