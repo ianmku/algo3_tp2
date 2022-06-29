@@ -2,16 +2,19 @@ package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.MapaControlador;
 import edu.fiuba.algo3.modelo.Juego.Juego;
+import javafx.animation.TranslateTransition;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
 
 public class MapaVista extends StackPane {
     public MapaVista(Juego juego, MapaControlador mapaControlador){
@@ -49,22 +52,88 @@ public class MapaVista extends StackPane {
         botones.setHalignment(btn2, HPos.CENTER);
         botones.setHalignment(btn5, HPos.CENTER);
 
+        int anchoMapa = juego.getAnchoMapa();
+
+        int altoMapa = juego.getAltoMapa();
+
+        GridPane mapa = new GridPane();
+        mapa.setAlignment(Pos.CENTER);
+        mapa.setPrefWidth(640);
+        mapa.setPrefHeight(520);
+
+        /*for(int i=0; i < anchoMapa; i++){
+            ColumnConstraints columna = new ColumnConstraints(40);
+            mapa.getColumnConstraints().add(columna);
+        }*/
+
+        for(int i=0; i < anchoMapa; i++){
+            for(int j=0; j < altoMapa; j++){
+                if((i%2 != 0) && (j%2 != 0)){
+                    var rectangulo = new Rectangle();
+                    rectangulo.setHeight(40);
+                    rectangulo.setWidth(40);
+                    //rectangulo.setStroke(Color.BLACK);
+                    rectangulo.setFill(Color.BLACK);
+                    mapa.add(rectangulo,i,j);
+                }
+                else{
+                    var rectangulo = new Rectangle();
+                    rectangulo.setFill(Color.WHITE);
+                    //rectangulo.setStroke(Color.RED);
+                    rectangulo.setHeight(40);
+                    rectangulo.setWidth(40);
+                    mapa.add(rectangulo,i,j);
+                }
+            }
+        }
+
+        Image imagenLlegada = new Image("https://i.pinimg.com/564x/f9/60/6b/f9606ba052600841c02b9a96e357841e.jpg");
+        ImageView llegada = new ImageView(imagenLlegada);
+
+        mapa.add(llegada, juego.posicionDeLlegada().getPosicionX(), juego.posicionDeLlegada().getPosicionY() );
+
+        llegada.setFitWidth(39);
+        llegada.setFitHeight(39);
+
         ImageView img1 = new ImageView(image);
+
+        Image image1 = new Image("https://github.com/ianmku/algo3_tp2/blob/manuel/src/main/java/edu/fiuba/algo3/pngegg.png?raw=true");
+
+        ImageView img = new ImageView(image1);
+
+        mapa.add(img,2,2);
+
+        img.setFitHeight(39);
+        img.setFitWidth(39);
+
+        //circle.setRadius(20);
+
+
+        TranslateTransition tt = new TranslateTransition();
+
+        tt.setNode(img);
+        tt.setDuration(Duration.seconds(4));
+
+        tt.setToX(85);
+        tt.setToY(0);
+        tt.setAutoReverse(false);
+
+        tt.play();
 
         //StackPane sp = new StackPane();
 
        // sp.setMaxWidth(640);
        // sp.setMaxHeight(520);
 
-        this.getChildren().addAll(img1,botones);
+        this.getChildren().addAll(mapa,botones);
 
-        this.setAlignment(img1, Pos.CENTER);
+        this.setAlignment(img, Pos.CENTER_LEFT);
+
+        this.setAlignment(mapa, Pos.CENTER);
 
         this.setAlignment(botones, Pos.BOTTOM_RIGHT);
 
         this.setMargin(botones, new Insets(0,0,20,10));
-
-        GridPane vehiculo = new GridPane();
 
         this.setPrefWidth(640);
         this.setMaxHeight(520);

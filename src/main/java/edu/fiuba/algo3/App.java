@@ -11,7 +11,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
- * JavaFX App
+ * JavaFX Appd
  */
 public class App extends Application {
 

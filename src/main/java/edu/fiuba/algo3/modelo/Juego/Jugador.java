@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.Juego;
 
 import edu.fiuba.algo3.modelo.Direcciones.Direccion;
+import edu.fiuba.algo3.modelo.Escenario.Posicion;
 import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
 
 public class Jugador {
@@ -29,9 +30,25 @@ public class Jugador {
         return this.vehiculo.obtenerCantidadMovimientos();
     }
 
-    public String obtenerPuntaje() {
+    public String obtenerPuntajeString() {
         int puntaje = this.vehiculo.calcularPuntaje();
         String resultado = nombre + ": " + puntaje;
         return resultado;
+    }
+
+    public int getAnchoMapa(){
+        return this.vehiculo.getAnchoMapa();
+    }
+
+    public int getAltoMapa(){
+        return this.vehiculo.getAltoMapa();
+    }
+
+    public int obtenerPuntajeInt() {
+        return this.vehiculo.calcularPuntaje();
+    }
+
+    public Posicion posicionDeLlegada() {
+        return this.vehiculo.posicionDeLlegada();
     }
 }
