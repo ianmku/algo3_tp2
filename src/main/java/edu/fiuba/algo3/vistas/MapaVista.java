@@ -90,7 +90,7 @@ public class MapaVista extends StackPane {
                 }
                 else{
                     var rectangulo = new Rectangle();
-                    rectangulo.setFill(Color.GREY);
+                    rectangulo.setFill(Color.WHITE);
                     //rectangulo.setStroke(Color.RED);
                     rectangulo.setHeight(100);
                     rectangulo.setWidth(100);
@@ -180,7 +180,7 @@ public class MapaVista extends StackPane {
 
         tt.play();
 
-        RotateTransition rt = new RotateTransition(Duration.seconds(1), img);
+        RotateTransition rt = new RotateTransition(Duration.seconds(2), img);
         rt.setByAngle(90);
         rt.setDelay(Duration.seconds(4));
         rt.play();
