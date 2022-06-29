@@ -121,7 +121,7 @@ public class MapaVista extends StackPane {
 
         tt.play();
 
-        RotateTransition rt = new RotateTransition(Duration.seconds(3), img);
+        RotateTransition rt = new RotateTransition(Duration.seconds(2), img);
         rt.setByAngle(90);
         rt.setDelay(Duration.seconds(4));
         rt.play();
