@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.MapaControlador;
 import edu.fiuba.algo3.modelo.Juego.Juego;
+import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -114,11 +115,17 @@ public class MapaVista extends StackPane {
         tt.setNode(img);
         tt.setDuration(Duration.seconds(4));
 
-        tt.setToX(85);
+        tt.setToX(80);
         tt.setToY(0);
         tt.setAutoReverse(false);
 
         tt.play();
+
+        RotateTransition rt = new RotateTransition(Duration.seconds(2), img);
+        rt.setByAngle(90);
+        rt.setDelay(Duration.seconds(4));
+        rt.play();
+
 
         //StackPane sp = new StackPane();
 
