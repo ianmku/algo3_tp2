@@ -1,12 +1,21 @@
 package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.MapaControlador;
+import edu.fiuba.algo3.modelo.Escenario.Calle;
+import edu.fiuba.algo3.modelo.Escenario.Posicion;
+import edu.fiuba.algo3.modelo.Interactuables.ControlPolicial;
+import edu.fiuba.algo3.modelo.Interactuables.Piquete;
+import edu.fiuba.algo3.modelo.Interactuables.Pozo;
 import edu.fiuba.algo3.modelo.Juego.Juego;
+import edu.fiuba.algo3.modelo.Interactuables.Interactuable;
+import java.util.Map.Entry;
 import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.effect.ImageInput;
+import javafx.scene.layout.HBox;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
@@ -16,6 +25,8 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
+
+import java.util.Hashtable;
 
 public class MapaVista extends StackPane {
     public MapaVista(Juego juego, MapaControlador mapaControlador){
@@ -71,8 +82,8 @@ public class MapaVista extends StackPane {
             for(int j=0; j < altoMapa; j++){
                 if((i%2 != 0) && (j%2 != 0)){
                     var rectangulo = new Rectangle();
-                    rectangulo.setHeight(40);
-                    rectangulo.setWidth(40);
+                    rectangulo.setHeight(100);
+                    rectangulo.setWidth(100);
                     //rectangulo.setStroke(Color.BLACK);
                     rectangulo.setFill(Color.BLACK);
                     mapa.add(rectangulo,i,j);
@@ -81,8 +92,8 @@ public class MapaVista extends StackPane {
                     var rectangulo = new Rectangle();
                     rectangulo.setFill(Color.WHITE);
                     //rectangulo.setStroke(Color.RED);
-                    rectangulo.setHeight(40);
-                    rectangulo.setWidth(40);
+                    rectangulo.setHeight(100);
+                    rectangulo.setWidth(100);
                     mapa.add(rectangulo,i,j);
                 }
             }
@@ -98,7 +109,7 @@ public class MapaVista extends StackPane {
 
         ImageView fondoView = new ImageView(fondoDePantalla);
 
-        Image image1 = new Image("https://github.com/ianmku/algo3_tp2/blob/manuel/src/main/java/edu/fiuba/algo3/pngegg.png?raw=true");
+        Image image1 = new Image("https://github.com/ianmku/algo3_tp2/blob/manuel/resources/images/pngegg.png?raw=true");
 
         ImageView img = new ImageView(image1);
 
@@ -109,19 +120,67 @@ public class MapaVista extends StackPane {
 
         //circle.setRadius(20);
 
+        Hashtable<Posicion, Calle> hash = juego.getMapaActual().obtenerCalles();
+
+        for (Entry<Posicion, Calle> entry : hash.entrySet()){
+            Posicion posicion = entry.getKey();
+            Calle calle = entry.getValue();
+            var contenedorInteractuables = new HBox();
+
+
+            for(Interactuable i: calle.getInteractuables()){
+                //Rectangle rectangulo = new Rectangle();
+                Image imagenInteractuable;
+                ImageView imgInteractuable;
+
+
+                if(i.getClass() == Piquete.class){
+                    //rectangulo.setFill(Color.RED);
+                    imagenInteractuable = new Image ("https://t2.uc.ltmcdn.com/es/posts/7/7/5/como_hacer_choripan_42577_orig.jpg");
+                    imgInteractuable = new ImageView(imagenInteractuable);
+                }
+                else if(i.getClass() == Pozo.class){
+                    //rectangulo.setFill(Color.BLUE);
+                    imagenInteractuable = new Image ("https://github.com/ianmku/algo3_tp2/blob/manuel/resources/images/pozo.png?raw=true");
+                    imgInteractuable = new ImageView(imagenInteractuable);
+                }
+                else if(i.getClass() == ControlPolicial.class){
+                    //rectangulo.setFill(Color.GREEN);
+                    imagenInteractuable = new Image ("https://github.com/ianmku/algo3_tp2/blob/manuel/resources/images/control_policial.png?raw=true");
+                    imgInteractuable = new ImageView(imagenInteractuable);
+                }
+                else{
+                    //rectangulo.setFill(Color.PURPLE);
+                    imagenInteractuable = new Image ("https://github.com/ianmku/algo3_tp2/blob/manuel/resources/images/sorpresa.png?raw=true");
+                    imgInteractuable = new ImageView(imagenInteractuable);
+                }
+
+
+                //rectangulo.setHeight(10);
+                //rectangulo.setWidth(10);
+                imgInteractuable.setFitHeight(40);
+                imgInteractuable.setFitWidth(40);
+
+
+                contenedorInteractuables.getChildren().add(imgInteractuable);
+            }
+
+            mapa.add(contenedorInteractuables, posicion.getPosicionX(),posicion.getPosicionY());
+            contenedorInteractuables.setAlignment(Pos.CENTER);
+        }
 
         TranslateTransition tt = new TranslateTransition();
 
         tt.setNode(img);
         tt.setDuration(Duration.seconds(4));
 
-        tt.setToX(80);
+        tt.setToX(85);
         tt.setToY(0);
         tt.setAutoReverse(false);
 
         tt.play();
 
-        RotateTransition rt = new RotateTransition(Duration.seconds(2), img);
+        RotateTransition rt = new RotateTransition(Duration.seconds(1), img);
         rt.setByAngle(90);
         rt.setDelay(Duration.seconds(4));
         rt.play();

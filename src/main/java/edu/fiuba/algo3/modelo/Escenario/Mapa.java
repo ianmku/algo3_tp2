@@ -140,6 +140,12 @@ public class Mapa {
         return cantidadDeMovimientos * this.multiplicadorPuntaje;
     }
 
+    public Hashtable<Posicion, Calle> obtenerCalles(){
+
+        Hashtable<Posicion, Calle> hashCalles = this.calles;
+
+        return hashCalles;
+    }
 
     public Posicion getPosicionDeLlegada() {
         return this.Llegada;

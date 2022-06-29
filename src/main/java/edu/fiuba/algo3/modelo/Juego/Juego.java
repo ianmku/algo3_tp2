@@ -1,18 +1,14 @@
 package edu.fiuba.algo3.modelo.Juego;
 
-import edu.fiuba.algo3.modelo.Aleatorio;
 import edu.fiuba.algo3.modelo.Direcciones.*;
 import edu.fiuba.algo3.modelo.Escenario.Mapa;
 import edu.fiuba.algo3.modelo.Escenario.Posicion;
-import edu.fiuba.algo3.modelo.Interactuables.Interactuable;
 import edu.fiuba.algo3.modelo.Vehiculos.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Scanner;
-
-import static edu.fiuba.algo3.modelo.Escenario.TamanioMapa.*;
 
 public class Juego extends Observable {
 
@@ -48,12 +44,11 @@ public class Juego extends Observable {
         this.estado = "INICIAR_PARTIDA";
         setChanged();
 
-        /* while(!this.jugadorActual.ganoPartida()){
+        /*while(!this.jugadorActual.ganoPartida()){
             Direccion direccion = this.pedirDireccion();
             moverVehiculo(direccion, this.jugadorActual);
         }
-        this.terminarPartida(); */
-
+        this.terminarPartida();*/
     }
     public void mostrarRanking() {
         this.estado = "MOSTRAR_RANKING";
@@ -70,33 +65,9 @@ public class Juego extends Observable {
         return jugadorActual.posicionDeLlegada();
     }
 
-//    public void menu(){
-//
-//        boolean salir = false;
-//
-//        while(!salir){
-//
-//            Scanner scanner = new Scanner(System.in);
-//            System.out.println("J (Jugar), R (Ranking) ");
-//            String opcionElegida = scanner.nextLine();
-//
-//            switch(opcionElegida){
-//                case "j":
-//                case "J":
-//                    iniciarLobby();
-//                    break;
-//                case "r":
-//                case "R":
-//                    mostrarRanking();
-//                    break;
-//                case "e":
-//                case "E":
-//                    salir = true;
-//                    break;
-//            }
-//        }
-//    }
-
+    public Mapa getMapaActual(){
+        return jugadorActual.obtenerMapaActual();
+    }
     public static Juego getInstance() {
         if (instance == null) instance = new Juego();
         return instance;
@@ -145,38 +116,4 @@ public class Juego extends Observable {
         return direccion;
     }
 
-//    public Vehiculo obtenerVehiculoElegido(Mapa unMapa){
-//
-//        Scanner scanner = new Scanner(System.in);
-//
-//        System.out.println("Elige un vehiculo: (A, M, C) ");
-//        String opcionElegida = scanner.nextLine();
-//        Vehiculo vehiculo = new Vehiculo(unMapa, new Auto());
-//
-//        switch(opcionElegida){
-//            case "a":
-//            case "A":
-//                vehiculo = new Vehiculo(unMapa, new Auto());
-//            case "m":
-//            case "M":
-//                vehiculo = new Vehiculo(unMapa, new Moto());
-//            case "c":
-//            case "C":
-//                vehiculo = new Vehiculo(unMapa, new Camioneta());
-//        }
-//        return vehiculo;
-//    }
-//    public Jugador pedirInformacionDelUsuario(){
-//
-//        Mapa unMapa = new Mapa(CHICO, new Aleatorio());
-//        System.out.println("Inserte su nombre: ");
-//        Scanner scanner = new Scanner(System.in);
-//        String nombreDelJugador = scanner.nextLine();
-//
-//        Vehiculo vehiculoDelJugador = obtenerVehiculoElegido(unMapa);
-//
-//        Jugador unJugador = new Jugador(nombreDelJugador, vehiculoDelJugador);
-//
-//        return unJugador;
-//    }
 }
