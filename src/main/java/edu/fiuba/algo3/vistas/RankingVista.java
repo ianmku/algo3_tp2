@@ -20,8 +20,8 @@ public class RankingVista extends StackPane {
     public RankingVista(Juego juego, RankingControlador controlador) {
         this.controlador = controlador;
 
-        Image image = new Image("https://github.com/ianmku/algo3_tp2/blob/manuel/src/main/java/edu/fiuba/algo3/menu_principal.png?raw=true");
-        ImageView img = new ImageView(image);
+        Image fondoDePantalla = new Image("https://github.com/ianmku/algo3_tp2/blob/manuel/resources/images/menu_principal.png?raw=true");
+        ImageView fondoView = new ImageView(fondoDePantalla);
         DropShadow shadow = new DropShadow();
 
         VBox vBox = new VBox();
@@ -61,7 +61,7 @@ public class RankingVista extends StackPane {
         vBox.getChildren().add(salir);
         vBox.setAlignment(Pos.CENTER);
 
-        this.getChildren().addAll(img, vBox);
+        this.getChildren().addAll(fondoView, vBox);
         this.setAlignment(vBox, Pos.BOTTOM_CENTER);
     }
 }

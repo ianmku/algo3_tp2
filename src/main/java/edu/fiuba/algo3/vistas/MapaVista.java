@@ -19,7 +19,7 @@ import javafx.util.Duration;
 
 public class MapaVista extends StackPane {
     public MapaVista(Juego juego, MapaControlador mapaControlador){
-        Image image = new Image("https://github.com/ianmku/algo3_tp2/blob/manuel/src/main/java/edu/fiuba/algo3/mapa_grande.png?raw=true");
+        Image fondoDePantalla = new Image("https://github.com/ianmku/algo3_tp2/blob/manuel/resources/images/mapa_grande.png?raw=true");
 
         Button btn2 = new Button("Arriba");
         btn2.setCursor(Cursor.HAND);
@@ -96,7 +96,7 @@ public class MapaVista extends StackPane {
         llegada.setFitWidth(39);
         llegada.setFitHeight(39);
 
-        ImageView img1 = new ImageView(image);
+        ImageView fondoView = new ImageView(fondoDePantalla);
 
         Image image1 = new Image("https://github.com/ianmku/algo3_tp2/blob/manuel/src/main/java/edu/fiuba/algo3/pngegg.png?raw=true");
 

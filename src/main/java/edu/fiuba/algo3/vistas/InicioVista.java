@@ -19,12 +19,12 @@ public class InicioVista extends StackPane {
     public InicioVista(GPSChallengeControlador controlador) {
         this.controlador = controlador;
 
-        Image image = new Image("https://github.com/ianmku/algo3_tp2/blob/manuel/src/main/java/edu/fiuba/algo3/Picsart_22-06-28_23-47-58-019.png?raw=true");
+        Image fondoDePantalla = new Image("https://github.com/ianmku/algo3_tp2/blob/manuel/resources/images/Picsart_22-06-28_23-47-58-019.png?raw=true");
 
 
-        ImageView img = new ImageView(image);
-        img.setFitHeight(520);
-        img.setFitWidth(640);
+        ImageView fondoView = new ImageView(fondoDePantalla);
+        fondoView.setFitHeight(520);
+        fondoView.setFitWidth(640);
 
         //Label titulo = new Label("GPS CHALLENGE");
         //titulo.setFont(Font.font("Arial", 40));
@@ -41,7 +41,7 @@ public class InicioVista extends StackPane {
         vBox.setPadding(new Insets(0, 0, 0, 0));
         vBox.setAlignment(Pos.CENTER);
 
-        this.getChildren().addAll(img,vBox);
+        this.getChildren().addAll(fondoView,vBox);
 
         this.setAlignment(vBox, Pos.BOTTOM_CENTER);
     }
