@@ -94,4 +94,8 @@ public class Vehiculo {
     public void imprimirPosicion(){
         this.mapa.imprimirPosicion();
     }
+
+    public Posicion posicionDeLlegada() {
+        return this.mapa.getPosicionDeLlegada();
+    }
 }

@@ -70,8 +70,8 @@ public class MapaVista extends StackPane {
             for(int j=0; j < altoMapa; j++){
                 if((i%2 != 0) && (j%2 != 0)){
                     var rectangulo = new Rectangle();
-                    rectangulo.setHeight(30);
-                    rectangulo.setWidth(30);
+                    rectangulo.setHeight(40);
+                    rectangulo.setWidth(40);
                     //rectangulo.setStroke(Color.BLACK);
                     rectangulo.setFill(Color.BLACK);
                     mapa.add(rectangulo,i,j);
@@ -80,13 +80,20 @@ public class MapaVista extends StackPane {
                     var rectangulo = new Rectangle();
                     rectangulo.setFill(Color.WHITE);
                     //rectangulo.setStroke(Color.RED);
-                    rectangulo.setHeight(30);
-                    rectangulo.setWidth(30);
+                    rectangulo.setHeight(40);
+                    rectangulo.setWidth(40);
                     mapa.add(rectangulo,i,j);
                 }
             }
         }
 
+        Image imagenLlegada = new Image("https://i.pinimg.com/564x/f9/60/6b/f9606ba052600841c02b9a96e357841e.jpg");
+        ImageView llegada = new ImageView(imagenLlegada);
+
+        mapa.add(llegada, juego.posicionDeLlegada().getPosicionX(), juego.posicionDeLlegada().getPosicionY() );
+
+        llegada.setFitWidth(39);
+        llegada.setFitHeight(39);
 
         ImageView img1 = new ImageView(image);
 
@@ -94,10 +101,10 @@ public class MapaVista extends StackPane {
 
         ImageView img = new ImageView(image1);
 
-        mapa.add(img,0,0);
+        mapa.add(img,2,2);
 
-        img.setFitHeight(50);
-        img.setFitWidth(50);
+        img.setFitHeight(39);
+        img.setFitWidth(39);
 
         //circle.setRadius(20);
 
@@ -107,7 +114,7 @@ public class MapaVista extends StackPane {
         tt.setNode(img);
         tt.setDuration(Duration.seconds(4));
 
-        tt.setToX(100);
+        tt.setToX(85);
         tt.setToY(0);
         tt.setAutoReverse(false);
 

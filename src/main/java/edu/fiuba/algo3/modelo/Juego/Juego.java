@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo.Juego;
 import edu.fiuba.algo3.modelo.Aleatorio;
 import edu.fiuba.algo3.modelo.Direcciones.*;
 import edu.fiuba.algo3.modelo.Escenario.Mapa;
+import edu.fiuba.algo3.modelo.Escenario.Posicion;
 import edu.fiuba.algo3.modelo.Interactuables.Interactuable;
 import edu.fiuba.algo3.modelo.Vehiculos.*;
 
@@ -64,6 +65,10 @@ public class Juego extends Observable {
         System.out.println("Cantidad de movimientos: " + this.jugadorActual.obtenerCantidadMovimientos());
         this.estado = "PARTIDA_TERMINADA";
         setChanged();
+    }
+
+    public Posicion posicionDeLlegada(){
+        return jugadorActual.posicionDeLlegada();
     }
 
 //    public void menu(){

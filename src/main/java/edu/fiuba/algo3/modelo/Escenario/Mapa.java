@@ -141,4 +141,7 @@ public class Mapa {
     }
 
 
+    public Posicion getPosicionDeLlegada() {
+        return this.Llegada;
+    }
 }

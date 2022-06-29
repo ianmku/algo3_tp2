@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.Juego;
 
 import edu.fiuba.algo3.modelo.Direcciones.Direccion;
+import edu.fiuba.algo3.modelo.Escenario.Posicion;
 import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
 
 public class Jugador {
@@ -45,5 +46,9 @@ public class Jugador {
 
     public int obtenerPuntajeInt() {
         return this.vehiculo.calcularPuntaje();
+    }
+
+    public Posicion posicionDeLlegada() {
+        return this.vehiculo.posicionDeLlegada();
     }
 }

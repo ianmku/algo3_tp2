@@ -53,6 +53,12 @@ public class Posicion {
         System.out.println("x: " + this.posicionX + " | y: " + this.posicionY);
     }
 
+    public int getPosicionX(){
+        return this.posicionX;
+    }
 
+    public int getPosicionY(){
+        return this.posicionY;
+    }
 
 }
