@@ -125,6 +125,9 @@ public class MapaVista extends StackPane {
         rt.setByAngle(90);
         rt.setDelay(Duration.seconds(4));
         rt.play();
+        rt.setByAngle(180);
+        rt.setDelay(Duration.seconds(6));
+        rt.play();
 
 
         //StackPane sp = new StackPane();
