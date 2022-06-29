@@ -35,6 +35,14 @@ public class Jugador {
         return resultado;
     }
 
+    public int getAnchoMapa(){
+        return this.vehiculo.getAnchoMapa();
+    }
+
+    public int getAltoMapa(){
+        return this.vehiculo.getAltoMapa();
+    }
+
     public int obtenerPuntajeInt() {
         return this.vehiculo.calcularPuntaje();
     }

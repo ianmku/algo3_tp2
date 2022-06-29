@@ -6,14 +6,14 @@ import javafx.animation.TranslateTransition;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 public class MapaVista extends StackPane {
@@ -52,14 +52,52 @@ public class MapaVista extends StackPane {
         botones.setHalignment(btn2, HPos.CENTER);
         botones.setHalignment(btn5, HPos.CENTER);
 
+        int anchoMapa = juego.getAnchoMapa();
+
+        int altoMapa = juego.getAltoMapa();
+
+        GridPane mapa = new GridPane();
+        mapa.setAlignment(Pos.CENTER);
+        mapa.setPrefWidth(640);
+        mapa.setPrefHeight(520);
+
+        /*for(int i=0; i < anchoMapa; i++){
+            ColumnConstraints columna = new ColumnConstraints(40);
+            mapa.getColumnConstraints().add(columna);
+        }*/
+
+        for(int i=0; i < anchoMapa; i++){
+            for(int j=0; j < altoMapa; j++){
+                if((i%2 != 0) && (j%2 != 0)){
+                    var rectangulo = new Rectangle();
+                    rectangulo.setHeight(30);
+                    rectangulo.setWidth(30);
+                    //rectangulo.setStroke(Color.BLACK);
+                    rectangulo.setFill(Color.BLACK);
+                    mapa.add(rectangulo,i,j);
+                }
+                else{
+                    var rectangulo = new Rectangle();
+                    rectangulo.setFill(Color.WHITE);
+                    //rectangulo.setStroke(Color.RED);
+                    rectangulo.setHeight(30);
+                    rectangulo.setWidth(30);
+                    mapa.add(rectangulo,i,j);
+                }
+            }
+        }
+
+
         ImageView img1 = new ImageView(image);
 
-        Image image1 = new Image("C:/Mario/pngegg.png");
+        Image image1 = new Image("https://github.com/ianmku/algo3_tp2/blob/manuel/src/main/java/edu/fiuba/algo3/pngegg.png?raw=true");
 
         ImageView img = new ImageView(image1);
 
-        img.setFitHeight(100);
-        img.setFitWidth(100);
+        mapa.add(img,0,0);
+
+        img.setFitHeight(50);
+        img.setFitWidth(50);
 
         //circle.setRadius(20);
 
@@ -69,7 +107,7 @@ public class MapaVista extends StackPane {
         tt.setNode(img);
         tt.setDuration(Duration.seconds(4));
 
-        tt.setToX(150);
+        tt.setToX(100);
         tt.setToY(0);
         tt.setAutoReverse(false);
 
@@ -80,17 +118,15 @@ public class MapaVista extends StackPane {
        // sp.setMaxWidth(640);
        // sp.setMaxHeight(520);
 
-        this.getChildren().addAll(img1,botones, img);
+        this.getChildren().addAll(mapa,botones);
 
         this.setAlignment(img, Pos.CENTER_LEFT);
 
-        this.setAlignment(img1, Pos.CENTER);
+        this.setAlignment(mapa, Pos.CENTER);
 
         this.setAlignment(botones, Pos.BOTTOM_RIGHT);
 
         this.setMargin(botones, new Insets(0,0,20,10));
-
-        GridPane vehiculo = new GridPane();
 
         this.setPrefWidth(640);
         this.setMaxHeight(520);

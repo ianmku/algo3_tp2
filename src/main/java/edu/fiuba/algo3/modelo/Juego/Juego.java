@@ -33,17 +33,27 @@ public class Juego extends Observable {
         this.estado = "INICIAR_LOBBY";
         setChanged();
     }
+
+    public int getAnchoMapa(){
+        return this.jugadorActual.getAnchoMapa();
+    }
+
+    public int getAltoMapa(){
+        return this.jugadorActual.getAltoMapa();
+    }
     public void crearJugador(String nombre, Tipo tipo, Mapa mapa) {
         this.jugadorActual = new Jugador(nombre, new Vehiculo(mapa, tipo));
 
         this.estado = "INICIAR_PARTIDA";
 
-        while(!this.jugadorActual.ganoPartida()){
+        setChanged();
+
+        /*while(!this.jugadorActual.ganoPartida()){
             Direccion direccion = this.pedirDireccion();
             moverVehiculo(direccion, this.jugadorActual);
         }
-        this.terminarPartida();
-        setChanged();
+        this.terminarPartida();*/
+
     }
     public void mostrarRanking() {
         this.estado = "MOSTRAR_RANKING";

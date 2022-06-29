@@ -124,6 +124,14 @@ public class Mapa {
         this.Llegada.imprimirPosicion();
     }
 
+    public int getAnchoMapa(){
+        return this.ancho;
+    }
+
+    public int getAltoMapa(){
+        return this.alto;
+    }
+
     public void imprimirPosicion(){
         this.posicionDelVehiculo.imprimirPosicion();
     }

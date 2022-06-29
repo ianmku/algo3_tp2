@@ -76,6 +76,14 @@ public class Vehiculo {
         return this.mapa.calcularPuntaje(this.cantidadDeMovimientos);
     }
 
+    public int getAnchoMapa(){
+        return this.mapa.getAnchoMapa();
+    }
+
+    public int getAltoMapa(){
+        return this.mapa.getAltoMapa();
+    }
+
     public boolean es(Tipo tipoEsperado) {
         if(this.tipo.getClass() == tipoEsperado.getClass()){
             return true;
