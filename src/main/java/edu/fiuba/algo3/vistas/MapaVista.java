@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.MapaControlador;
+import edu.fiuba.algo3.controladores.VehiculoControlador;
 import edu.fiuba.algo3.modelo.Escenario.Calle;
 import edu.fiuba.algo3.modelo.Escenario.Posicion;
 import edu.fiuba.algo3.modelo.Interactuables.ControlPolicial;
@@ -9,6 +10,8 @@ import edu.fiuba.algo3.modelo.Interactuables.Pozo;
 import edu.fiuba.algo3.modelo.Juego.Juego;
 import edu.fiuba.algo3.modelo.Interactuables.Interactuable;
 import java.util.Map.Entry;
+
+import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
 import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
 import javafx.geometry.HPos;
@@ -29,40 +32,44 @@ import javafx.util.Duration;
 import java.util.Hashtable;
 
 public class MapaVista extends StackPane {
+    private final MapaControlador controlador;
     public MapaVista(Juego juego, MapaControlador mapaControlador){
+
+        this.controlador = mapaControlador;
+
         Image fondoDePantalla = new Image("https://github.com/ianmku/algo3_tp2/blob/manuel/resources/images/mapa_grande.png?raw=true");
 
-        Button btn2 = new Button("Arriba");
-        btn2.setCursor(Cursor.HAND);
-        btn2.setPrefWidth(70);
+        Button btnArriba = new Button("Arriba");
+        btnArriba.setCursor(Cursor.HAND);
+        btnArriba.setPrefWidth(70);
 
-        Button btn3 = new Button("Izquierda");
-        btn3.setCursor(Cursor.HAND);
+        Button btnIzquierda = new Button("Izquierda");
+        btnIzquierda.setCursor(Cursor.HAND);
 
-        Button btn4 = new Button("Derecha");
-        btn4.setCursor(Cursor.HAND);
+        Button btnDerecha = new Button("Derecha");
+        btnDerecha.setCursor(Cursor.HAND);
 
-        Button btn5 = new Button("Abajo");
-        btn5.setCursor(Cursor.HAND);
-        btn5.setPrefWidth(70);
+        Button btnAbajo = new Button("Abajo");
+        btnAbajo.setCursor(Cursor.HAND);
+        btnAbajo.setPrefWidth(70);
 
         GridPane botones = new GridPane();
         botones.setAlignment(Pos.BOTTOM_RIGHT);
 
-        botones.add(btn2, 0,0);
-        botones.add(btn3, 0,1);
-        botones.add(btn4, 1,1);
-        botones.add(btn5, 0,2);
+        botones.add(btnArriba, 0,0);
+        botones.add(btnIzquierda, 0,1);
+        botones.add(btnDerecha, 1,1);
+        botones.add(btnAbajo, 0,2);
 
-        botones.setMargin(btn2, new Insets(0,0,5,0));
-        botones.setMargin(btn5, new Insets(5,0,0,0));
+        botones.setMargin(btnArriba, new Insets(0,0,5,0));
+        botones.setMargin(btnAbajo, new Insets(5,0,0,0));
 
-        botones.setColumnSpan(btn2,2);
-        botones.setColumnSpan(btn5,2);
+        botones.setColumnSpan(btnArriba,2);
+        botones.setColumnSpan(btnAbajo,2);
 
 
-        botones.setHalignment(btn2, HPos.CENTER);
-        botones.setHalignment(btn5, HPos.CENTER);
+        botones.setHalignment(btnArriba, HPos.CENTER);
+        botones.setHalignment(btnAbajo, HPos.CENTER);
 
         int anchoMapa = juego.getAnchoMapa();
 
@@ -73,52 +80,36 @@ public class MapaVista extends StackPane {
         mapa.setPrefWidth(640);
         mapa.setPrefHeight(520);
 
-        /*for(int i=0; i < anchoMapa; i++){
-            ColumnConstraints columna = new ColumnConstraints(40);
-            mapa.getColumnConstraints().add(columna);
-        }*/
-
         for(int i=0; i < anchoMapa; i++){
             for(int j=0; j < altoMapa; j++){
+                var rectangulo = new Rectangle();
                 if((i%2 != 0) && (j%2 != 0)){
-                    var rectangulo = new Rectangle();
-                    rectangulo.setHeight(100);
-                    rectangulo.setWidth(100);
-                    //rectangulo.setStroke(Color.BLACK);
                     rectangulo.setFill(Color.BLACK);
-                    mapa.add(rectangulo,i,j);
                 }
                 else{
-                    var rectangulo = new Rectangle();
                     rectangulo.setFill(Color.WHITE);
-                    //rectangulo.setStroke(Color.RED);
-                    rectangulo.setHeight(100);
-                    rectangulo.setWidth(100);
-                    mapa.add(rectangulo,i,j);
                 }
+                rectangulo.setHeight(100);
+                rectangulo.setWidth(100);
+                mapa.add(rectangulo,i,j);
             }
         }
 
         Image imagenLlegada = new Image("https://i.pinimg.com/564x/f9/60/6b/f9606ba052600841c02b9a96e357841e.jpg");
         ImageView llegada = new ImageView(imagenLlegada);
-
-        mapa.add(llegada, juego.posicionDeLlegada().getPosicionX(), juego.posicionDeLlegada().getPosicionY() );
-
         llegada.setFitWidth(39);
         llegada.setFitHeight(39);
 
-        ImageView fondoView = new ImageView(fondoDePantalla);
+        mapa.add(llegada, juego.posicionDeLlegada().getPosicionX(), juego.getMapaActual().getAlto() - juego.posicionDeLlegada().getPosicionY());
 
-        Image image1 = new Image("https://github.com/ianmku/algo3_tp2/blob/manuel/resources/images/pngegg.png?raw=true");
+        VehiculoVista vehiculoVista = new VehiculoVista(juego, new VehiculoControlador());
+        Vehiculo vehiculo = juego.getJugadorActual().obtenerVehiculo();
+        vehiculo.addObserver(vehiculoVista);
 
-        ImageView img = new ImageView(image1);
-
-        mapa.add(img,2,2);
-
-        img.setFitHeight(39);
-        img.setFitWidth(39);
-
-        //circle.setRadius(20);
+        btnArriba.setOnMousePressed((event) -> this.controlador.moverArriba(vehiculoVista));
+        btnDerecha.setOnMousePressed((event) -> moverDerecha(mapa, vehiculoVista));
+        btnIzquierda.setOnMousePressed((event) -> this.controlador.moverIzquierda(vehiculoVista));
+        btnAbajo.setOnMousePressed((event) -> this.controlador.moverAbajo(vehiculoVista));
 
         Hashtable<Posicion, Calle> hash = juego.getMapaActual().obtenerCalles();
 
@@ -129,35 +120,9 @@ public class MapaVista extends StackPane {
 
 
             for(Interactuable i: calle.getInteractuables()){
-                //Rectangle rectangulo = new Rectangle();
-                Image imagenInteractuable;
                 ImageView imgInteractuable;
 
-
-                if(i.getClass() == Piquete.class){
-                    //rectangulo.setFill(Color.RED);
-                    imagenInteractuable = new Image ("https://t2.uc.ltmcdn.com/es/posts/7/7/5/como_hacer_choripan_42577_orig.jpg");
-                    imgInteractuable = new ImageView(imagenInteractuable);
-                }
-                else if(i.getClass() == Pozo.class){
-                    //rectangulo.setFill(Color.BLUE);
-                    imagenInteractuable = new Image ("https://github.com/ianmku/algo3_tp2/blob/manuel/resources/images/pozo.png?raw=true");
-                    imgInteractuable = new ImageView(imagenInteractuable);
-                }
-                else if(i.getClass() == ControlPolicial.class){
-                    //rectangulo.setFill(Color.GREEN);
-                    imagenInteractuable = new Image ("https://github.com/ianmku/algo3_tp2/blob/manuel/resources/images/control_policial.png?raw=true");
-                    imgInteractuable = new ImageView(imagenInteractuable);
-                }
-                else{
-                    //rectangulo.setFill(Color.PURPLE);
-                    imagenInteractuable = new Image ("https://github.com/ianmku/algo3_tp2/blob/manuel/resources/images/sorpresa.png?raw=true");
-                    imgInteractuable = new ImageView(imagenInteractuable);
-                }
-
-
-                //rectangulo.setHeight(10);
-                //rectangulo.setWidth(10);
+                imgInteractuable = new ImageView(new Image(i.getUrlImagen()));
                 imgInteractuable.setFitHeight(40);
                 imgInteractuable.setFitWidth(40);
 
@@ -165,38 +130,11 @@ public class MapaVista extends StackPane {
                 contenedorInteractuables.getChildren().add(imgInteractuable);
             }
 
-            mapa.add(contenedorInteractuables, posicion.getPosicionX(),posicion.getPosicionY());
+            mapa.add(contenedorInteractuables, posicion.getPosicionX(),juego.getMapaActual().getAlto() - posicion.getPosicionY());
             contenedorInteractuables.setAlignment(Pos.CENTER);
         }
 
-        TranslateTransition tt = new TranslateTransition();
-
-        tt.setNode(img);
-        tt.setDuration(Duration.seconds(4));
-
-        tt.setToX(85);
-        tt.setToY(0);
-        tt.setAutoReverse(false);
-
-        tt.play();
-
-        RotateTransition rt = new RotateTransition(Duration.seconds(1), img);
-        rt.setByAngle(90);
-        rt.setDelay(Duration.seconds(4));
-        rt.play();
-        rt.setByAngle(180);
-        rt.setDelay(Duration.seconds(6));
-        rt.play();
-
-
-        //StackPane sp = new StackPane();
-
-       // sp.setMaxWidth(640);
-       // sp.setMaxHeight(520);
-
-        this.getChildren().addAll(mapa,botones);
-
-        this.setAlignment(img, Pos.CENTER_LEFT);
+        this.getChildren().addAll(mapa, vehiculoVista, botones);
 
         this.setAlignment(mapa, Pos.CENTER);
 
@@ -206,10 +144,32 @@ public class MapaVista extends StackPane {
 
         this.setPrefWidth(640);
         this.setMaxHeight(520);
-        /*sp.setMaxSize(640,520);
+    }
 
-        this.setCenter(sp);
-        this.setMaxWidth(640);
-        this.setMaxWidth(520);*/
+    private void moverDerecha(GridPane mapa, VehiculoVista vehiculo) {
+        this.controlador.moverDerecha(vehiculo);
+        mapa.getChildren().remove(vehiculo);
+        vehiculo.setVisible(false);
+        mapa.add(vehiculo, 4, 2);
+        double x = vehiculo.getLayoutX();
+        double y = vehiculo.getLayoutY();
+
+        mapa.getChildren().remove(vehiculo);
+        mapa.add(vehiculo, 2, 2);
+        vehiculo.setVisible(true);
+
+        TranslateTransition tt = new TranslateTransition();
+        tt.setDuration(Duration.seconds(2));
+        tt.setToX(x);
+        tt.setToY(y);
+        tt.setNode(vehiculo);
+        tt.play();
+        tt.setOnFinished((event) -> {
+            mapa.getChildren().remove(vehiculo);
+            vehiculo.setTranslateX(2);
+            vehiculo.setTranslateY(2);
+            mapa.add(vehiculo, 4, 2);
+        });
+
     }
 }

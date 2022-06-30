@@ -11,11 +11,10 @@ public class Camioneta implements Tipo {
     private final float CHANCE_CONTROL_POLICIAL = 0.3F;
     private final int PENALIZACION_POZO = 2;
     private final int PENALIZACION_CONTROL_POLICIAL = 3;
-
     private final int NO_SE_PENALIZA = 0;
-
     private final int NO_SE_ATRAVIESA_CONTROL_POLICIAL = -1;
     private int cantidadDePozosAtravesados;
+    private final String urlImagen = "https://github.com/ianmku/algo3_tp2/blob/manuel/resources/images/camioneta.png?raw=true";
 
     public Camioneta(){
         this.cantidadDePozosAtravesados = 0;
@@ -43,5 +42,7 @@ public class Camioneta implements Tipo {
         return new Moto();
     }
 
-
+    public String getUrlImagen() {
+        return urlImagen;
+    }
 }

@@ -9,9 +9,9 @@ import java.util.Random;
 public class Auto implements Tipo {
 
     private final float CHANCE_CONTROL_POLICIAL = 0.5F;
-
     private final int PENALIZACION_POZO = 3;
     private final int PENALIZACION_CONTROL_POLICIAL = 3;
+    private final String urlImagen = "https://github.com/ianmku/algo3_tp2/blob/manuel/resources/images/pngegg.png?raw=true";
 
     public int atravesarPozo(){
         return PENALIZACION_POZO;
@@ -29,6 +29,10 @@ public class Auto implements Tipo {
 
     public Tipo atravesarCambioVehiculo() {
         return new Camioneta();
+    }
+
+    public String getUrlImagen() {
+        return urlImagen;
     }
 
 }

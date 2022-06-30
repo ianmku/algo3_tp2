@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.Direcciones.*;
 import edu.fiuba.algo3.modelo.Escenario.Mapa;
 import edu.fiuba.algo3.modelo.Escenario.Posicion;
 import edu.fiuba.algo3.modelo.Vehiculos.*;
+import edu.fiuba.algo3.modelo.Vehiculos.Tipo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +57,7 @@ public class Juego extends Observable {
     }
     public void terminarPartida(){
         this.jugadores.add(this.jugadorActual);
-        System.out.println("Cantidad de movimientos: " + this.jugadorActual.obtenerCantidadMovimientos());
+        // System.out.println("Cantidad de movimientos: " + this.jugadorActual.obtenerCantidadMovimientos());
         this.estado = "PARTIDA_TERMINADA";
         setChanged();
     }
@@ -114,6 +115,10 @@ public class Juego extends Observable {
                 break;
         }
         return direccion;
+    }
+
+    public Tipo getTipoVehiculo(){
+        return this.jugadorActual.obtenerTipoVehiculo();
     }
 
 }
