@@ -26,6 +26,7 @@ public class VehiculoVista extends VBox implements Observer {
         this.controlador = controlador;
         this.vehiculoView = new ImageView();
         this.juego = juego;
+        this.vehiculoView = new ImageView(new Image(juego.getJugadorActual().obtenerVehiculo().getTipo().getUrlImagen()));
 
         this.vehiculoView.setFitWidth(50);
         this.vehiculoView.setFitHeight(50);
@@ -38,30 +39,20 @@ public class VehiculoVista extends VBox implements Observer {
 
         var vehiculo = (Vehiculo) unVehiculo;
 
-        // this.vehiculoView = new ImageView(new Image(vehiculo.getTipo().getUrlImagen()));
+        this.vehiculoView = new ImageView(new Image(vehiculo.getTipo().getUrlImagen()));
+        this.vehiculoView.setFitWidth(50);
+        this.vehiculoView.setFitHeight(50);
         this.getChildren().clear();
         this.getChildren().add(vehiculoView);
 
         if(vehiculo.estaEnLlegada()){
             this.controlador.terminarPartida();
         }
-
-//        if(vehiculo.getTipo().getClass() == Auto.class){
-//            this.vehiculoView = new ImageView(new Image("https://github.com/ianmku/algo3_tp2/blob/manuel/resources/images/pngegg.png?raw=true"));
-//        }
-//
-//        if(vehiculo.getTipo().getClass() == Moto.class){
-//            this.vehiculoView = new ImageView(new Image("https://github.com/ianmku/algo3_tp2/blob/manuel/resources/images/moto.jpg?raw=true"));
-//        }
-//
-//        if(vehiculo.getTipo().getClass() == Camioneta.class){
-//            this.vehiculoView = new ImageView(new Image("https://github.com/ianmku/algo3_tp2/blob/manuel/resources/images/camioneta.png?raw=true"));
-//        }
     }
 
     public void moverDerecha(){
         TranslateTransition tt = new TranslateTransition();
-        tt.setDuration(Duration.seconds(4));
+        tt.setDuration(Duration.seconds(2));
         tt.setToX(this.vehiculoView.getX() + 80);
         tt.setNode(this.vehiculoView);
         tt.play();
