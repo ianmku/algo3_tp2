@@ -33,11 +33,12 @@ import java.util.Hashtable;
 
 public class MapaVista extends StackPane {
     private final MapaControlador controlador;
+    private int vehiculoX = 2;
+    private int vehiculoY;
+    private int altoMapa;
     public MapaVista(Juego juego, MapaControlador mapaControlador){
 
         this.controlador = mapaControlador;
-
-        Image fondoDePantalla = new Image("https://github.com/ianmku/algo3_tp2/blob/manuel/resources/images/mapa_grande.png?raw=true");
 
         Button btnArriba = new Button("Arriba");
         btnArriba.setCursor(Cursor.HAND);
@@ -67,13 +68,11 @@ public class MapaVista extends StackPane {
         botones.setColumnSpan(btnArriba,2);
         botones.setColumnSpan(btnAbajo,2);
 
-
         botones.setHalignment(btnArriba, HPos.CENTER);
         botones.setHalignment(btnAbajo, HPos.CENTER);
 
         int anchoMapa = juego.getAnchoMapa();
-
-        int altoMapa = juego.getAltoMapa();
+        this.altoMapa = juego.getAltoMapa();
 
         GridPane mapa = new GridPane();
         mapa.setAlignment(Pos.CENTER);
@@ -81,7 +80,7 @@ public class MapaVista extends StackPane {
         mapa.setPrefHeight(520);
 
         for(int i=0; i < anchoMapa; i++){
-            for(int j=0; j < altoMapa; j++){
+            for(int j=0; j < this.altoMapa; j++){
                 var rectangulo = new Rectangle();
                 if((i%2 != 0) && (j%2 != 0)){
                     rectangulo.setFill(Color.BLACK);
@@ -89,8 +88,8 @@ public class MapaVista extends StackPane {
                 else{
                     rectangulo.setFill(Color.WHITE);
                 }
-                rectangulo.setHeight(100);
-                rectangulo.setWidth(100);
+                rectangulo.setHeight(50);
+                rectangulo.setWidth(50);
                 mapa.add(rectangulo,i,j);
             }
         }
@@ -105,11 +104,13 @@ public class MapaVista extends StackPane {
         VehiculoVista vehiculoVista = new VehiculoVista(juego, new VehiculoControlador());
         Vehiculo vehiculo = juego.getJugadorActual().obtenerVehiculo();
         vehiculo.addObserver(vehiculoVista);
+        this.vehiculoY = ((this.altoMapa - 1) / 2 ) - 1;
+        mapa.add(vehiculoVista, this.vehiculoX, invertirY(this.vehiculoY));
 
-        btnArriba.setOnMousePressed((event) -> this.controlador.moverArriba(vehiculoVista));
+        btnArriba.setOnMousePressed((event) -> moverArriba(mapa, vehiculoVista));
         btnDerecha.setOnMousePressed((event) -> moverDerecha(mapa, vehiculoVista));
-        btnIzquierda.setOnMousePressed((event) -> this.controlador.moverIzquierda(vehiculoVista));
-        btnAbajo.setOnMousePressed((event) -> this.controlador.moverAbajo(vehiculoVista));
+        btnIzquierda.setOnMousePressed((event) -> moverIzquierda(mapa, vehiculoVista));
+        btnAbajo.setOnMousePressed((event) -> moverAbajo(mapa, vehiculoVista));
 
         Hashtable<Posicion, Calle> hash = juego.getMapaActual().obtenerCalles();
 
@@ -126,7 +127,6 @@ public class MapaVista extends StackPane {
                 imgInteractuable.setFitHeight(40);
                 imgInteractuable.setFitWidth(40);
 
-
                 contenedorInteractuables.getChildren().add(imgInteractuable);
             }
 
@@ -134,7 +134,7 @@ public class MapaVista extends StackPane {
             contenedorInteractuables.setAlignment(Pos.CENTER);
         }
 
-        this.getChildren().addAll(mapa, vehiculoVista, botones);
+        this.getChildren().addAll(mapa, botones);
 
         this.setAlignment(mapa, Pos.CENTER);
 
@@ -145,31 +145,50 @@ public class MapaVista extends StackPane {
         this.setPrefWidth(640);
         this.setMaxHeight(520);
     }
+    private int invertirY(int y) {
+        return (this.altoMapa - 1) - y;
+    }
+    private void moverVehiculoVista(GridPane mapa, VehiculoVista vehiculo) {
+        mapa.getChildren().remove(vehiculo);
+        mapa.add(vehiculo, vehiculo.getPosicionX(), invertirY(vehiculo.getPosicionY()));
+    }
 
+    public void moverArriba(GridPane mapa, VehiculoVista vehiculo) {
+        this.controlador.moverArriba(vehiculo);
+        moverVehiculoVista(mapa, vehiculo);
+    }
+    public void moverIzquierda(GridPane mapa, VehiculoVista vehiculo) {
+        this.controlador.moverIzquierda(vehiculo);
+        moverVehiculoVista(mapa, vehiculo);
+    }
     private void moverDerecha(GridPane mapa, VehiculoVista vehiculo) {
         this.controlador.moverDerecha(vehiculo);
-        mapa.getChildren().remove(vehiculo);
-        vehiculo.setVisible(false);
-        mapa.add(vehiculo, 4, 2);
-        double x = vehiculo.getLayoutX();
-        double y = vehiculo.getLayoutY();
-
-        mapa.getChildren().remove(vehiculo);
-        mapa.add(vehiculo, 2, 2);
-        vehiculo.setVisible(true);
-
-        TranslateTransition tt = new TranslateTransition();
-        tt.setDuration(Duration.seconds(2));
-        tt.setToX(x);
-        tt.setToY(y);
-        tt.setNode(vehiculo);
-        tt.play();
-        tt.setOnFinished((event) -> {
-            mapa.getChildren().remove(vehiculo);
-            vehiculo.setTranslateX(2);
-            vehiculo.setTranslateY(2);
-            mapa.add(vehiculo, 4, 2);
-        });
-
+        moverVehiculoVista(mapa, vehiculo);
+//        mapa.getChildren().remove(vehiculo);
+//        vehiculo.setVisible(false);
+//        mapa.add(vehiculo, 4, 2);
+//        double x = vehiculo.getLayoutX();
+//        double y = vehiculo.getLayoutY();
+//
+//        mapa.getChildren().remove(vehiculo);
+//        mapa.add(vehiculo, 2, 2);
+//        vehiculo.setVisible(true);
+//
+//        TranslateTransition tt = new TranslateTransition();
+//        tt.setDuration(Duration.seconds(2));
+//        tt.setToX(x);
+//        tt.setToY(y);
+//        tt.setNode(vehiculo);
+//        tt.play();
+//        tt.setOnFinished((event) -> {
+//            mapa.getChildren().remove(vehiculo);
+//            vehiculo.setTranslateX(0);
+//            vehiculo.setTranslateY(0);
+//            mapa.add(vehiculo, 4, 2);
+//        });
+    }
+    public void moverAbajo(GridPane mapa, VehiculoVista vehiculo) {
+        this.controlador.moverAbajo(vehiculo);
+        moverVehiculoVista(mapa, vehiculo);
     }
 }

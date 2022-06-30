@@ -48,24 +48,17 @@ public class Mapa {
     }
 
     public void moverVehiculo(Vehiculo vehiculo, Direccion direccion){
-        imprimirPosicion();
-
         direccion.calcularPosicionSiguiente(posicionDelVehiculo);
         Calle calle = calles.get(posicionDelVehiculo);
         if(!posicionDelVehiculo.estaEnLimites(this.ancho, this.alto)) {
             direccion.opuesto().calcularPosicionSiguiente(posicionDelVehiculo);
             return;
         }
-        imprimirPosicion();
-
         vehiculo.aumentarMovimientos(1);
         if(calle != null){
             calle.atravesarCalle(vehiculo);
         }
-
         direccion.calcularPosicionSiguiente(posicionDelVehiculo);
-        imprimirPosicion();
-
     }
 
     public Posicion getPosicionDelVehiculo(){
@@ -132,7 +125,6 @@ public class Mapa {
         }
         this.posicionDelVehiculo = new Posicion(COORDENADA_X_VEHICULO,((this.alto - 1) / 2 ) - 1);
         this.Llegada = aleatorio.generarPosicionDeLlegada(this.ancho, this.alto);
-        this.Llegada.imprimirPosicion();
     }
 
     public int getAnchoMapa(){
@@ -141,10 +133,6 @@ public class Mapa {
 
     public int getAltoMapa(){
         return this.alto;
-    }
-
-    public void imprimirPosicion(){
-        this.posicionDelVehiculo.imprimirPosicion();
     }
 
     public int calcularPuntaje(int cantidadDeMovimientos) {

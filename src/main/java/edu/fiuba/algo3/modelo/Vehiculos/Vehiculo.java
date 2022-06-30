@@ -101,10 +101,6 @@ public class Vehiculo extends Observable {
         return false;
     }
 
-    public void imprimirPosicion(){
-        this.mapa.imprimirPosicion();
-    }
-
     public Posicion posicionDeLlegada() {
         return this.mapa.getPosicionDeLlegada();
     }
