@@ -41,6 +41,7 @@ public class VehiculoVista extends VBox implements Observer {
         var vehiculo = (Vehiculo) unVehiculo;
 
         this.vehiculoView = new ImageView(new Image(vehiculo.getTipo().getUrlImagen()));
+
         this.vehiculoView.setFitWidth(50);
         this.vehiculoView.setFitHeight(50);
         Direccion nuevaDireccion = vehiculo.getDireccion();

@@ -3,6 +3,7 @@ package edu.fiuba.algo3.vistas;
 import edu.fiuba.algo3.controladores.MapaControlador;
 import edu.fiuba.algo3.controladores.VehiculoControlador;
 import edu.fiuba.algo3.modelo.Escenario.Calle;
+import edu.fiuba.algo3.modelo.Escenario.Mapa;
 import edu.fiuba.algo3.modelo.Escenario.Posicion;
 import edu.fiuba.algo3.modelo.Interactuables.ControlPolicial;
 import edu.fiuba.algo3.modelo.Interactuables.Piquete;
@@ -40,7 +41,7 @@ public class MapaVista extends StackPane {
 
         this.controlador = mapaControlador;
 
-        Button btnArriba = new Button("Arriba");
+        /*Button btnArriba = new Button("Arriba");
         btnArriba.setCursor(Cursor.HAND);
         btnArriba.setPrefWidth(70);
 
@@ -69,7 +70,7 @@ public class MapaVista extends StackPane {
         botones.setColumnSpan(btnAbajo,2);
 
         botones.setHalignment(btnArriba, HPos.CENTER);
-        botones.setHalignment(btnAbajo, HPos.CENTER);
+        botones.setHalignment(btnAbajo, HPos.CENTER);*/
 
         int anchoMapa = juego.getAnchoMapa();
         this.altoMapa = juego.getAltoMapa();
@@ -107,10 +108,12 @@ public class MapaVista extends StackPane {
         this.vehiculoY = ((this.altoMapa - 1) / 2 ) - 1;
         mapa.add(vehiculoVista, this.vehiculoX, invertirY(this.vehiculoY));
 
-        btnArriba.setOnMousePressed((event) -> moverArriba(mapa, vehiculoVista));
+       /* btnArriba.setOnMousePressed((event) -> moverArriba(mapa, vehiculoVista));
         btnDerecha.setOnMousePressed((event) -> moverDerecha(mapa, vehiculoVista));
         btnIzquierda.setOnMousePressed((event) -> moverIzquierda(mapa, vehiculoVista));
-        btnAbajo.setOnMousePressed((event) -> moverAbajo(mapa, vehiculoVista));
+        btnAbajo.setOnMousePressed((event) -> moverAbajo(mapa, vehiculoVista));*/
+
+        GridPane botones = this.botonesDeDireccion(mapa, vehiculoVista);
 
         Hashtable<Posicion, Calle> hash = juego.getMapaActual().obtenerCalles();
 
@@ -150,6 +153,47 @@ public class MapaVista extends StackPane {
 
         this.setPrefWidth(640);
         this.setMaxHeight(520);
+    }
+
+    public GridPane botonesDeDireccion(GridPane mapa, VehiculoVista vehiculoVista){
+        GridPane botones = new GridPane();
+        botones.setAlignment(Pos.BOTTOM_RIGHT);
+
+        Button btnArriba = new Button("Arriba");
+        btnArriba.setCursor(Cursor.HAND);
+        btnArriba.setPrefWidth(70);
+
+        Button btnIzquierda = new Button("Izquierda");
+        btnIzquierda.setCursor(Cursor.HAND);
+
+        Button btnDerecha = new Button("Derecha");
+        btnDerecha.setCursor(Cursor.HAND);
+
+        Button btnAbajo = new Button("Abajo");
+        btnAbajo.setCursor(Cursor.HAND);
+        btnAbajo.setPrefWidth(70);
+
+        botones.add(btnArriba, 0,0);
+        botones.add(btnIzquierda, 0,1);
+        botones.add(btnDerecha, 1,1);
+        botones.add(btnAbajo, 0,2);
+
+        botones.setMargin(btnArriba, new Insets(0,0,5,0));
+        botones.setMargin(btnAbajo, new Insets(5,0,0,0));
+
+        botones.setColumnSpan(btnArriba,2);
+        botones.setColumnSpan(btnAbajo,2);
+
+        botones.setHalignment(btnArriba, HPos.CENTER);
+        botones.setHalignment(btnAbajo, HPos.CENTER);
+
+        btnArriba.setOnMousePressed((event) -> moverArriba(mapa, vehiculoVista));
+        btnDerecha.setOnMousePressed((event) -> moverDerecha(mapa, vehiculoVista));
+        btnIzquierda.setOnMousePressed((event) -> moverIzquierda(mapa, vehiculoVista));
+        btnAbajo.setOnMousePressed((event) -> moverAbajo(mapa, vehiculoVista));
+
+        return botones;
+
     }
     private int invertirY(int y) {
         return (this.altoMapa - 1) - y;
