@@ -88,8 +88,8 @@ public class MapaVista extends StackPane {
                 else{
                     rectangulo.setFill(Color.WHITE);
                 }
-                rectangulo.setHeight(100);
-                rectangulo.setWidth(100);
+                rectangulo.setHeight(50);
+                rectangulo.setWidth(50);
                 mapa.add(rectangulo,i,j);
             }
         }
@@ -126,7 +126,6 @@ public class MapaVista extends StackPane {
                 imgInteractuable = new ImageView(new Image(i.getUrlImagen()));
                 imgInteractuable.setFitHeight(40);
                 imgInteractuable.setFitWidth(40);
-
 
                 contenedorInteractuables.getChildren().add(imgInteractuable);
             }

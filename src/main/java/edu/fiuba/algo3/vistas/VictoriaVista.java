@@ -24,7 +24,7 @@ public class VictoriaVista extends StackPane {
         VBox vBox = new VBox();
         vBox.setSpacing(20);
 
-        Image image = new Image("https://github.com/ianmku/algo3_tp2/blob/manuel/src/main/java/edu/fiuba/algo3/menu_principal.png?raw=true");
+        Image image = new Image("https://github.com/ianmku/algo3_tp2/blob/d5ad5ccd1785d56864720c85d0f1bf93b96a4445/resources/images/menu_principal.png");
         ImageView img = new ImageView(image);
 
         Label titulo = new Label("FELICITACIONES!!");
