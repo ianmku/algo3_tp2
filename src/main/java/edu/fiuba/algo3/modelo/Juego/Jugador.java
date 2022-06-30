@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.Direcciones.Direccion;
 import edu.fiuba.algo3.modelo.Escenario.Posicion;
 import edu.fiuba.algo3.modelo.Escenario.Mapa;
 import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
+import edu.fiuba.algo3.modelo.Vehiculos.Tipo;
 
 public class Jugador {
 
@@ -55,5 +56,9 @@ public class Jugador {
 
     public Posicion posicionDeLlegada() {
         return this.vehiculo.posicionDeLlegada();
+    }
+
+    public Tipo obtenerTipoVehiculo() {
+        return this.vehiculo.getTipo();
     }
 }

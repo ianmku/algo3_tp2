@@ -102,4 +102,8 @@ public class Vehiculo {
     public Posicion posicionDeLlegada() {
         return this.mapa.getPosicionDeLlegada();
     }
+
+    public Tipo getTipo(){
+        return this.tipo;
+    }
 }
