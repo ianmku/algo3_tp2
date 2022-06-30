@@ -6,7 +6,9 @@ import edu.fiuba.algo3.modelo.Direcciones.Direccion;
 import edu.fiuba.algo3.modelo.Escenario.Mapa;
 import edu.fiuba.algo3.modelo.Escenario.Posicion;
 
-public class Vehiculo {
+import java.util.Observable;
+
+public class Vehiculo extends Observable {
     private int cantidadDeMovimientos;
     private Mapa mapa;
     private Direccion direccion;
@@ -21,6 +23,7 @@ public class Vehiculo {
         this.tipo = tipo;
         this.cantidadDeMovimientos = 0;
         this.direccion = new Derecha();
+        setChanged();
     }
 
     public boolean estaEnLlegada(){

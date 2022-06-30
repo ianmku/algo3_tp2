@@ -34,41 +34,41 @@ public class MapaVista extends StackPane {
     public MapaVista(Juego juego, MapaControlador mapaControlador){
         Image fondoDePantalla = new Image("https://github.com/ianmku/algo3_tp2/blob/manuel/resources/images/mapa_grande.png?raw=true");
 
-        Button btn2 = new Button("Arriba");
+        Button btnArriba = new Button("Arriba");
         //btn2.setOnMouseClicked((event) -> mapaControlador.moverArriba());
-        btn2.setCursor(Cursor.HAND);
-        btn2.setPrefWidth(70);
+        btnArriba.setCursor(Cursor.HAND);
+        btnArriba.setPrefWidth(70);
 
-        Button btn3 = new Button("Izquierda");
-        btn3.setCursor(Cursor.HAND);
+        Button btnIzquierda = new Button("Izquierda");
+        btnIzquierda.setCursor(Cursor.HAND);
         //btn3.setOnMouseClicked((event) -> mapaControlador.moverIzquierda());
 
-        Button btn4 = new Button("Derecha");
-        btn4.setCursor(Cursor.HAND);
+        Button btnDerecha = new Button("Derecha");
+        btnDerecha.setCursor(Cursor.HAND);
         //btn3.setOnMouseClicked((event) -> mapaControlador.moverDerecha());
 
-        Button btn5 = new Button("Abajo");
+        Button btnAbajo = new Button("Abajo");
         //btn3.setOnMouseClicked((event) -> mapaControlador.moverAbajo());
-        btn5.setCursor(Cursor.HAND);
-        btn5.setPrefWidth(70);
+        btnAbajo.setCursor(Cursor.HAND);
+        btnAbajo.setPrefWidth(70);
 
         GridPane botones = new GridPane();
         botones.setAlignment(Pos.BOTTOM_RIGHT);
 
-        botones.add(btn2, 0,0);
-        botones.add(btn3, 0,1);
-        botones.add(btn4, 1,1);
-        botones.add(btn5, 0,2);
+        botones.add(btnArriba, 0,0);
+        botones.add(btnIzquierda, 0,1);
+        botones.add(btnDerecha, 1,1);
+        botones.add(btnAbajo, 0,2);
 
-        botones.setMargin(btn2, new Insets(0,0,5,0));
-        botones.setMargin(btn5, new Insets(5,0,0,0));
+        botones.setMargin(btnArriba, new Insets(0,0,5,0));
+        botones.setMargin(btnAbajo, new Insets(5,0,0,0));
 
-        botones.setColumnSpan(btn2,2);
-        botones.setColumnSpan(btn5,2);
+        botones.setColumnSpan(btnArriba,2);
+        botones.setColumnSpan(btnAbajo,2);
 
 
-        botones.setHalignment(btn2, HPos.CENTER);
-        botones.setHalignment(btn5, HPos.CENTER);
+        botones.setHalignment(btnArriba, HPos.CENTER);
+        botones.setHalignment(btnAbajo, HPos.CENTER);
 
         int anchoMapa = juego.getAnchoMapa();
 
@@ -86,29 +86,23 @@ public class MapaVista extends StackPane {
 
         for(int i=0; i < anchoMapa; i++){
             for(int j=0; j < altoMapa; j++){
+                var rectangulo = new Rectangle();
                 if((i%2 != 0) && (j%2 != 0)){
-                    var rectangulo = new Rectangle();
-                    rectangulo.setHeight(100);
-                    rectangulo.setWidth(100);
-                    //rectangulo.setStroke(Color.BLACK);
                     rectangulo.setFill(Color.BLACK);
-                    mapa.add(rectangulo,i,j);
                 }
                 else{
-                    var rectangulo = new Rectangle();
                     rectangulo.setFill(Color.WHITE);
-                    //rectangulo.setStroke(Color.RED);
-                    rectangulo.setHeight(100);
-                    rectangulo.setWidth(100);
-                    mapa.add(rectangulo,i,j);
                 }
+                rectangulo.setHeight(100);
+                rectangulo.setWidth(100);
+                mapa.add(rectangulo,i,j);
             }
         }
 
         Image imagenLlegada = new Image("https://i.pinimg.com/564x/f9/60/6b/f9606ba052600841c02b9a96e357841e.jpg");
         ImageView llegada = new ImageView(imagenLlegada);
 
-        mapa.add(llegada, juego.posicionDeLlegada().getPosicionX(), juego.posicionDeLlegada().getPosicionY() );
+        mapa.add(llegada, juego.posicionDeLlegada().getPosicionX(), juego.getMapaActual().getAlto() - juego.posicionDeLlegada().getPosicionY());
 
         llegada.setFitWidth(39);
         llegada.setFitHeight(39);
@@ -116,10 +110,10 @@ public class MapaVista extends StackPane {
         ImageView fondoView = new ImageView(fondoDePantalla);
 
         VehiculoVista vehiculoVista = new VehiculoVista(juego);
-        btn2.setOnMousePressed((event) -> mapaControlador.moverArriba(vehiculoVista));
-        btn4.setOnMousePressed((event) -> mapaControlador.moverDerecha(vehiculoVista));
-        btn3.setOnMousePressed((event) -> mapaControlador.moverIzquierda(vehiculoVista));
-        btn5.setOnMousePressed((event) -> mapaControlador.moverAbajo(vehiculoVista));
+        btnArriba.setOnMousePressed((event) -> mapaControlador.moverArriba(vehiculoVista));
+        btnDerecha.setOnMousePressed((event) -> mapaControlador.moverDerecha(vehiculoVista));
+        btnIzquierda.setOnMousePressed((event) -> mapaControlador.moverIzquierda(vehiculoVista));
+        btnAbajo.setOnMousePressed((event) -> mapaControlador.moverAbajo(vehiculoVista));
 
         mapa.add(vehiculoVista,2,2);
 
@@ -173,7 +167,7 @@ public class MapaVista extends StackPane {
                 contenedorInteractuables.getChildren().add(imgInteractuable);
             }
 
-            mapa.add(contenedorInteractuables, posicion.getPosicionX(),posicion.getPosicionY());
+            mapa.add(contenedorInteractuables, posicion.getPosicionX(),juego.getMapaActual().getAlto() - posicion.getPosicionY());
             contenedorInteractuables.setAlignment(Pos.CENTER);
         }
 

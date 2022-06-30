@@ -13,4 +13,6 @@ public interface Tipo {
 
     Tipo atravesarCambioVehiculo();
 
+    String getUrlImagen();
+
 }

@@ -9,31 +9,27 @@ import edu.fiuba.algo3.vistas.VehiculoVista;
 
 public class MapaControlador {
 
-    public MapaControlador(){
-
-    }
-
     public void moverDerecha(VehiculoVista vv){
         Juego.getInstance().moverVehiculo(new Derecha(), Juego.getInstance().getJugadorActual());
-        vv.moverDerecha();
+        // vv.moverDerecha();
         Juego.getInstance().notifyObservers();
     }
 
     public void moverIzquierda(VehiculoVista vv){
         Juego.getInstance().moverVehiculo(new Izquierda(), Juego.getInstance().getJugadorActual());
-        vv.moverIzquierda();
+        // vv.moverIzquierda();
         Juego.getInstance().notifyObservers();
     }
 
     public void moverArriba(VehiculoVista vv){
         Juego.getInstance().moverVehiculo(new Arriba(), Juego.getInstance().getJugadorActual());
-        vv.moverArriba();
+        // vv.moverArriba();
         Juego.getInstance().notifyObservers();
     }
 
     public void moverAbajo(VehiculoVista vv){
         Juego.getInstance().moverVehiculo(new Abajo(), Juego.getInstance().getJugadorActual());
-        vv.moverAbajo();
+        // vv.moverAbajo();
         Juego.getInstance().notifyObservers();
     }
 }
