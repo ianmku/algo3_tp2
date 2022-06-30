@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vistas;
 
+import edu.fiuba.algo3.controladores.VehiculoControlador;
 import edu.fiuba.algo3.modelo.Juego.Juego;
 import edu.fiuba.algo3.modelo.Vehiculos.Auto;
 import edu.fiuba.algo3.modelo.Vehiculos.Camioneta;
@@ -18,9 +19,11 @@ import java.util.Observer;
 public class VehiculoVista extends VBox implements Observer {
     private ImageView vehiculoView;
     private final Juego juego;
+    private final VehiculoControlador controlador;
 
-    public VehiculoVista(Juego juego){
+    public VehiculoVista(Juego juego, VehiculoControlador controlador){
         super();
+        this.controlador = controlador;
         this.vehiculoView = new ImageView();
         this.juego = juego;
 
@@ -38,6 +41,10 @@ public class VehiculoVista extends VBox implements Observer {
         this.vehiculoView = new ImageView(new Image(vehiculo.getTipo().getUrlImagen()));
         this.getChildren().clear();
         this.getChildren().add(vehiculoView);
+
+        if(vehiculo.estaEnLlegada()){
+            this.controlador.terminarPartida();
+        }
 
 //        if(vehiculo.getTipo().getClass() == Auto.class){
 //            this.vehiculoView = new ImageView(new Image("https://github.com/ianmku/algo3_tp2/blob/manuel/resources/images/pngegg.png?raw=true"));

@@ -57,7 +57,7 @@ public class Juego extends Observable {
     }
     public void terminarPartida(){
         this.jugadores.add(this.jugadorActual);
-        System.out.println("Cantidad de movimientos: " + this.jugadorActual.obtenerCantidadMovimientos());
+        // System.out.println("Cantidad de movimientos: " + this.jugadorActual.obtenerCantidadMovimientos());
         this.estado = "PARTIDA_TERMINADA";
         setChanged();
     }

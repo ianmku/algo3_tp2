@@ -53,6 +53,7 @@ public class Vehiculo extends Observable {
     public void mover(Direccion unaDireccion){
         this.direccion = unaDireccion;
         this.mapa.moverVehiculo(this, this.direccion);
+        setChanged();
     }
 
     public void atravesarSorpresaFavorable() {

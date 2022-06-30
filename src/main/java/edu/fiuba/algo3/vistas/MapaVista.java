@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vistas;
 
 import edu.fiuba.algo3.controladores.MapaControlador;
+import edu.fiuba.algo3.controladores.VehiculoControlador;
 import edu.fiuba.algo3.modelo.Escenario.Calle;
 import edu.fiuba.algo3.modelo.Escenario.Posicion;
 import edu.fiuba.algo3.modelo.Interactuables.ControlPolicial;
@@ -109,7 +110,7 @@ public class MapaVista extends StackPane {
 
         ImageView fondoView = new ImageView(fondoDePantalla);
 
-        VehiculoVista vehiculoVista = new VehiculoVista(juego);
+        VehiculoVista vehiculoVista = new VehiculoVista(juego, new VehiculoControlador());
         btnArriba.setOnMousePressed((event) -> mapaControlador.moverArriba(vehiculoVista));
         btnDerecha.setOnMousePressed((event) -> mapaControlador.moverDerecha(vehiculoVista));
         btnIzquierda.setOnMousePressed((event) -> mapaControlador.moverIzquierda(vehiculoVista));
