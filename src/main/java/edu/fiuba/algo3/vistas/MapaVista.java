@@ -111,6 +111,9 @@ public class MapaVista extends StackPane {
         ImageView fondoView = new ImageView(fondoDePantalla);
 
         VehiculoVista vehiculoVista = new VehiculoVista(juego, new VehiculoControlador());
+        Vehiculo vehiculo = juego.getJugadorActual().obtenerVehiculo();
+        vehiculo.addObserver(vehiculoVista);
+
         btnArriba.setOnMousePressed((event) -> mapaControlador.moverArriba(vehiculoVista));
         btnDerecha.setOnMousePressed((event) -> mapaControlador.moverDerecha(vehiculoVista));
         btnIzquierda.setOnMousePressed((event) -> mapaControlador.moverIzquierda(vehiculoVista));

@@ -130,7 +130,7 @@ public class Mapa {
                 colocarInteractuable(SORPRESAS_GRANDE, new SorpresaCambioVehiculo(), aleatorio);
                 break;
         }
-        this.posicionDelVehiculo = new Posicion(COORDENADA_X_VEHICULO,(this.alto - 1) / 2);
+        this.posicionDelVehiculo = new Posicion(COORDENADA_X_VEHICULO,((this.alto - 1) / 2 ) - 1);
         this.Llegada = aleatorio.generarPosicionDeLlegada(this.ancho, this.alto);
         this.Llegada.imprimirPosicion();
     }

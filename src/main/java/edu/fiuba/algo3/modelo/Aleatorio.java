@@ -21,12 +21,12 @@ public class Aleatorio {
 
     public Posicion generarPosicionDeLlegada(int ancho, int alto){
         int coordenadaX = ancho-1;
-        int coordenadaY = rand.nextInt(alto);
-        while(coordenadaY % 2 == 0){
-            coordenadaY = rand.nextInt(alto);
-        }
+        int coordenadaY = rand.nextInt((alto - 1) / 2);
+//        while(coordenadaY % 2 != 0){
+//            coordenadaY = rand.nextInt(alto);
+//        }
 
-        return new Posicion(coordenadaX, coordenadaY);
+        return new Posicion(coordenadaX, coordenadaY * 2);
     }
 
     public int generarCoordenadaY(int coordenadaX, int alto) {

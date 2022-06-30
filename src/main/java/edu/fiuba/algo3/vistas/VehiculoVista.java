@@ -38,7 +38,7 @@ public class VehiculoVista extends VBox implements Observer {
 
         var vehiculo = (Vehiculo) unVehiculo;
 
-        this.vehiculoView = new ImageView(new Image(vehiculo.getTipo().getUrlImagen()));
+        // this.vehiculoView = new ImageView(new Image(vehiculo.getTipo().getUrlImagen()));
         this.getChildren().clear();
         this.getChildren().add(vehiculoView);
 

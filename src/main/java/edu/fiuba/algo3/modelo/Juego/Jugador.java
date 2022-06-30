@@ -17,6 +17,10 @@ public class Jugador {
         this.vehiculo = unVehiculo;
     }
 
+    public Vehiculo obtenerVehiculo() {
+        return this.vehiculo;
+    }
+
     public void moverVehiculo(Direccion unaDireccion){
         this.vehiculo.mover(unaDireccion);
     }

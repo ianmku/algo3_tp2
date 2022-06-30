@@ -23,6 +23,7 @@ public class Vehiculo extends Observable {
         this.tipo = tipo;
         this.cantidadDeMovimientos = 0;
         this.direccion = new Derecha();
+        notifyObservers();
         setChanged();
     }
 
@@ -53,6 +54,7 @@ public class Vehiculo extends Observable {
     public void mover(Direccion unaDireccion){
         this.direccion = unaDireccion;
         this.mapa.moverVehiculo(this, this.direccion);
+        notifyObservers();
         setChanged();
     }
 

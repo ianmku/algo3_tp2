@@ -31,8 +31,8 @@ public class Posicion {
     }
 
     public boolean estaEnLimites(int ancho, int alto) {
-        if(this.posicionX < LIMITE_DERECHO || this.posicionX > ancho) return false;
-        if(this.posicionY < LIMITE_SUPERIOR || this.posicionY > alto) return false;
+        if(this.posicionX < LIMITE_DERECHO || this.posicionX > (ancho - 1)) return false;
+        if(this.posicionY < LIMITE_SUPERIOR || this.posicionY > (alto - 1)) return false;
         return true;
     }
 
