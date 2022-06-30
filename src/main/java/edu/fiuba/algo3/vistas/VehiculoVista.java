@@ -20,6 +20,8 @@ public class VehiculoVista extends VBox implements Observer {
     private ImageView vehiculoView;
     private final Juego juego;
     private final VehiculoControlador controlador;
+    private int posicionX;
+    private int posicionY;
 
     public VehiculoVista(Juego juego, VehiculoControlador controlador){
         super();
@@ -45,9 +47,20 @@ public class VehiculoVista extends VBox implements Observer {
         this.getChildren().clear();
         this.getChildren().add(vehiculoView);
 
+        this.posicionX = vehiculo.getPosicion().getPosicionX();
+        this.posicionY = vehiculo.getPosicion().getPosicionY();
+
         if(vehiculo.estaEnLlegada()){
             this.controlador.terminarPartida();
         }
+    }
+
+    public int getPosicionX() {
+        return this.posicionX;
+    }
+
+    public int getPosicionY() {
+        return this.posicionY;
     }
 
     public void moverDerecha(){
