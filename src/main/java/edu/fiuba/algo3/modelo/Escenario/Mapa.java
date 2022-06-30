@@ -14,8 +14,8 @@ public class Mapa {
     private final int ALTO_CHICO = 7;
     private final int ANCHO_MEDIANO = 11;
     private final int ALTO_MEDIANO = 11;
-    private final int ANCHO_GRANDE = 17;
-    private final int ALTO_GRANDE = 17;
+    private final int ANCHO_GRANDE = 15;
+    private final int ALTO_GRANDE = 15;
 
     private final int OBSTACULOS_CHICO = 7;
     private final int OBSTACULOS_MEDIANO = 10;

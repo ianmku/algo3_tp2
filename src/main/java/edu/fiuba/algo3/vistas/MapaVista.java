@@ -124,8 +124,8 @@ public class MapaVista extends StackPane {
                 ImageView imgInteractuable;
 
                 imgInteractuable = new ImageView(new Image(i.getUrlImagen()));
-                imgInteractuable.setFitHeight(40);
-                imgInteractuable.setFitWidth(40);
+                imgInteractuable.setFitHeight(20);
+                imgInteractuable.setFitWidth(20);
 
                 contenedorInteractuables.getChildren().add(imgInteractuable);
             }

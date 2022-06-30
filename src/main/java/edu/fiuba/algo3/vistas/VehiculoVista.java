@@ -63,37 +63,4 @@ public class VehiculoVista extends VBox implements Observer {
         return this.posicionY;
     }
 
-    public void moverDerecha(){
-        TranslateTransition tt = new TranslateTransition();
-        tt.setDuration(Duration.seconds(2));
-        tt.setToX(this.vehiculoView.getX() + 80);
-        tt.setNode(this.vehiculoView);
-        tt.play();
-    }
-
-    public void moverIzquierda(){
-        TranslateTransition tt = new TranslateTransition();
-        tt.setDuration(Duration.seconds(4));
-        tt.setToX(this.vehiculoView.getX() - 80);
-        tt.setNode(this.vehiculoView);
-        tt.play();
-    }
-
-    public void moverArriba(){
-        TranslateTransition tt = new TranslateTransition();
-        tt.setDuration(Duration.seconds(4));
-        tt.setToY(this.vehiculoView.getY() - 80);
-        tt.setNode(this.vehiculoView);
-        tt.play();
-    }
-
-    public void moverAbajo() {
-        TranslateTransition tt = new TranslateTransition();
-        tt.setDuration(Duration.seconds(4));
-        tt.setToY(this.vehiculoView.getY() + 80);
-        tt.setNode(this.vehiculoView);
-        tt.play();
-    }
-
-
 }
