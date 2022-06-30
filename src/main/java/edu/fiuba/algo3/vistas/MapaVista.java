@@ -109,9 +109,9 @@ public class MapaVista extends StackPane {
 
         ImageView fondoView = new ImageView(fondoDePantalla);
 
-        Image image1 = new Image("https://github.com/ianmku/algo3_tp2/blob/manuel/resources/images/pngegg.png?raw=true");
+        Image vehiculo = new Image("https://github.com/ianmku/algo3_tp2/blob/manuel/resources/images/pngegg.png?raw=true");
 
-        ImageView img = new ImageView(image1);
+        ImageView img = new ImageView(vehiculo);
 
         mapa.add(img,2,2);
 
