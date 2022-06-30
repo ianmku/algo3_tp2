@@ -117,19 +117,25 @@ public class MapaVista extends StackPane {
         for (Entry<Posicion, Calle> entry : hash.entrySet()){
             Posicion posicion = entry.getKey();
             Calle calle = entry.getValue();
-            var contenedorInteractuables = new HBox();
-
+            var contenedorInteractuables = new VBox();
+            var contenedor1 = new HBox();
+            var contenedor2 = new HBox();
 
             for(Interactuable i: calle.getInteractuables()){
-                ImageView imgInteractuable;
-
-                imgInteractuable = new ImageView(new Image(i.getUrlImagen()));
+                ImageView imgInteractuable = new ImageView(new Image(i.getUrlImagen()));
                 imgInteractuable.setFitHeight(20);
                 imgInteractuable.setFitWidth(20);
-
+                if(contenedor1.getChildren().size() == 2){
+                    contenedor2.getChildren().add(imgInteractuable);
+                }else{
+                    contenedor1.getChildren().add(imgInteractuable);
+                }
                 contenedorInteractuables.getChildren().add(imgInteractuable);
             }
-
+            contenedorInteractuables.getChildren().add(contenedor1);
+            if(contenedor2.getChildren().size() > 0){
+                contenedorInteractuables.getChildren().add(contenedor2);
+            }
             mapa.add(contenedorInteractuables, posicion.getPosicionX(),juego.getMapaActual().getAlto() - posicion.getPosicionY());
             contenedorInteractuables.setAlignment(Pos.CENTER);
         }
