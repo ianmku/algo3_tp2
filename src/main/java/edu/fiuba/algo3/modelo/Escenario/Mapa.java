@@ -28,7 +28,7 @@ public class Mapa {
     private int ancho;
     private int alto;
 
-    private int multiplicadorPuntaje;
+    private float multiplicadorPuntaje;
 
     private Posicion posicionDelVehiculo;
 
@@ -103,7 +103,7 @@ public class Mapa {
             case MEDIANO:
                 this.ancho = ANCHO_MEDIANO;
                 this.alto = ALTO_MEDIANO;
-                this.multiplicadorPuntaje = 2;
+                this.multiplicadorPuntaje = 1.5F;
                 colocarInteractuable(OBSTACULOS_MEDIANO, new Pozo(), aleatorio);
                 colocarInteractuable(OBSTACULOS_MEDIANO, new Piquete(), aleatorio);
                 colocarInteractuable(OBSTACULOS_MEDIANO, new ControlPolicial(aleatorio), aleatorio);
@@ -114,7 +114,7 @@ public class Mapa {
             case GRANDE:
                 this.ancho = ANCHO_GRANDE;
                 this.alto = ALTO_GRANDE;
-                this.multiplicadorPuntaje = 3;
+                this.multiplicadorPuntaje = 2;
                 colocarInteractuable(OBSTACULOS_GRANDE, new Pozo(), aleatorio);
                 colocarInteractuable(OBSTACULOS_GRANDE, new Piquete(), aleatorio);
                 colocarInteractuable(OBSTACULOS_GRANDE, new ControlPolicial(aleatorio), aleatorio);
@@ -136,7 +136,7 @@ public class Mapa {
     }
 
     public int calcularPuntaje(int cantidadDeMovimientos) {
-        return cantidadDeMovimientos * this.multiplicadorPuntaje;
+        return (int) (cantidadDeMovimientos * this.multiplicadorPuntaje);
     }
 
     public Hashtable<Posicion, Calle> obtenerCalles(){
