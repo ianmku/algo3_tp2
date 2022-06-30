@@ -73,7 +73,7 @@ public class Vehiculo extends Observable {
     public int getMovimientos(){
         return cantidadDeMovimientos;
     }
-
+    public Direccion getDireccion() { return this.direccion; }
     public Posicion getPosicion(){
         return this.mapa.getPosicionDelVehiculo();
     }
