@@ -35,20 +35,20 @@ public class MapaVista extends StackPane {
         Image fondoDePantalla = new Image("https://github.com/ianmku/algo3_tp2/blob/manuel/resources/images/mapa_grande.png?raw=true");
 
         Button btn2 = new Button("Arriba");
-        btn2.setOnMouseClicked((event) -> mapaControlador.moverArriba());
+        //btn2.setOnMouseClicked((event) -> mapaControlador.moverArriba());
         btn2.setCursor(Cursor.HAND);
         btn2.setPrefWidth(70);
 
         Button btn3 = new Button("Izquierda");
         btn3.setCursor(Cursor.HAND);
-        btn3.setOnMouseClicked((event) -> mapaControlador.moverIzquierda());
+        //btn3.setOnMouseClicked((event) -> mapaControlador.moverIzquierda());
 
         Button btn4 = new Button("Derecha");
         btn4.setCursor(Cursor.HAND);
-        btn3.setOnMouseClicked((event) -> mapaControlador.moverDerecha());
+        //btn3.setOnMouseClicked((event) -> mapaControlador.moverDerecha());
 
         Button btn5 = new Button("Abajo");
-        btn3.setOnMouseClicked((event) -> mapaControlador.moverAbajo());
+        //btn3.setOnMouseClicked((event) -> mapaControlador.moverAbajo());
         btn5.setCursor(Cursor.HAND);
         btn5.setPrefWidth(70);
 
@@ -116,6 +116,10 @@ public class MapaVista extends StackPane {
         ImageView fondoView = new ImageView(fondoDePantalla);
 
         VehiculoVista vehiculoVista = new VehiculoVista(juego);
+        btn2.setOnMousePressed((event) -> mapaControlador.moverArriba(vehiculoVista));
+        btn4.setOnMousePressed((event) -> mapaControlador.moverDerecha(vehiculoVista));
+        btn3.setOnMousePressed((event) -> mapaControlador.moverIzquierda(vehiculoVista));
+        btn5.setOnMousePressed((event) -> mapaControlador.moverAbajo(vehiculoVista));
 
         mapa.add(vehiculoVista,2,2);
 
@@ -173,7 +177,7 @@ public class MapaVista extends StackPane {
             contenedorInteractuables.setAlignment(Pos.CENTER);
         }
 
-        TranslateTransition tt = new TranslateTransition();
+        /*TranslateTransition tt = new TranslateTransition();
 
         tt.setNode(vehiculoVista);
         tt.setDuration(Duration.seconds(4));
@@ -199,8 +203,9 @@ public class MapaVista extends StackPane {
 
         tt1.setToY(85);
         tt1.setAutoReverse(false);
-        tt1.play();
+        tt1.play();*/
 
+        //vehiculoVista.moverDerecha();
 
         //StackPane sp = new StackPane();
 
