@@ -1,0 +1,62 @@
+@startuml
+
+namespace Juego {
+    class Juego {
+        -List<Jugador>: jugadores
+        -Jugador: jugadorActual
+        +crearJugador(String: nombre, Tipo: tipo, Mapa mapa)
+        +moverVehiculo(Direccion: direccion, Jugador: jugador)
+        +terminarPartida()
+    }
+    note right of Juego: moverVehiculo(direccion, jugador) { \n    jugador.moverVehiculo(direccion)\n }
+    class Jugador {
+        -String: nombre
+        +moverVehiculo(Direccion: direccion)
+        +estasEnLLegada()
+    }
+    Jugador --> "1" Vehiculos.Vehiculo
+    note right of Jugador: moverVehiculo(direccion){\n   this.vehiculo.mover(direccion)\n}
+    Juego --> Jugador
+}
+
+namespace Vehiculos {
+    class Vehiculo {
+        -int: cantidadDeMovimientos
+        -Direccion: direccion
+        -Mapa: mapa
+        +Boolean: estaEnLLegada()
+        +mover(Direccion: direccion)
+    }
+    Vehiculo --> Tipo
+    note right of Vehiculo: mover(direccion) {\n   this.direccion = direccion\n   this.mapa.mover(this, direccion)\n}
+
+    interface Tipo {
+        +int: atravesarPozo()
+        +int: atravesarPiquete()
+        +int: atravesarControlPolicial()
+        +Tipo: atravesarCambioDeVehiculo()
+    }
+    class Auto {
+        +int: atravesarPozo()
+        +int: atravesarPiquete()
+        +int: atravesarControlPolicial()
+        +Tipo: atravesarCambioDeVehiculo()
+    }
+    class Auto implements Tipo
+    class Moto {
+        +int: atravesarPozo()
+        +int: atravesarPiquete()
+        +int: atravesarControlPolicial()
+        +Tipo: atravesarCambioDeVehiculo()
+    }
+    class Moto implements Tipo
+    class Camioneta {
+        +int: atravesarPozo()
+        +int: atravesarPiquete()
+        +int: atravesarControlPolicial()
+        +Tipo: atravesarCambioDeVehiculo()
+    }
+    class Camioneta implements Tipo
+}
+
+@enduml

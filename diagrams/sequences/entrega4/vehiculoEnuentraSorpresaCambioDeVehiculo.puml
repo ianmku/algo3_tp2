@@ -1,26 +1,26 @@
 @startuml
-title "vehiculoEncuentraSorpresaCambioDeVehiculo"
-actor testCase
+title "Vehiculo se mueve a la derecha y encuentra sorpresa de cambio de vehiculo"
+actor Actor
 
-testCase -> "calle1 : Calle" : guardarInteractuable(sorpresa1 : SorpresaCambioVehiculo)
-testCase -> "calle2 : Calle" : guardarInteractuable(sorpresa2 : SorpresaCambioVehiculo)
-testCase -> "mapa : Mapa" : guardarCalle(posicion1,calle1)
-testCase -> "mapa : Mapa" : guardarCalle(posicion2,calle2)
-testCase -> "mapa : Mapa" : moverVehiculo(vehiculo : Vehiculo, derecha : Derecha)
-"mapa : Mapa" -> "direccion : Direccion" : calcularPosicionSiguiente(posicionDelVehiculo : Posicion)
+Actor -> "juego : Juego" : moverVehiculo(new Derecha())
+"juego : Juego" -> "jugador : Jugador" : moverVehiculo(derecha)
+"jugador : Jugador" -> "vehiculo : Vehiculo" : mover(derecha)
+"vehiculo : Vehiculo" -> "mapa : Mapa" : moverVehiculo(vehiculo : Vehiculo, derecha : Derecha)
+"mapa : Mapa" -> "derecha : Derecha" : calcularPosicionSiguiente(posicionDelVehiculo : Posicion)
+"mapa : Mapa" -> "mapa : Mapa" : calles.get(posicionDelVehiculo)
 alt not posicionDelVehiculo.estaEnLimites(anchoMapa, this.altoMapa)
-"mapa : Mapa" -> "direccion : Direccion" : opuesto()
-"direccion : Direccion" -> "posicion : Posicion" : calcularPosicionSiguiente(posicionDelVehiculo)
+"mapa : Mapa" -> "derecha : Derecha" : opuesto()
+"derecha : Derecha" --> "mapa : Mapa" : new Izquierda()
+"mapa : Mapa" -> "izquierda : Izquierda" : calcularPosicionSiguiente(posicionDelVehiculo)
+"mapa : Mapa" --> "vehiculo : Vehiculo" : return
 end
 "mapa : Mapa" -> "vehiculo : Vehiculo" : aumentarMovimientos(1)
-alt calle != null
 "mapa : Mapa" -> "calle : Calle" : atravesarCalle(vehiculo: Vehiculo)
-loop Interactuable i: interactuables
-"calle : Calle" -> "interactuable : Interactuable" : interactuarConVehiculo(vehiculo : Vehiculo)
+"calle : Calle" -> "sorpresa : SorpresaCambioVehiculo" : interactuarConVehiculo(vehiculo)
+"sorpresa : SorpresaCambioVehiculo" -> "vehiculo : Vehiculo" : atravesarSorpresaCambioVehiculo()
+alt tipo == Moto()
+"vehiculo : Vehiculo" -> "moto : Moto" : this.tipo = atravesarCambioVehiculo()
+"moto : Moto" --> "vehiculo : Vehiculo" : new Auto()
 end
-end
-"mapa : Mapa" -> "direccion : Direccion" : calcularPosicionSiguiente(posicionDelVehiculo)
-testCase -> "mapa : Mapa" : moverVehiculo(vehiculo : Vehiculo, derecha : Derecha)
-testCase -> "vehiculo : Vehiculo" : es(camioneta : Camioneta)
-"vehiculo : Vehiculo" -> testCase : "camioneta"
+"mapa : Mapa" -> "derecha : Derecha" : calcularPosicionSiguiente(posicionDelVehiculo)
 @enduml

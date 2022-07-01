@@ -18,8 +18,8 @@ import javafx.scene.layout.*;
 
 public class CrearJugadorVista extends StackPane {
 
-    private Mapa mapa;
-    private Tipo vehiculo;
+    private Mapa mapa = new Mapa(TamanioMapa.CHICO, new Aleatorio());
+    private Tipo vehiculo = new Moto();
     private final CrearJugadorControlador controlador;
 
     public CrearJugadorVista(CrearJugadorControlador controlador) {

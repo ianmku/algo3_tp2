@@ -46,7 +46,7 @@ public class VehiculoVista extends VBox implements Observer {
         this.vehiculoView.setFitWidth(50);
         this.vehiculoView.setFitHeight(50);
         Direccion nuevaDireccion = vehiculo.getDireccion();
-        rotarVehiculo(ultimaDireccion, nuevaDireccion);
+        rotarVehiculo(nuevaDireccion);
 
         this.getChildren().clear();
         this.getChildren().add(this.vehiculoView);
@@ -60,7 +60,7 @@ public class VehiculoVista extends VBox implements Observer {
         }
     }
 
-    private void rotarVehiculo(Direccion ultimaDireccion, Direccion nuevaDireccion) {
+    private void rotarVehiculo(Direccion nuevaDireccion) {
         Rotate rotar = new Rotate();
         rotar.setPivotX(this.vehiculoView.getFitWidth() / 2);
         rotar.setPivotY(this.vehiculoView.getFitHeight() / 2);

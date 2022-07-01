@@ -1,0 +1,57 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+namespace Interactuables {
+    interface Interactuable {
+        +interactuarConVehiculo(Vehiculo: vehiculo)
+    }
+    Interactuable <-- Escenario.Calle
+    abstract Obstaculo {
+        +interactuarConVehiculo(Vehiculo: vehiculo)
+    }
+    abstract Obstaculo implements Interactuable
+
+    class ControlPolicial {
+        +interactuarConVehiculo(Vehiculo: vehiculo)
+    }
+    class ControlPolicial extends Obstaculo
+    note bottom of ControlPolicial: interactuarConVehiculo(vehiculo) {\n  vehiculo.atravesarControlPolicial()\n}
+
+    class Piquete {
+        +interactuarConVehiculo(Vehiculo: vehiculo)
+    }
+    class Piquete extends Obstaculo
+    note bottom of Piquete: interactuarConVehiculo(vehiculo) {\n  vehiculo.atravesarPiquete()\n}
+
+    class Pozo {
+        +interactuarConVehiculo(Vehiculo: vehiculo)
+    }
+    class Pozo extends Obstaculo
+    note bottom of Pozo: interactuarConVehiculo(vehiculo) {\n  vehiculo.atravesarPozo()\n}
+
+    abstract Sorpresa {
+        +interactuarConVehiculo(Vehiculo: vehiculo)
+    }
+    abstract Sorpresa implements Interactuable
+
+    class SorpresaFavorable {
+        +interactuarConVehiculo(Vehiculo: vehiculo)
+    }
+    class SorpresaFavorable extends Sorpresa
+    note bottom of SorpresaFavorable: interactuarConVehiculo(vehiculo) {\n  vehiculo.atravesarSorpresaFavorable()\n}
+
+    class SorpresaDesfavorable {
+        +interactuarConVehiculo(Vehiculo: vehiculo)
+    }
+    class SorpresaDesfavorable extends Sorpresa
+    note bottom of SorpresaDesfavorable: interactuarConVehiculo(vehiculo) {\n  vehiculo.atravesarSorpresaDesfavorable()\n}
+
+    class SorpresaCambioVehiculo {
+        +interactuarConVehiculo(Vehiculo: vehiculo)
+    }
+    class SorpresaCambioVehiculo extends Sorpresa
+    note bottom of SorpresaCambioVehiculo: interactuarConVehiculo(vehiculo) {\n  vehiculo.atravesarSorpresaCambioDeVehiculo()\n}
+
+}
+
+@enduml

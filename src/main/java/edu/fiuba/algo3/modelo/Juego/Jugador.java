@@ -24,9 +24,6 @@ public class Jugador {
     public void moverVehiculo(Direccion unaDireccion){
         this.vehiculo.mover(unaDireccion);
     }
-    public boolean ganoPartida(){
-        return this.vehiculo.estaEnLlegada();
-    }
 
     public int obtenerCantidadMovimientos(){
         return this.vehiculo.obtenerCantidadMovimientos();
@@ -56,9 +53,5 @@ public class Jugador {
 
     public Posicion posicionDeLlegada() {
         return this.vehiculo.posicionDeLlegada();
-    }
-
-    public Tipo obtenerTipoVehiculo() {
-        return this.vehiculo.getTipo();
     }
 }

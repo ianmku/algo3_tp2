@@ -33,9 +33,6 @@ public class Mapa {
     private Posicion Llegada;
     private Hashtable<Posicion, Calle> calles;
 
-    public int getAlto() {
-        return this.alto - 1;
-    }
     public void guardarCalle(Posicion posicion, Calle calle) {
         calles.put(posicion, calle);
     }
@@ -58,10 +55,6 @@ public class Mapa {
         direccion.calcularPosicionSiguiente(posicionDelVehiculo);
     }
 
-    public Posicion getPosicionDelVehiculo(){
-        return this.posicionDelVehiculo;
-    }
-
     public void colocarInteractuable(int cantidad, Interactuable interactuable, Aleatorio aleatorio) {
         for(int i=0; i<cantidad; i++){
             Posicion posicion = aleatorio.crearPosicionAleatoria(ancho, alto);
@@ -80,7 +73,7 @@ public class Mapa {
             case CHICO:
                 this.ancho = ANCHO_CHICO;
                 this.alto = ALTO_CHICO;
-                this.multiplicadorPuntaje = 2;
+                this.multiplicadorPuntaje = 1;
                 colocarInteractuable(OBSTACULOS_CHICO, new Pozo(), aleatorio);
                 colocarInteractuable(OBSTACULOS_CHICO, new Piquete(), aleatorio);
                 colocarInteractuable(OBSTACULOS_CHICO, new ControlPolicial(aleatorio), aleatorio);
@@ -91,7 +84,7 @@ public class Mapa {
             case GRANDE:
                 this.ancho = ANCHO_GRANDE;
                 this.alto = ALTO_GRANDE;
-                this.multiplicadorPuntaje = 1;
+                this.multiplicadorPuntaje = 0.6F;
                 colocarInteractuable(OBSTACULOS_GRANDE, new Pozo(), aleatorio);
                 colocarInteractuable(OBSTACULOS_GRANDE, new Piquete(), aleatorio);
                 colocarInteractuable(OBSTACULOS_GRANDE, new ControlPolicial(aleatorio), aleatorio);
@@ -103,7 +96,12 @@ public class Mapa {
         this.posicionDelVehiculo = new Posicion(COORDENADA_X_VEHICULO,((this.alto - 1) / 2 ) - 1);
         this.Llegada = aleatorio.generarPosicionDeLlegada(this.ancho, this.alto);
     }
-
+    public Posicion getPosicionDelVehiculo(){
+        return this.posicionDelVehiculo;
+    }
+    public int getAlto() {
+        return this.alto - 1;
+    }
     public int getAnchoMapa(){
         return this.ancho;
     }

@@ -33,7 +33,7 @@ public class AutoTest {
 
         Mapa mapa = new Mapa(TamanioMapa.CHICO, aleatorio);
         Vehiculo auto = new Vehiculo(mapa, new Auto());
-        Posicion destino = new Posicion(4, 3);
+        Posicion destino = new Posicion(4, 6);
 
         /* Act */
         mapa.moverVehiculo(auto, new Derecha());
@@ -60,13 +60,15 @@ public class AutoTest {
     @Test
     public void TestAutoAtravesarPiqueteNoAumentaUnMovimientos() {
         /* Arrange */
-        Vehiculo auto = new Vehiculo(new Mapa(TamanioMapa.CHICO, new Aleatorio()), new Auto());
+        Aleatorio aleatorio = mock(Aleatorio.class);
+        when(aleatorio.crearPosicionAleatoria(anyInt(), anyInt())).thenReturn(new Posicion(0,0));
+        Vehiculo auto = new Vehiculo(new Mapa(TamanioMapa.CHICO, aleatorio), new Auto());
 
         /* Act */
         auto.atravesarPiquete();
 
         /* Assert */
-        assertEquals(auto.getMovimientos(), 0);
+        assertEquals(0, auto.getMovimientos());
     }
 
 }

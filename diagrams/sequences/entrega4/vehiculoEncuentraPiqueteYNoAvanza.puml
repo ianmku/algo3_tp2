@@ -1,0 +1,23 @@
+@startuml
+title "Vehiculo se encuentra un piquete y no avanza"
+actor Actor
+
+Actor -> "juego : Juego" : moverVehiculo(new Derecha())
+"juego : Juego" -> "jugador : Jugador" : moverVehiculo(derecha)
+"jugador : Jugador" -> "vehiculo : Vehiculo" : mover(derecha)
+"vehiculo : Vehiculo" -> "mapa : Mapa" : moverVehiculo(vehiculo : Vehiculo, derecha : Derecha)
+"mapa : Mapa" -> "derecha : Derecha" : calcularPosicionSiguiente(posicionDelVehiculo : Posicion)
+"mapa : Mapa" -> "mapa : Mapa" : calles.get(posicionDelVehiculo)
+
+"mapa : Mapa" -> "vehiculo : Vehiculo" : aumentarMovimientos(1)
+"mapa : Mapa" -> "calle : Calle" : atravesarCalle(vehiculo: Vehiculo)
+"calle : Calle" -> "piquete : Piquete" : interactuarConVehiculo(vehiculo)
+"piquete : Piquete" -> "vehiculo : Vehiculo" : atravesarPiquete()
+alt tipo == Auto()
+"vehiculo : Vehiculo" -> "auto : Auto" : int modificadorMovimientos = atravesarPiquete(mapa, derecha, vehiculo)
+"auto : Auto" -> "mapa : Mapa" : moverVehiculo(vehiculo, derecha.opuesto())
+"auto : Auto" --> "vehiculo : Vehiculo" : -1
+"vehiculo : Vehiculo" -> "vehiculo : Vehiculo" : this.aumentarMovimientos(modificadorMovimentos)
+end
+"mapa : Mapa" -> "derecha : Derecha" : calcularPosicionSiguiente(posicionDelVehiculo)
+@enduml

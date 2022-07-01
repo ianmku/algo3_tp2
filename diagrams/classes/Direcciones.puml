@@ -1,0 +1,36 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+namespace Direcciones {
+    interface Direccion {
+        +calcularPosicionSiguiente(Posicion: posicion)
+        +Direccion: opuesto()
+    }
+    Juego.Juego --> Direcciones.Direccion
+    class Abajo {
+        +calcularPosicionSiguiente(Posicion: posicion)
+        +Direccion: opuesto()
+    }
+    class Abajo implements Direccion
+    note bottom of Abajo: calcularPosicionSiguiente(posicion){\n   posicion.restarY()\n}
+    class Arriba {
+        +calcularPosicionSiguiente(Posicion: posicion)
+        +Direccion: opuesto()
+    }
+    class Arriba implements Direccion
+    note bottom of Arriba: calcularPosicionSiguiente(posicion){\n   posicion.sumarY()\n}
+    class Derecha {
+        +calcularPosicionSiguiente(Posicion: posicion)
+        +Direccion: opuesto()
+    }
+    class Derecha implements Direccion
+    note bottom of Derecha: calcularPosicionSiguiente(posicion){\n   posicion.sumarX()\n}
+    class Izquierda {
+        +calcularPosicionSiguiente(Posicion: posicion)
+        +Direccion: opuesto()
+    }
+    class Izquierda implements Direccion
+    note bottom of Izquierda: calcularPosicionSiguiente(posicion){\n   posicion.restarX()\n}
+}
+
+@enduml

@@ -33,7 +33,7 @@ public class MotoTest {
 
         Mapa mapa = new Mapa(TamanioMapa.CHICO, aleatorio);
         Vehiculo moto = new Vehiculo(mapa, new Moto());
-        Posicion destino = new Posicion(4, 3);
+        Posicion destino = new Posicion(4, 6);
 
         /* Act */
         mapa.moverVehiculo(moto, new Derecha());

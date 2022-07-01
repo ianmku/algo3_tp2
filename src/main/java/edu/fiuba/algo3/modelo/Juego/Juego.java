@@ -8,8 +8,8 @@ import edu.fiuba.algo3.modelo.Vehiculos.Tipo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Observable;
-import java.util.Scanner;
 
 public class Juego extends Observable {
 
@@ -21,7 +21,6 @@ public class Juego extends Observable {
     public Juego(){
         this.jugadores = new ArrayList<>();
         this.estado = "MENU";
-
     }
     public void iniciarMenu() {
         this.estado = "MENU";
@@ -32,14 +31,11 @@ public class Juego extends Observable {
         setChanged();
     }
 
-    public int getAnchoMapa(){
-        return this.jugadorActual.getAnchoMapa();
-    }
-
-    public int getAltoMapa(){
-        return this.jugadorActual.getAltoMapa();
-    }
     public void crearJugador(String nombre, Tipo tipo, Mapa mapa) {
+        if(Objects.equals(nombre, "")) {
+            int cantidadJugadores = jugadores.size() + 1;
+            nombre = "Jugador " + cantidadJugadores;
+        }
         this.jugadorActual = new Jugador(nombre, new Vehiculo(mapa, tipo));
 
         this.estado = "INICIAR_PARTIDA";
@@ -66,8 +62,8 @@ public class Juego extends Observable {
         if (instance == null) instance = new Juego();
         return instance;
     }
-    public void moverVehiculo(Direccion direccion, Jugador jugador){
-        jugador.moverVehiculo(direccion);
+    public void moverVehiculo(Direccion direccion){
+        this.jugadorActual.moverVehiculo(direccion);
     }
 
     public String obtenerEstado() {
@@ -81,37 +77,11 @@ public class Juego extends Observable {
     public Jugador getJugadorActual() {
         return jugadorActual;
     }
-
-    public Direccion pedirDireccion(){
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Elige una direccion: (W, A, S, D) ");
-        String opcionElegida = scanner.nextLine();
-        Direccion direccion = new Izquierda();
-
-        switch(opcionElegida){
-            case "w":
-            case "W":
-                direccion =  new Arriba();
-                break;
-            case "a":
-            case "A":
-                direccion =  new Izquierda();
-                break;
-            case "s":
-            case "S":
-                direccion =  new Abajo();
-                break;
-            case "d":
-            case "D":
-                direccion =  new Derecha();
-                break;
-        }
-        return direccion;
+    public int getAnchoMapa(){
+        return this.jugadorActual.getAnchoMapa();
     }
-
-    public Tipo getTipoVehiculo(){
-        return this.jugadorActual.obtenerTipoVehiculo();
+    public int getAltoMapa(){
+        return this.jugadorActual.getAltoMapa();
     }
 
 }
