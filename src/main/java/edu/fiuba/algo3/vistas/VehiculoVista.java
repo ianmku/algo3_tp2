@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.Vehiculos.Vehiculo;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.transform.Rotate;
 
@@ -40,14 +41,26 @@ public class VehiculoVista extends VBox implements Observer {
 
         var vehiculo = (Vehiculo) unVehiculo;
 
+        //Image radio = new Image("https://github.com/ianmku/algo3_tp2/blob/manuel/resources/images/radio.png?raw=true");
+        //ImageView radioView = new ImageView(radio);
+        //radioView.setFitHeight(300);
+        //radioView.setFitWidth(300);
+
         this.vehiculoView = new ImageView(new Image(vehiculo.getTipo().getUrlImagen()));
 
         this.vehiculoView.setFitWidth(50);
         this.vehiculoView.setFitHeight(50);
         Direccion nuevaDireccion = vehiculo.getDireccion();
         if(ultimaDireccion.getClass() != nuevaDireccion.getClass()) rotarVehiculo(ultimaDireccion, nuevaDireccion);
+
+        StackPane panel = new StackPane();
+        panel.getChildren().addAll(vehiculoView);
+
+        panel.setAlignment(vehiculoView, Pos.CENTER);
+        //panel.setAlignment(radioView, Pos.CENTER);
+
         this.getChildren().clear();
-        this.getChildren().add(vehiculoView);
+        this.getChildren().add(panel);
         this.ultimaDireccion = nuevaDireccion;
 
         this.posicionX = vehiculo.getPosicion().getPosicionX();

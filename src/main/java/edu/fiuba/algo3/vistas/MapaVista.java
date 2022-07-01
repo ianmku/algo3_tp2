@@ -18,6 +18,7 @@ import javafx.animation.TranslateTransition;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.effect.ImageInput;
 import javafx.scene.layout.HBox;
 import javafx.geometry.Rectangle2D;
@@ -41,37 +42,6 @@ public class MapaVista extends StackPane {
 
         this.controlador = mapaControlador;
 
-        /*Button btnArriba = new Button("Arriba");
-        btnArriba.setCursor(Cursor.HAND);
-        btnArriba.setPrefWidth(70);
-
-        Button btnIzquierda = new Button("Izquierda");
-        btnIzquierda.setCursor(Cursor.HAND);
-
-        Button btnDerecha = new Button("Derecha");
-        btnDerecha.setCursor(Cursor.HAND);
-
-        Button btnAbajo = new Button("Abajo");
-        btnAbajo.setCursor(Cursor.HAND);
-        btnAbajo.setPrefWidth(70);
-
-        GridPane botones = new GridPane();
-        botones.setAlignment(Pos.BOTTOM_RIGHT);
-
-        botones.add(btnArriba, 0,0);
-        botones.add(btnIzquierda, 0,1);
-        botones.add(btnDerecha, 1,1);
-        botones.add(btnAbajo, 0,2);
-
-        botones.setMargin(btnArriba, new Insets(0,0,5,0));
-        botones.setMargin(btnAbajo, new Insets(5,0,0,0));
-
-        botones.setColumnSpan(btnArriba,2);
-        botones.setColumnSpan(btnAbajo,2);
-
-        botones.setHalignment(btnArriba, HPos.CENTER);
-        botones.setHalignment(btnAbajo, HPos.CENTER);*/
-
         int anchoMapa = juego.getAnchoMapa();
         this.altoMapa = juego.getAltoMapa();
 
@@ -79,6 +49,12 @@ public class MapaVista extends StackPane {
         mapa.setAlignment(Pos.CENTER);
         mapa.setPrefWidth(640);
         mapa.setPrefHeight(520);
+
+        GridPane mapaOscuro = new GridPane();
+        mapaOscuro.setAlignment(Pos.CENTER);
+        mapaOscuro.setPrefWidth(640);
+        mapaOscuro.setPrefHeight(520);
+
 
         for(int i=0; i < anchoMapa; i++){
             for(int j=0; j < this.altoMapa; j++){
@@ -92,6 +68,12 @@ public class MapaVista extends StackPane {
                 rectangulo.setHeight(50);
                 rectangulo.setWidth(50);
                 mapa.add(rectangulo,i,j);
+
+                var rectanguloNegro = new Rectangle();
+                rectanguloNegro.setFill(Color.BLACK);
+                rectanguloNegro.setWidth(50);
+                rectanguloNegro.setHeight(50);
+                mapaOscuro.add(rectanguloNegro,i,j);
             }
         }
 
@@ -108,12 +90,8 @@ public class MapaVista extends StackPane {
         this.vehiculoY = ((this.altoMapa - 1) / 2 ) - 1;
         mapa.add(vehiculoVista, this.vehiculoX, invertirY(this.vehiculoY));
 
-       /* btnArriba.setOnMousePressed((event) -> moverArriba(mapa, vehiculoVista));
-        btnDerecha.setOnMousePressed((event) -> moverDerecha(mapa, vehiculoVista));
-        btnIzquierda.setOnMousePressed((event) -> moverIzquierda(mapa, vehiculoVista));
-        btnAbajo.setOnMousePressed((event) -> moverAbajo(mapa, vehiculoVista));*/
 
-        GridPane botones = this.botonesDeDireccion(mapa, vehiculoVista);
+        GridPane botones = this.botonesDeDireccion(mapaOscuro, vehiculoVista);
 
         Hashtable<Posicion, Calle> hash = juego.getMapaActual().obtenerCalles();
 
@@ -143,9 +121,11 @@ public class MapaVista extends StackPane {
             contenedorInteractuables.setAlignment(Pos.CENTER);
         }
 
-        this.getChildren().addAll(mapa, botones);
+        this.getChildren().addAll(mapa, mapaOscuro,botones);
 
         this.setAlignment(mapa, Pos.CENTER);
+
+        this.setAlignment(mapaOscuro, Pos.CENTER);
 
         this.setAlignment(botones, Pos.BOTTOM_RIGHT);
 
@@ -198,9 +178,28 @@ public class MapaVista extends StackPane {
     private int invertirY(int y) {
         return (this.altoMapa - 1) - y;
     }
+
     private void moverVehiculoVista(GridPane mapa, VehiculoVista vehiculo) {
         mapa.getChildren().remove(vehiculo);
         mapa.add(vehiculo, vehiculo.getPosicionX(), invertirY(vehiculo.getPosicionY()));
+        this.actualizarSombra(mapa, vehiculo.getPosicionX(), invertirY(vehiculo.getPosicionY()));
+    }
+
+    private void actualizarSombra(GridPane mapaOscuro, int posicionX, int posicionY){
+        for(int i = posicionX-2; i <= posicionX+2; i++){
+            for(int j=posicionY-2 ; j <= posicionY; j++){
+                if((i >= 0) && (j>=0)){
+                    var rectangulo = new Rectangle();
+                    rectangulo.setWidth(50);
+                    rectangulo.setHeight(50);
+                    rectangulo.setVisible(false);
+                }
+            }
+        }
+
+        /*for(Node node : mapaOscuro){
+
+        }*/
     }
 
     public void moverArriba(GridPane mapa, VehiculoVista vehiculo) {
@@ -241,4 +240,6 @@ public class MapaVista extends StackPane {
         this.controlador.moverAbajo(vehiculo);
         moverVehiculoVista(mapa, vehiculo);
     }
+
+
 }
