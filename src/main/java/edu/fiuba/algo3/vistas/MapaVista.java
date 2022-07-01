@@ -91,7 +91,7 @@ public class MapaVista extends StackPane {
         mapa.add(vehiculoVista, this.vehiculoX, invertirY(this.vehiculoY));
 
 
-        GridPane botones = this.botonesDeDireccion(mapaOscuro, vehiculoVista);
+        GridPane botones = this.botonesDeDireccion(mapa, mapaOscuro, vehiculoVista);
 
         Hashtable<Posicion, Calle> hash = juego.getMapaActual().obtenerCalles();
 
@@ -137,7 +137,7 @@ public class MapaVista extends StackPane {
         this.setMaxHeight(520);
     }
 
-    public GridPane botonesDeDireccion(GridPane mapa, VehiculoVista vehiculoVista){
+    public GridPane botonesDeDireccion(GridPane mapa, GridPane mapaOscuro,VehiculoVista vehiculoVista){
         GridPane botones = new GridPane();
         botones.setAlignment(Pos.BOTTOM_RIGHT);
 
@@ -169,10 +169,10 @@ public class MapaVista extends StackPane {
         botones.setHalignment(btnArriba, HPos.CENTER);
         botones.setHalignment(btnAbajo, HPos.CENTER);
 
-        btnArriba.setOnMousePressed((event) -> moverArriba(mapa, vehiculoVista));
-        btnDerecha.setOnMousePressed((event) -> moverDerecha(mapa, vehiculoVista));
-        btnIzquierda.setOnMousePressed((event) -> moverIzquierda(mapa, vehiculoVista));
-        btnAbajo.setOnMousePressed((event) -> moverAbajo(mapa, vehiculoVista));
+        btnArriba.setOnMousePressed((event) -> moverArriba(mapa, mapaOscuro,vehiculoVista));
+        btnDerecha.setOnMousePressed((event) -> moverDerecha(mapa, mapaOscuro,vehiculoVista));
+        btnIzquierda.setOnMousePressed((event) -> moverIzquierda(mapa, mapaOscuro,vehiculoVista));
+        btnAbajo.setOnMousePressed((event) -> moverAbajo(mapa, mapaOscuro,vehiculoVista));
 
         return botones;
 
@@ -181,10 +181,10 @@ public class MapaVista extends StackPane {
         return (this.altoMapa - 1) - y;
     }
 
-    private void moverVehiculoVista(GridPane mapa, VehiculoVista vehiculo) {
+    private void moverVehiculoVista(GridPane mapa, GridPane mapaOscuro, VehiculoVista vehiculo) {
         mapa.getChildren().remove(vehiculo);
         mapa.add(vehiculo, vehiculo.getPosicionX(), invertirY(vehiculo.getPosicionY()));
-        this.actualizarSombra(mapa, vehiculo.getPosicionX(), invertirY(vehiculo.getPosicionY()));
+        this.actualizarSombra(mapaOscuro, vehiculo.getPosicionX(), invertirY(vehiculo.getPosicionY()));
     }
 
     private void actualizarSombra(GridPane mapaOscuro, int posicionX, int posicionY){
@@ -206,7 +206,7 @@ public class MapaVista extends StackPane {
             int resultadoX = posicionX - posicionXNodo;
             int resultadoY = posicionY - posicionYNodo;
 
-            if( (Math.abs(resultadoX) < 2) && (Math.abs(resultadoY) < 2) ){
+            if( (Math.abs(resultadoX) <= 2) && (Math.abs(resultadoY) <= 2) ){
                 node.setVisible(false);
             }
 
@@ -217,17 +217,17 @@ public class MapaVista extends StackPane {
     }
 
 
-    public void moverArriba(GridPane mapa, VehiculoVista vehiculo) {
+    public void moverArriba(GridPane mapa, GridPane mapaOscuro,VehiculoVista vehiculo) {
         this.controlador.moverArriba(vehiculo);
-        moverVehiculoVista(mapa, vehiculo);
+        moverVehiculoVista(mapa, mapaOscuro,vehiculo);
     }
-    public void moverIzquierda(GridPane mapa, VehiculoVista vehiculo) {
+    public void moverIzquierda(GridPane mapa, GridPane mapaOscuro,VehiculoVista vehiculo) {
         this.controlador.moverIzquierda(vehiculo);
-        moverVehiculoVista(mapa, vehiculo);
+        moverVehiculoVista(mapa, mapaOscuro,vehiculo);
     }
-    private void moverDerecha(GridPane mapa, VehiculoVista vehiculo) {
+    private void moverDerecha(GridPane mapa, GridPane mapaOscuro,VehiculoVista vehiculo) {
         this.controlador.moverDerecha(vehiculo);
-        moverVehiculoVista(mapa, vehiculo);
+        moverVehiculoVista(mapa, mapaOscuro,vehiculo);
 //        mapa.getChildren().remove(vehiculo);
 //        vehiculo.setVisible(false);
 //        mapa.add(vehiculo, 4, 2);
@@ -251,9 +251,9 @@ public class MapaVista extends StackPane {
 //            mapa.add(vehiculo, 4, 2);
 //        });
     }
-    public void moverAbajo(GridPane mapa, VehiculoVista vehiculo) {
+    public void moverAbajo(GridPane mapa, GridPane mapaOscuro,VehiculoVista vehiculo) {
         this.controlador.moverAbajo(vehiculo);
-        moverVehiculoVista(mapa, vehiculo);
+        moverVehiculoVista(mapa, mapaOscuro,vehiculo);
     }
 
 
