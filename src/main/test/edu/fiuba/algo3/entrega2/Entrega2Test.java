@@ -34,7 +34,7 @@ public class Entrega2Test {
 
         SorpresaFavorable sorpresa = new SorpresaFavorable();
         calle.guardarInteractuable(sorpresa);
-        mapa.guardarCalle(new Posicion(3,7), calle);
+        mapa.guardarCalle(new Posicion(3,8), calle);
 
         /* Act */
         mapa.moverVehiculo(moto, new Derecha());
@@ -66,7 +66,7 @@ public class Entrega2Test {
 
         SorpresaDesfavorable sorpresa = new SorpresaDesfavorable();
         calle.guardarInteractuable(sorpresa);
-        mapa.guardarCalle(new Posicion(3,7), calle);
+        mapa.guardarCalle(new Posicion(3,8), calle);
 
         /* Act */
         mapa.moverVehiculo(auto, new Derecha());
@@ -97,7 +97,7 @@ public class Entrega2Test {
 
         SorpresaCambioVehiculo sorpresa = new SorpresaCambioVehiculo();
         calle.guardarInteractuable(sorpresa);
-        mapa.guardarCalle(new Posicion(3,3), calle);
+        mapa.guardarCalle(new Posicion(3,6), calle);
 
         /* Act */
         mapa.moverVehiculo(vehiculo, new Derecha());
@@ -123,8 +123,8 @@ public class Entrega2Test {
         SorpresaCambioVehiculo sorpresa2 = new SorpresaCambioVehiculo();
         calle1.guardarInteractuable(sorpresa1);
         calle2.guardarInteractuable(sorpresa2);
-        mapa.guardarCalle(new Posicion(3,2), calle1);
-        mapa.guardarCalle(new Posicion(5,2), calle2);
+        mapa.guardarCalle(new Posicion(3,6), calle1);
+        mapa.guardarCalle(new Posicion(5,6), calle2);
 
         /* Act */
         mapa.moverVehiculo(vehiculo, new Derecha());
@@ -144,14 +144,14 @@ public class Entrega2Test {
         Calle calle1 = new Calle();
         Calle calle2 = new Calle();
         Vehiculo vehiculo = new Vehiculo(mapa, new Camioneta());
-        Posicion posicionEsperada = new Posicion(6, 3);
+        Posicion posicionEsperada = new Posicion(6, 6);
 
         SorpresaCambioVehiculo sorpresa = new SorpresaCambioVehiculo();
         Piquete piquete = new Piquete();
         calle1.guardarInteractuable(sorpresa);
         calle2.guardarInteractuable(piquete);
-        mapa.guardarCalle(new Posicion(3,3), calle1);
-        mapa.guardarCalle(new Posicion(5,3), calle2);
+        mapa.guardarCalle(new Posicion(3,6), calle1);
+        mapa.guardarCalle(new Posicion(5,6), calle2);
 
         /* Act */
         mapa.moverVehiculo(vehiculo, new Derecha());
