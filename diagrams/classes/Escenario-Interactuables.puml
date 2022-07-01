@@ -1,0 +1,98 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+namespace Escenario {
+    class Mapa {
+        -int: ancho
+        -int: alto
+        -Posicion: posicionDelVehiculo
+        -Posicion: llegada
+        -HashTable<Posicion, Calle>: calles
+
+        +Mapa(TamanioMapa tamanio, Aleatorio aleatorio)
+        +moverVehiculo(Vehiculo: vehiculo, Direccion: direccion)
+        +Boolean: vehiculoEstaEnLlegada()
+    }
+    enum TamanioMapa {
+        CHICO
+        GRANDE
+    }
+    Mapa --> TamanioMapa
+    class Calle {
+        -List<Interactuable>: interactuables
+        +atravesarCalle(Vehiculo: vehiculo)
+    }
+    Mapa --> Calle
+    note bottom of Calle: atravesarCalle(vehiculo){\n   for Interactuable i{\n     i.interactuarConVehiculo(vehiculo)\n   }\n}
+    class Posicion {
+        -int: posicionX
+        -int: posicionY
+        +int: sumarX()
+        +int: restarX()
+        +int: sumarY()
+        +int: restarY()
+        +Boolean: estaEnLimites(int ancho, int alto)
+    }
+    Mapa --> Posicion
+}
+namespace Interactuables {
+    interface Interactuable {
+        +interactuarConVehiculo(Vehiculo: vehiculo)
+    }
+    Interactuable <-- Escenario.Calle
+    abstract Obstaculo {
+        +interactuarConVehiculo(Vehiculo: vehiculo)
+    }
+    abstract Obstaculo implements Interactuable
+
+    class ControlPolicial {
+        +interactuarConVehiculo(Vehiculo: vehiculo)
+    }
+    class ControlPolicial extends Obstaculo
+    note bottom of ControlPolicial: interactuarConVehiculo(vehiculo) {\n  vehiculo.atravesarControlPolicial()\n}
+
+    class Piquete {
+        +interactuarConVehiculo(Vehiculo: vehiculo)
+    }
+    class Piquete extends Obstaculo
+    note bottom of Piquete: interactuarConVehiculo(vehiculo) {\n  vehiculo.atravesarPiquete()\n}
+
+    class Pozo {
+        +interactuarConVehiculo(Vehiculo: vehiculo)
+    }
+    class Pozo extends Obstaculo
+    note bottom of Pozo: interactuarConVehiculo(vehiculo) {\n  vehiculo.atravesarPozo()\n}
+
+    abstract Sorpresa {
+        +interactuarConVehiculo(Vehiculo: vehiculo)
+    }
+    abstract Sorpresa implements Interactuable
+
+    class SorpresaFavorable {
+        +interactuarConVehiculo(Vehiculo: vehiculo)
+    }
+    class SorpresaFavorable extends Sorpresa
+    note bottom of SorpresaFavorable: interactuarConVehiculo(vehiculo) {\n  vehiculo.atravesarSorpresaFavorable()\n}
+
+    class SorpresaDesfavorable {
+        +interactuarConVehiculo(Vehiculo: vehiculo)
+    }
+    class SorpresaDesfavorable extends Sorpresa
+    note bottom of SorpresaDesfavorable: interactuarConVehiculo(vehiculo) {\n  vehiculo.atravesarSorpresaDesfavorable()\n}
+
+    class SorpresaCambioVehiculo {
+        +interactuarConVehiculo(Vehiculo: vehiculo)
+    }
+    class SorpresaCambioVehiculo extends Sorpresa
+    note bottom of SorpresaCambioVehiculo: interactuarConVehiculo(vehiculo) {\n  vehiculo.atravesarSorpresaCambioDeVehiculo()\n}
+
+}
+class Aleatorio {
+    +Boolean: atravesarControlPolicial(float: chance)
+    +Posicion: generarPosicionDeLlegada(int: ancho, int: alto)
+    +Posicion: crearPosicionAleatoria(int: ancho, int: alto)
+}
+Escenario.Mapa --> Aleatorio
+Interactuables.ControlPolicial --> Aleatorio
+
+@enduml

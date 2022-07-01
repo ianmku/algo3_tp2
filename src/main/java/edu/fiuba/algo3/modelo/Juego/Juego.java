@@ -9,7 +9,6 @@ import edu.fiuba.algo3.modelo.Vehiculos.Tipo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
-import java.util.Scanner;
 
 public class Juego extends Observable {
 
