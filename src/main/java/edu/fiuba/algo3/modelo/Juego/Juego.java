@@ -62,8 +62,8 @@ public class Juego extends Observable {
         if (instance == null) instance = new Juego();
         return instance;
     }
-    public void moverVehiculo(Direccion direccion, Jugador jugador){
-        jugador.moverVehiculo(direccion);
+    public void moverVehiculo(Direccion direccion){
+        this.jugadorActual.moverVehiculo(direccion);
     }
 
     public String obtenerEstado() {
