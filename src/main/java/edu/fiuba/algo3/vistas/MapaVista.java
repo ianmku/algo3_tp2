@@ -77,7 +77,7 @@ public class MapaVista extends StackPane {
             }
         }
 
-        Image imagenLlegada = new Image("https://i.pinimg.com/564x/f9/60/6b/f9606ba052600841c02b9a96e357841e.jpg");
+        Image imagenLlegada = new Image("https://github.com/ianmku/algo3_tp2/blob/manuel/resources/images/llegada.png?raw=true");
         ImageView llegada = new ImageView(imagenLlegada);
         llegada.setFitWidth(39);
         llegada.setFitHeight(39);
@@ -188,16 +188,6 @@ public class MapaVista extends StackPane {
     }
 
     private void actualizarSombra(GridPane mapaOscuro, int posicionX, int posicionY){
-        /*for(int i = posicionX-2; i <= posicionX+2; i++){
-            for(int j=posicionY-2 ; j <= posicionY; j++){
-                if((i >= 0) && (j>=0)){
-                    var rectangulo = new Rectangle();
-                    rectangulo.setWidth(50);
-                    rectangulo.setHeight(60);
-                    rectangulo.setVisible(false);
-                }
-            }
-        }*/
 
         for (Node node : mapaOscuro.getChildren()) {
             int posicionXNodo = mapaOscuro.getColumnIndex(node);

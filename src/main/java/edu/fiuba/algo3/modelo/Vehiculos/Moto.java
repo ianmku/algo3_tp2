@@ -14,7 +14,7 @@ public class Moto implements Tipo {
     private final int PENALIZACION_CONTROL_POLICIAL = 3;
     private final int NO_SE_PENALIZA = 0;
 
-    private final String urlImagen = "https://github.com/ianmku/algo3_tp2/blob/manuel/resources/images/moto.jpg?raw=true";
+    private final String urlImagen = "https://github.com/ianmku/algo3_tp2/blob/manuel/resources/images/moto.png?raw=true";
 
     public int atravesarPozo(){
         return PENALIZACION_POZO;

@@ -84,7 +84,7 @@ public class Mapa {
                 this.ancho = ANCHO_CHICO;
                 this.alto = ALTO_CHICO;
                 this.multiplicadorPuntaje = 1;
-                Calle calle1 = new Calle();
+                /*Calle calle1 = new Calle();
                 Calle calle2 = new Calle();
                 Calle calle3 = new Calle();
                 calles.put(new Posicion(2, 3), calle1);
@@ -92,13 +92,13 @@ public class Mapa {
                 calles.put(new Posicion(3, 4), calle3);
                 calle1.guardarInteractuable(new Pozo());
                 calle2.guardarInteractuable(new Pozo());
-                calle3.guardarInteractuable(new Pozo());
-//                colocarInteractuable(OBSTACULOS_CHICO, new Pozo(), aleatorio);
-//                colocarInteractuable(OBSTACULOS_CHICO, new Piquete(), aleatorio);
-//                colocarInteractuable(OBSTACULOS_CHICO, new ControlPolicial(aleatorio), aleatorio);
-//                colocarInteractuable(SORPRESAS_CHICO, new SorpresaFavorable(), aleatorio);
-//                colocarInteractuable(SORPRESAS_CHICO, new SorpresaDesfavorable(), aleatorio);
-//                colocarInteractuable(SORPRESAS_CHICO, new SorpresaCambioVehiculo(), aleatorio);
+                calle3.guardarInteractuable(new Pozo());*/
+                colocarInteractuable(OBSTACULOS_CHICO, new Pozo(), aleatorio);
+                colocarInteractuable(OBSTACULOS_CHICO, new Piquete(), aleatorio);
+                colocarInteractuable(OBSTACULOS_CHICO, new ControlPolicial(aleatorio), aleatorio);
+                colocarInteractuable(SORPRESAS_CHICO, new SorpresaFavorable(), aleatorio);
+                colocarInteractuable(SORPRESAS_CHICO, new SorpresaDesfavorable(), aleatorio);
+                colocarInteractuable(SORPRESAS_CHICO, new SorpresaCambioVehiculo(), aleatorio);
                 break;
             case MEDIANO:
                 this.ancho = ANCHO_MEDIANO;
