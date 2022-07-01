@@ -27,7 +27,7 @@ public class Entrega2Test {
         Aleatorio aleatorio = mock(Aleatorio.class);
         when(aleatorio.crearPosicionAleatoria(anyInt(), anyInt())).thenReturn(new Posicion(0,0));
 
-        Mapa mapa = new Mapa(TamanioMapa.MEDIANO, aleatorio);
+        Mapa mapa = new Mapa(TamanioMapa.CHICO, aleatorio);
         Calle calle = new Calle();
         Vehiculo moto = new Vehiculo(mapa, new Moto());
         int movimientosEsperados = (int) (10 * 0.8);
@@ -59,7 +59,7 @@ public class Entrega2Test {
         Aleatorio aleatorio = mock(Aleatorio.class);
         when(aleatorio.crearPosicionAleatoria(anyInt(), anyInt())).thenReturn(new Posicion(0,0));
 
-        Mapa mapa = new Mapa(TamanioMapa.MEDIANO, aleatorio);
+        Mapa mapa = new Mapa(TamanioMapa.CHICO, aleatorio);
         Calle calle = new Calle();
         Vehiculo auto = new Vehiculo(mapa, new Auto());
         int movimientosEsperados = (int) (10 * 1.25);

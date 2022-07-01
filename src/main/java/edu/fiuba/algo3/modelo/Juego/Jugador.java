@@ -28,10 +28,6 @@ public class Jugador {
         return this.vehiculo.estaEnLlegada();
     }
 
-    /*public void mostrarPosicion(){
-        this.vehiculo.imprimirPosicion();
-    }*/
-
     public int obtenerCantidadMovimientos(){
         return this.vehiculo.obtenerCantidadMovimientos();
     }

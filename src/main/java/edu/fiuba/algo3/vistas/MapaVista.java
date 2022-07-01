@@ -85,12 +85,12 @@ public class MapaVista extends StackPane {
     }
 
     private void colocarLlegada(GridPane mapa, GridPane mapaOscuro,Juego juego) {
-        Image imagenLlegada = new Image("https://i.pinimg.com/564x/f9/60/6b/f9606ba052600841c02b9a96e357841e.jpg");
+        Image imagenLlegada = new Image("https://github.com/ianmku/algo3_tp2/blob/manuel/resources/images/llegada.png?raw=true");
         ImageView llegada = new ImageView(imagenLlegada);
         llegada.setFitWidth(39);
         llegada.setFitHeight(39);
 
-        Image imagenLlegada1 = new Image("https://i.pinimg.com/564x/f9/60/6b/f9606ba052600841c02b9a96e357841e.jpg");
+        Image imagenLlegada1 = new Image("https://github.com/ianmku/algo3_tp2/blob/manuel/resources/images/llegada.png?raw=true");
         ImageView llegada1 = new ImageView(imagenLlegada1);
         llegada1.setFitWidth(39);
         llegada1.setFitHeight(39);
@@ -178,18 +178,13 @@ public class MapaVista extends StackPane {
                 if((i%2 != 0) && (j%2 != 0)){
                     rectangulo.setFill(Color.GREY);
                 }
+
                 else{
                     rectangulo.setFill(Color.WHITE);
                 }
                 rectangulo.setHeight(45);
                 rectangulo.setWidth(45);
                 mapa.add(rectangulo,i,invertirY(j));
-
-                /*var rectanguloNegro = new Rectangle();
-                rectanguloNegro.setFill(Color.BLACK);
-                rectanguloNegro.setWidth(50);
-                rectanguloNegro.setHeight(50);
-                mapaOscuro.add(rectanguloNegro,i,j);*/
             }
         }
 
@@ -225,16 +220,6 @@ public class MapaVista extends StackPane {
     }
 
     private void actualizarSombra(GridPane mapaOscuro, int posicionX, int posicionY){
-        /*for(int i = posicionX-2; i <= posicionX+2; i++){
-            for(int j=posicionY-2 ; j <= posicionY; j++){
-                if((i >= 0) && (j>=0)){
-                    var rectangulo = new Rectangle();
-                    rectangulo.setWidth(50);
-                    rectangulo.setHeight(60);
-                    rectangulo.setVisible(false);
-                }
-            }
-        }*/
 
         for (Node node : mapaOscuro.getChildren()) {
             int posicionXNodo = mapaOscuro.getColumnIndex(node);
@@ -253,45 +238,20 @@ public class MapaVista extends StackPane {
         }
     }
 
-
     public void moverArriba(GridPane mapa, GridPane mapaOscuro,VehiculoVista vehiculo) {
-        this.controlador.moverArriba(vehiculo);
+        this.controlador.moverArriba();
         moverVehiculoVista(mapa, mapaOscuro,vehiculo);
     }
     public void moverIzquierda(GridPane mapa, GridPane mapaOscuro,VehiculoVista vehiculo) {
-        this.controlador.moverIzquierda(vehiculo);
+        this.controlador.moverIzquierda();
         moverVehiculoVista(mapa, mapaOscuro,vehiculo);
     }
     private void moverDerecha(GridPane mapa, GridPane mapaOscuro,VehiculoVista vehiculo) {
-        this.controlador.moverDerecha(vehiculo);
+        this.controlador.moverDerecha();
         moverVehiculoVista(mapa, mapaOscuro,vehiculo);
-//        mapa.getChildren().remove(vehiculo);
-//        vehiculo.setVisible(false);
-//        mapa.add(vehiculo, 4, 2);
-//        double x = vehiculo.getLayoutX();
-//        double y = vehiculo.getLayoutY();
-//
-//        mapa.getChildren().remove(vehiculo);
-//        mapa.add(vehiculo, 2, 2);
-//        vehiculo.setVisible(true);
-//
-//        TranslateTransition tt = new TranslateTransition();
-//        tt.setDuration(Duration.seconds(2));
-//        tt.setToX(x);
-//        tt.setToY(y);
-//        tt.setNode(vehiculo);
-//        tt.play();
-//        tt.setOnFinished((event) -> {
-//            mapa.getChildren().remove(vehiculo);
-//            vehiculo.setTranslateX(0);
-//            vehiculo.setTranslateY(0);
-//            mapa.add(vehiculo, 4, 2);
-//        });
     }
     public void moverAbajo(GridPane mapa, GridPane mapaOscuro,VehiculoVista vehiculo) {
-        this.controlador.moverAbajo(vehiculo);
+        this.controlador.moverAbajo();
         moverVehiculoVista(mapa, mapaOscuro,vehiculo);
     }
-
-
 }

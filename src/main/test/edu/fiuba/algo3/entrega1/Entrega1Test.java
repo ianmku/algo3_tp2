@@ -135,7 +135,7 @@ public class Entrega1Test {
         Aleatorio aleatorio = mock(Aleatorio.class);
         when(aleatorio.crearPosicionAleatoria(any(int.class),any(int.class))).thenReturn(new Posicion(0, 0));
 
-        Mapa mapa = new Mapa(TamanioMapa.MEDIANO, aleatorio);
+        Mapa mapa = new Mapa(TamanioMapa.CHICO, aleatorio);
         Calle calle1 = new Calle();
         Calle calle2 = new Calle();
         Calle calle3 = new Calle();

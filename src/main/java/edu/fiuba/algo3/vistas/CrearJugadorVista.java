@@ -44,7 +44,6 @@ public class CrearJugadorVista extends StackPane {
         HBox nombreJugador = new HBox();
         nombreJugador.getChildren().add(lblNombre);
         nombreJugador.getChildren().add(txtNombre);
-        // nombreJugador.setPadding(new Insets(0, 0, 0, 5));
         nombreJugador.setAlignment(Pos.TOP_CENTER);
 
         // Botones vehiculo
@@ -81,19 +80,15 @@ public class CrearJugadorVista extends StackPane {
         RadioButton chico = new RadioButton("Chico");
         chico.setStyle("-fx-text-fill: white;" + "-fx-font-weight: bold;");
         chico.setEffect(shadow);
-        RadioButton mediano = new RadioButton("Mediano");
-        mediano.setStyle("-fx-text-fill: white;" + "-fx-font-weight: bold;");
-        mediano.setEffect(shadow);
         RadioButton grande = new RadioButton("Grande");
         grande.setStyle("-fx-text-fill: white;" + "-fx-font-weight: bold;");
         grande.setEffect(shadow);
 
         chico.setToggleGroup(tg2);
-        mediano.setToggleGroup(tg2);
         grande.setToggleGroup(tg2);
 
         HBox mapas = new HBox();
-        mapas.getChildren().addAll(elegirMapa, chico, mediano, grande);
+        mapas.getChildren().addAll(elegirMapa, chico, grande);
         mapas.setSpacing(5);
         mapas.setAlignment(Pos.CENTER);
 
@@ -120,9 +115,6 @@ public class CrearJugadorVista extends StackPane {
                     switch(rb.getText()){
                         case "Chico":
                             this.mapa = new Mapa(TamanioMapa.CHICO, new Aleatorio());
-                            break;
-                        case "Mediano":
-                            this.mapa = new Mapa(TamanioMapa.MEDIANO, new Aleatorio());
                             break;
                         case "Grande":
                             this.mapa = new Mapa(TamanioMapa.GRANDE, new Aleatorio());

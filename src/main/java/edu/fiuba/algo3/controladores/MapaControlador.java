@@ -10,27 +10,23 @@ import javafx.scene.layout.GridPane;
 
 public class MapaControlador {
 
-    public void moverDerecha(VehiculoVista vv){
+    public void moverDerecha(){
         Juego.getInstance().moverVehiculo(new Derecha(), Juego.getInstance().getJugadorActual());
-        //vv.moverDerecha(mapa);
         Juego.getInstance().notifyObservers();
     }
 
-    public void moverIzquierda(VehiculoVista vv){
+    public void moverIzquierda(){
         Juego.getInstance().moverVehiculo(new Izquierda(), Juego.getInstance().getJugadorActual());
-        // vv.moverIzquierda();
         Juego.getInstance().notifyObservers();
     }
 
-    public void moverArriba(VehiculoVista vv){
+    public void moverArriba(){
         Juego.getInstance().moverVehiculo(new Arriba(), Juego.getInstance().getJugadorActual());
-        // vv.moverArriba();
         Juego.getInstance().notifyObservers();
     }
 
-    public void moverAbajo(VehiculoVista vv){
+    public void moverAbajo(){
         Juego.getInstance().moverVehiculo(new Abajo(), Juego.getInstance().getJugadorActual());
-        // vv.moverAbajo();
         Juego.getInstance().notifyObservers();
     }
 }

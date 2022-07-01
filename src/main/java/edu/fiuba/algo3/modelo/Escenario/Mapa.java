@@ -11,18 +11,15 @@ import java.util.Hashtable;
 public class Mapa {
 
     private final int ANCHO_CHICO = 15;
-    private final int ALTO_CHICO = 11;
-    private final int ANCHO_MEDIANO = 13;
-    private final int ALTO_MEDIANO = 13;
+    private final int ALTO_CHICO = 15;
+
     private final int ANCHO_GRANDE = 19;
-    private final int ALTO_GRANDE = 15;
+    private final int ALTO_GRANDE = 19;
 
     private final int OBSTACULOS_CHICO = 7;
-    private final int OBSTACULOS_MEDIANO = 10;
     private final int OBSTACULOS_GRANDE = 13;
 
     private final int SORPRESAS_CHICO = 3;
-    private final int SORPRESAS_MEDIANO = 5;
     private final int SORPRESAS_GRANDE = 7;
 
     private int ancho;
@@ -83,16 +80,7 @@ public class Mapa {
             case CHICO:
                 this.ancho = ANCHO_CHICO;
                 this.alto = ALTO_CHICO;
-                this.multiplicadorPuntaje = 1;
-                /*Calle calle1 = new Calle();
-                Calle calle2 = new Calle();
-                Calle calle3 = new Calle();
-                calles.put(new Posicion(2, 3), calle1);
-                calles.put(new Posicion(4, 3), calle2);
-                calles.put(new Posicion(3, 4), calle3);
-                calle1.guardarInteractuable(new Pozo());
-                calle2.guardarInteractuable(new Pozo());
-                calle3.guardarInteractuable(new Pozo());*/
+                this.multiplicadorPuntaje = 2;
                 colocarInteractuable(OBSTACULOS_CHICO, new Pozo(), aleatorio);
                 colocarInteractuable(OBSTACULOS_CHICO, new Piquete(), aleatorio);
                 colocarInteractuable(OBSTACULOS_CHICO, new ControlPolicial(aleatorio), aleatorio);
@@ -100,21 +88,10 @@ public class Mapa {
                 colocarInteractuable(SORPRESAS_CHICO, new SorpresaDesfavorable(), aleatorio);
                 colocarInteractuable(SORPRESAS_CHICO, new SorpresaCambioVehiculo(), aleatorio);
                 break;
-            case MEDIANO:
-                this.ancho = ANCHO_MEDIANO;
-                this.alto = ALTO_MEDIANO;
-                this.multiplicadorPuntaje = 1.5F;
-                colocarInteractuable(OBSTACULOS_MEDIANO, new Pozo(), aleatorio);
-                colocarInteractuable(OBSTACULOS_MEDIANO, new Piquete(), aleatorio);
-                colocarInteractuable(OBSTACULOS_MEDIANO, new ControlPolicial(aleatorio), aleatorio);
-                colocarInteractuable(SORPRESAS_MEDIANO, new SorpresaFavorable(), aleatorio);
-                colocarInteractuable(SORPRESAS_MEDIANO, new SorpresaDesfavorable(), aleatorio);
-                colocarInteractuable(SORPRESAS_MEDIANO, new SorpresaCambioVehiculo(), aleatorio);
-                break;
             case GRANDE:
                 this.ancho = ANCHO_GRANDE;
                 this.alto = ALTO_GRANDE;
-                this.multiplicadorPuntaje = 2;
+                this.multiplicadorPuntaje = 1;
                 colocarInteractuable(OBSTACULOS_GRANDE, new Pozo(), aleatorio);
                 colocarInteractuable(OBSTACULOS_GRANDE, new Piquete(), aleatorio);
                 colocarInteractuable(OBSTACULOS_GRANDE, new ControlPolicial(aleatorio), aleatorio);

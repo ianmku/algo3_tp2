@@ -66,19 +66,15 @@ public class VehiculoVista extends VBox implements Observer {
         rotar.setPivotY(this.vehiculoView.getFitHeight() / 2);
 
         if(nuevaDireccion.getClass() == Arriba.class){
-            System.out.println("Me movi hacia arriba");
             rotar.setAngle(270);
 
         }else if(nuevaDireccion.getClass() == Izquierda.class){
-            System.out.println("Me movi a la izquierda");
             rotar.setAngle(180);
 
         }else if(nuevaDireccion.getClass() == Derecha.class){
-            System.out.println("Me movi a la derecha");
             rotar.setAngle(0);
 
         }else if(nuevaDireccion.getClass() == Abajo.class){
-            System.out.println("Me movi hacia abajo");
             rotar.setAngle(90);
         }
         this.vehiculoView.getTransforms().clear();

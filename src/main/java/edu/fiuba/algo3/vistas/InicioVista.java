@@ -26,16 +26,8 @@ public class InicioVista extends StackPane {
         fondoView.setFitHeight(700);
         fondoView.setFitWidth(900);
 
-        //Label titulo = new Label("GPS CHALLENGE");
-        //titulo.setFont(Font.font("Arial", 40));
-        //titulo.setStyle("-fx-font-weight: bold;" + "-fx-text-fill: white;");
-        //DropShadow shadow = new DropShadow();
-        //titulo.setEffect(shadow);
-        //titulo.setAlignment(Pos.TOP_CENTER);
-
         VBox vBox = new VBox();
         vBox.setSpacing(5);
-        //vBox.getChildren().add(titulo);
         vBox.getChildren().add(agregarBotonDeInicio());
         vBox.getChildren().add(agregarBotonDeRanking());
         vBox.setPadding(new Insets(0, 0, 0, 0));
