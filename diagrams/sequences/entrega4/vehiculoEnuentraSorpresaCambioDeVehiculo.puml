@@ -1,11 +1,7 @@
 @startuml
-title "vehiculoEncuentraSorpresaCambioDeVehiculo"
+title "Vehiculo se mueve a la derecha y encuentra sorpresa de cambio de vehiculo"
 actor testCase
 
-testCase -> "calle1 : Calle" : guardarInteractuable(sorpresa1 : SorpresaCambioVehiculo)
-testCase -> "calle2 : Calle" : guardarInteractuable(sorpresa2 : SorpresaCambioVehiculo)
-testCase -> "mapa : Mapa" : guardarCalle(posicion1,calle1)
-testCase -> "mapa : Mapa" : guardarCalle(posicion2,calle2)
 testCase -> "mapa : Mapa" : moverVehiculo(vehiculo : Vehiculo, derecha : Derecha)
 "mapa : Mapa" -> "direccion : Direccion" : calcularPosicionSiguiente(posicionDelVehiculo : Posicion)
 alt not posicionDelVehiculo.estaEnLimites(anchoMapa, this.altoMapa)

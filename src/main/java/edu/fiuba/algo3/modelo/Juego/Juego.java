@@ -8,6 +8,7 @@ import edu.fiuba.algo3.modelo.Vehiculos.Tipo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Observable;
 
 public class Juego extends Observable {
@@ -31,6 +32,10 @@ public class Juego extends Observable {
     }
 
     public void crearJugador(String nombre, Tipo tipo, Mapa mapa) {
+        if(Objects.equals(nombre, "")) {
+            int cantidadJugadores = jugadores.size() + 1;
+            nombre = "Jugador " + cantidadJugadores;
+        }
         this.jugadorActual = new Jugador(nombre, new Vehiculo(mapa, tipo));
 
         this.estado = "INICIAR_PARTIDA";
