@@ -44,12 +44,6 @@ public class Juego extends Observable {
 
         this.estado = "INICIAR_PARTIDA";
         setChanged();
-
-        /*while(!this.jugadorActual.ganoPartida()){
-            Direccion direccion = this.pedirDireccion();
-            moverVehiculo(direccion, this.jugadorActual);
-        }
-        this.terminarPartida();*/
     }
     public void mostrarRanking() {
         this.estado = "MOSTRAR_RANKING";
@@ -57,7 +51,6 @@ public class Juego extends Observable {
     }
     public void terminarPartida(){
         this.jugadores.add(this.jugadorActual);
-        // System.out.println("Cantidad de movimientos: " + this.jugadorActual.obtenerCantidadMovimientos());
         this.estado = "PARTIDA_TERMINADA";
         setChanged();
     }

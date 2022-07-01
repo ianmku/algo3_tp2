@@ -33,7 +33,7 @@ public class Entrega1Test {
 
         Pozo pozo = new Pozo();
         calle.guardarInteractuable(pozo);
-        mapa.guardarCalle(new Posicion(3,3), calle);
+        mapa.guardarCalle(new Posicion(3,2), calle);
 
         /* Act */
         mapa.moverVehiculo(moto, new Derecha());
@@ -55,7 +55,7 @@ public class Entrega1Test {
 
         Pozo pozo = new Pozo();
         calle.guardarInteractuable(pozo);
-        mapa.guardarCalle(new Posicion(3,3), calle);
+        mapa.guardarCalle(new Posicion(3,2), calle);
 
         /* Act */
         mapa.moverVehiculo(auto, new Derecha());
@@ -77,7 +77,7 @@ public class Entrega1Test {
 
         Pozo pozo = new Pozo();
         calle.guardarInteractuable(pozo);
-        mapa.guardarCalle(new Posicion(3,3), calle);
+        mapa.guardarCalle(new Posicion(3,2), calle);
 
         /* Act */
         mapa.moverVehiculo(camioneta, new Derecha());
@@ -99,7 +99,7 @@ public class Entrega1Test {
 
         Piquete piquete = new Piquete();
         calle.guardarInteractuable(piquete);
-        mapa.guardarCalle(new Posicion(3,3), calle);
+        mapa.guardarCalle(new Posicion(3,2), calle);
 
         /* Act */
         mapa.moverVehiculo(moto, new Derecha());
@@ -116,11 +116,11 @@ public class Entrega1Test {
         Mapa mapa = new Mapa(TamanioMapa.CHICO, aleatorio);
         Calle calle = new Calle();
         Vehiculo auto = new Vehiculo(mapa, new Auto());
-        Posicion inicio = new Posicion(2, 3);
+        Posicion inicio = new Posicion(2, 2);
 
         Piquete piquete = new Piquete();
         calle.guardarInteractuable(piquete);
-        mapa.guardarCalle(new Posicion(3,3), calle);
+        mapa.guardarCalle(new Posicion(3,2), calle);
 
         /* Act */
         mapa.moverVehiculo(auto, new Derecha());
@@ -149,9 +149,9 @@ public class Entrega1Test {
         Pozo pozo3 = new Pozo();
         calle3.guardarInteractuable(pozo3);
 
-        mapa.guardarCalle(new Posicion(3,5), calle1);
-        mapa.guardarCalle(new Posicion(5,5), calle2);
-        mapa.guardarCalle(new Posicion(7,5), calle3);
+        mapa.guardarCalle(new Posicion(3,4), calle1);
+        mapa.guardarCalle(new Posicion(5,4), calle2);
+        mapa.guardarCalle(new Posicion(7,4), calle3);
 
         /* Act */
         mapa.moverVehiculo(camioneta, new Derecha());
