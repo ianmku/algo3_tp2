@@ -1,40 +1,6 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-namespace Escenario {
-    class Mapa {
-        -int: ancho
-        -int: alto
-        -Posicion: posicionDelVehiculo
-        -Posicion: llegada
-        -HashTable<Posicion, Calle>: calles
-
-        +Mapa(TamanioMapa tamanio, Aleatorio aleatorio)
-        +moverVehiculo(Vehiculo: vehiculo, Direccion: direccion)
-        +Boolean: vehiculoEstaEnLlegada()
-    }
-    enum TamanioMapa {
-        CHICO
-        GRANDE
-    }
-    Mapa --> TamanioMapa
-    class Calle {
-        -List<Interactuable>: interactuables
-        +atravesarCalle(Vehiculo: vehiculo)
-    }
-    Mapa --> Calle
-    note bottom of Calle: atravesarCalle(vehiculo){\n   for Interactuable i{\n     i.interactuarConVehiculo(vehiculo)\n   }\n}
-    class Posicion {
-        -int: posicionX
-        -int: posicionY
-        +int: sumarX()
-        +int: restarX()
-        +int: sumarY()
-        +int: restarY()
-        +Boolean: estaEnLimites(int ancho, int alto)
-    }
-    Mapa --> Posicion
-}
 namespace Interactuables {
     interface Interactuable {
         +interactuarConVehiculo(Vehiculo: vehiculo)
@@ -87,12 +53,5 @@ namespace Interactuables {
     note bottom of SorpresaCambioVehiculo: interactuarConVehiculo(vehiculo) {\n  vehiculo.atravesarSorpresaCambioDeVehiculo()\n}
 
 }
-class Aleatorio {
-    +Boolean: atravesarControlPolicial(float: chance)
-    +Posicion: generarPosicionDeLlegada(int: ancho, int: alto)
-    +Posicion: crearPosicionAleatoria(int: ancho, int: alto)
-}
-Escenario.Mapa --> Aleatorio
-Interactuables.ControlPolicial --> Aleatorio
 
 @enduml
