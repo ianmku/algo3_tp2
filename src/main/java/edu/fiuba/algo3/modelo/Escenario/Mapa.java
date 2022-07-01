@@ -33,9 +33,6 @@ public class Mapa {
     private Posicion Llegada;
     private Hashtable<Posicion, Calle> calles;
 
-    public int getAlto() {
-        return this.alto - 1;
-    }
     public void guardarCalle(Posicion posicion, Calle calle) {
         calles.put(posicion, calle);
     }
@@ -56,10 +53,6 @@ public class Mapa {
             calle.atravesarCalle(vehiculo);
         }
         direccion.calcularPosicionSiguiente(posicionDelVehiculo);
-    }
-
-    public Posicion getPosicionDelVehiculo(){
-        return this.posicionDelVehiculo;
     }
 
     public void colocarInteractuable(int cantidad, Interactuable interactuable, Aleatorio aleatorio) {
@@ -103,7 +96,12 @@ public class Mapa {
         this.posicionDelVehiculo = new Posicion(COORDENADA_X_VEHICULO,((this.alto - 1) / 2 ) - 1);
         this.Llegada = aleatorio.generarPosicionDeLlegada(this.ancho, this.alto);
     }
-
+    public Posicion getPosicionDelVehiculo(){
+        return this.posicionDelVehiculo;
+    }
+    public int getAlto() {
+        return this.alto - 1;
+    }
     public int getAnchoMapa(){
         return this.ancho;
     }
