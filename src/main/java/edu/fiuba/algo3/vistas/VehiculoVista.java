@@ -51,16 +51,16 @@ public class VehiculoVista extends VBox implements Observer {
         this.vehiculoView.setFitWidth(50);
         this.vehiculoView.setFitHeight(50);
         Direccion nuevaDireccion = vehiculo.getDireccion();
-        if(ultimaDireccion.getClass() != nuevaDireccion.getClass()) rotarVehiculo(ultimaDireccion, nuevaDireccion);
+        //if(ultimaDireccion.getClass() != nuevaDireccion.getClass()) rotarVehiculo(ultimaDireccion, nuevaDireccion);
 
-        StackPane panel = new StackPane();
-        panel.getChildren().addAll(vehiculoView);
+        //StackPane panel = new StackPane();
+        //panel.getChildren().addAll(vehiculoView);
 
-        panel.setAlignment(vehiculoView, Pos.CENTER);
+        //panel.setAlignment(vehiculoView, Pos.CENTER);
         //panel.setAlignment(radioView, Pos.CENTER);
 
         this.getChildren().clear();
-        this.getChildren().add(panel);
+        this.getChildren().add(this.vehiculoView);
         this.ultimaDireccion = nuevaDireccion;
 
         this.posicionX = vehiculo.getPosicion().getPosicionX();

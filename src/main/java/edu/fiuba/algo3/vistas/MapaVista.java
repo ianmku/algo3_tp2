@@ -60,7 +60,7 @@ public class MapaVista extends StackPane {
             for(int j=0; j < this.altoMapa; j++){
                 var rectangulo = new Rectangle();
                 if((i%2 != 0) && (j%2 != 0)){
-                    rectangulo.setFill(Color.BLACK);
+                    rectangulo.setFill(Color.GREY);
                 }
                 else{
                     rectangulo.setFill(Color.WHITE);
@@ -120,6 +120,8 @@ public class MapaVista extends StackPane {
             mapa.add(contenedorInteractuables, posicion.getPosicionX(),juego.getMapaActual().getAlto() - posicion.getPosicionY());
             contenedorInteractuables.setAlignment(Pos.CENTER);
         }
+
+        this.actualizarSombra(mapaOscuro, this.vehiculoX, invertirY(this.vehiculoY));
 
         this.getChildren().addAll(mapa, mapaOscuro,botones);
 
@@ -186,7 +188,7 @@ public class MapaVista extends StackPane {
     }
 
     private void actualizarSombra(GridPane mapaOscuro, int posicionX, int posicionY){
-        for(int i = posicionX-2; i <= posicionX+2; i++){
+        /*for(int i = posicionX-2; i <= posicionX+2; i++){
             for(int j=posicionY-2 ; j <= posicionY; j++){
                 if((i >= 0) && (j>=0)){
                     var rectangulo = new Rectangle();
@@ -195,12 +197,25 @@ public class MapaVista extends StackPane {
                     rectangulo.setVisible(false);
                 }
             }
-        }
-
-        /*for(Node node : mapaOscuro){
-
         }*/
+
+        for (Node node : mapaOscuro.getChildren()) {
+            int posicionXNodo = mapaOscuro.getColumnIndex(node);
+            int posicionYNodo = mapaOscuro.getRowIndex(node);
+
+            int resultadoX = posicionX - posicionXNodo;
+            int resultadoY = posicionY - posicionYNodo;
+
+            if( (Math.abs(resultadoX) < 2) && (Math.abs(resultadoY) < 2) ){
+                node.setVisible(false);
+            }
+
+            else{
+                node.setVisible(true);
+            }
+        }
     }
+
 
     public void moverArriba(GridPane mapa, VehiculoVista vehiculo) {
         this.controlador.moverArriba(vehiculo);

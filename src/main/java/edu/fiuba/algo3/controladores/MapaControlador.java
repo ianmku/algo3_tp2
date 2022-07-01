@@ -6,12 +6,13 @@ import edu.fiuba.algo3.modelo.Direcciones.Derecha;
 import edu.fiuba.algo3.modelo.Direcciones.Izquierda;
 import edu.fiuba.algo3.modelo.Juego.Juego;
 import edu.fiuba.algo3.vistas.VehiculoVista;
+import javafx.scene.layout.GridPane;
 
 public class MapaControlador {
 
     public void moverDerecha(VehiculoVista vv){
         Juego.getInstance().moverVehiculo(new Derecha(), Juego.getInstance().getJugadorActual());
-        // vv.moverDerecha();
+        //vv.moverDerecha(mapa);
         Juego.getInstance().notifyObservers();
     }
 
