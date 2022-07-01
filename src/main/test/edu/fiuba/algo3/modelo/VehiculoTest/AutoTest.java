@@ -33,7 +33,7 @@ public class AutoTest {
 
         Mapa mapa = new Mapa(TamanioMapa.CHICO, aleatorio);
         Vehiculo auto = new Vehiculo(mapa, new Auto());
-        Posicion destino = new Posicion(4, 3);
+        Posicion destino = new Posicion(4, 6);
 
         /* Act */
         mapa.moverVehiculo(auto, new Derecha());

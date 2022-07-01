@@ -30,28 +30,28 @@ public class Entrega3Test {
 
         when(aleatorio.atravesarControlPolicial(any(float.class))).thenReturn(true);
 
-        when(aleatorio.generarPosicionDeLlegada(anyInt(), anyInt())).thenReturn(new Posicion(6,3));
+        when(aleatorio.generarPosicionDeLlegada(anyInt(), anyInt())).thenReturn(new Posicion(6,6));
 
         int movimientosEsperados = (int)((4 + 3 + 3 + 2) * 1.25);
-        Posicion posicionFinal = new Posicion(6,3);
+        Posicion posicionFinal = new Posicion(6,6);
 
         Mapa mapa = new Mapa(TamanioMapa.CHICO, aleatorio);
         Calle calle1 = new Calle();
         calle1.guardarInteractuable(new ControlPolicial(aleatorio));
         calle1.guardarInteractuable(new Piquete());
-        mapa.guardarCalle(new Posicion(3,3), calle1);
+        mapa.guardarCalle(new Posicion(3,6), calle1);
 
         Calle calle2 = new Calle();
         calle2.guardarInteractuable(new SorpresaCambioVehiculo());
-        mapa.guardarCalle(new Posicion(4,2), calle2);
+        mapa.guardarCalle(new Posicion(4,5), calle2);
 
         Calle calle3 = new Calle();
         calle3.guardarInteractuable(new Pozo());
-        mapa.guardarCalle(new Posicion(5,1), calle3);
+        mapa.guardarCalle(new Posicion(5,4), calle3);
 
         Calle calle4 = new Calle();
         calle4.guardarInteractuable(new SorpresaDesfavorable());
-        mapa.guardarCalle(new Posicion(6,2), calle4);
+        mapa.guardarCalle(new Posicion(6,5), calle4);
 
 
         Vehiculo vehiculo = new Vehiculo(mapa, new Moto());

@@ -32,7 +32,7 @@ public class CamionetaTest {
 
         Mapa mapa = new Mapa(TamanioMapa.CHICO, aleatorio);
         Vehiculo camioneta = new Vehiculo(mapa, new Camioneta());
-        Posicion destino = new Posicion(4, 3);
+        Posicion destino = new Posicion(4, 6);
 
         /* Act */
         mapa.moverVehiculo(camioneta, new Derecha());
