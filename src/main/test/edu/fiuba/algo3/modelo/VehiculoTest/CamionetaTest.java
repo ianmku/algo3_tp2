@@ -70,7 +70,9 @@ public class CamionetaTest {
     @Test
     public void TestCamionetaAtravesarPiqueteNoAumentaSusMovimientos() {
         /* Arrange */
-        Vehiculo camioneta = new Vehiculo(new Mapa(TamanioMapa.CHICO, new Aleatorio()), new Camioneta());
+        Aleatorio aleatorio = mock(Aleatorio.class);
+        when(aleatorio.crearPosicionAleatoria(anyInt(), anyInt())).thenReturn(new Posicion(0,0));
+        Vehiculo camioneta = new Vehiculo(new Mapa(TamanioMapa.CHICO, aleatorio), new Camioneta());
 
         /* Act */
         camioneta.atravesarPiquete();
