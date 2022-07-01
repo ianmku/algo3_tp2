@@ -123,8 +123,8 @@ public class Entrega2Test {
         SorpresaCambioVehiculo sorpresa2 = new SorpresaCambioVehiculo();
         calle1.guardarInteractuable(sorpresa1);
         calle2.guardarInteractuable(sorpresa2);
-        mapa.guardarCalle(new Posicion(3,3), calle1);
-        mapa.guardarCalle(new Posicion(5,3), calle2);
+        mapa.guardarCalle(new Posicion(3,2), calle1);
+        mapa.guardarCalle(new Posicion(5,2), calle2);
 
         /* Act */
         mapa.moverVehiculo(vehiculo, new Derecha());

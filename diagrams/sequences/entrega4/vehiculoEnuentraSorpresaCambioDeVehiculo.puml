@@ -1,0 +1,13 @@
+@startuml
+title "vehiculoEncuentraSorpresaCambioDeVehiculo"
+actor testCase
+
+testCase -> "calle1 : Calle" : guardarInteractuable(sorpresa1 : SorpresaCambioVehiculo)
+testCase -> "calle2 : Calle" : guardarInteractuable(sorpresa2 : SorpresaCambioVehiculo)
+testCase -> "mapa : Mapa" : guardarCalle(posicion1,calle1)
+testCase -> "mapa : Mapa" : guardarCalle(posicion2,calle2)
+testCase -> "mapa : Mapa" : moverVehiculo(vehiculo : Vehiculo, derecha : Derecha)
+testCase -> "mapa : Mapa" : moverVehiculo(vehiculo : Vehiculo, derecha : Derecha)
+testCase -> "vehiculo : Vehiculo" : es(camioneta : Camioneta)
+"vehiculo : Vehiculo" -> testCase : "camioneta"
+@enduml
