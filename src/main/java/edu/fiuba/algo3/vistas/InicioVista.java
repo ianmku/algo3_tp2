@@ -23,8 +23,8 @@ public class InicioVista extends StackPane {
 
 
         ImageView fondoView = new ImageView(fondoDePantalla);
-        fondoView.setFitHeight(520);
-        fondoView.setFitWidth(640);
+        fondoView.setFitHeight(700);
+        fondoView.setFitWidth(900);
 
         //Label titulo = new Label("GPS CHALLENGE");
         //titulo.setFont(Font.font("Arial", 40));

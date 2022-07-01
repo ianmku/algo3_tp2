@@ -24,8 +24,10 @@ public class VictoriaVista extends StackPane {
         VBox vBox = new VBox();
         vBox.setSpacing(20);
 
-        Image image = new Image("https://github.com/ianmku/algo3_tp2/blob/d5ad5ccd1785d56864720c85d0f1bf93b96a4445/resources/images/menu_principal.png");
+        Image image = new Image("https://github.com/ianmku/algo3_tp2/blob/manuel/resources/images/menu_principal.png?raw=true");
         ImageView img = new ImageView(image);
+        img.setFitWidth(900);
+        img.setFitHeight(700);
 
         Label titulo = new Label("FELICITACIONES!!");
         titulo.setFont(Font.font("Arial", 40));
@@ -63,6 +65,7 @@ public class VictoriaVista extends StackPane {
         vBox.setAlignment(Pos.CENTER);
         this.getChildren().addAll(img, vBox);
         this.setAlignment(vBox, Pos.BOTTOM_CENTER);
+        this.setAlignment(img, Pos.CENTER);
     }
 
     private HBox agregarBotonRanking() {

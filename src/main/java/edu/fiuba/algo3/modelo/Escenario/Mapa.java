@@ -10,12 +10,12 @@ import java.util.Hashtable;
 
 public class Mapa {
 
-    private final int ANCHO_CHICO = 11;
+    private final int ANCHO_CHICO = 15;
     private final int ALTO_CHICO = 11;
-    private final int ANCHO_MEDIANO = 19;
-    private final int ALTO_MEDIANO = 19;
-    private final int ANCHO_GRANDE = 25;
-    private final int ALTO_GRANDE = 25;
+    private final int ANCHO_MEDIANO = 13;
+    private final int ALTO_MEDIANO = 13;
+    private final int ANCHO_GRANDE = 19;
+    private final int ALTO_GRANDE = 15;
 
     private final int OBSTACULOS_CHICO = 7;
     private final int OBSTACULOS_MEDIANO = 10;

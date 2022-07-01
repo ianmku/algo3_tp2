@@ -27,6 +27,8 @@ public class CrearJugadorVista extends StackPane {
 
         Image fondoDePantalla = new Image("https://github.com/ianmku/algo3_tp2/blob/manuel/resources/images/menu_principal.png?raw=true");
         ImageView fondoView = new ImageView(fondoDePantalla);
+        fondoView.setFitHeight(800);
+        fondoView.setFitWidth(900);
 
         DropShadow shadow = new DropShadow();
 
