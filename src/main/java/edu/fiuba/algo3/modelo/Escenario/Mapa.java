@@ -80,7 +80,7 @@ public class Mapa {
             case CHICO:
                 this.ancho = ANCHO_CHICO;
                 this.alto = ALTO_CHICO;
-                this.multiplicadorPuntaje = 2;
+                this.multiplicadorPuntaje = 1;
                 colocarInteractuable(OBSTACULOS_CHICO, new Pozo(), aleatorio);
                 colocarInteractuable(OBSTACULOS_CHICO, new Piquete(), aleatorio);
                 colocarInteractuable(OBSTACULOS_CHICO, new ControlPolicial(aleatorio), aleatorio);
@@ -91,7 +91,7 @@ public class Mapa {
             case GRANDE:
                 this.ancho = ANCHO_GRANDE;
                 this.alto = ALTO_GRANDE;
-                this.multiplicadorPuntaje = 1;
+                this.multiplicadorPuntaje = 0.6F;
                 colocarInteractuable(OBSTACULOS_GRANDE, new Pozo(), aleatorio);
                 colocarInteractuable(OBSTACULOS_GRANDE, new Piquete(), aleatorio);
                 colocarInteractuable(OBSTACULOS_GRANDE, new ControlPolicial(aleatorio), aleatorio);
