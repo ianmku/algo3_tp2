@@ -191,7 +191,7 @@ public class MapaVista extends StackPane {
                 if((i >= 0) && (j>=0)){
                     var rectangulo = new Rectangle();
                     rectangulo.setWidth(50);
-                    rectangulo.setHeight(50);
+                    rectangulo.setHeight(60);
                     rectangulo.setVisible(false);
                 }
             }
