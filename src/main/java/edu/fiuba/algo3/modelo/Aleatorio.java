@@ -1,6 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Escenario.Posicion;
+import edu.fiuba.algo3.modelo.Vehiculos.Auto;
+import edu.fiuba.algo3.modelo.Vehiculos.Moto;
+import edu.fiuba.algo3.modelo.Vehiculos.Tipo;
 
 import java.util.Random;
 
@@ -12,6 +15,12 @@ public class Aleatorio {
 
     public Aleatorio(){
         this.rand = new Random();
+    }
+
+    public Tipo obtenerComportamientoRobin() {
+        float random = this.rand.nextFloat();
+        if(random <= 0.6) return new Auto();
+        return new Moto();
     }
 
     public boolean atravesarControlPolicial(float chance) {

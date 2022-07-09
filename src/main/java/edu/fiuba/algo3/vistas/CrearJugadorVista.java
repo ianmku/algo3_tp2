@@ -61,13 +61,17 @@ public class CrearJugadorVista extends StackPane {
         RadioButton camioneta = new RadioButton("Camioneta");
         camioneta.setStyle("-fx-text-fill: white;" + "-fx-font-weight: bold;");
         camioneta.setEffect(shadow);
+        RadioButton robin = new RadioButton("Robin");
+        robin.setStyle("-fx-text-fill: white;" + "-fx-font-weight: bold;");
+        camioneta.setEffect(shadow);
 
         auto.setToggleGroup(tg1);
         moto.setToggleGroup(tg1);
         camioneta.setToggleGroup(tg1);
+        robin.setToggleGroup(tg1);
 
         HBox vehiculos = new HBox();
-        vehiculos.getChildren().addAll(elegirVehiculo, auto, moto, camioneta);
+        vehiculos.getChildren().addAll(elegirVehiculo, auto, moto, camioneta, robin);
         vehiculos.setSpacing(5);
         vehiculos.setAlignment(Pos.CENTER);
 
@@ -104,6 +108,9 @@ public class CrearJugadorVista extends StackPane {
                             break;
                         case "Camioneta":
                             this.vehiculo = new Camioneta();
+                            break;
+                        case "Robin":
+                            this.vehiculo = new Robin();
                             break;
                     }
                 }

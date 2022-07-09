@@ -39,7 +39,7 @@ public class Camioneta implements Tipo {
     }
 
     public Tipo atravesarCambioVehiculo() {
-        return new Moto();
+        return new Robin();
     }
 
     public String getUrlImagen() {

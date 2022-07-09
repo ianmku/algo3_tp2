@@ -20,7 +20,6 @@ public class VehiculoVista extends VBox implements Observer {
     private final VehiculoControlador controlador;
     private int posicionX;
     private int posicionY;
-    private Direccion ultimaDireccion;
 
     public VehiculoVista(Juego juego, VehiculoControlador controlador){
         super();
@@ -28,7 +27,6 @@ public class VehiculoVista extends VBox implements Observer {
         this.vehiculoView = new ImageView();
         this.juego = juego;
         this.vehiculoView = new ImageView(new Image(juego.getJugadorActual().obtenerVehiculo().getTipo().getUrlImagen()));
-        this.ultimaDireccion = new Derecha();
 
         this.vehiculoView.setFitWidth(50);
         this.vehiculoView.setFitHeight(50);
@@ -50,7 +48,6 @@ public class VehiculoVista extends VBox implements Observer {
 
         this.getChildren().clear();
         this.getChildren().add(this.vehiculoView);
-        this.ultimaDireccion = nuevaDireccion;
 
         this.posicionX = vehiculo.getPosicion().getPosicionX();
         this.posicionY = vehiculo.getPosicion().getPosicionY();
